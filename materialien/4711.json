@@ -32,7 +32,7 @@
   "generiert": {
     "_herkunft": "G",
     "brief": {
-      "text": "Hallo liebe 3b! Ich bin XX. Bald besucht ihr die Stadtbibliothek Straubing. Dort geht ihr auf die Spuren der Waldbewohner: Ihr lest Tierspuren und hört Tierstimmen. Ich war schon dort und habe euch Bilder mitgebracht. Und ich habe einen leeren Rucksack dabei. Den packen wir heute zusammen voll. Danach bringe ich ihn zur Bibliothek, damit dort alle wissen, was ihr sucht und was ihr vermutet. Viele Grüße, euer XX",
+      "text": "Hallo 3b! Ich bin Frido. Bald besucht ihr die Stadtbibliothek Straubing. Dort geht ihr auf die Spuren der Waldbewohner: Ihr lest Tierspuren und hört Tierstimmen. Ich war schon dort und habe euch Bilder mitgebracht. Und ich habe einen leeren Rucksack dabei. Den packen wir heute zusammen voll. Danach bringe ich ihn zur Bibliothek, damit dort alle wissen, was ihr sucht und was ihr vermutet. Viele Grüße, euer Frido",
       "quellen": [
         "lerngruppenprofil.klasse",
         "programmprofil.bibliothek",
@@ -43,16 +43,8 @@
     "bibliotheksblick": [
       {
         "bild": 0,
-        "frage": "Das ist die Lesehöhle. Was glaubt ihr: Was kann man hier alles machen?",
         "quellen": [
           "programmprofil.bilder[0]"
-        ]
-      },
-      {
-        "bild": 1,
-        "frage": "Hier ist die Bilderbuchecke. Was meint ihr: Warum stehen die Bücher in Kisten und nicht im Regal?",
-        "quellen": [
-          "programmprofil.bilder[1]"
         ]
       }
     ],
@@ -72,9 +64,9 @@
       "knoten": {
         "S": {
           "text": {
-            "stufe1": "Ihr seid mit XX in der Bibliothek. Oben kichert es. Und es raschelt!",
-            "stufe2": "Ihr steht mit XX an der Lesetreppe der Bibliothek. Von oben hört ihr zwei Geräusche: Da kichert jemand. Und da raschelt es leise.",
-            "stufe3": "Ihr steht mit XX an der Lesetreppe der Bibliothek. Es ist ganz still, als ob die Bücher auf euch warten. Da hört ihr von oben zwei Geräusche: ein fröhliches Kichern aus der einen Ecke und ein leises, geheimnisvolles Rascheln aus der anderen."
+            "stufe1": "Ihr seid mit Frido in der Bibliothek. Oben kichert es. Und es raschelt!",
+            "stufe2": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Von oben hört ihr zwei Geräusche: Da kichert jemand. Und da raschelt es leise.",
+            "stufe3": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Es ist ganz still, als ob die Bücher auf euch warten. Da hört ihr von oben zwei Geräusche: ein fröhliches Kichern aus der einen Ecke und ein leises, geheimnisvolles Rascheln aus der anderen."
           },
           "optionen": [
             {
@@ -107,7 +99,7 @@
           "text": {
             "stufe1": "Ein Eichhörnchen lacht. Da ist ein Nest. Und eine Mütze.",
             "stufe2": "In der Bilderbuchecke sitzt ein Eichhörnchen und lacht. Neben ihm liegen ein kleines Nest und eine bunte Mütze.",
-            "stufe3": "In der Bilderbuchecke sitzt ein Eichhörnchen auf einem Kissen und lacht so sehr, dass sein Schwanz wackelt. „Hier hat jemand etwas vergessen!“, ruft es. Neben ihm liegen ein kleines Nest und eine bunte Kindermütze."
+            "stufe3": "In der Bilderbuchecke sitzt ein Eichhörnchen auf einem Kissen und grinst breit. „Hier hat jemand etwas vergessen!“, ruft es. Neben ihm liegen ein kleines Nest und eine bunte Kindermütze."
           },
           "optionen": [
             {
@@ -305,36 +297,36 @@
       "enden": {
         "AAA": {
           "text": {
-            "stufe1": "Das Eichhörnchen zeigt euch das Bild. Lauter Tiere purzeln. Ihr lacht!",
-            "stufe2": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf purzeln lauter Tiere übereinander. Ihr müsst laut lachen!",
-            "stufe3": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf purzeln lauter Waldtiere übereinander: ein Igel auf einem Fuchs, eine Eule auf dem Igel. Ihr müsst so laut lachen, dass XX fast vom Regal fällt."
+            "stufe1": "Das Eichhörnchen zeigt euch das Bild. Dort sitzen Tiere mit Hüten. Ihr staunt!",
+            "stufe2": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf sitzen lauter Tiere mit Hüten übereinander. Ihr müsst schmunzeln!",
+            "stufe3": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf tragen Waldtiere Hüte, und auf dem Kopf des Fuchses sitzt ein Igel. Ihr müsst schmunzeln, und Frido auch."
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein lustiges Bilderbuch über ein Tier.",
+            "stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.",
             "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt.",
             "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
         },
         "AAB": {
           "text": {
-            "stufe1": "Die Geschichte ist so lustig! XX lacht laut. Ihr bekommt die Seite.",
-            "stufe2": "Das Eichhörnchen erzählt eine so lustige Geschichte, dass XX vor Lachen fast vom Regal fällt. Am Ende schenkt es euch die Buchseite.",
-            "stufe3": "Das Eichhörnchen erzählt eine Geschichte von einem Tier, das immer alles verwechselt. Sie ist so lustig, dass XX vor Lachen fast vom Regal fällt. Zum Schluss reißt das Eichhörnchen vorsichtig eine Buchseite heraus und schenkt sie euch."
+            "stufe1": "Die Geschichte ist verrückt! Frido grinst. Ihr bekommt die Seite.",
+            "stufe2": "Das Eichhörnchen erzählt eine verrückte Geschichte, in der alles falsch herum ist. Am Ende schenkt es euch die Buchseite.",
+            "stufe3": "Das Eichhörnchen erzählt eine Geschichte von einem Tier, das immer alles verwechselt. Sie ist so verrückt, dass Frido den Kopf schüttelt und grinst. Zum Schluss reißt das Eichhörnchen vorsichtig eine Buchseite heraus und schenkt sie euch."
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein lustiges Buch mit viel Text über ein Tier.",
-            "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Geschichte, in dem ein Tier die Hauptrolle spielt.",
-            "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Geschichte, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
+            "stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Tier.",
+            "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Tier die Hauptrolle spielt.",
+            "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
         },
         "ABA": {
           "text": {
-            "stufe1": "Auf dem Bild ist ein Kind. Es hat Eichhörnchen-Ohren! Ihr lacht.",
+            "stufe1": "Auf dem Bild ist ein Kind. Es hat Eichhörnchen-Ohren! Ihr staunt.",
             "stufe2": "Auf dem Bild hat sich ein Kind selbst gemalt, mit Eichhörnchen-Ohren! Darunter steht: „Findet mein Lieblingsbuch!“",
             "stufe3": "Auf dem Bild hat sich ein Kind selbst gemalt, mit großen Eichhörnchen-Ohren und einem buschigen Schwanz. Das Eichhörnchen kichert. Darunter steht in bunten Buchstaben: „Wer mich findet, findet auch mein Lieblingsbuch!“"
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein lustiges Bilderbuch über ein Kind.",
+            "stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.",
             "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt.",
             "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
@@ -346,9 +338,9 @@
             "stufe3": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat. Statt zu weinen, hat es überall gelesen und dabei das lustigste Buch der Welt gefunden. Am Ende steht: „Jetzt seid ihr dran!“"
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein lustiges Buch mit viel Text über ein Kind.",
-            "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Geschichte, in dem ein Kind die Hauptrolle spielt.",
-            "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Geschichte, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
+            "stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Kind.",
+            "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Kind die Hauptrolle spielt.",
+            "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
         },
         "BAA": {
@@ -358,7 +350,7 @@
             "stufe3": "Der Fuchs lässt das Bilderheft fallen und huscht lautlos davon. Ihr hebt es auf. Auf dem Umschlag ist ein Pfotenabdruck, genau wie der, den ihr vorhin gefunden habt. Jetzt wisst ihr: Der Fuchs wollte, dass ihr es findet."
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein spannendes Bilderbuch über ein Tier.",
+            "stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.",
             "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt.",
             "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
@@ -370,9 +362,9 @@
             "stufe3": "Der Fuchs schiebt euch das dicke Buch hin und tritt einen Schritt zurück. Zwischen den Seiten steckt ein Lesezeichen. Ganz leise flüstert er: „Hier fängt das Abenteuer an. Aber nur, wer weiterliest, erfährt, wie es endet.“"
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein spannendes Buch mit viel Text über ein Tier.",
-            "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Geschichte, in dem ein Tier die Hauptrolle spielt.",
-            "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Geschichte, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
+            "stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Tier.",
+            "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Tier die Hauptrolle spielt.",
+            "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
         },
         "BBA": {
@@ -382,26 +374,26 @@
             "stufe3": "Ihr faltet die alte Karte auf. Sie ist voller kleiner Bilder: die Lesetreppe, die Bilderbuchecke, die Lesehöhle. Und mitten darin ein rotes Kreuz. Daneben steht: „Hier wartet ein Buch auf mutige Spurensucher.“"
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein spannendes Bilderbuch über ein Kind.",
+            "stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.",
             "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt.",
             "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
         },
         "BBB": {
           "text": {
-            "stufe1": "Im Brief steht: „Ihr seid mutig!“ XX ist ganz stolz auf euch.",
-            "stufe2": "Im Brief steht: „Wer das liest, ist mutig genug für das nächste Abenteuer.“ XX ist ganz stolz auf euch.",
-            "stufe3": "Ihr brecht das rote Siegel auf. Im Brief steht in geschwungener Schrift: „Wer das liest, ist mutig genug für das nächste Abenteuer. Es wartet zwischen zwei Buchdeckeln.“ XX plustert sich vor Stolz auf."
+            "stufe1": "Im Brief steht: „Ihr seid mutig!“ Frido ist ganz stolz auf euch.",
+            "stufe2": "Im Brief steht: „Wer das liest, ist mutig genug für das nächste Abenteuer.“ Frido ist ganz stolz auf euch.",
+            "stufe3": "Ihr brecht das rote Siegel auf. Im Brief steht in geschwungener Schrift: „Wer das liest, ist mutig genug für das nächste Abenteuer. Es wartet zwischen zwei Buchdeckeln.“ Frido plustert sich vor Stolz auf."
           },
           "suchauftrag": {
-            "stufe1": "Sucht ein spannendes Buch mit viel Text über ein Kind.",
-            "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Geschichte, in dem ein Kind die Hauptrolle spielt.",
-            "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Geschichte, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
+            "stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Kind.",
+            "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Kind die Hauptrolle spielt.",
+            "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."
           }
         }
       }
     },
-    "absenden_text": "Mein Rucksack ist voll! Ich fliege jetzt zur Stadtbibliothek Straubing und erzähle dort, was ihr sucht und was ihr vermutet. Bis bald, euer XX!",
+    "absenden_text": "Mein Rucksack ist voll! Ich paddle jetzt zur Stadtbibliothek Straubing und erzähle dort, was ihr sucht und was ihr vermutet. Bis bald, euer Frido!",
     "suchkarte": {
       "kartenkopf": "Waldforscher-Karte der 3b"
     },
