@@ -1,10 +1,11 @@
 {
   "meta": {
-    "schema_version": "0.3",
+    "schema_version": "0.4",
+    "lerngruppe": "4711",
     "erzeugt_von": "von Hand (Testdaten)",
     "prompt_version": null,
-    "erzeugt_am": "2026-10-07",
-    "hinweis": "Testdaten. Orte, Ablauf und Bilder sind Annahmen für das Referenzprogramm, keine Angaben der Bibliothek.",
+    "erzeugt_am": "2026-10-16",
+    "hinweis": "Testdaten. Orte, Ablauf und Bilder sind Annahmen für das Referenzprogramm, keine Angaben der Bibliothek. Bildfolgen und Wortbilder von Hand ergänzt; Einträge ohne Piktogramm (picto: null) sind nachzutragen.",
     "legende": {
       "rahmen": "P = aus Programm- oder Lerngruppenprofil, vom System eingesetzt (nicht vom LLM)",
       "generiert": "G = vom LLM erzeugt",
@@ -52,7 +53,11 @@
       "Team Fuchsfährte",
       "Team Eulenauge",
       "Team Eichhörnchen",
-      "Team Spurensucher"
+      "Team Spurensucher",
+      "Team Igelnase",
+      "Team Dachsbau",
+      "Team Spechtklopfer",
+      "Team Mooswichtel"
     ],
     "geschichte": {
       "kulisse": "programmwelt",
@@ -66,14 +71,41 @@
           "text": {
             "stufe1": "Ihr seid mit Frido in der Bibliothek. Oben kichert es. Und es raschelt!",
             "stufe2": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Von oben hört ihr zwei Geräusche: Da kichert jemand. Und da raschelt es leise.",
-            "stufe3": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Es ist ganz still, als ob die Bücher auf euch warten. Da hört ihr von oben zwei Geräusche: ein fröhliches Kichern aus der einen Ecke und ein leises, geheimnisvolles Rascheln aus der anderen."
+            "stufe3": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Es ist ganz still, als ob die Bücher auf euch warten. Da hört ihr von oben zwei Geräusche: ein fröhliches Kichern aus der einen Ecke und ein leises, geheimnisvolles Rascheln aus der anderen.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Frido"
+              },
+              {
+                "picto": 3065,
+                "wort": "Bibliothek"
+              },
+              {
+                "picto": null,
+                "wort": "Kichern",
+                "suchwort": "lachen"
+              },
+              {
+                "picto": null,
+                "wort": "Rascheln",
+                "suchwort": "rascheln"
+              }
+            ]
           },
           "optionen": [
             {
               "label": {
                 "stufe1": "Zum Kichern",
                 "stufe2": "Folgt dem Kichern",
-                "stufe3": "Ihr folgt dem Kichern"
+                "stufe3": "Ihr folgt dem Kichern",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Kichern",
+                    "suchwort": "lachen"
+                  }
+                ]
               },
               "symbol": "😄",
               "fund": {
@@ -85,7 +117,14 @@
               "label": {
                 "stufe1": "Zum Rascheln",
                 "stufe2": "Folgt dem Rascheln",
-                "stufe3": "Ihr folgt dem Rascheln"
+                "stufe3": "Ihr folgt dem Rascheln",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Rascheln",
+                    "suchwort": "rascheln"
+                  }
+                ]
               },
               "symbol": "🍂",
               "fund": {
@@ -99,14 +138,38 @@
           "text": {
             "stufe1": "Ein Eichhörnchen lacht. Da ist ein Nest. Und eine Mütze.",
             "stufe2": "In der Bilderbuchecke sitzt ein Eichhörnchen und lacht. Neben ihm liegen ein kleines Nest und eine bunte Mütze.",
-            "stufe3": "In der Bilderbuchecke sitzt ein Eichhörnchen auf einem Kissen und grinst breit. „Hier hat jemand etwas vergessen!“, ruft es. Neben ihm liegen ein kleines Nest und eine bunte Kindermütze."
+            "stufe3": "In der Bilderbuchecke sitzt ein Eichhörnchen auf einem Kissen und grinst breit. „Hier hat jemand etwas vergessen!“, ruft es. Neben ihm liegen ein kleines Nest und eine bunte Kindermütze.",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Eichhörnchen",
+                "suchwort": "Eichhörnchen"
+              },
+              {
+                "picto": null,
+                "wort": "Nest",
+                "suchwort": "Nest"
+              },
+              {
+                "picto": null,
+                "wort": "Mütze",
+                "suchwort": "Mütze"
+              }
+            ]
           },
           "optionen": [
             {
               "label": {
                 "stufe1": "Ins Nest schauen",
                 "stufe2": "Schaut ins Nest",
-                "stufe3": "Ihr schaut vorsichtig ins Nest"
+                "stufe3": "Ihr schaut vorsichtig ins Nest",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Nest",
+                    "suchwort": "Nest"
+                  }
+                ]
               },
               "symbol": "🪺",
               "fund": {
@@ -118,7 +181,14 @@
               "label": {
                 "stufe1": "Mütze hochheben",
                 "stufe2": "Hebt die Mütze hoch",
-                "stufe3": "Ihr hebt die bunte Mütze hoch"
+                "stufe3": "Ihr hebt die bunte Mütze hoch",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Mütze",
+                    "suchwort": "Mütze"
+                  }
+                ]
               },
               "symbol": "🧢",
               "fund": {
@@ -132,14 +202,38 @@
           "text": {
             "stufe1": "In der Lesehöhle ist es dunkel. Da leuchten Augen. Und da sind Spuren!",
             "stufe2": "Das Rascheln kommt aus der Lesehöhle. Drinnen ist es dunkel. Zwei Augen leuchten, und auf dem Boden sind kleine Fußspuren.",
-            "stufe3": "Das Rascheln kommt aus der Lesehöhle. Ihr knipst die Taschenlampe an. Ganz hinten leuchten zwei Augen auf. Und auf dem Teppich entdeckt ihr kleine Fußspuren, die in eine ganz andere Richtung führen."
+            "stufe3": "Das Rascheln kommt aus der Lesehöhle. Ihr knipst die Taschenlampe an. Ganz hinten leuchten zwei Augen auf. Und auf dem Teppich entdeckt ihr kleine Fußspuren, die in eine ganz andere Richtung führen.",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "dunkel",
+                "suchwort": "dunkel"
+              },
+              {
+                "picto": null,
+                "wort": "Augen",
+                "suchwort": "Augen"
+              },
+              {
+                "picto": null,
+                "wort": "Spuren",
+                "suchwort": "Fußspuren"
+              }
+            ]
           },
           "optionen": [
             {
               "label": {
                 "stufe1": "Zu den Augen",
                 "stufe2": "Leuchtet zu den Augen",
-                "stufe3": "Ihr leuchtet zu den Augen"
+                "stufe3": "Ihr leuchtet zu den Augen",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Augen",
+                    "suchwort": "Augen"
+                  }
+                ]
               },
               "symbol": "👀",
               "fund": {
@@ -151,7 +245,14 @@
               "label": {
                 "stufe1": "Den Spuren nach",
                 "stufe2": "Folgt den Fußspuren",
-                "stufe3": "Ihr folgt den Fußspuren"
+                "stufe3": "Ihr folgt den Fußspuren",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Spuren",
+                    "suchwort": "Fußspuren"
+                  }
+                ]
               },
               "symbol": "👣",
               "fund": {
@@ -165,14 +266,37 @@
           "text": {
             "stufe1": "Im Nest liegt eine Feder. Das Eichhörnchen hat ein Bild und eine Geschichte.",
             "stufe2": "Im Nest liegt eine Feder. Das Eichhörnchen kichert: „Ich habe ein lustiges Bild und eine lustige Geschichte. Was wollt ihr?“",
-            "stufe3": "Im Nest liegt eine weiche Feder. Das Eichhörnchen kichert und flüstert: „Ich habe zwei Schätze für euch: ein Bild, bei dem ihr lachen müsst, und eine Geschichte, die noch lustiger ist. Aber ihr dürft nur einen wählen.“"
+            "stufe3": "Im Nest liegt eine weiche Feder. Das Eichhörnchen kichert und flüstert: „Ich habe zwei Schätze für euch: ein Bild, bei dem ihr lachen müsst, und eine Geschichte, die noch lustiger ist. Aber ihr dürft nur einen wählen.“",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Feder",
+                "suchwort": "Feder"
+              },
+              {
+                "picto": null,
+                "wort": "Bild",
+                "suchwort": "Bild"
+              },
+              {
+                "picto": 5973,
+                "wort": "erzählen"
+              }
+            ]
           },
           "optionen": [
             {
               "label": {
                 "stufe1": "Das Bild",
                 "stufe2": "Zeig uns das Bild",
-                "stufe3": "Ihr wählt das lustige Bild"
+                "stufe3": "Ihr wählt das lustige Bild",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Bild",
+                    "suchwort": "Bild"
+                  }
+                ]
               },
               "symbol": "🖼️",
               "fund": {
@@ -184,7 +308,13 @@
               "label": {
                 "stufe1": "Die Geschichte",
                 "stufe2": "Erzähl die Geschichte",
-                "stufe3": "Ihr wählt die Geschichte"
+                "stufe3": "Ihr wählt die Geschichte",
+                "bild": [
+                  {
+                    "picto": 5973,
+                    "wort": "erzählen"
+                  }
+                ]
               },
               "symbol": "📖",
               "fund": {
@@ -198,14 +328,37 @@
           "text": {
             "stufe1": "Unter der Mütze liegt ein Zettel. Vorne ist ein Bild. Hinten steht Text.",
             "stufe2": "Unter der Mütze liegt ein Zettel von einem Kind. Vorne ist ein Bild gemalt, hinten steht eine Geschichte. Welche Seite schaut ihr an?",
-            "stufe3": "Unter der Mütze liegt ein gefalteter Zettel. Ein Kind hat ihn hier versteckt. Auf der Vorderseite ist ein buntes Bild gemalt, auf der Rückseite steht eine Geschichte in krakeliger Schrift. Welche Seite schaut ihr zuerst an?"
+            "stufe3": "Unter der Mütze liegt ein gefalteter Zettel. Ein Kind hat ihn hier versteckt. Auf der Vorderseite ist ein buntes Bild gemalt, auf der Rückseite steht eine Geschichte in krakeliger Schrift. Welche Seite schaut ihr zuerst an?",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Zettel",
+                "suchwort": "Zettel"
+              },
+              {
+                "picto": null,
+                "wort": "Bild",
+                "suchwort": "Bild"
+              },
+              {
+                "picto": 2447,
+                "wort": "lesen"
+              }
+            ]
           },
           "optionen": [
             {
               "label": {
                 "stufe1": "Das Bild",
                 "stufe2": "Schaut das Bild an",
-                "stufe3": "Ihr schaut das Bild an"
+                "stufe3": "Ihr schaut das Bild an",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Bild",
+                    "suchwort": "Bild"
+                  }
+                ]
               },
               "symbol": "🖍️",
               "fund": {
@@ -217,7 +370,13 @@
               "label": {
                 "stufe1": "Den Text",
                 "stufe2": "Lest die Geschichte",
-                "stufe3": "Ihr lest die Geschichte"
+                "stufe3": "Ihr lest die Geschichte",
+                "bild": [
+                  {
+                    "picto": 2447,
+                    "wort": "lesen"
+                  }
+                ]
               },
               "symbol": "✏️",
               "fund": {
@@ -231,14 +390,37 @@
           "text": {
             "stufe1": "Es ist ein Fuchs! Er hat ein Bilderheft. Und ein dickes Buch.",
             "stufe2": "Es ist ein Fuchs! Er hält zwei Sachen fest: ein Heft voller Bilder und ein dickes Buch. Er schaut euch neugierig an.",
-            "stufe3": "Es ist ein Fuchs! Sein Fell glänzt im Licht der Taschenlampe. Zwischen seinen Pfoten liegen zwei Sachen: ein Heft voller Bilder und ein dickes Buch mit einem Lesezeichen. Er schaut euch neugierig an und wartet."
+            "stufe3": "Es ist ein Fuchs! Sein Fell glänzt im Licht der Taschenlampe. Zwischen seinen Pfoten liegen zwei Sachen: ein Heft voller Bilder und ein dickes Buch mit einem Lesezeichen. Er schaut euch neugierig an und wartet.",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Fuchs",
+                "suchwort": "Fuchs"
+              },
+              {
+                "picto": null,
+                "wort": "Bild",
+                "suchwort": "Bild"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              }
+            ]
           },
           "optionen": [
             {
               "label": {
                 "stufe1": "Das Bilderheft",
                 "stufe2": "Nehmt das Bilderheft",
-                "stufe3": "Ihr nehmt das Bilderheft"
+                "stufe3": "Ihr nehmt das Bilderheft",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Bilderheft",
+                    "suchwort": "Bilderbuch"
+                  }
+                ]
               },
               "symbol": "🖼️",
               "fund": {
@@ -250,7 +432,13 @@
               "label": {
                 "stufe1": "Das dicke Buch",
                 "stufe2": "Nehmt das dicke Buch",
-                "stufe3": "Ihr nehmt das dicke Buch"
+                "stufe3": "Ihr nehmt das dicke Buch",
+                "bild": [
+                  {
+                    "picto": 2450,
+                    "wort": "Buch"
+                  }
+                ]
               },
               "symbol": "📕",
               "fund": {
@@ -264,14 +452,35 @@
           "text": {
             "stufe1": "Die Spuren führen zu einer Kiste. Darin: eine Karte. Und ein Brief.",
             "stufe2": "Die Fußspuren führen zu einer kleinen Kiste mit Schloss. Ihr schließt auf. Darin liegen eine Karte voller Bilder und ein Brief.",
-            "stufe3": "Die Fußspuren führen hinter ein Regal zu einer kleinen Kiste mit einem Schloss. Mit klopfendem Herzen schließt ihr auf. Darin liegen eine alte Karte voller Bilder und ein Brief mit einem roten Siegel."
+            "stufe3": "Die Fußspuren führen hinter ein Regal zu einer kleinen Kiste mit einem Schloss. Mit klopfendem Herzen schließt ihr auf. Darin liegen eine alte Karte voller Bilder und ein Brief mit einem roten Siegel.",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Kiste",
+                "suchwort": "Kiste"
+              },
+              {
+                "picto": 24296,
+                "wort": "Karte"
+              },
+              {
+                "picto": 2688,
+                "wort": "Brief"
+              }
+            ]
           },
           "optionen": [
             {
               "label": {
                 "stufe1": "Die Karte",
                 "stufe2": "Öffnet die Karte",
-                "stufe3": "Ihr öffnet die Karte"
+                "stufe3": "Ihr öffnet die Karte",
+                "bild": [
+                  {
+                    "picto": 24296,
+                    "wort": "Karte"
+                  }
+                ]
               },
               "symbol": "🗺️",
               "fund": {
@@ -283,7 +492,13 @@
               "label": {
                 "stufe1": "Den Brief",
                 "stufe2": "Öffnet den Brief",
-                "stufe3": "Ihr öffnet den Brief"
+                "stufe3": "Ihr öffnet den Brief",
+                "bild": [
+                  {
+                    "picto": 2688,
+                    "wort": "Brief"
+                  }
+                ]
               },
               "symbol": "✉️",
               "fund": {
@@ -299,7 +514,23 @@
           "text": {
             "stufe1": "Das Eichhörnchen zeigt euch das Bild. Dort sitzen Tiere mit Hüten. Ihr staunt!",
             "stufe2": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf sitzen lauter Tiere mit Hüten übereinander. Ihr müsst schmunzeln!",
-            "stufe3": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf tragen Waldtiere Hüte, und auf dem Kopf des Fuchses sitzt ein Igel. Ihr müsst schmunzeln, und Frido auch."
+            "stufe3": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf tragen Waldtiere Hüte, und auf dem Kopf des Fuchses sitzt ein Igel. Ihr müsst schmunzeln, und Frido auch.",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Eichhörnchen",
+                "suchwort": "Eichhörnchen"
+              },
+              {
+                "picto": null,
+                "wort": "Hut",
+                "suchwort": "Hut"
+              },
+              {
+                "picto": 3245,
+                "wort": "froh"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.",
@@ -311,7 +542,21 @@
           "text": {
             "stufe1": "Die Geschichte ist verrückt! Frido grinst. Ihr bekommt die Seite.",
             "stufe2": "Das Eichhörnchen erzählt eine verrückte Geschichte, in der alles falsch herum ist. Am Ende schenkt es euch die Buchseite.",
-            "stufe3": "Das Eichhörnchen erzählt eine Geschichte von einem Tier, das immer alles verwechselt. Sie ist so verrückt, dass Frido den Kopf schüttelt und grinst. Zum Schluss reißt das Eichhörnchen vorsichtig eine Buchseite heraus und schenkt sie euch."
+            "stufe3": "Das Eichhörnchen erzählt eine Geschichte von einem Tier, das immer alles verwechselt. Sie ist so verrückt, dass Frido den Kopf schüttelt und grinst. Zum Schluss reißt das Eichhörnchen vorsichtig eine Buchseite heraus und schenkt sie euch.",
+            "bild": [
+              {
+                "picto": 5973,
+                "wort": "erzählen"
+              },
+              {
+                "picto": 7055,
+                "wort": "Frido"
+              },
+              {
+                "picto": 3245,
+                "wort": "froh"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Tier.",
@@ -323,7 +568,24 @@
           "text": {
             "stufe1": "Auf dem Bild ist ein Kind. Es hat Eichhörnchen-Ohren! Ihr staunt.",
             "stufe2": "Auf dem Bild hat sich ein Kind selbst gemalt, mit Eichhörnchen-Ohren! Darunter steht: „Findet mein Lieblingsbuch!“",
-            "stufe3": "Auf dem Bild hat sich ein Kind selbst gemalt, mit großen Eichhörnchen-Ohren und einem buschigen Schwanz. Das Eichhörnchen kichert. Darunter steht in bunten Buchstaben: „Wer mich findet, findet auch mein Lieblingsbuch!“"
+            "stufe3": "Auf dem Bild hat sich ein Kind selbst gemalt, mit großen Eichhörnchen-Ohren und einem buschigen Schwanz. Das Eichhörnchen kichert. Darunter steht in bunten Buchstaben: „Wer mich findet, findet auch mein Lieblingsbuch!“",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Bild",
+                "suchwort": "Bild"
+              },
+              {
+                "picto": null,
+                "wort": "Kind",
+                "suchwort": "Kind"
+              },
+              {
+                "picto": null,
+                "wort": "Ohren",
+                "suchwort": "Ohr"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.",
@@ -335,7 +597,26 @@
           "text": {
             "stufe1": "Ein Kind hat sich verlaufen. Es findet ein lustiges Buch!",
             "stufe2": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat und dabei das lustigste Buch der Welt fand.",
-            "stufe3": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat. Statt zu weinen, hat es überall gelesen und dabei das lustigste Buch der Welt gefunden. Am Ende steht: „Jetzt seid ihr dran!“"
+            "stufe3": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat. Statt zu weinen, hat es überall gelesen und dabei das lustigste Buch der Welt gefunden. Am Ende steht: „Jetzt seid ihr dran!“",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Kind",
+                "suchwort": "Kind"
+              },
+              {
+                "picto": 5990,
+                "wort": "finden"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 3245,
+                "wort": "froh"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Kind.",
@@ -347,7 +628,24 @@
           "text": {
             "stufe1": "Der Fuchs lässt das Heft fallen und rennt weg. Da ist eine Pfote!",
             "stufe2": "Der Fuchs lässt das Bilderheft fallen und huscht davon. Auf dem Heft ist ein Pfotenabdruck, genau wie der, den ihr gefunden habt!",
-            "stufe3": "Der Fuchs lässt das Bilderheft fallen und huscht lautlos davon. Ihr hebt es auf. Auf dem Umschlag ist ein Pfotenabdruck, genau wie der, den ihr vorhin gefunden habt. Jetzt wisst ihr: Der Fuchs wollte, dass ihr es findet."
+            "stufe3": "Der Fuchs lässt das Bilderheft fallen und huscht lautlos davon. Ihr hebt es auf. Auf dem Umschlag ist ein Pfotenabdruck, genau wie der, den ihr vorhin gefunden habt. Jetzt wisst ihr: Der Fuchs wollte, dass ihr es findet.",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Fuchs",
+                "suchwort": "Fuchs"
+              },
+              {
+                "picto": null,
+                "wort": "rennen",
+                "suchwort": "rennen"
+              },
+              {
+                "picto": null,
+                "wort": "Pfote",
+                "suchwort": "Pfote"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.",
@@ -359,7 +657,22 @@
           "text": {
             "stufe1": "Der Fuchs gibt euch das Buch. Er flüstert: „Hier fängt es an.“",
             "stufe2": "Der Fuchs schiebt euch das dicke Buch hin. Zwischen den Seiten steckt ein Lesezeichen. Er flüstert: „Hier fängt das Abenteuer an.“",
-            "stufe3": "Der Fuchs schiebt euch das dicke Buch hin und tritt einen Schritt zurück. Zwischen den Seiten steckt ein Lesezeichen. Ganz leise flüstert er: „Hier fängt das Abenteuer an. Aber nur, wer weiterliest, erfährt, wie es endet.“"
+            "stufe3": "Der Fuchs schiebt euch das dicke Buch hin und tritt einen Schritt zurück. Zwischen den Seiten steckt ein Lesezeichen. Ganz leise flüstert er: „Hier fängt das Abenteuer an. Aber nur, wer weiterliest, erfährt, wie es endet.“",
+            "bild": [
+              {
+                "picto": null,
+                "wort": "Fuchs",
+                "suchwort": "Fuchs"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 2447,
+                "wort": "lesen"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Tier.",
@@ -371,7 +684,21 @@
           "text": {
             "stufe1": "Auf der Karte ist ein Kreuz. Es zeigt auf ein geheimes Buch!",
             "stufe2": "Ihr faltet die Karte auf. Sie ist voller Bilder von der Bibliothek. Ein rotes Kreuz zeigt auf ein geheimes Buch.",
-            "stufe3": "Ihr faltet die alte Karte auf. Sie ist voller kleiner Bilder: die Lesetreppe, die Bilderbuchecke, die Lesehöhle. Und mitten darin ein rotes Kreuz. Daneben steht: „Hier wartet ein Buch auf mutige Spurensucher.“"
+            "stufe3": "Ihr faltet die alte Karte auf. Sie ist voller kleiner Bilder: die Lesetreppe, die Bilderbuchecke, die Lesehöhle. Und mitten darin ein rotes Kreuz. Daneben steht: „Hier wartet ein Buch auf mutige Spurensucher.“",
+            "bild": [
+              {
+                "picto": 24296,
+                "wort": "Karte"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.",
@@ -383,7 +710,21 @@
           "text": {
             "stufe1": "Im Brief steht: „Ihr seid mutig!“ Frido ist ganz stolz auf euch.",
             "stufe2": "Im Brief steht: „Wer das liest, ist mutig genug für das nächste Abenteuer.“ Frido ist ganz stolz auf euch.",
-            "stufe3": "Ihr brecht das rote Siegel auf. Im Brief steht in geschwungener Schrift: „Wer das liest, ist mutig genug für das nächste Abenteuer. Es wartet zwischen zwei Buchdeckeln.“ Frido plustert sich vor Stolz auf."
+            "stufe3": "Ihr brecht das rote Siegel auf. Im Brief steht in geschwungener Schrift: „Wer das liest, ist mutig genug für das nächste Abenteuer. Es wartet zwischen zwei Buchdeckeln.“ Frido plustert sich vor Stolz auf.",
+            "bild": [
+              {
+                "picto": 2688,
+                "wort": "Brief"
+              },
+              {
+                "picto": 7055,
+                "wort": "Frido"
+              },
+              {
+                "picto": 3245,
+                "wort": "froh"
+              }
+            ]
           },
           "suchauftrag": {
             "stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Kind.",
@@ -397,6 +738,48 @@
     "suchkarte": {
       "kartenkopf": "Waldforscher-Karte der 3b"
     },
-    "luecken": []
+    "luecken": [],
+    "wortbilder": [
+      {
+        "picto": 7055,
+        "wort": "Frido"
+      },
+      {
+        "picto": 3065,
+        "wort": "Bibliothek"
+      },
+      {
+        "picto": 2450,
+        "wort": "Buch"
+      },
+      {
+        "picto": 24296,
+        "wort": "Karte"
+      },
+      {
+        "picto": 2688,
+        "wort": "Brief"
+      },
+      {
+        "picto": null,
+        "wort": "Bild",
+        "suchwort": "Bild"
+      },
+      {
+        "picto": null,
+        "wort": "Eichhörnchen",
+        "suchwort": "Eichhörnchen"
+      },
+      {
+        "picto": null,
+        "wort": "Fuchs",
+        "suchwort": "Fuchs"
+      },
+      {
+        "picto": null,
+        "wort": "Nest",
+        "suchwort": "Nest"
+      }
+    ]
   }
 }

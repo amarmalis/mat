@@ -12,7 +12,7 @@
   --paper:#F5F8F2; --surface:#FFFFFF; --ink:#1F2A1F; --muted:#56665A; --line:#D5DDD0;
   --moss:#3E6B48; --moss-ink:#FFFFFF; --bark:#6B4E31; --sun:#F4D58D;
   --opt-a:#F6E3A1; --opt-a-line:#D9B94A; --opt-b:#CFE3D1; --opt-b-line:#7FAE88;
-  --ok:#2E7D4F; --bad:#B23A3A;
+  --ok:#2E7D4F; --bad:#B23A3A; --warn:#8A5A00;
   --radius-lg:22px; --radius-sm:10px;
   --font:"Source Sans 3","Verdana","Tahoma",system-ui,sans-serif;
   box-sizing:border-box;
@@ -22,14 +22,14 @@
     --paper:#141A15; --surface:#1C241D; --ink:#E8EFE6; --muted:#A6B5A8; --line:#2F3A30;
     --moss:#8CC09A; --moss-ink:#102014; --bark:#C9A27A; --sun:#6B5A28;
     --opt-a:#4A3F1C; --opt-a-line:#9C8436; --opt-b:#21392A; --opt-b-line:#4E7C5A;
-    --ok:#7CCB98; --bad:#E58A8A;
+    --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A;
   }
 }
 :root[data-theme="dark"]{
   --paper:#141A15; --surface:#1C241D; --ink:#E8EFE6; --muted:#A6B5A8; --line:#2F3A30;
   --moss:#8CC09A; --moss-ink:#102014; --bark:#C9A27A; --sun:#6B5A28;
   --opt-a:#4A3F1C; --opt-a-line:#9C8436; --opt-b:#21392A; --opt-b-line:#4E7C5A;
-  --ok:#7CCB98; --bad:#E58A8A;
+  --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A;
 }
 *,*::before,*::after{box-sizing:inherit}
 html{height:100%}
@@ -143,6 +143,7 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
 .checks li{padding:.15rem 0}
 .checks .ok::before{content:"✓ ";color:var(--ok);font-weight:700}
 .checks .bad::before{content:"✗ ";color:var(--bad);font-weight:700}
+.checks .warn::before{content:"! ";color:var(--warn);font-weight:700}
 .tree{list-style:none;padding-left:0;margin:0}
 .tree ul{list-style:none;padding-left:1.4rem;border-left:2px solid var(--line);margin:.3rem 0 .3rem .4rem}
 .tree li{margin:.35rem 0}
@@ -248,7 +249,10 @@ const KNOTEN_IDS = ["S","A","B","AA","AB","BA","BB"];
 const ENDEN_IDS = ["AAA","AAB","ABA","ABB","BAA","BAB","BBA","BBB"];
 const LIM_TEXT = {stufe1:80, stufe2:150, stufe3:250};
 const LIM_AUFTRAG = {stufe1:80, stufe2:120, stufe3:160};
-const BEISPIEL = {"meta": {"schema_version": "0.3", "erzeugt_von": "von Hand (Testdaten)", "prompt_version": null, "erzeugt_am": "2026-10-07", "hinweis": "Testdaten. Orte, Ablauf und Bilder sind Annahmen für das Referenzprogramm, keine Angaben der Bibliothek.", "legende": {"rahmen": "P = aus Programm- oder Lerngruppenprofil, vom System eingesetzt (nicht vom LLM)", "generiert": "G = vom LLM erzeugt", "nicht im JSON": "T = fest im Template (Figur, Rucksack, Merkmalpaare, Piktogramme, Rollenwechsel, Suchkarte, QR-Codes, Einsatzhinweis)"}}, "rahmen": {"_herkunft": "P", "klasse": "3b", "bibliothek": "Stadtbibliothek Straubing", "programmtitel": "Auf den Spuren der Waldbewohner", "bilder": [{"datei": "bilder/lesehoehle.svg", "beschreibung": "Lesehöhle in der Kinderbibliothek: eine gemütliche Höhle mit Kissen zum Lesen und Vorlesen", "ort": "Lesehöhle"}, {"datei": "bilder/bilderbuchecke.svg", "beschreibung": "Bilderbuchecke mit Bilderbuchtrögen und Sitzkissen", "ort": "Bilderbuchecke"}]}, "generiert": {"_herkunft": "G", "brief": {"text": "Hallo 3b! Ich bin Frido. Bald besucht ihr die Stadtbibliothek Straubing. Dort geht ihr auf die Spuren der Waldbewohner: Ihr lest Tierspuren und hört Tierstimmen. Ich war schon dort und habe euch Bilder mitgebracht. Und ich habe einen leeren Rucksack dabei. Den packen wir heute zusammen voll. Danach bringe ich ihn zur Bibliothek, damit dort alle wissen, was ihr sucht und was ihr vermutet. Viele Grüße, euer Frido", "quellen": ["lerngruppenprofil.klasse", "programmprofil.bibliothek", "programmprofil.titel", "programmprofil.ablauf_highlight"]}, "bibliotheksblick": [{"bild": 0, "quellen": ["programmprofil.bilder[0]"]}], "teamnamen": ["Team Fuchsfährte", "Team Eulenauge", "Team Eichhörnchen", "Team Spurensucher"], "geschichte": {"kulisse": "programmwelt", "kulisse_quellen": ["programmprofil.titel", "programmprofil.themen", "programmprofil.orte"], "knoten": {"S": {"text": {"stufe1": "Ihr seid mit Frido in der Bibliothek. Oben kichert es. Und es raschelt!", "stufe2": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Von oben hört ihr zwei Geräusche: Da kichert jemand. Und da raschelt es leise.", "stufe3": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Es ist ganz still, als ob die Bücher auf euch warten. Da hört ihr von oben zwei Geräusche: ein fröhliches Kichern aus der einen Ecke und ein leises, geheimnisvolles Rascheln aus der anderen."}, "optionen": [{"label": {"stufe1": "Zum Kichern", "stufe2": "Folgt dem Kichern", "stufe3": "Ihr folgt dem Kichern"}, "symbol": "😄", "fund": {"name": "Kastanie", "symbol": "🌰"}}, {"label": {"stufe1": "Zum Rascheln", "stufe2": "Folgt dem Rascheln", "stufe3": "Ihr folgt dem Rascheln"}, "symbol": "🍂", "fund": {"name": "Taschenlampe", "symbol": "🔦"}}]}, "A": {"text": {"stufe1": "Ein Eichhörnchen lacht. Da ist ein Nest. Und eine Mütze.", "stufe2": "In der Bilderbuchecke sitzt ein Eichhörnchen und lacht. Neben ihm liegen ein kleines Nest und eine bunte Mütze.", "stufe3": "In der Bilderbuchecke sitzt ein Eichhörnchen auf einem Kissen und grinst breit. „Hier hat jemand etwas vergessen!“, ruft es. Neben ihm liegen ein kleines Nest und eine bunte Kindermütze."}, "optionen": [{"label": {"stufe1": "Ins Nest schauen", "stufe2": "Schaut ins Nest", "stufe3": "Ihr schaut vorsichtig ins Nest"}, "symbol": "🪺", "fund": {"name": "Feder", "symbol": "🪶"}}, {"label": {"stufe1": "Mütze hochheben", "stufe2": "Hebt die Mütze hoch", "stufe3": "Ihr hebt die bunte Mütze hoch"}, "symbol": "🧢", "fund": {"name": "Zettel", "symbol": "📜"}}]}, "B": {"text": {"stufe1": "In der Lesehöhle ist es dunkel. Da leuchten Augen. Und da sind Spuren!", "stufe2": "Das Rascheln kommt aus der Lesehöhle. Drinnen ist es dunkel. Zwei Augen leuchten, und auf dem Boden sind kleine Fußspuren.", "stufe3": "Das Rascheln kommt aus der Lesehöhle. Ihr knipst die Taschenlampe an. Ganz hinten leuchten zwei Augen auf. Und auf dem Teppich entdeckt ihr kleine Fußspuren, die in eine ganz andere Richtung führen."}, "optionen": [{"label": {"stufe1": "Zu den Augen", "stufe2": "Leuchtet zu den Augen", "stufe3": "Ihr leuchtet zu den Augen"}, "symbol": "👀", "fund": {"name": "Pfotenabdruck", "symbol": "🐾"}}, {"label": {"stufe1": "Den Spuren nach", "stufe2": "Folgt den Fußspuren", "stufe3": "Ihr folgt den Fußspuren"}, "symbol": "👣", "fund": {"name": "Schlüssel", "symbol": "🗝️"}}]}, "AA": {"text": {"stufe1": "Im Nest liegt eine Feder. Das Eichhörnchen hat ein Bild und eine Geschichte.", "stufe2": "Im Nest liegt eine Feder. Das Eichhörnchen kichert: „Ich habe ein lustiges Bild und eine lustige Geschichte. Was wollt ihr?“", "stufe3": "Im Nest liegt eine weiche Feder. Das Eichhörnchen kichert und flüstert: „Ich habe zwei Schätze für euch: ein Bild, bei dem ihr lachen müsst, und eine Geschichte, die noch lustiger ist. Aber ihr dürft nur einen wählen.“"}, "optionen": [{"label": {"stufe1": "Das Bild", "stufe2": "Zeig uns das Bild", "stufe3": "Ihr wählt das lustige Bild"}, "symbol": "🖼️", "fund": {"name": "Bilderkarte", "symbol": "🖼️"}}, {"label": {"stufe1": "Die Geschichte", "stufe2": "Erzähl die Geschichte", "stufe3": "Ihr wählt die Geschichte"}, "symbol": "📖", "fund": {"name": "Buchseite", "symbol": "📄"}}]}, "AB": {"text": {"stufe1": "Unter der Mütze liegt ein Zettel. Vorne ist ein Bild. Hinten steht Text.", "stufe2": "Unter der Mütze liegt ein Zettel von einem Kind. Vorne ist ein Bild gemalt, hinten steht eine Geschichte. Welche Seite schaut ihr an?", "stufe3": "Unter der Mütze liegt ein gefalteter Zettel. Ein Kind hat ihn hier versteckt. Auf der Vorderseite ist ein buntes Bild gemalt, auf der Rückseite steht eine Geschichte in krakeliger Schrift. Welche Seite schaut ihr zuerst an?"}, "optionen": [{"label": {"stufe1": "Das Bild", "stufe2": "Schaut das Bild an", "stufe3": "Ihr schaut das Bild an"}, "symbol": "🖍️", "fund": {"name": "Bilderkarte", "symbol": "🖼️"}}, {"label": {"stufe1": "Den Text", "stufe2": "Lest die Geschichte", "stufe3": "Ihr lest die Geschichte"}, "symbol": "✏️", "fund": {"name": "Geschichtenzettel", "symbol": "📄"}}]}, "BA": {"text": {"stufe1": "Es ist ein Fuchs! Er hat ein Bilderheft. Und ein dickes Buch.", "stufe2": "Es ist ein Fuchs! Er hält zwei Sachen fest: ein Heft voller Bilder und ein dickes Buch. Er schaut euch neugierig an.", "stufe3": "Es ist ein Fuchs! Sein Fell glänzt im Licht der Taschenlampe. Zwischen seinen Pfoten liegen zwei Sachen: ein Heft voller Bilder und ein dickes Buch mit einem Lesezeichen. Er schaut euch neugierig an und wartet."}, "optionen": [{"label": {"stufe1": "Das Bilderheft", "stufe2": "Nehmt das Bilderheft", "stufe3": "Ihr nehmt das Bilderheft"}, "symbol": "🖼️", "fund": {"name": "Bilderheft", "symbol": "📒"}}, {"label": {"stufe1": "Das dicke Buch", "stufe2": "Nehmt das dicke Buch", "stufe3": "Ihr nehmt das dicke Buch"}, "symbol": "📕", "fund": {"name": "Lesezeichen", "symbol": "🔖"}}]}, "BB": {"text": {"stufe1": "Die Spuren führen zu einer Kiste. Darin: eine Karte. Und ein Brief.", "stufe2": "Die Fußspuren führen zu einer kleinen Kiste mit Schloss. Ihr schließt auf. Darin liegen eine Karte voller Bilder und ein Brief.", "stufe3": "Die Fußspuren führen hinter ein Regal zu einer kleinen Kiste mit einem Schloss. Mit klopfendem Herzen schließt ihr auf. Darin liegen eine alte Karte voller Bilder und ein Brief mit einem roten Siegel."}, "optionen": [{"label": {"stufe1": "Die Karte", "stufe2": "Öffnet die Karte", "stufe3": "Ihr öffnet die Karte"}, "symbol": "🗺️", "fund": {"name": "Schatzkarte", "symbol": "🗺️"}}, {"label": {"stufe1": "Den Brief", "stufe2": "Öffnet den Brief", "stufe3": "Ihr öffnet den Brief"}, "symbol": "✉️", "fund": {"name": "Brief", "symbol": "✉️"}}]}}, "enden": {"AAA": {"text": {"stufe1": "Das Eichhörnchen zeigt euch das Bild. Dort sitzen Tiere mit Hüten. Ihr staunt!", "stufe2": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf sitzen lauter Tiere mit Hüten übereinander. Ihr müsst schmunzeln!", "stufe3": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf tragen Waldtiere Hüte, und auf dem Kopf des Fuchses sitzt ein Igel. Ihr müsst schmunzeln, und Frido auch."}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "AAB": {"text": {"stufe1": "Die Geschichte ist verrückt! Frido grinst. Ihr bekommt die Seite.", "stufe2": "Das Eichhörnchen erzählt eine verrückte Geschichte, in der alles falsch herum ist. Am Ende schenkt es euch die Buchseite.", "stufe3": "Das Eichhörnchen erzählt eine Geschichte von einem Tier, das immer alles verwechselt. Sie ist so verrückt, dass Frido den Kopf schüttelt und grinst. Zum Schluss reißt das Eichhörnchen vorsichtig eine Buchseite heraus und schenkt sie euch."}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "ABA": {"text": {"stufe1": "Auf dem Bild ist ein Kind. Es hat Eichhörnchen-Ohren! Ihr staunt.", "stufe2": "Auf dem Bild hat sich ein Kind selbst gemalt, mit Eichhörnchen-Ohren! Darunter steht: „Findet mein Lieblingsbuch!“", "stufe3": "Auf dem Bild hat sich ein Kind selbst gemalt, mit großen Eichhörnchen-Ohren und einem buschigen Schwanz. Das Eichhörnchen kichert. Darunter steht in bunten Buchstaben: „Wer mich findet, findet auch mein Lieblingsbuch!“"}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "ABB": {"text": {"stufe1": "Ein Kind hat sich verlaufen. Es findet ein lustiges Buch!", "stufe2": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat und dabei das lustigste Buch der Welt fand.", "stufe3": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat. Statt zu weinen, hat es überall gelesen und dabei das lustigste Buch der Welt gefunden. Am Ende steht: „Jetzt seid ihr dran!“"}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BAA": {"text": {"stufe1": "Der Fuchs lässt das Heft fallen und rennt weg. Da ist eine Pfote!", "stufe2": "Der Fuchs lässt das Bilderheft fallen und huscht davon. Auf dem Heft ist ein Pfotenabdruck, genau wie der, den ihr gefunden habt!", "stufe3": "Der Fuchs lässt das Bilderheft fallen und huscht lautlos davon. Ihr hebt es auf. Auf dem Umschlag ist ein Pfotenabdruck, genau wie der, den ihr vorhin gefunden habt. Jetzt wisst ihr: Der Fuchs wollte, dass ihr es findet."}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BAB": {"text": {"stufe1": "Der Fuchs gibt euch das Buch. Er flüstert: „Hier fängt es an.“", "stufe2": "Der Fuchs schiebt euch das dicke Buch hin. Zwischen den Seiten steckt ein Lesezeichen. Er flüstert: „Hier fängt das Abenteuer an.“", "stufe3": "Der Fuchs schiebt euch das dicke Buch hin und tritt einen Schritt zurück. Zwischen den Seiten steckt ein Lesezeichen. Ganz leise flüstert er: „Hier fängt das Abenteuer an. Aber nur, wer weiterliest, erfährt, wie es endet.“"}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BBA": {"text": {"stufe1": "Auf der Karte ist ein Kreuz. Es zeigt auf ein geheimes Buch!", "stufe2": "Ihr faltet die Karte auf. Sie ist voller Bilder von der Bibliothek. Ein rotes Kreuz zeigt auf ein geheimes Buch.", "stufe3": "Ihr faltet die alte Karte auf. Sie ist voller kleiner Bilder: die Lesetreppe, die Bilderbuchecke, die Lesehöhle. Und mitten darin ein rotes Kreuz. Daneben steht: „Hier wartet ein Buch auf mutige Spurensucher.“"}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BBB": {"text": {"stufe1": "Im Brief steht: „Ihr seid mutig!“ Frido ist ganz stolz auf euch.", "stufe2": "Im Brief steht: „Wer das liest, ist mutig genug für das nächste Abenteuer.“ Frido ist ganz stolz auf euch.", "stufe3": "Ihr brecht das rote Siegel auf. Im Brief steht in geschwungener Schrift: „Wer das liest, ist mutig genug für das nächste Abenteuer. Es wartet zwischen zwei Buchdeckeln.“ Frido plustert sich vor Stolz auf."}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}}}, "absenden_text": "Mein Rucksack ist voll! Ich paddle jetzt zur Stadtbibliothek Straubing und erzähle dort, was ihr sucht und was ihr vermutet. Bis bald, euer Frido!", "suchkarte": {"kartenkopf": "Waldforscher-Karte der 3b"}, "luecken": []}};
+const BEISPIEL = {"meta": {"schema_version": "0.4", "lerngruppe": "4711", "erzeugt_von": "von Hand (Testdaten)", "prompt_version": null, "erzeugt_am": "2026-10-16", "hinweis": "Testdaten. Orte, Ablauf und Bilder sind Annahmen für das Referenzprogramm, keine Angaben der Bibliothek. Bildfolgen und Wortbilder von Hand ergänzt; Einträge ohne Piktogramm (picto: null) sind nachzutragen.", "legende": {"rahmen": "P = aus Programm- oder Lerngruppenprofil, vom System eingesetzt (nicht vom LLM)", "generiert": "G = vom LLM erzeugt", "nicht im JSON": "T = fest im Template (Figur, Rucksack, Merkmalpaare, Piktogramme, Rollenwechsel, Suchkarte, QR-Codes, Einsatzhinweis)"}}, "rahmen": {"_herkunft": "P", "klasse": "3b", "bibliothek": "Stadtbibliothek Straubing", "programmtitel": "Auf den Spuren der Waldbewohner", "bilder": [{"datei": "bilder/lesehoehle.svg", "beschreibung": "Lesehöhle in der Kinderbibliothek: eine gemütliche Höhle mit Kissen zum Lesen und Vorlesen", "ort": "Lesehöhle"}, {"datei": "bilder/bilderbuchecke.svg", "beschreibung": "Bilderbuchecke mit Bilderbuchtrögen und Sitzkissen", "ort": "Bilderbuchecke"}]}, "generiert": {"_herkunft": "G", "brief": {"text": "Hallo 3b! Ich bin Frido. Bald besucht ihr die Stadtbibliothek Straubing. Dort geht ihr auf die Spuren der Waldbewohner: Ihr lest Tierspuren und hört Tierstimmen. Ich war schon dort und habe euch Bilder mitgebracht. Und ich habe einen leeren Rucksack dabei. Den packen wir heute zusammen voll. Danach bringe ich ihn zur Bibliothek, damit dort alle wissen, was ihr sucht und was ihr vermutet. Viele Grüße, euer Frido", "quellen": ["lerngruppenprofil.klasse", "programmprofil.bibliothek", "programmprofil.titel", "programmprofil.ablauf_highlight"]}, "bibliotheksblick": [{"bild": 0, "quellen": ["programmprofil.bilder[0]"]}], "teamnamen": ["Team Fuchsfährte", "Team Eulenauge", "Team Eichhörnchen", "Team Spurensucher", "Team Igelnase", "Team Dachsbau", "Team Spechtklopfer", "Team Mooswichtel"], "geschichte": {"kulisse": "programmwelt", "kulisse_quellen": ["programmprofil.titel", "programmprofil.themen", "programmprofil.orte"], "knoten": {"S": {"text": {"stufe1": "Ihr seid mit Frido in der Bibliothek. Oben kichert es. Und es raschelt!", "stufe2": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Von oben hört ihr zwei Geräusche: Da kichert jemand. Und da raschelt es leise.", "stufe3": "Ihr steht mit Frido an der Lesetreppe der Bibliothek. Es ist ganz still, als ob die Bücher auf euch warten. Da hört ihr von oben zwei Geräusche: ein fröhliches Kichern aus der einen Ecke und ein leises, geheimnisvolles Rascheln aus der anderen.", "bild": [{"picto": 7055, "wort": "Frido"}, {"picto": 3065, "wort": "Bibliothek"}, {"picto": null, "wort": "Kichern", "suchwort": "lachen"}, {"picto": null, "wort": "Rascheln", "suchwort": "rascheln"}]}, "optionen": [{"label": {"stufe1": "Zum Kichern", "stufe2": "Folgt dem Kichern", "stufe3": "Ihr folgt dem Kichern", "bild": [{"picto": null, "wort": "Kichern", "suchwort": "lachen"}]}, "symbol": "😄", "fund": {"name": "Kastanie", "symbol": "🌰"}}, {"label": {"stufe1": "Zum Rascheln", "stufe2": "Folgt dem Rascheln", "stufe3": "Ihr folgt dem Rascheln", "bild": [{"picto": null, "wort": "Rascheln", "suchwort": "rascheln"}]}, "symbol": "🍂", "fund": {"name": "Taschenlampe", "symbol": "🔦"}}]}, "A": {"text": {"stufe1": "Ein Eichhörnchen lacht. Da ist ein Nest. Und eine Mütze.", "stufe2": "In der Bilderbuchecke sitzt ein Eichhörnchen und lacht. Neben ihm liegen ein kleines Nest und eine bunte Mütze.", "stufe3": "In der Bilderbuchecke sitzt ein Eichhörnchen auf einem Kissen und grinst breit. „Hier hat jemand etwas vergessen!“, ruft es. Neben ihm liegen ein kleines Nest und eine bunte Kindermütze.", "bild": [{"picto": null, "wort": "Eichhörnchen", "suchwort": "Eichhörnchen"}, {"picto": null, "wort": "Nest", "suchwort": "Nest"}, {"picto": null, "wort": "Mütze", "suchwort": "Mütze"}]}, "optionen": [{"label": {"stufe1": "Ins Nest schauen", "stufe2": "Schaut ins Nest", "stufe3": "Ihr schaut vorsichtig ins Nest", "bild": [{"picto": null, "wort": "Nest", "suchwort": "Nest"}]}, "symbol": "🪺", "fund": {"name": "Feder", "symbol": "🪶"}}, {"label": {"stufe1": "Mütze hochheben", "stufe2": "Hebt die Mütze hoch", "stufe3": "Ihr hebt die bunte Mütze hoch", "bild": [{"picto": null, "wort": "Mütze", "suchwort": "Mütze"}]}, "symbol": "🧢", "fund": {"name": "Zettel", "symbol": "📜"}}]}, "B": {"text": {"stufe1": "In der Lesehöhle ist es dunkel. Da leuchten Augen. Und da sind Spuren!", "stufe2": "Das Rascheln kommt aus der Lesehöhle. Drinnen ist es dunkel. Zwei Augen leuchten, und auf dem Boden sind kleine Fußspuren.", "stufe3": "Das Rascheln kommt aus der Lesehöhle. Ihr knipst die Taschenlampe an. Ganz hinten leuchten zwei Augen auf. Und auf dem Teppich entdeckt ihr kleine Fußspuren, die in eine ganz andere Richtung führen.", "bild": [{"picto": null, "wort": "dunkel", "suchwort": "dunkel"}, {"picto": null, "wort": "Augen", "suchwort": "Augen"}, {"picto": null, "wort": "Spuren", "suchwort": "Fußspuren"}]}, "optionen": [{"label": {"stufe1": "Zu den Augen", "stufe2": "Leuchtet zu den Augen", "stufe3": "Ihr leuchtet zu den Augen", "bild": [{"picto": null, "wort": "Augen", "suchwort": "Augen"}]}, "symbol": "👀", "fund": {"name": "Pfotenabdruck", "symbol": "🐾"}}, {"label": {"stufe1": "Den Spuren nach", "stufe2": "Folgt den Fußspuren", "stufe3": "Ihr folgt den Fußspuren", "bild": [{"picto": null, "wort": "Spuren", "suchwort": "Fußspuren"}]}, "symbol": "👣", "fund": {"name": "Schlüssel", "symbol": "🗝️"}}]}, "AA": {"text": {"stufe1": "Im Nest liegt eine Feder. Das Eichhörnchen hat ein Bild und eine Geschichte.", "stufe2": "Im Nest liegt eine Feder. Das Eichhörnchen kichert: „Ich habe ein lustiges Bild und eine lustige Geschichte. Was wollt ihr?“", "stufe3": "Im Nest liegt eine weiche Feder. Das Eichhörnchen kichert und flüstert: „Ich habe zwei Schätze für euch: ein Bild, bei dem ihr lachen müsst, und eine Geschichte, die noch lustiger ist. Aber ihr dürft nur einen wählen.“", "bild": [{"picto": null, "wort": "Feder", "suchwort": "Feder"}, {"picto": null, "wort": "Bild", "suchwort": "Bild"}, {"picto": 5973, "wort": "erzählen"}]}, "optionen": [{"label": {"stufe1": "Das Bild", "stufe2": "Zeig uns das Bild", "stufe3": "Ihr wählt das lustige Bild", "bild": [{"picto": null, "wort": "Bild", "suchwort": "Bild"}]}, "symbol": "🖼️", "fund": {"name": "Bilderkarte", "symbol": "🖼️"}}, {"label": {"stufe1": "Die Geschichte", "stufe2": "Erzähl die Geschichte", "stufe3": "Ihr wählt die Geschichte", "bild": [{"picto": 5973, "wort": "erzählen"}]}, "symbol": "📖", "fund": {"name": "Buchseite", "symbol": "📄"}}]}, "AB": {"text": {"stufe1": "Unter der Mütze liegt ein Zettel. Vorne ist ein Bild. Hinten steht Text.", "stufe2": "Unter der Mütze liegt ein Zettel von einem Kind. Vorne ist ein Bild gemalt, hinten steht eine Geschichte. Welche Seite schaut ihr an?", "stufe3": "Unter der Mütze liegt ein gefalteter Zettel. Ein Kind hat ihn hier versteckt. Auf der Vorderseite ist ein buntes Bild gemalt, auf der Rückseite steht eine Geschichte in krakeliger Schrift. Welche Seite schaut ihr zuerst an?", "bild": [{"picto": null, "wort": "Zettel", "suchwort": "Zettel"}, {"picto": null, "wort": "Bild", "suchwort": "Bild"}, {"picto": 2447, "wort": "lesen"}]}, "optionen": [{"label": {"stufe1": "Das Bild", "stufe2": "Schaut das Bild an", "stufe3": "Ihr schaut das Bild an", "bild": [{"picto": null, "wort": "Bild", "suchwort": "Bild"}]}, "symbol": "🖍️", "fund": {"name": "Bilderkarte", "symbol": "🖼️"}}, {"label": {"stufe1": "Den Text", "stufe2": "Lest die Geschichte", "stufe3": "Ihr lest die Geschichte", "bild": [{"picto": 2447, "wort": "lesen"}]}, "symbol": "✏️", "fund": {"name": "Geschichtenzettel", "symbol": "📄"}}]}, "BA": {"text": {"stufe1": "Es ist ein Fuchs! Er hat ein Bilderheft. Und ein dickes Buch.", "stufe2": "Es ist ein Fuchs! Er hält zwei Sachen fest: ein Heft voller Bilder und ein dickes Buch. Er schaut euch neugierig an.", "stufe3": "Es ist ein Fuchs! Sein Fell glänzt im Licht der Taschenlampe. Zwischen seinen Pfoten liegen zwei Sachen: ein Heft voller Bilder und ein dickes Buch mit einem Lesezeichen. Er schaut euch neugierig an und wartet.", "bild": [{"picto": null, "wort": "Fuchs", "suchwort": "Fuchs"}, {"picto": null, "wort": "Bild", "suchwort": "Bild"}, {"picto": 2450, "wort": "Buch"}]}, "optionen": [{"label": {"stufe1": "Das Bilderheft", "stufe2": "Nehmt das Bilderheft", "stufe3": "Ihr nehmt das Bilderheft", "bild": [{"picto": null, "wort": "Bilderheft", "suchwort": "Bilderbuch"}]}, "symbol": "🖼️", "fund": {"name": "Bilderheft", "symbol": "📒"}}, {"label": {"stufe1": "Das dicke Buch", "stufe2": "Nehmt das dicke Buch", "stufe3": "Ihr nehmt das dicke Buch", "bild": [{"picto": 2450, "wort": "Buch"}]}, "symbol": "📕", "fund": {"name": "Lesezeichen", "symbol": "🔖"}}]}, "BB": {"text": {"stufe1": "Die Spuren führen zu einer Kiste. Darin: eine Karte. Und ein Brief.", "stufe2": "Die Fußspuren führen zu einer kleinen Kiste mit Schloss. Ihr schließt auf. Darin liegen eine Karte voller Bilder und ein Brief.", "stufe3": "Die Fußspuren führen hinter ein Regal zu einer kleinen Kiste mit einem Schloss. Mit klopfendem Herzen schließt ihr auf. Darin liegen eine alte Karte voller Bilder und ein Brief mit einem roten Siegel.", "bild": [{"picto": null, "wort": "Kiste", "suchwort": "Kiste"}, {"picto": 24296, "wort": "Karte"}, {"picto": 2688, "wort": "Brief"}]}, "optionen": [{"label": {"stufe1": "Die Karte", "stufe2": "Öffnet die Karte", "stufe3": "Ihr öffnet die Karte", "bild": [{"picto": 24296, "wort": "Karte"}]}, "symbol": "🗺️", "fund": {"name": "Schatzkarte", "symbol": "🗺️"}}, {"label": {"stufe1": "Den Brief", "stufe2": "Öffnet den Brief", "stufe3": "Ihr öffnet den Brief", "bild": [{"picto": 2688, "wort": "Brief"}]}, "symbol": "✉️", "fund": {"name": "Brief", "symbol": "✉️"}}]}}, "enden": {"AAA": {"text": {"stufe1": "Das Eichhörnchen zeigt euch das Bild. Dort sitzen Tiere mit Hüten. Ihr staunt!", "stufe2": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf sitzen lauter Tiere mit Hüten übereinander. Ihr müsst schmunzeln!", "stufe3": "Das Eichhörnchen legt euch die Bilderkarte in die Hände. Darauf tragen Waldtiere Hüte, und auf dem Kopf des Fuchses sitzt ein Igel. Ihr müsst schmunzeln, und Frido auch.", "bild": [{"picto": null, "wort": "Eichhörnchen", "suchwort": "Eichhörnchen"}, {"picto": null, "wort": "Hut", "suchwort": "Hut"}, {"picto": 3245, "wort": "froh"}]}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "AAB": {"text": {"stufe1": "Die Geschichte ist verrückt! Frido grinst. Ihr bekommt die Seite.", "stufe2": "Das Eichhörnchen erzählt eine verrückte Geschichte, in der alles falsch herum ist. Am Ende schenkt es euch die Buchseite.", "stufe3": "Das Eichhörnchen erzählt eine Geschichte von einem Tier, das immer alles verwechselt. Sie ist so verrückt, dass Frido den Kopf schüttelt und grinst. Zum Schluss reißt das Eichhörnchen vorsichtig eine Buchseite heraus und schenkt sie euch.", "bild": [{"picto": 5973, "wort": "erzählen"}, {"picto": 7055, "wort": "Frido"}, {"picto": 3245, "wort": "froh"}]}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "ABA": {"text": {"stufe1": "Auf dem Bild ist ein Kind. Es hat Eichhörnchen-Ohren! Ihr staunt.", "stufe2": "Auf dem Bild hat sich ein Kind selbst gemalt, mit Eichhörnchen-Ohren! Darunter steht: „Findet mein Lieblingsbuch!“", "stufe3": "Auf dem Bild hat sich ein Kind selbst gemalt, mit großen Eichhörnchen-Ohren und einem buschigen Schwanz. Das Eichhörnchen kichert. Darunter steht in bunten Buchstaben: „Wer mich findet, findet auch mein Lieblingsbuch!“", "bild": [{"picto": null, "wort": "Bild", "suchwort": "Bild"}, {"picto": null, "wort": "Kind", "suchwort": "Kind"}, {"picto": null, "wort": "Ohren", "suchwort": "Ohr"}]}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "ABB": {"text": {"stufe1": "Ein Kind hat sich verlaufen. Es findet ein lustiges Buch!", "stufe2": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat und dabei das lustigste Buch der Welt fand.", "stufe3": "Auf dem Zettel steht die Geschichte von einem Kind, das sich in der Bibliothek verlaufen hat. Statt zu weinen, hat es überall gelesen und dabei das lustigste Buch der Welt gefunden. Am Ende steht: „Jetzt seid ihr dran!“", "bild": [{"picto": null, "wort": "Kind", "suchwort": "Kind"}, {"picto": 5990, "wort": "finden"}, {"picto": 2450, "wort": "Buch"}, {"picto": 3245, "wort": "froh"}]}, "suchauftrag": {"stufe1": "Sucht ein lustiges Buch mit viel Text. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein lustiges Buch mit viel Text, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BAA": {"text": {"stufe1": "Der Fuchs lässt das Heft fallen und rennt weg. Da ist eine Pfote!", "stufe2": "Der Fuchs lässt das Bilderheft fallen und huscht davon. Auf dem Heft ist ein Pfotenabdruck, genau wie der, den ihr gefunden habt!", "stufe3": "Der Fuchs lässt das Bilderheft fallen und huscht lautlos davon. Ihr hebt es auf. Auf dem Umschlag ist ein Pfotenabdruck, genau wie der, den ihr vorhin gefunden habt. Jetzt wisst ihr: Der Fuchs wollte, dass ihr es findet.", "bild": [{"picto": null, "wort": "Fuchs", "suchwort": "Fuchs"}, {"picto": null, "wort": "rennen", "suchwort": "rennen"}, {"picto": null, "wort": "Pfote", "suchwort": "Pfote"}]}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BAB": {"text": {"stufe1": "Der Fuchs gibt euch das Buch. Er flüstert: „Hier fängt es an.“", "stufe2": "Der Fuchs schiebt euch das dicke Buch hin. Zwischen den Seiten steckt ein Lesezeichen. Er flüstert: „Hier fängt das Abenteuer an.“", "stufe3": "Der Fuchs schiebt euch das dicke Buch hin und tritt einen Schritt zurück. Zwischen den Seiten steckt ein Lesezeichen. Ganz leise flüstert er: „Hier fängt das Abenteuer an. Aber nur, wer weiterliest, erfährt, wie es endet.“", "bild": [{"picto": null, "wort": "Fuchs", "suchwort": "Fuchs"}, {"picto": 2450, "wort": "Buch"}, {"picto": 2447, "wort": "lesen"}]}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Tier.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Tier die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Tier die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BBA": {"text": {"stufe1": "Auf der Karte ist ein Kreuz. Es zeigt auf ein geheimes Buch!", "stufe2": "Ihr faltet die Karte auf. Sie ist voller Bilder von der Bibliothek. Ein rotes Kreuz zeigt auf ein geheimes Buch.", "stufe3": "Ihr faltet die alte Karte auf. Sie ist voller kleiner Bilder: die Lesetreppe, die Bilderbuchecke, die Lesehöhle. Und mitten darin ein rotes Kreuz. Daneben steht: „Hier wartet ein Buch auf mutige Spurensucher.“", "bild": [{"picto": 24296, "wort": "Karte"}, {"picto": 6946, "wort": "suchen"}, {"picto": 2450, "wort": "Buch"}]}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit vielen Bildern. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit vielen Bildern, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}, "BBB": {"text": {"stufe1": "Im Brief steht: „Ihr seid mutig!“ Frido ist ganz stolz auf euch.", "stufe2": "Im Brief steht: „Wer das liest, ist mutig genug für das nächste Abenteuer.“ Frido ist ganz stolz auf euch.", "stufe3": "Ihr brecht das rote Siegel auf. Im Brief steht in geschwungener Schrift: „Wer das liest, ist mutig genug für das nächste Abenteuer. Es wartet zwischen zwei Buchdeckeln.“ Frido plustert sich vor Stolz auf.", "bild": [{"picto": 2688, "wort": "Brief"}, {"picto": 7055, "wort": "Frido"}, {"picto": 3245, "wort": "froh"}]}, "suchauftrag": {"stufe1": "Sucht ein spannendes Buch mit viel Text. Die Hauptrolle hat ein Kind.", "stufe2": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Kind die Hauptrolle spielt.", "stufe3": "Sucht in der Bibliothek ein spannendes Buch mit viel Text, in dem ein Kind die Hauptrolle spielt. Schreibt den Titel auf eure Suchkarte."}}}}, "absenden_text": "Mein Rucksack ist voll! Ich paddle jetzt zur Stadtbibliothek Straubing und erzähle dort, was ihr sucht und was ihr vermutet. Bis bald, euer Frido!", "suchkarte": {"kartenkopf": "Waldforscher-Karte der 3b"}, "luecken": [], "wortbilder": [{"picto": 7055, "wort": "Frido"}, {"picto": 3065, "wort": "Bibliothek"}, {"picto": 2450, "wort": "Buch"}, {"picto": 24296, "wort": "Karte"}, {"picto": 2688, "wort": "Brief"}, {"picto": null, "wort": "Bild", "suchwort": "Bild"}, {"picto": null, "wort": "Eichhörnchen", "suchwort": "Eichhörnchen"}, {"picto": null, "wort": "Fuchs", "suchwort": "Fuchs"}, {"picto": null, "wort": "Nest", "suchwort": "Nest"}]}};
+const BEISPIEL_LG = {"schema_version": "0.4", "programm": "straubing-waldbewohner", "klasse": "3b", "tablets": 8, "jahrgaenge": [3], "stufen": ["stufe2", "stufe3"], "kaum_deutsch": true, "sprachen": ["uk"], "foerder": {"sehen": 1, "lernen": 2, "sprache": 0, "motorik": 0}};
+const BEISPIEL_PICTOS = {"schema_version": "0.4", "quelle": "ARASAAC (arasaac.org), CC BY-NC-SA 4.0; IDs per Suche (de, bestsearch) am 16.10.2026", "hinweis": "Dateien liegen als assets/pictos/<id>.png. Einträge je Programm ergänzen.", "pictos": [{"id": 3065, "wort": "Bibliothek"}, {"id": 2450, "wort": "Buch"}, {"id": 2386, "wort": "Regal"}, {"id": 3129, "wort": "Tisch"}, {"id": 3264, "wort": "Kissen"}, {"id": 2487, "wort": "Computer"}, {"id": 27499, "wort": "Bibliothekarin"}, {"id": 2456, "wort": "Lehrerin"}, {"id": 3082, "wort": "Schule"}, {"id": 2475, "wort": "Rucksack"}, {"id": 2688, "wort": "Brief"}, {"id": 24296, "wort": "Karte"}, {"id": 2440, "wort": "Bleistift"}, {"id": 7055, "wort": "Biber"}, {"id": 4920, "wort": "Boot"}, {"id": 3244, "wort": "Tür"}, {"id": 2263, "wort": "Bus"}, {"id": 6946, "wort": "suchen"}, {"id": 5990, "wort": "finden"}, {"id": 2447, "wort": "lesen"}, {"id": 2381, "wort": "zuhören"}, {"id": 5973, "wort": "vorlesen"}, {"id": 6612, "wort": "zeigen"}, {"id": 2380, "wort": "schreiben"}, {"id": 5574, "wort": "malen"}, {"id": 2432, "wort": "gehen"}, {"id": 8109, "wort": "warten"}, {"id": 9840, "wort": "fragen"}, {"id": 8662, "wort": "denken"}, {"id": 3245, "wort": "froh"}, {"id": 27703, "wort": "neugierig"}, {"id": 6009, "wort": "hallo"}, {"id": 5583, "wort": "ja"}, {"id": 5525, "wort": "nein"}, {"id": 7116, "wort": "Gruppe"}]};
+const LIM_LABEL = 40, LIM_FUND = 25, LIM_WORT = 15, LIM_SUCHWORT = 30, LIM_TEAM = 30, WORTBILDER_MAX = 20;
 
 // ===== Speicher (nur dieser Browser) =====
 function store(key, val){
@@ -261,13 +265,22 @@ function store(key, val){
 // ===== Daten laden =====
 const MATERIAL_ID = new URLSearchParams(location.search).get("id");
 let DATA = null, LOAD_ERROR = "";
+let LG = null, LG_ID = null, PICTOS = null;
 function localData(){
   const raw = store("ms_json");
-  if(raw){ try{ const d = JSON.parse(raw); if(d && d.rahmen && d.generiert) return d; }catch(e){} }
+  if(raw){ try{ const d = JSON.parse(raw); if(d && d.rahmen && d.generiert){ LG = null; LG_ID = null; return d; } }catch(e){} }
+  LG = BEISPIEL_LG; LG_ID = (BEISPIEL.meta && BEISPIEL.meta.lerngruppe) || null;
   return BEISPIEL;
 }
 const G = () => DATA.generiert;
 const R = () => DATA.rahmen;
+// Lesestufen, die das Material enthält (aus Knoten S), und die Standardstufe
+function stufenListe(){
+  try{ const t = G().geschichte.knoten.S.text; return [1,2,3].filter(n=>t && typeof t["stufe"+n]==="string"); }catch(e){ return []; }
+}
+function stdStufe(){ const l = stufenListe(); return l.includes(2) ? 2 : (l[0] || 2); }
+function hatBild(){ try{ return Array.isArray(G().geschichte.knoten.S.text.bild); }catch(e){ return false; } }
+function bildText(b){ return Array.isArray(b) ? b.map(x=>(x&&x.wort||"?")+(x&&x.picto==null?" (Piktogramm fehlt)":"")).join(" · ") : "–"; }
 
 // ===== Zustand am Whiteboard (Rucksack) =====
 const STATE_KEY = "ms_state_" + (MATERIAL_ID || "lokal");
@@ -424,7 +437,7 @@ function slideGeschichte(){
   box.append(el("p",{class:"lead"},"Jetzt seid ihr dran! Arbeitet zu zweit. Scannt mit eurem Tablet den Code mit eurem Zeichen."));
   box.append(el("p",{class:"tip"},"Einigt euch vorher: Wer ist Kind 1, wer ist Kind 2? Am Ende kommt euer Suchauftrag in "+FIGUR+"s Rucksack."));
   const grid = el("div",{class:"levels"});
-  [1,2,3].forEach(n=>{
+  stufenListe().forEach(n=>{
     const q = el("div",{class:"qr"});
     grid.append(el("div",{class:"level"},
       el("div",{class:"sym","aria-hidden":"true"},STUFEN[n].sym), el("strong",{},STUFEN[n].name), q,
@@ -512,6 +525,12 @@ function renderGesendet(box){
 // ===== Tablet =====
 let T = {stufe:2, team:null, started:false, path:"", funde:[], fund:null};
 function renderTablet(app, stufe){
+  if(!stufenListe().includes(stufe)){
+    app.append(el("div",{class:"panel"}, el("h2",{},"Diese Stufe gibt es hier nicht"),
+      el("p",{},"Das Material dieser Klasse enthält die Stufe „"+STUFEN[stufe].name+"“ nicht."),
+      el("a",{class:"btn",href:"#klasse"},"Zur Klassenansicht")));
+    return;
+  }
   if(T.stufe!==stufe) T = {stufe, team:null, started:false, path:"", funde:[], fund:null};
   const key = "stufe"+stufe, g = G().geschichte;
   const wrap = el("div",{class:"tablet s"+stufe});
@@ -594,13 +613,13 @@ function renderSuchkarte(app){
   front.append(el("h2",{},kopf));
   front.append(el("div",{},"Unser Team:"), el("div",{class:"line"}));
   front.append(el("div",{},"Unsere Namen:"), el("div",{class:"line"}));
-  front.append(el("div",{class:"syms"},"Unser Zeichen:", [1,2,3].map(n=>el("span",{}, el("span",{class:"sq"}), " "+STUFEN[n].sym+" "+STUFEN[n].name))));
+  front.append(el("div",{class:"syms"},"Unser Zeichen:", stufenListe().map(n=>el("span",{}, el("span",{class:"sq"}), " "+STUFEN[n].sym+" "+STUFEN[n].name))));
   front.append(el("p",{style:"margin:1rem 0 .2rem"}, el("strong",{},"Unser Suchauftrag. Kreuzt an:")));
   MERKMALE.forEach(pair=>front.append(el("div",{class:"pair"}, pair.map(m=>el("div",{class:"box"}, el("span",{class:"sq"}), picNode(m,"pic"), m.label)))));
   front.append(el("p",{style:"margin:1rem 0 .2rem"}, el("strong",{},"Was ist wohl in unserem Buch?")));
   front.append(el("div",{class:"predict"}));
     const mini = el("div",{class:"mini-qr"});
-  [1,2,3].forEach(n=>{ const q=el("div",{class:"qr"}); mini.append(el("div",{}, q, STUFEN[n].sym+" "+STUFEN[n].name)); setTimeout(()=>qr(q,tabletUrl(n),80),0); });
+  stufenListe().forEach(n=>{ const q=el("div",{class:"qr"}); mini.append(el("div",{}, q, STUFEN[n].sym+" "+STUFEN[n].name)); setTimeout(()=>qr(q,tabletUrl(n),80),0); });
   front.append(mini);
   const back = el("section",{class:"card","aria-label":"Rückseite"},
     el("h2",{},"In der Bibliothek"),
@@ -647,39 +666,181 @@ function renderBibliothek(app, raw){
 }
 
 // ===== Lehrkraft =====
-function validate(d){
-  const res=[]; const add=(ok,t)=>res.push({ok,t});
-  const g=d.generiert||{}, r=d.rahmen||{};
-  add(!!(r.klasse&&r.bibliothek&&r.programmtitel),"Rahmendaten vollständig (Klasse, Bibliothek, Programmtitel)");
-  if(r.bilder!=null) add(Array.isArray(r.bilder)&&r.bilder.every(b=>b&&b.datei&&b.beschreibung),"Jedes Bild hat Datei und Beschreibung");
-  add(!!(g.brief&&g.brief.text)&&g.brief.text.length<=500,"Brief vorhanden, max. 500 Zeichen"+(g.brief&&g.brief.text?" ("+g.brief.text.length+")":""));
+// ===== Prüfung Schema 0.4 (spiegelt v04/validate04.py) =====
+// Ergebnis: Liste von {s, t} mit s in "ok" | "warn" | "bad".
+function isInt(v){ return typeof v==="number" && Number.isInteger(v); }
+function isObj(v){ return v!==null && typeof v==="object" && !Array.isArray(v); }
+function expectedVariants(lg){
+  const v = new Set(Array.isArray(lg.stufen) ? lg.stufen : []);
+  const f = lg.foerder || {};
+  if((f.lernen||0)>0 || (f.sprache||0)>0) v.add("stufe1");
+  if(lg.kaum_deutsch===true || (Array.isArray(lg.jahrgaenge) ? lg.jahrgaenge : []).some(j=>j===1||j===2)) v.add("bild");
+  return v;
+}
+function wortbilderRequired(lg){ const f = lg.foerder || {}; return (f.lernen||0)>0 || (f.sprache||0)>0; }
+function cutList(a){ return a.slice(0,6).join(", ")+(a.length>6?" …":""); }
+function checkEntry(e, where, liste, bad, warn){
+  if(!isObj(e)){ bad.push(where+" (kein Objekt)"); return; }
+  const w = e.wort;
+  if(typeof w!=="string" || !w || w.length>LIM_WORT || /\s/.test(w)) bad.push(where+" (wort)");
+  if(!("picto" in e)){ bad.push(where+" (picto)"); return; }
+  const p = e.picto;
+  if(p===null){
+    const s = e.suchwort;
+    if(typeof s==="string" && s.trim() && s.length<=LIM_SUCHWORT) warn.push(where+" ("+s+")");
+    else bad.push(where+" (picto null ohne suchwort)");
+  }else if(isInt(p)){
+    if(liste && !liste.includes(p)) bad.push(where+" (ID "+p+" nicht in Liste)");
+  }else bad.push(where+" (picto)");
+}
+function setEq(a, b){ if(a.size!==b.size) return false; for(const x of a) if(!b.has(x)) return false; return true; }
+function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+function validate(d, lg, liste, lgId){
+  const res=[]; const add=(s,t)=>res.push({s,t});
+  const meta=isObj(d.meta)?d.meta:{}, r=isObj(d.rahmen)?d.rahmen:{}, g=isObj(d.generiert)?d.generiert:{};
+  const gs=isObj(g.geschichte)?g.geschichte:{}, k=isObj(gs.knoten)?gs.knoten:{}, e=isObj(gs.enden)?gs.enden:{};
+  lg = isObj(lg) ? lg : null;
+  // Regel 1
+  const sv = meta.schema_version;
+  add(sv==="0.4"?"ok":"bad", "Schema-Version 0.4"+(sv==="0.4"?"":" (gefunden: "+(sv===undefined||sv===null?"None":String(sv))+")"));
+  // Regel 2
+  if(lg){
+    const ok = meta.lerngruppe===lgId;
+    add(ok?"ok":"warn", "Verweis auf Lerngruppe "+lgId+(ok?"":" (im Material: "+(meta.lerngruppe==null?"None":meta.lerngruppe)+")"));
+  }else add("warn","Lerngruppe nicht geladen: Prüfung ohne Abgleich mit der Lerngruppe");
+  // Regel 3
+  let ok = !!(r.klasse && r.bibliothek && r.programmtitel);
+  const bilder = r.bilder;
+  if(bilder!==undefined && bilder!==null) ok = ok && Array.isArray(bilder) && bilder.every(b=>isObj(b) && b.datei && b.beschreibung);
+  add(ok?"ok":"bad","Rahmendaten vollständig, jedes Bild mit Datei und Beschreibung");
+  // Regel 4
+  const bt = isObj(g.brief) ? g.brief.text : undefined;
+  ok = typeof bt==="string" && bt.length>0 && bt.length<=500;
+  add(ok?"ok":"bad","Brief vorhanden, max. 500 Zeichen"+(typeof bt==="string"?" ("+bt.length+")":""));
+  // Regel 5
   const bb = g.bibliotheksblick;
-  if(bb!=null) add(Array.isArray(bb)&&bb.length===1&&bb.every(x=>x&&Number.isInteger(x.bild)&&(r.bilder||[])[x.bild]),"Blick in die Bibliothek: genau 1 Bild (Frage ist fest im Template)");
-  add(Array.isArray(g.teamnamen)&&g.teamnamen.length>=2&&g.teamnamen.every(n=>typeof n==="string"&&n.length<=30),"2 oder mehr Teamnamen, max. 30 Zeichen");
-  const k=(g.geschichte&&g.geschichte.knoten)||{}, e=(g.geschichte&&g.geschichte.enden)||{};
-  const mk=KNOTEN_IDS.filter(id=>!k[id]); add(!mk.length,"Alle 7 Knoten vorhanden"+(mk.length?" (fehlt: "+mk.join(", ")+")":""));
-  const me=ENDEN_IDS.filter(id=>!e[id]); add(!me.length,"Alle 8 Enden vorhanden"+(me.length?" (fehlt: "+me.join(", ")+")":""));
-  const miss=[], long=[], badOpt=[];
-  KNOTEN_IDS.forEach(id=>{ const n=k[id]; if(!n) return;
-    Object.keys(LIM_TEXT).forEach(s=>{ const t=n.text&&n.text[s]; if(!t) miss.push(id+"/"+s); else if(t.length>LIM_TEXT[s]) long.push(id+"/"+s+" ("+t.length+")"); });
-    if(!Array.isArray(n.optionen)||n.optionen.length!==2) badOpt.push(id);
-    else n.optionen.forEach((o,i)=>{
-      Object.keys(LIM_TEXT).forEach(s=>{ const t=o.label&&o.label[s]; if(!t) miss.push(id+"/Option"+(i+1)+"/"+s); else if(t.length>40) long.push(id+"/Option"+(i+1)+"/"+s+" ("+t.length+")"); });
-      if(!o.fund||!o.fund.name) miss.push(id+"/Option"+(i+1)+"/Fund"); else if(o.fund.name.length>25) long.push(id+"/Fund ("+o.fund.name.length+")");
+  ok = Array.isArray(bb) && bb.length===1 && bb.every(x=>isObj(x) && isInt(x.bild) && Array.isArray(bilder) && x.bild>=0 && x.bild<bilder.length);
+  add(ok?"ok":"bad","Blick in die Bibliothek: genau 1 Bild");
+  // Regel 6
+  const mk = KNOTEN_IDS.filter(i=>!isObj(k[i]));
+  const me = ENDEN_IDS.filter(i=>!isObj(e[i]));
+  const bo = KNOTEN_IDS.filter(i=>isObj(k[i]) && !(Array.isArray(k[i].optionen) && k[i].optionen.length===2));
+  const msg=[];
+  if(mk.length) msg.push("fehlende Knoten: "+cutList(mk));
+  if(me.length) msg.push("fehlende Enden: "+cutList(me));
+  if(bo.length) msg.push("nicht genau 2 Optionen: "+cutList(bo));
+  add(msg.length?"bad":"ok","7 Knoten, 8 Enden, je 2 Optionen"+(msg.length?" ("+msg.join("; ")+")":""));
+  // Variantenfelder
+  const felder=[];
+  KNOTEN_IDS.forEach(i=>{ const n=k[i]; if(!isObj(n)) return;
+    felder.push([i, n.text, "text"]);
+    (Array.isArray(n.optionen)?n.optionen:[]).forEach((o,j)=>{ if(isObj(o)) felder.push([i+"/Option"+(j+1), o.label, "label"]); });
+  });
+  ENDEN_IDS.forEach(i=>{ const n=e[i]; if(!isObj(n)) return;
+    felder.push([i, n.text, "text"]);
+    felder.push([i+"/Suchauftrag", n.suchauftrag, "auftrag"]);
+  });
+  // Regel 7
+  let soll, basis;
+  if(lg){ soll = expectedVariants(lg); basis = "Lerngruppe"; }
+  else{ const s0 = isObj(k.S) ? k.S.text : undefined; soll = new Set(isObj(s0) ? Object.keys(s0) : []); basis = "Knoten S"; }
+  const falsch=[];
+  felder.forEach(([wo,obj,art])=>{
+    const erwartet = new Set([...soll].filter(x=>!(art==="auftrag" && x==="bild")));
+    const ist = new Set(isObj(obj) ? Object.keys(obj) : []);
+    if(!setEq(ist, erwartet)) falsch.push(wo);
+  });
+  const vtext = [...soll].sort().join(", ") || "keine";
+  add((falsch.length||!soll.size)?"bad":"ok","Varianten wie "+basis+" ("+vtext+")"+(falsch.length?" – abweichend: "+cutList(falsch):""));
+  // Regel 8
+  const lang=[];
+  felder.forEach(([wo,obj,art])=>{
+    if(!isObj(obj)) return;
+    ["stufe1","stufe2","stufe3"].forEach(s=>{
+      if(!(s in obj)) return;
+      const t=obj[s];
+      const lim = art==="label" ? LIM_LABEL : (art==="auftrag" ? LIM_AUFTRAG[s] : LIM_TEXT[s]);
+      if(typeof t!=="string" || !t) lang.push(wo+"/"+s+" (leer)");
+      else if(t.length>lim) lang.push(wo+"/"+s+" ("+t.length+")");
     });
   });
-  ENDEN_IDS.forEach(id=>{ const n=e[id]; if(!n) return;
-    Object.keys(LIM_TEXT).forEach(s=>{ const t=n.text&&n.text[s]; if(!t) miss.push(id+"/"+s); else if(t.length>LIM_TEXT[s]) long.push(id+"/"+s+" ("+t.length+")"); });
-    Object.keys(LIM_AUFTRAG).forEach(s=>{ const t=n.suchauftrag&&n.suchauftrag[s]; if(!t) miss.push(id+"/Suchauftrag/"+s); else if(t.length>LIM_AUFTRAG[s]) long.push(id+"/Suchauftrag/"+s+" ("+t.length+")"); });
+  KNOTEN_IDS.forEach(i=>{ const n=k[i]; if(!isObj(n)) return;
+    (Array.isArray(n.optionen)?n.optionen:[]).forEach((o,j)=>{
+      const f = isObj(o) ? o.fund : undefined;
+      if(!isObj(f) || typeof f.name!=="string" || !f.name) lang.push(i+"/Option"+(j+1)+"/Fund (fehlt)");
+      else if(f.name.length>LIM_FUND) lang.push(i+"/Option"+(j+1)+"/Fund ("+f.name.length+")");
+    });
   });
-  const cut=a=>a.slice(0,6).join(", ")+(a.length>6?" …":"");
-  add(!miss.length,"Alle Texte, Optionen und Fundstücke in drei Stufen"+(miss.length?" (fehlt: "+cut(miss)+")":""));
-  add(!badOpt.length,"Jeder Knoten hat genau zwei Optionen"+(badOpt.length?" (Fehler: "+badOpt.join(", ")+")":""));
-  add(!long.length,"Längengrenzen eingehalten"+(long.length?" – zu lang: "+cut(long):""));
-  add(typeof g.absenden_text==="string"&&g.absenden_text.length>0&&g.absenden_text.length<=200,"Absendetext vorhanden, max. 200 Zeichen");
-  add(Array.isArray(g.luecken),"Lückenliste vorhanden");
+  add(lang.length?"bad":"ok","Längengrenzen eingehalten"+(lang.length?" – "+cutList(lang):""));
+  // Regeln 9-12
+  const folgeBad=[], eintragBad=[], eintragWarn=[];
+  felder.forEach(([wo,obj,art])=>{
+    if(!isObj(obj) || !("bild" in obj) || art==="auftrag") return;
+    const b=obj.bild; const lo=1, hi = art==="label" ? 1 : 4;
+    if(!Array.isArray(b) || b.length<lo || b.length>hi){ folgeBad.push(wo); return; }
+    b.forEach((ent,x)=>checkEntry(ent, wo+"/bild"+(x+1), liste, eintragBad, eintragWarn));
+  });
+  add(folgeBad.length?"bad":"ok","Bildfolgen: 1–4 Einträge, bei Optionen genau 1"+(folgeBad.length?" – falsch: "+cutList(folgeBad):""));
+  // Regel 13
+  const wb = g.wortbilder; const wbBad=[], wbWarn=[];
+  const pflicht = !!lg && wortbilderRequired(lg);
+  if(wb===undefined || wb===null){
+    if(pflicht) add("bad","Wortbilder fehlen (Pflicht wegen Förderbedarf Lernen oder Sprache)");
+  }else if(!Array.isArray(wb) || wb.length<1 || wb.length>WORTBILDER_MAX){
+    add("bad","Wortbilder: 1–20 Einträge");
+  }else{
+    wb.forEach((ent,x)=>checkEntry(ent, "Wortbild"+(x+1), liste, wbBad, wbWarn));
+    add(wbBad.length?"bad":"ok","Wortbilder gültig ("+wb.length+")"+(wbBad.length?" – falsch: "+cutList(wbBad):""));
+    // Regel 14
+    const s1 = [...Object.values(k), ...Object.values(e)].filter(n=>isObj(n) && isObj(n.text)).map(n=>n.text.stufe1).filter(t=>typeof t==="string");
+    const fehlt=[];
+    wb.forEach(ent=>{
+      const w = isObj(ent) ? ent.wort : undefined;
+      if(typeof w==="string" && w){
+        const re = new RegExp("(?<![\\p{L}\\p{N}_])"+escRe(w)+"(?![\\p{L}\\p{N}_])","iu");
+        if(!s1.some(t=>re.test(t))) fehlt.push(w);
+      }
+    });
+    add(fehlt.length?"warn":"ok","Jedes Wortbild kommt in einem Blatt-Text vor"+(fehlt.length?" – nicht gefunden: "+cutList(fehlt):""));
+  }
+  // Regeln 10-12 zusammengefasst
+  const alleBad = eintragBad.concat(wbBad), alleWarn = eintragWarn.concat(wbWarn);
+  add(alleBad.length?"bad":"ok","Bild-Einträge: ein Wort (max. 15 Zeichen), Piktogramm aus der Liste"+(alleBad.length?" – falsch: "+cutList(alleBad):""));
+  if(!liste) add("warn","Piktogramm-Liste nicht geladen: IDs nicht abgeglichen");
+  add(alleWarn.length?"warn":"ok","Alle Piktogramme vorhanden"+(alleWarn.length?" – nachtragen: "+cutList(alleWarn):""));
+  // Regel 15
+  const tn = g.teamnamen;
+  const okNamen = Array.isArray(tn) && tn.every(n=>typeof n==="string" && n.length>0 && n.length<=LIM_TEAM);
+  if(lg && isInt(lg.tablets)){
+    const sollN = Math.max(2, lg.tablets);
+    ok = okNamen && tn.length===sollN;
+    add(ok?"ok":"bad","Teamnamen: "+sollN+" (= Tablets, mind. 2), je max. 30 Zeichen"+(ok?"":" (gefunden: "+(Array.isArray(tn)?tn.length:"keine")+")"));
+    // Regel 16
+    const nv = expectedVariants(lg).size;
+    add(lg.tablets>=nv?"ok":"warn","Tablets ("+lg.tablets+") reichen für alle Varianten ("+nv+")");
+  }else{
+    ok = okNamen && tn.length>=2;
+    add(ok?"ok":"bad","Teamnamen: mind. 2, je max. 30 Zeichen");
+  }
+  // Regel 17
+  const at = g.absenden_text;
+  ok = typeof at==="string" && at.length>0 && at.length<=200 && Array.isArray(g.luecken);
+  add(ok?"ok":"bad","Absendetext (max. 200 Zeichen) und Lückenliste vorhanden");
   return res;
 }
+function lgInfo(){
+  if(!LG) return el("p",{style:"margin:0"},"Keine Lerngruppe geladen. Die Prüfung gleicht das Material nicht mit den Angaben der Lehrkraft ab.");
+  const f = LG.foerder || {};
+  const fb = [["sehen","Sehen"],["lernen","Lernen"],["sprache","Sprache"],["motorik","Motorik"]].filter(([key])=>(f[key]||0)>0).map(([key,name])=>name+": "+f[key]);
+  const ev = expectedVariants(LG);
+  const v = ["stufe1","stufe2","stufe3","bild"].filter(x=>ev.has(x)).map(x=>x==="bild" ? "Bildvariante" : STUFEN[Number(x.slice(-1))].name);
+  return el("ul",{style:"margin:0"},
+    el("li",{},"Klasse: "+(LG.klasse||"–")+", Tablets: "+(LG.tablets??"–")+", Jahrgänge: "+((LG.jahrgaenge||[]).join(", ")||"–")),
+    el("li",{},"Varianten im Material: "+(v.join(", ")||"–")),
+    el("li",{},"Förderbedarfe: "+(fb.join(", ")||"keine")),
+    el("li",{},"Sprachfassungen: "+((LG.sprachen||[]).join(", ")||"keine")));
+}
+
 function renderLehrkraft(app){
   const g=G(), r=R(), meta=DATA.meta||{};
   app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"},"Lehrkraftansicht: "+r.programmtitel+", Klasse "+r.klasse));
@@ -687,7 +848,8 @@ function renderLehrkraft(app){
     el("p",{style:"margin:0"},"Dauer ca. 30 Minuten. Brief und Blick in die Bibliothek gemeinsam am Whiteboard; tippen Sie die Vermutungen der Klasse als Stichwörter ein. Danach öffnen die Paare die Geschichte am Tablet über den Code mit ihrem Zeichen und füllen die Suchkarte aus. Zum Schluss zählen Sie die Suchaufträge aus und schicken den Rucksack los.")));
   const l = Array.isArray(g.luecken)?g.luecken:[];
   app.append(el("section",{class:"panel"}, el("h2",{},"Fehlende Angaben"), l.length? el("ul",{style:"margin:0"}, l.map(x=>el("li",{},x))) : el("p",{style:"margin:0"},"Keine.")));
-  app.append(el("section",{class:"panel"}, el("h2",{},"Automatische Prüfung"), el("ul",{class:"checks"}, validate(DATA).map(c=>el("li",{class:c.ok?"ok":"bad"},c.t)))));
+  app.append(el("section",{class:"panel"}, el("h2",{},"Automatische Prüfung"), el("ul",{class:"checks"}, validate(DATA, LG, PICTOS, LG_ID).map(c=>el("li",{class:c.s},c.t)))));
+  app.append(el("section",{class:"panel"}, el("h2",{},"Lerngruppe"), lgInfo()));
   app.append(el("section",{class:"panel"}, el("h2",{},"Herkunft"),
     el("p",{style:"margin:0"},"Erzeugt von: "+(meta.erzeugt_von||"keine Angabe")+". Prompt-Version: "+(meta.prompt_version||"keine Angabe")+". Datum: "+(meta.erzeugt_am||"keine Angabe")+"."),
     meta.hinweis ? el("p",{class:"muted",style:"margin:.4rem 0 0"}, meta.hinweis) : null));
@@ -702,8 +864,8 @@ function renderLehrkraft(app){
   const q=[["Brief",g.brief&&g.brief.quellen],["Geschichte ("+(g.geschichte&&g.geschichte.kulisse)+")",g.geschichte&&g.geschichte.kulisse_quellen],["Piktogramme",["ARASAAC (arasaac.org), CC BY-NC-SA 4.0"]],["Figur Frido",["eigene Zeichnung"]]];
   app.append(el("section",{class:"panel"}, el("h2",{},"Quellen"), el("ul",{style:"margin:0"}, q.map(([n,s])=>el("li",{}, n+": "+((s&&s.length)?s.join(", "):"keine Angabe"))))));
   let alle = store("ms_alle")==="1";
-  app.append(el("section",{class:"panel"}, el("h2",{},"Geschichte prüfen (Stufe 2)"),
-    el("label",{class:"row",style:"margin-bottom:.6rem"}, el("input",{type:"checkbox",checked:alle,onchange:ev=>{ store("ms_alle",ev.target.checked?"1":"0"); render(); }}),"Alle drei Stufen nebeneinander zeigen"),
+  app.append(el("section",{class:"panel"}, el("h2",{},"Geschichte prüfen (Stufe "+STUFEN[stdStufe()].name+")"),
+    el("label",{class:"row",style:"margin-bottom:.6rem"}, el("input",{type:"checkbox",checked:alle,onchange:ev=>{ store("ms_alle",ev.target.checked?"1":"0"); render(); }}),"Alle Varianten nebeneinander zeigen"),
     buildTree("",alle)));
   const ta = el("textarea",{"aria-label":"JSON der Material-Seite",spellcheck:"false"}); ta.value = JSON.stringify(DATA,null,2);
   const msg = el("div",{class:"msg"});
@@ -713,9 +875,9 @@ function renderLehrkraft(app){
     el("div",{class:"row",style:"margin-top:.6rem"},
       el("button",{class:"btn primary",type:"button",onclick:()=>{
         try{ const d=JSON.parse(ta.value); if(!d.rahmen||!d.generiert) throw new Error("Die Bereiche „rahmen“ und „generiert“ fehlen.");
-          DATA=d; if(!MATERIAL_ID) store("ms_json",JSON.stringify(d)); render(); }
+          DATA=d; if(!MATERIAL_ID){ store("ms_json",JSON.stringify(d)); LG=null; LG_ID=null; } render(); }
         catch(err){ msg.className="msg bad"; msg.textContent="Nicht geladen: "+err.message; } }},"JSON laden"),
-      el("button",{class:"btn",type:"button",onclick:()=>{ if(MATERIAL_ID) location.reload(); else { DATA=BEISPIEL; store("ms_json",null); render(); } }}, MATERIAL_ID?"Gespeichertes Material neu laden":"Beispiel wiederherstellen")),
+      el("button",{class:"btn",type:"button",onclick:()=>{ if(MATERIAL_ID) location.reload(); else { DATA=BEISPIEL; store("ms_json",null); LG=BEISPIEL_LG; LG_ID=(BEISPIEL.meta&&BEISPIEL.meta.lerngruppe)||null; render(); } }}, MATERIAL_ID?"Gespeichertes Material neu laden":"Beispiel wiederherstellen")),
     msg));
   const bu = el("input",{type:"text",class:"wide",value:baseUrl()});
   app.append(el("section",{class:"panel"}, el("h2",{},"Adresse für die QR-Codes"),
@@ -724,7 +886,8 @@ function renderLehrkraft(app){
 }
 function buildTree(path, alle){
   const g=G().geschichte;
-  const show = obj => alle ? el("div",{class:"variants"}, [1,2,3].map(n=>el("div",{}, STUFEN[n].sym+" ", obj["stufe"+n]))) : el("span",{}, obj.stufe2);
+  const key = "stufe"+stdStufe();
+  const show = obj => alle ? el("div",{class:"variants"}, stufenListe().map(n=>el("div",{}, STUFEN[n].sym+" ", obj["stufe"+n])), (hatBild() && obj.bild) ? el("div",{}, "🖼️ ", bildText(obj.bild)) : null) : el("span",{}, obj[key]);
   if(path.length===3){
     const e=g.enden[path];
     return el("div",{class:"end"}, show(e.text), el("div",{style:"margin-top:.3rem"}, el("strong",{},"Suchauftrag: "), show(e.suchauftrag)));
@@ -735,7 +898,7 @@ function buildTree(path, alle){
   const sub=el("ul",{});
   ["A","B"].forEach((c,i)=>{ const o=k.optionen[i], m=MERKMALE[path.length][i];
     sub.append(el("li",{},
-      el("span",{class:"opt"}, (o.symbol?o.symbol+" ":"")+o.label.stufe2),
+      el("span",{class:"opt"}, (o.symbol?o.symbol+" ":"")+o.label[key]),
       el("span",{class:"muted",style:"font-size:.9rem"}, "Merkmal: "+m.label+". Fund: "+(o.fund?(o.fund.symbol||"")+" "+o.fund.name:"–")),
       buildTree(path+c, alle)));
   });
@@ -786,9 +949,13 @@ async function init(){
         const d = await r.json();
         if(!d.rahmen||!d.generiert) throw new Error("Die Datei enthält nicht die Bereiche „rahmen“ und „generiert“.");
         DATA = d;
+        LG_ID = MATERIAL_ID;
+        try{ const rl = await fetch("lerngruppen/"+MATERIAL_ID+".json",{cache:"no-store"}); if(rl.ok) LG = await rl.json(); }catch(e){ LG = null; }
       }catch(err){ LOAD_ERROR = err.message || "Die Inhalte konnten nicht geladen werden."; }
     }
   }else DATA = localData();
+  try{ const rp = await fetch("assets/pictos/liste.json",{cache:"no-store"}); if(rp.ok){ const pl = await rp.json(); PICTOS = (pl.pictos||[]).map(p=>p.id); } }catch(e){}
+  if(!PICTOS && BEISPIEL_PICTOS) PICTOS = (BEISPIEL_PICTOS.pictos||[]).map(p=>p.id);
   loadState();
   window.addEventListener("hashchange", render);
   render();
