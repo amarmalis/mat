@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.4",
+  "programm": "straubing-waldbewohner",
+  "hinweis": "Testdaten. Angaben sind Annahmen für das Referenzprogramm, keine geprüften Angaben der Bibliothek.",
+  "quellen": {
+    "dokumente": [],
+    "webseiten": []
+  },
+  "bibliothek": "Stadtbibliothek Straubing",
+  "titel": "Auf den Spuren der Waldbewohner",
+  "worum_geht_es": "Die Klasse geht in der Kinderbibliothek auf Spurensuche nach Waldtieren: Sie liest Tierspuren, hört Tierstimmen und lernt Bücher über den Wald kennen.",
+  "buch_oder_thema": "Thema Wald und Waldtiere",
+  "taetigkeiten": [
+    "zuhoeren",
+    "erkunden",
+    "stoebern"
+  ],
+  "taetigkeiten_weiteres": null,
+  "orte": [
+    "Lesetreppe",
+    "Bilderbuchecke",
+    "Lesehöhle"
+  ],
+  "ausleihe": "klassenausweis",
+  "mitbringen": null,
+  "foto": {
+    "datei": "bilder/lesehoehle.svg",
+    "beschreibung": "Gemütliche Lesehöhle mit Kissen",
+    "veroeffentlichen_erlaubt": true,
+    "keine_personen": true
+  },
+  "herkunft": {
+    "vorbefuellt_von": null,
+    "geprueft_von": null,
+    "geprueft_am": null
+  }
+}

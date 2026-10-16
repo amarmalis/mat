@@ -20,13 +20,7 @@
     "bilder": [
       {
         "datei": "bilder/lesehoehle.svg",
-        "beschreibung": "Lesehöhle in der Kinderbibliothek: eine gemütliche Höhle mit Kissen zum Lesen und Vorlesen",
-        "ort": "Lesehöhle"
-      },
-      {
-        "datei": "bilder/bilderbuchecke.svg",
-        "beschreibung": "Bilderbuchecke mit Bilderbuchtrögen und Sitzkissen",
-        "ort": "Bilderbuchecke"
+        "beschreibung": "Gemütliche Lesehöhle mit Kissen"
       }
     ]
   },
