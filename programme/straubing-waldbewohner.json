@@ -1,11 +1,12 @@
 {
   "schema_version": "0.4",
   "programm": "straubing-waldbewohner",
-  "hinweis": "Testdaten. Angaben sind Annahmen für das Referenzprogramm, keine geprüften Angaben der Bibliothek.",
+  "hinweis": "Fiktive Testdaten (Annahmen). Das reale Programm findet in der Schule statt und ist damit ausgeschlossen; wird durch ein Referenzprogramm ersetzt.",
   "quellen": {
     "dokumente": [],
     "webseiten": []
   },
+  "findet_in_bibliothek_statt": true,
   "bibliothek": "Stadtbibliothek Straubing",
   "titel": "Auf den Spuren der Waldbewohner",
   "worum_geht_es": "Die Klasse geht in der Kinderbibliothek auf Spurensuche nach Waldtieren: Sie liest Tierspuren, hört Tierstimmen und lernt Bücher über den Wald kennen.",
