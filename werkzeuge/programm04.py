@@ -128,21 +128,29 @@ def validate_programm(p, vorbefuellt=False, quelltext=None):
         add("ok" if ok else "bad", "Foto: Datei und Beschreibung (max. 120 Zeichen)")
         ok = isinstance(fo, dict) and fo.get("veroeffentlichen_erlaubt") is True and fo.get("keine_personen") is True
         add("ok" if ok else "bad", "Foto: beide Bestätigungen erteilt")
+    # stoebern setzt nur die Bibliothek (system_1 ab v0.3)
+    if vorbefuellt and isinstance(t, list) and "stoebern" in t:
+        add("warn", "„stoebern“ nach Stufe 1 gesetzt – setzt nur die Bibliothek")
     # Belege (nur nach Stufe 1 vorhanden; Hilfe für die Prüfung gegen die Quellen)
     b = p.get("belege")
     if b is not None:
         if not isinstance(b, dict):
             add("bad", "Belege: Objekt Feld → Fundstelle")
         else:
+            # Ein Beleg ist ein Text oder (bei mehreren Fundstellen) eine Liste von Texten
+            liste = {k: ([x] if isinstance(x, str) else x) for k, x in b.items()}
+            form = [k for k, x in liste.items() if not (isinstance(x, list) and x and all(isinstance(y, str) and y.strip() for y in x))]
             fremd = [k for k in b if k not in FELDER or not FELDER[k][2]]
             ohne = [f for f, (_, _, vorb) in FELDER.items() if vorb and not leer(p.get(f)) and leer(b.get(f))]
-            lang = [k for k, x in b.items() if isinstance(x, str) and len(ausschnitt(x)) > BELEG_MAX]
+            gut = {k: x for k, x in liste.items() if k not in form}
+            lang = [k for k, x in gut.items() if any(len(ausschnitt(y)) > BELEG_MAX for y in x)]
+            add("bad" if form else "ok", "Belege als Text oder Liste von Texten" + (" – falsch: " + ", ".join(form) if form else ""))
             add("bad" if fremd else "ok", "Belege nur für vorbefüllbare Felder" + (" – unbekannt: " + ", ".join(fremd) if fremd else ""))
             add("warn" if ohne else "ok", "Jede vorbefüllte Angabe belegt" + (" – ohne Beleg: " + ", ".join(ohne) if ohne else ""))
             add("warn" if lang else "ok", "Belege je max. %d Zeichen" % BELEG_MAX + (" – zu lang: " + ", ".join(lang) if lang else ""))
             if quelltext is not None:
                 qt = norm(quelltext)
-                falsch = [k for k, x in b.items() if isinstance(x, str) and norm(ausschnitt(x)) not in qt]
+                falsch = [k for k, x in gut.items() if any(norm(ausschnitt(y)) not in qt for y in x)]
                 add("bad" if falsch else "ok", "Belege wörtlich im Quelltext" + (" – nicht gefunden: " + ", ".join(falsch) if falsch else ""))
     return res
 
