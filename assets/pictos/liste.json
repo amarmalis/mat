@@ -1,6 +1,6 @@
 {
   "schema_version": "0.4",
-  "quelle": "ARASAAC (arasaac.org), CC BY-NC-SA 4.0; IDs per Suche (de, bestsearch) am 16.10.2026",
+  "quelle": "ARASAAC (arasaac.org), CC BY-NC-SA 4.0; IDs per Suche (de, bestsearch/search) am 16.10. und 18.10.2026",
   "hinweis": "Dateien liegen als assets/pictos/<id>.png. Einträge je Programm ergänzen.",
   "pictos": [
     {
@@ -142,6 +142,54 @@
     {
       "id": 7116,
       "wort": "Gruppe"
+    },
+    {
+      "id": 5935,
+      "wort": "Kasten"
+    },
+    {
+      "id": 2572,
+      "wort": "Hut"
+    },
+    {
+      "id": 2484,
+      "wort": "Kind"
+    },
+    {
+      "id": 9927,
+      "wort": "Lupe"
+    },
+    {
+      "id": 2359,
+      "wort": "Notizbuch"
+    },
+    {
+      "id": 24829,
+      "wort": "Rätsel"
+    },
+    {
+      "id": 38792,
+      "wort": "lachen"
+    },
+    {
+      "id": 8349,
+      "wort": "Papier"
+    },
+    {
+      "id": 27786,
+      "wort": "Pfote"
+    },
+    {
+      "id": 2451,
+      "wort": "Schlüssel"
+    },
+    {
+      "id": 6901,
+      "wort": "Tier"
+    },
+    {
+      "id": 2360,
+      "wort": "Bild"
     }
   ]
 }
