@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.4",
+  "programm": "straubing-bibliotheksdetektive",
+  "hinweis": "Stand nach Stufe 1 (system_1 v0.2, Lauf 4) und redaktioneller Korrektur. orte, ausleihe und foto sind für den Test gesetzte Annahmen, keine Angaben der Bibliothek; das Foto ist ein Platzhalterbild.",
+  "quellen": {
+    "dokumente": [
+      "Bibliotheksdetektive.pdf"
+    ],
+    "webseiten": []
+  },
+  "findet_in_bibliothek_statt": true,
+  "bibliothek": "Stadtbibliothek Straubing",
+  "titel": "Bibliotheksdetektive",
+  "worum_geht_es": "Die Kinder werden zu Detektiven und spüren eine gestohlene Bücherkiste und den Dieb „Mr. X“ auf. Dafür lösen sie Text-Rätsel und Puzzles, finden sich in der Bibliothek zurecht und lernen, wie die Medien in den Regalen aufgestellt sind. Am Ende bekommen sie einen Detektiv-Ausweis.",
+  "buch_oder_thema": "Krimi: Detektivgeschichte um eine gestohlene Bücherkiste",
+  "taetigkeiten": [
+    "erkunden"
+  ],
+  "taetigkeiten_weiteres": "Text-Rätsel und Puzzles lösen; Kontakt mit Mr. X aufnehmen",
+  "orte": [
+    "Kinderbibliothek",
+    "Bilderbuchecke",
+    "Sachbuchregale",
+    "Ausleihtheke"
+  ],
+  "ausleihe": "klassenausweis",
+  "mitbringen": null,
+  "foto": {
+    "datei": "bilder/bilderbuchecke.svg",
+    "beschreibung": "Bilderbuchecke in der Kinderbibliothek",
+    "veroeffentlichen_erlaubt": true,
+    "keine_personen": true
+  },
+  "herkunft": {
+    "vorbefuellt_von": "system_1 v0.2",
+    "geprueft_von": "Testdaten (redaktionell ergänzt)",
+    "geprueft_am": "2026-10-17"
+  }
+}

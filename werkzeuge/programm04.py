@@ -7,8 +7,8 @@ ergänzt; erst dann dürfen Pflichtfelder nicht mehr null sein.
 
 Voraussetzungen (nicht im Profil abgefragt, sondern gesetzt):
 - Das Programm findet in der Bibliothek statt (findet_in_bibliothek_statt).
-- Die Klasse hat Stöberzeit; "stoebern" in den Tätigkeiten ist nur eine
-  zusätzliche Hervorhebung durch die Bibliothek.
+- Die Klasse hat Stöberzeit. Deshalb ist "stöbern" keine wählbare Tätigkeit
+  (Formularoption am 17.10.2026 gestrichen).
 
 Aufruf: python3 programm04.py DATEI [--vorbefuellt] [--quelle QUELLTEXT.txt]
   --vorbefuellt: Stand nach Stufe 1; leere Pflichtfelder sind dann Warnungen.
@@ -22,7 +22,6 @@ TAETIGKEITEN = {
     "katalog": "den Bibliothekskatalog benutzen",
     "erkunden": "Bibliothek erkunden",
     "gestalten": "etwas gestalten",
-    "stoebern": "stöbern",
 }
 AUSLEIHE = {
     "klassenausweis": "ja, über einen Klassenausweis",
@@ -128,9 +127,6 @@ def validate_programm(p, vorbefuellt=False, quelltext=None):
         add("ok" if ok else "bad", "Foto: Datei und Beschreibung (max. 120 Zeichen)")
         ok = isinstance(fo, dict) and fo.get("veroeffentlichen_erlaubt") is True and fo.get("keine_personen") is True
         add("ok" if ok else "bad", "Foto: beide Bestätigungen erteilt")
-    # stoebern setzt nur die Bibliothek (system_1 ab v0.3)
-    if vorbefuellt and isinstance(t, list) and "stoebern" in t:
-        add("warn", "„stoebern“ nach Stufe 1 gesetzt – setzt nur die Bibliothek")
     # Belege (nur nach Stufe 1 vorhanden; Hilfe für die Prüfung gegen die Quellen)
     b = p.get("belege")
     if b is not None:
@@ -165,7 +161,7 @@ BEISPIEL = {
     "titel": "Auf den Spuren der Waldbewohner",
     "worum_geht_es": "Die Klasse geht in der Kinderbibliothek auf Spurensuche nach Waldtieren: Sie liest Tierspuren, hört Tierstimmen und lernt Bücher über den Wald kennen.",
     "buch_oder_thema": "Thema Wald und Waldtiere",
-    "taetigkeiten": ["zuhoeren", "erkunden", "stoebern"],
+    "taetigkeiten": ["zuhoeren", "erkunden"],
     "taetigkeiten_weiteres": None,
     "orte": ["Lesetreppe", "Bilderbuchecke", "Lesehöhle"],
     "ausleihe": "klassenausweis",

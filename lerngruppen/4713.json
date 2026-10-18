@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.4",
+  "programm": "straubing-bibliotheksdetektive",
+  "klasse": "3b",
+  "tablets": 8,
+  "jahrgaenge": [
+    3
+  ],
+  "lesestufen": [
+    "stufe2",
+    "stufe3"
+  ],
+  "kaum_deutsch": true,
+  "sprachen": [
+    "uk"
+  ],
+  "foerder": {
+    "sehen": 1,
+    "lernen": 2,
+    "sprache": 0,
+    "motorik": 0
+  }
+}
