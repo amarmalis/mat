@@ -330,6 +330,18 @@ function qr(container, text, size){
   }catch(e){ container.append(el("span",{class:"qr-fallback"}, text)); }
 }
 function merkmale(path){ return path.split("").map((c,i)=>MERKMALE[i][c==="A"?0:1]); }
+// Suchauftrag aus den drei Merkmalen des Weges (Schema 0.5: nicht mehr im Material)
+function suchauftrag(path, n){
+  const [m1,m2,m3] = merkmale(path).map(x=>x.key);
+  const adj = m1==="lustig" ? "lustiges" : "spannendes";
+  const wer = m2==="tier" ? "ein Tier" : "ein Kind";
+  const hat = m3==="bilder" ? "viele Bilder" : "viel Text";
+  const mit = m3==="bilder" ? "mit vielen Bildern" : "mit viel Text";
+  if(n===1) return "Sucht ein "+adj+" Buch über "+wer+". Es hat "+hat+".";
+  const t = "Sucht in der Bibliothek ein "+adj+" Buch "+mit+", in dem "+wer+" die Hauptrolle spielt.";
+  return n===2 ? t : t+" Haltet den Titel auf eurer Suchkarte fest.";
+}
+function auftragObj(path){ return Object.fromEntries([1,2,3].map(n=>["stufe"+n, suchauftrag(path,n)])); }
 function picNode(m, cls){
   const c = cls||"pm";
   return m.img ? el("img",{class:c, src:"assets/pictos/"+m.img, alt:"", "aria-hidden":"true"}) : el("span",{class:c,"aria-hidden":"true"}, m.pic);
@@ -591,8 +603,8 @@ function renderTablet(app, stufe){
   }else{
     const e = g.enden[T.path];
     const m = merkmale(T.path);
-    wrap.append(el("div",{class:"story"}, el("p",{}, e.text[key])), el("div",{class:"row"}, readBtn(()=>e.text[key]+" "+e.suchauftrag[key])));
-    wrap.append(el("section",{class:"task"}, el("h2",{},"Euer Suchauftrag"), el("p",{}, e.suchauftrag[key])));
+    wrap.append(el("div",{class:"story"}, el("p",{}, e.text[key])), el("div",{class:"row"}, readBtn(()=>e.text[key]+" "+suchauftrag(T.path, Number(key.slice(5))))));
+    wrap.append(el("section",{class:"task"}, el("h2",{},"Euer Suchauftrag"), el("p",{}, suchauftrag(T.path, Number(key.slice(5))))));
     wrap.append(el("p",{class:"talk"},"Das macht ihr jetzt mit eurer Suchkarte:"));
     wrap.append(el("ol",{class:"todo"},
       el("li",{}, "Schreibt euren Teamnamen auf: ", el("strong",{},T.team)),
@@ -607,7 +619,7 @@ function renderTablet(app, stufe){
 }
 function speakNow(){
   const key="stufe"+T.stufe, g=G().geschichte;
-  const t = T.path.length<3 ? g.knoten[T.path===""?"S":T.path].text[key] : g.enden[T.path].text[key]+" "+g.enden[T.path].suchauftrag[key];
+  const t = T.path.length<3 ? g.knoten[T.path===""?"S":T.path].text[key] : g.enden[T.path].text[key]+" "+suchauftrag(T.path, Number(key.slice(5)));
   speak(t);
 }
 
@@ -674,7 +686,7 @@ function renderBibliothek(app, raw){
 }
 
 // ===== Lehrkraft =====
-// ===== Prüfung Schema 0.4 (spiegelt v04/validate04.py) =====
+// ===== Prüfung Material-Schema 0.5 (spiegelt v04/validate04.py) =====
 // Ergebnis: Liste von {s, t} mit s in "ok" | "warn" | "bad".
 function isInt(v){ return typeof v==="number" && Number.isInteger(v); }
 function isObj(v){ return v!==null && typeof v==="object" && !Array.isArray(v); }
@@ -710,7 +722,7 @@ function validate(d, lg, liste, lgId){
   lg = isObj(lg) ? lg : null;
   // Regel 1
   const sv = meta.schema_version;
-  add(sv==="0.4"?"ok":"bad", "Schema-Version 0.4"+(sv==="0.4"?"":" (gefunden: "+(sv===undefined||sv===null?"None":String(sv))+")"));
+  add(sv==="0.5"?"ok":"bad", "Schema-Version 0.5"+(sv==="0.5"?"":" (gefunden: "+(sv===undefined||sv===null?"None":String(sv))+")"));
   // Regel 2
   if(lg){
     const ok = meta.lerngruppe===lgId;
@@ -746,8 +758,9 @@ function validate(d, lg, liste, lgId){
   });
   ENDEN_IDS.forEach(i=>{ const n=e[i]; if(!isObj(n)) return;
     felder.push([i, n.text, "text"]);
-    felder.push([i+"/Suchauftrag", n.suchauftrag, "auftrag"]);
   });
+  const mitAuftrag = ENDEN_IDS.filter(i=>isObj(e[i]) && ("suchauftrag" in e[i]));
+  add(mitAuftrag.length?"bad":"ok","Suchaufträge erzeugt das Template (nicht im Material)"+(mitAuftrag.length?" – entfernen bei: "+cutList(mitAuftrag):""));
   // Regel 7
   let soll, basis;
   if(lg){ soll = expectedVariants(lg); basis = "Lerngruppe"; }
@@ -898,7 +911,7 @@ function buildTree(path, alle){
   const show = obj => alle ? el("div",{class:"variants"}, stufenListe().map(n=>el("div",{}, STUFEN[n].sym+" ", obj["stufe"+n])), (hatBild() && obj.bild) ? el("div",{}, "🖼️ ", bildText(obj.bild)) : null) : el("span",{}, obj[key]);
   if(path.length===3){
     const e=g.enden[path];
-    return el("div",{class:"end"}, show(e.text), el("div",{style:"margin-top:.3rem"}, el("strong",{},"Suchauftrag: "), show(e.suchauftrag)));
+    return el("div",{class:"end"}, show(e.text), el("div",{style:"margin-top:.3rem"}, el("strong",{},"Suchauftrag (Template): "), show(auftragObj(path))));
   }
   const k=g.knoten[path===""?"S":path];
   const ul=el("ul",{class:path===""?"tree":""});
