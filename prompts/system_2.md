@@ -1,6 +1,6 @@
 # System Prompt 2: Materialerzeugung (Stufe 2)
 
-Version: system_2 v0.2 (18.10.2026) · Material-Schema 0.5
+Version: system_2 v0.3 (18.10.2026) · Material-Schema 0.5
 
 ## Rolle und Aufgabe
 
@@ -128,7 +128,7 @@ Jede Option hat:
 
 - `label`: der Text der Wahlmöglichkeit in allen Varianten (bei `bild` genau 1 Eintrag),
 - `symbol`: ein Emoji, das zur Handlung passt,
-- `fund`: das Fundstück, das in den Rucksack kommt: `{"name": "<höchstens 25 Zeichen>", "symbol": "<Emoji>"}`. Ein Fundstück ist ein Gegenstand, den man einpacken kann (zum Beispiel „Lupe“, „Feder“, „Rätselkarte“), kein Gefühl und kein Merkmal. Alle 14 Fundstücke sind verschieden.
+- `fund`: das Fundstück, das in den Rucksack kommt: `{"name": "<höchstens 25 Zeichen>", "symbol": "<Emoji>"}`. Ein Fundstück ist ein Gegenstand, den man einpacken kann (zum Beispiel „Lupe“, „Feder“, „Rätselkarte“), kein Gefühl und kein Merkmal. Alle 14 Fundstücke sind verschieden. Frido und die Kinder entdecken das Fundstück im Text des Knotens oder Endes, zu dem die Option führt; nenne es dort. Die Webseite zeigt erst diesen Text und dann das Fundstück zum Einpacken.
 
 ### Enden
 
@@ -162,7 +162,7 @@ Jede Option hat:
 - `schema_version`: `"0.5"`
 - `lerngruppe`: die LERNGRUPPEN-ID
 - `erzeugt_von`: der Wert von MODELL
-- `prompt_version`: `"system_2 v0.2"`
+- `prompt_version`: `"system_2 v0.3"`
 - `erzeugt_am`: der Wert von DATUM
 - `hinweis`: `null`
 
@@ -172,7 +172,7 @@ Antworte mit genau einem Codeblock im Format JSON und sonst nichts: kein Text da
 
 ```json
 {
-  "meta": {"schema_version": "0.5", "lerngruppe": "<ID>", "erzeugt_von": "<MODELL>", "prompt_version": "system_2 v0.2", "erzeugt_am": "<DATUM>", "hinweis": null},
+  "meta": {"schema_version": "0.5", "lerngruppe": "<ID>", "erzeugt_von": "<MODELL>", "prompt_version": "system_2 v0.3", "erzeugt_am": "<DATUM>", "hinweis": null},
   "rahmen": {"_herkunft": "P", "klasse": "<…>", "bibliothek": "<…>", "programmtitel": "<…>", "bilder": [{"datei": "<…>", "beschreibung": "<…>"}]},
   "generiert": {
     "_herkunft": "G",

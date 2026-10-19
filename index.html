@@ -572,6 +572,10 @@ function renderTablet(app, stufe){
 
   if(T.fund){
     const f = T.fund;
+    // Erst den Text des erreichten Abschnitts zeigen: Dort entdecken Frido und die Kinder das Fundstück.
+    const ziel = T.path.length<3 ? g.knoten[T.path] : g.enden[T.path];
+    const zielText = ziel && ziel.text ? ziel.text[key] : "";
+    if(zielText) wrap.append(el("div",{class:"story"}, el("p",{}, zielText)), el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>zielText)));
     const big = el("span",{class:"big","aria-hidden":"true"}, f.symbol||"🎁");
     wrap.append(el("div",{class:"found"}, big,
       el("p",{}, "Gefunden: "+f.name),

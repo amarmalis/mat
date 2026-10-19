@@ -32,3 +32,4 @@
 | --- | --- | --- |
 | v0.1 | 17.10.2026 | erste Fassung (Material-Schema 0.4, Suchaufträge vom Modell) |
 | v0.2 | 18.10.2026 | Folge aus Lauf 1: verbindlicher Plan aller 15 Felder mit bisheriger Wahl und anstehender Entscheidung; Suchaufträge entfallen (Material-Schema 0.5, das Template bildet sie aus den Merkmalen des Weges); Optionen als Handlungen ohne Merkmalswort; Lesestufen auch bei Optionen verschieden; Fundstücke als 14 verschiedene Gegenstände; Brief „bald“, nicht „heute“; Absendetext in Fridos Ich-Form; kein Ersatz-Piktogramm mit anderer Bedeutung; Wortbilder in gleicher Wortform im Blatt-Text. |
+| v0.3 | 18.10.2026 | Folge aus dem Funktionstest der Seite mit Lauf 3: Zeitpunkt des Fundstücks festgelegt (es wird im Text des folgenden Abschnitts entdeckt); das Template zeigt seither erst diesen Text, dann das Fundstück. Lauf 3 entspricht dem bereits. |
