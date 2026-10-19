@@ -82,7 +82,7 @@ Das Programmprofil bildet das Bibliotheksformular ab. Stufe 1 füllt es aus den 
 | `schema_version` | – | ja | – | `"0.4"` |
 | `programm` | – | ja | – | ID = Dateiname; Kleinbuchstaben, Ziffern, Bindestrich, max. 60 |
 | `quellen` | 1.1, 1.2 | nein | nein | `{"dokumente": [Dateinamen], "webseiten": [http(s)-Adressen]}` |
-| `findet_in_bibliothek_statt` | Voraussetzung | ja | ja | true, false oder null; false = Programm ausgeschlossen (Grundvoraussetzung: Durchführung in der Bibliothek) |
+| `findet_in_bibliothek_statt` | 0.1 | ja | ja | true, false oder null; false = Programm ausgeschlossen (Grundvoraussetzung: Durchführung in der Bibliothek) |
 | `bibliothek` | 2.1 | ja | ja | Text, max. 120 Zeichen |
 | `titel` | 2.2 | ja | ja | Text, max. 120 Zeichen |
 | `worum_geht_es` | 2.3 | ja | ja | Text, max. 600 Zeichen |
@@ -100,7 +100,7 @@ Das Programmprofil bildet das Bibliotheksformular ab. Stufe 1 füllt es aus den 
 
 **Prüfung:** Werkzeug `programm04.py`. Nach Stufe 1 (Schalter `--vorbefuellt`) sind fehlende Pflichtangaben eine Warnung („von der Bibliothek zu ergänzen“), vor Stufe 2 ein Fehler. `findet_in_bibliothek_statt: false` ist immer ein Fehler (Programm ausgeschlossen), ebenso ein `hinweis` „Quelltext fehlt“. Belege dürfen nur für vorbefüllbare Felder stehen (sonst Fehler); fehlt einer vorbefüllten Angabe der Beleg oder ist ein Beleg länger als 150 Zeichen, warnt die Prüfung. Mit `--quelle QUELLTEXT.txt` prüft sie zusätzlich, ob jeder Beleg wörtlich im Quelltext steht (Leerraum und Anführungszeichen werden angeglichen); ein nicht gefundener Beleg ist ein Fehler. Ob ein Beleg die Angabe inhaltlich trägt, prüft das Werkzeug nicht; das bleibt redaktionelle Prüfung.
 
-**Voraussetzungen (gesetzt, nicht abgefragt):** Das Programm findet in der Bibliothek statt, und die Klasse hat Stöberzeit. Deshalb ist „stöbern“ keine wählbare Tätigkeit (Formularoption am 17.10.2026 gestrichen); steht `stoebern` im Profil, ist das ein Fehler. Prüfprotokoll der Testläufe: `prompts/testlaeufe_system_1.md`.
+**Voraussetzungen:** Das Programm findet in der Bibliothek statt (Formularfeld 0.1, Bestätigung), und die Klasse hat Stöberzeit (gesetzt, nicht abgefragt). Deshalb ist „stöbern“ keine wählbare Tätigkeit (Formularoption am 17.10.2026 gestrichen); steht `stoebern` im Profil, ist das ein Fehler. Prüfprotokoll der Testläufe: `prompts/testlaeufe_system_1.md`.
 
 **Beispiel** (`programme/straubing-bibliotheksdetektive.json`): Stand nach Stufe 1 (Lauf 4) und redaktioneller Korrektur; `orte`, `ausleihe` und `foto` sind für den Test gesetzte Annahmen (Foto: Platzhalterbild). Korrigiert gegenüber der Modellausgabe: `bibliothek`, `titel`, `buch_oder_thema`, `taetigkeiten` (ohne `zuhoeren` und `stoebern`), `taetigkeiten_weiteres`, `orte` (statt „Salzstadel“).
 

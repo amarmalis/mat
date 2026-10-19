@@ -8,9 +8,10 @@ Stufe 1 (LLM-Aufruf 1, system_1 v0.3) füllt es aus den Quellen vor; nicht
 gefundene Angaben stehen als null. Vor Stufe 2 prüft die Bibliothek und
 ergänzt; erst dann dürfen Pflichtfelder nicht mehr null sein.
 
-Voraussetzungen (nicht im Profil abgefragt, sondern gesetzt):
-- Das Programm findet in der Bibliothek statt (findet_in_bibliothek_statt).
-- Die Klasse hat Stöberzeit. Deshalb ist "stöbern" keine wählbare Tätigkeit
+Voraussetzungen:
+- Das Programm findet in der Bibliothek statt (findet_in_bibliothek_statt,
+  Formularfeld 0.1, Bestätigung).
+- Die Klasse hat Stöberzeit (gesetzt, nicht abgefragt). Deshalb ist "stöbern" keine wählbare Tätigkeit
   (Formularoption am 17.10.2026 gestrichen).
 
 Aufruf aus dem Hauptordner des Repos:
@@ -35,7 +36,7 @@ AUSLEIHE = {
 # Feld -> (Formularfeld, Pflicht, von Stufe 1 vorbefüllbar)
 FELDER = {
     "quellen":                    ("1.1/1.2", False, False),
-    "findet_in_bibliothek_statt": ("Voraussetzung", True, True),
+    "findet_in_bibliothek_statt": ("0.1", True, True),
     "bibliothek":                 ("2.1", True, True),
     "titel":                      ("2.2", True, True),
     "worum_geht_es":              ("2.3", True, True),
