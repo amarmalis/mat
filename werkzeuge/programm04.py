@@ -1,7 +1,10 @@
-"""Programmprofil (Schema 0.4): Prüfung und Beispiel.
+"""Programmprofil (Schema 0.4): Prüfung.
+
+Felder und Regeln: docs/Datenmodell_Programm_Lerngruppe_Material.md,
+Abschnitt Programmprofil-Datei.
 
 Das Programmprofil bildet das Bibliotheksformular ab (Stand 17.10.2026).
-Stufe 1 (LLM-Aufruf 1, system_1 v0.2) füllt es aus den Quellen vor; nicht
+Stufe 1 (LLM-Aufruf 1, system_1 v0.3) füllt es aus den Quellen vor; nicht
 gefundene Angaben stehen als null. Vor Stufe 2 prüft die Bibliothek und
 ergänzt; erst dann dürfen Pflichtfelder nicht mehr null sein.
 
@@ -10,7 +13,8 @@ Voraussetzungen (nicht im Profil abgefragt, sondern gesetzt):
 - Die Klasse hat Stöberzeit. Deshalb ist "stöbern" keine wählbare Tätigkeit
   (Formularoption am 17.10.2026 gestrichen).
 
-Aufruf: python3 programm04.py DATEI [--vorbefuellt] [--quelle QUELLTEXT.txt]
+Aufruf aus dem Hauptordner des Repos:
+  python3 werkzeuge/programm04.py programme/<programm-id>.json [--vorbefuellt] [--quelle QUELLTEXT.txt]
   --vorbefuellt: Stand nach Stufe 1; leere Pflichtfelder sind dann Warnungen.
   --quelle:      Text der Quellen; jeder Beleg muss darin wörtlich stehen.
 """
@@ -151,29 +155,6 @@ def validate_programm(p, vorbefuellt=False, quelltext=None):
     return res
 
 
-BEISPIEL = {
-    "schema_version": "0.4",
-    "programm": "straubing-waldbewohner",
-    "hinweis": "Fiktive Testdaten (Annahmen). Das reale Programm findet in der Schule statt und ist damit ausgeschlossen; wird durch ein Referenzprogramm ersetzt.",
-    "quellen": {"dokumente": [], "webseiten": []},
-    "findet_in_bibliothek_statt": True,
-    "bibliothek": "Stadtbibliothek Straubing",
-    "titel": "Auf den Spuren der Waldbewohner",
-    "worum_geht_es": "Die Klasse geht in der Kinderbibliothek auf Spurensuche nach Waldtieren: Sie liest Tierspuren, hört Tierstimmen und lernt Bücher über den Wald kennen.",
-    "buch_oder_thema": "Thema Wald und Waldtiere",
-    "taetigkeiten": ["zuhoeren", "erkunden"],
-    "taetigkeiten_weiteres": None,
-    "orte": ["Lesetreppe", "Bilderbuchecke", "Lesehöhle"],
-    "ausleihe": "klassenausweis",
-    "mitbringen": None,
-    "foto": {
-        "datei": "bilder/lesehoehle.svg",
-        "beschreibung": "Gemütliche Lesehöhle mit Kissen",
-        "veroeffentlichen_erlaubt": True,
-        "keine_personen": True,
-    },
-    "herkunft": {"vorbefuellt_von": None, "geprueft_von": None, "geprueft_am": None},
-}
 
 if __name__ == "__main__":
     p = json.load(open(sys.argv[1], encoding="utf-8"))
