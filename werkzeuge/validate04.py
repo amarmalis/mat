@@ -19,7 +19,7 @@ import re
 KNOTEN_IDS = ["S", "A", "B", "AA", "AB", "BA", "BB"]
 ENDEN_IDS = ["AAA", "AAB", "ABA", "ABB", "BAA", "BAB", "BBA", "BBB"]
 STUFEN = ["stufe1", "stufe2", "stufe3"]
-LIM_TEXT = {"stufe1": 80, "stufe2": 150, "stufe3": 250}
+LIM_TEXT = {"stufe1": 120, "stufe2": 220, "stufe3": 350}
 LIM_AUFTRAG = {"stufe1": 80, "stufe2": 120, "stufe3": 160}
 LIM_LABEL = 40
 LIM_FUND = 25
