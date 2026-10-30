@@ -1,7 +1,7 @@
 {
   "schema_version": "0.4",
   "programm": "straubing-bibliotheksdetektive",
-  "hinweis": "Stand nach Stufe 1 (system_1 v0.2, Lauf 4) und redaktioneller Korrektur. orte, ausleihe und foto sind für den Test gesetzte Annahmen, keine Angaben der Bibliothek; das Foto ist ein Platzhalterbild.",
+  "hinweis": "Stand nach Stufe 1 (system_1 v0.2, Lauf 4) und redaktioneller Korrektur. orte und foto sind für den Test gesetzte Annahmen, keine Angaben der Bibliothek; das Foto ist ein Platzhalterbild. ausleihe am 30.10.2026 von „klassenausweis“ (Annahme) auf null gesetzt, weil von der Bibliothek nicht bestätigt.",
   "quellen": {
     "dokumente": [
       "Bibliotheksdetektive.pdf"
@@ -23,7 +23,7 @@
     "Sachbuchregale",
     "Ausleihtheke"
   ],
-  "ausleihe": "klassenausweis",
+  "ausleihe": null,
   "mitbringen": null,
   "foto": {
     "datei": "bilder/bilderbuchecke.svg",

@@ -2,9 +2,11 @@
 
 Oct 30, 2026 · @Anne
 
-Das Datenmodell legt drei Datenstrukturen des Prototyps fest: das Programmprofil (Bibliotheksformular als JSON, Schema 0.4), das Lerngruppenprofil (Lehrkraft-Formular als JSON, Schema 0.4) und das Material (Ausgabe von LLM-Aufruf 2, **Schema 0.6**). Grundlage ist das Konzept „Vorbereitungsmaterial (Variante 5+1)“ vom 30.10.2026. Die Fassung für Schema 0.5 (verzweigte Geschichte) liegt als `docs/Datenmodell_Schema_0.5.md` im Repo.
+Das Datenmodell legt drei Datenstrukturen des Prototyps fest: das Programmprofil (Bibliotheksformular als JSON, Schema 0.4), das Lerngruppenprofil (Lehrkraft-Formular als JSON, Schema 0.4) und das Material (Ausgabe von LLM-Aufruf 2, **Schema 0.7**). Grundlage ist das Konzept „Vorbereitungsmaterial (Variante 5+1)“ vom 30.10.2026. Frühere Fassungen liegen als `docs/Datenmodell_Schema_0.5.md` (verzweigte Geschichte) und `docs/Datenmodell_Schema_0.6.md` (lineare Geschichte mit 4 Abschnitten) im Repo.
 
 **Material-Schema 0.6 (30.10.2026):** Die verzweigte Geschichte (7 Knoten, 8 Enden, Optionen, Fundstücke) entfällt. Neu sind eine lineare Geschichte mit 4 Abschnitten, der Rahmen des Antwortbriefs und Übersetzungen der Geschichte in die Familiensprachen. Teamnamen und Absendetext entfallen. Grund: Läufe 4 und 5 von System Prompt 2 (Befunde 6 und 7 im Testprotokoll).
+
+**Material-Schema 0.7 (30.10.2026):** 3 statt 4 Abschnitte (der Abschnitt „Hinweis“ mit Rätsel entfällt); `plan.hinweis` entfällt, `plan.motiv` ist Pflicht. Grund: Läufe 6 und 7 (Befunde 8 und 9 im Testprotokoll).
 
 ## Dateien
 
@@ -70,11 +72,11 @@ Unverändert Schema 0.4 (Felder, Pflichtangaben, Belege und Prüfung mit `progra
 | Feld | Bedeutung in 5+1 |
 | --- | --- |
 | `worum_geht_es`, `buch_oder_thema`, `orte` | Grundlage für Brief, Geschichte und Rahmen des Antwortbriefs; aus ihnen bestimmt das Modell die Kulisse und ob das Programm eine Auflösung beim Besuch bietet |
-| `ausleihe` | `klassenausweis` (über die Lehrkraft mit Schulausweis), `eigener_ausweis` (Kinder einzeln) oder `nein`. Voraussetzung des Konzepts ist eine Ausleihe; `nein` wird künftig als Warnung gemeldet. |
+| `ausleihe` | `klassenausweis` (über die Lehrkraft mit Schulausweis), `eigener_ausweis` (Kinder einzeln), `nein` oder `null` (keine Angabe). Ein Wert außer `null` setzt voraus, dass die Bibliothek ihn in Stufe 1 bestätigt hat; das Material verspricht eine Ausleihe nur bei `klassenausweis` oder `eigener_ausweis`. Voraussetzung des Konzepts ist eine Ausleihe; `nein` wird künftig als Warnung gemeldet, `null` meldet `programm04.py` als fehlende Pflichtangabe. Im Testprofil `straubing-bibliotheksdetektive` ist der Wert seit 30.10.2026 `null`, weil die Bibliothek ihn nicht bestätigt hat. |
 
 Weiterhin gesetzt, nicht abgefragt: Das Programm findet in der Bibliothek statt, und die Klasse hat Zeit zum Suchen oder Stöbern. Die Mailadresse der Bibliothek kommt in der echten Anwendung aus BipaMap.NRW und steht nicht im Profil; im Prototyp zeigt die Website nur eine Vorschau der Mail.
 
-## Material-Datei (Schema 0.6)
+## Material-Datei (Schema 0.7)
 
 Aufbau wie bisher: `meta`, `rahmen` (setzt das System), `generiert` (erzeugt das Modell).
 
@@ -82,11 +84,11 @@ Aufbau wie bisher: `meta`, `rahmen` (setzt das System), `generiert` (erzeugt das
 
 | Feld | Inhalt | Regel |
 | --- | --- | --- |
-| `plan` | Planung der Geschichte, wird nicht angezeigt | `motiv` (ab system_2 v0.6), `ort`, `ausgangslage`, `hinweis`, `offene_frage` (je höchstens 200 Zeichen), `aufloesung_beim_besuch` (true/false) |
+| `plan` | Planung der Geschichte, wird nicht angezeigt | `motiv`, `ort`, `ausgangslage`, `offene_frage` (je höchstens 200 Zeichen), `aufloesung_beim_besuch` (true/false) |
 | `brief` | Fridos Brief an die Klasse | `text` höchstens 600 Zeichen, wird gemeinsam vorgelesen, keine Varianten; `quellen` = genutzte Felder |
 | `bibliotheksblick` | Foto der Bibliothek | genau `[{"bild": 0, "quellen": ["programmprofil.foto"]}]` |
-| `geschichte` | lineare Geschichte | `kulisse`, `kulisse_quellen`, `abschnitte` (genau 4) |
-| `uebersetzungen` | Geschichte in den Familiensprachen | je Sprachcode 4 Texte (Ableitungsregel 3); fehlt, wenn `sprachen` leer ist |
+| `geschichte` | lineare Geschichte | `kulisse`, `kulisse_quellen`, `abschnitte` (genau 3) |
+| `uebersetzungen` | Geschichte in den Familiensprachen | je Sprachcode 3 Texte (Ableitungsregel 3); fehlt, wenn `sprachen` leer ist |
 | `wortbilder` | Piktogramme zu Schlüsselwörtern | Pflicht nach Ableitungsregel 2 |
 | `antwortbrief` | Rahmen des Antwortbriefs der Klasse | siehe unten |
 | `suchkarte` | `kartenkopf` | Überschrift der Suchkarte mit Klassenname, höchstens 40 Zeichen |
@@ -94,7 +96,7 @@ Aufbau wie bisher: `meta`, `rahmen` (setzt das System), `generiert` (erzeugt das
 
 ### Geschichte
 
-`geschichte.abschnitte` ist eine Liste mit genau 4 Einträgen in fester Reihenfolge: 1 Aufbruch, 2 Ankunft, 3 Hinweis, 4 offenes Ende. Jeder Eintrag hat ein Variantenfeld `text`.
+`geschichte.abschnitte` ist eine Liste mit genau 3 Einträgen in fester Reihenfolge: 1 Aufbruch, 2 Ankunft, 3 offenes Ende. Jeder Eintrag hat ein Variantenfeld `text`.
 
 | Variante | Regel |
 | --- | --- |
@@ -103,11 +105,11 @@ Aufbau wie bisher: `meta`, `rahmen` (setzt das System), `generiert` (erzeugt das
 | `stufe3` (⭐⭐⭐) | höchstens 450 Zeichen |
 | `bild` | Bildfolge, 1–4 Einträge |
 
-Die Längen sind Setzungen (vier Abschnitte in etwa 10 Minuten Lesezeit); nach dem ersten Test prüfen. `kulisse` bleibt `programmwelt`, `thema` oder `allgemein` wie in 0.5.
+Die Längen sind Setzungen (drei Abschnitte in etwa 8 Minuten Lesezeit); nach dem ersten Test prüfen. `kulisse` bleibt `programmwelt`, `thema` oder `allgemein` wie in 0.5.
 
 ### Übersetzungen
 
-`uebersetzungen` ist ein Objekt: Schlüssel = Sprachcode aus `sprachen`, Wert = `{"stufe": "<übersetzte Stufe>", "abschnitte": [4 Texte]}`. Übersetzt wird die einfachste vorhandene Stufe (Ableitungsregel 3). Längengrenzen gelten als Warnung, weil Übersetzungen länger ausfallen können. Die Website zeigt die Übersetzung über den Knopf „Auch auf … lesen“ unter dem deutschen Text. Vermerk in `meta.hinweis` oder der Lehrkraftansicht: „maschinell übersetzt, nicht geprüft“.
+`uebersetzungen` ist ein Objekt: Schlüssel = Sprachcode aus `sprachen`, Wert = `{"stufe": "<übersetzte Stufe>", "abschnitte": [3 Texte]}`. Übersetzt wird die einfachste vorhandene Stufe (Ableitungsregel 3). Längengrenzen gelten als Warnung, weil Übersetzungen länger ausfallen können. Die Website zeigt die Übersetzung über den Knopf „Auch auf … lesen“ unter dem deutschen Text. Vermerk in `meta.hinweis` oder der Lehrkraftansicht: „maschinell übersetzt, nicht geprüft“.
 
 ### Antwortbrief
 
@@ -130,21 +132,21 @@ Unverändert gegenüber 0.5: Bild-Eintrag `{"picto", "wort", "suchwort"}`; `pict
 
 ### Meta
 
-`schema_version` = `"0.6"`, `lerngruppe`, `erzeugt_von`, `prompt_version` (`"system_2 v0.5"`), `erzeugt_am`, `hinweis`.
+`schema_version` = `"0.7"`, `lerngruppe`, `erzeugt_von`, `prompt_version` (`"system_2 v0.7"`), `erzeugt_am`, `hinweis`.
 
-### Entfallen gegenüber 0.5
+### Entfallen gegenüber 0.5 und 0.6
 
-`geschichte.knoten`, `geschichte.enden`, Optionen, Fundstücke, Symbole der Optionen, `teamnamen`, `absenden_text`, Sprachfassung als eigene Datei.
+`geschichte.knoten`, `geschichte.enden`, Optionen, Fundstücke, Symbole der Optionen, `teamnamen`, `absenden_text`, Sprachfassung als eigene Datei (0.6); Abschnitt „Hinweis“ und `plan.hinweis` (0.7). Der Rucksack als Sammelbehälter entfällt im Konzept; Frido überbringt nur den Antwortbrief.
 
 ### Beispiel (verkürzt)
 
 ```json
 {
-  "meta": {"schema_version": "0.6", "lerngruppe": "4713", "erzeugt_von": "<Modell>", "prompt_version": "system_2 v0.5", "erzeugt_am": "2026-10-30", "hinweis": null},
+  "meta": {"schema_version": "0.7", "lerngruppe": "4713", "erzeugt_von": "<Modell>", "prompt_version": "system_2 v0.7", "erzeugt_am": "2026-10-30", "hinweis": null},
   "rahmen": {"_herkunft": "P", "klasse": "3b", "bibliothek": "Stadtbibliothek Straubing", "programmtitel": "Bibliotheksdetektive", "bilder": [{"datei": "bilder/bilderbuchecke.svg", "beschreibung": "Bilderbuchecke in der Kinderbibliothek"}]},
   "generiert": {
     "_herkunft": "G",
-    "plan": {"motiv": "<…>", "ort": "Ausleihtheke", "ausgangslage": "<…>", "hinweis": "<…>", "offene_frage": "<…>", "aufloesung_beim_besuch": true},
+    "plan": {"motiv": "<…>", "ort": "Ausleihtheke", "ausgangslage": "<…>", "offene_frage": "<…>", "aufloesung_beim_besuch": true},
     "brief": {"text": "Hallo 3b! <…> euer Frido", "quellen": ["lerngruppe.klasse", "programmprofil.worum_geht_es"]},
     "bibliotheksblick": [{"bild": 0, "quellen": ["programmprofil.foto"]}],
     "geschichte": {
@@ -152,10 +154,10 @@ Unverändert gegenüber 0.5: Bild-Eintrag `{"picto", "wort", "suchwort"}`; `pict
       "kulisse_quellen": ["programmprofil.orte", "programmprofil.worum_geht_es"],
       "abschnitte": [
         {"text": {"stufe1": "<…>", "stufe2": "<…>", "stufe3": "<…>", "bild": [{"picto": 7055, "wort": "Biber"}]}},
-        {"text": {"…": "…"}}, {"text": {"…": "…"}}, {"text": {"…": "…"}}
+        {"text": {"…": "…"}}, {"text": {"…": "…"}}
       ]
     },
-    "uebersetzungen": {"uk": {"stufe": "stufe1", "abschnitte": ["<…>", "<…>", "<…>", "<…>"]}},
+    "uebersetzungen": {"uk": {"stufe": "stufe1", "abschnitte": ["<…>", "<…>", "<…>"]}},
     "wortbilder": [{"picto": 2450, "wort": "Buch"}],
     "antwortbrief": {"anrede": "Liebe Stadtbibliothek Straubing,", "einleitung": "<…>", "vor_vermutungen": "<…>", "vor_fragen": "<…>", "schluss": "<…>", "gruss": "Bis bald, eure 3b"},
     "suchkarte": {"kartenkopf": "Detektiv-Suchkarte der 3b"},
@@ -164,28 +166,28 @@ Unverändert gegenüber 0.5: Bild-Eintrag `{"picto", "wort", "suchwort"}`; `pict
 }
 ```
 
-## Prüfregeln (Schema 0.6)
+## Prüfregeln (Schema 0.7)
 
 Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen die Lehrkraftansicht (`index.html`) und `werkzeuge/validate04.py` (nach Anpassung).
 
 | Nr. | Regel | Bei Verstoß |
 | --- | --- | --- |
-| 1 | `meta.schema_version` ist `"0.6"` | Fehler |
+| 1 | `meta.schema_version` ist `"0.7"` | Fehler |
 | 2 | `meta.lerngruppe` stimmt mit der geladenen Lerngruppe überein | Warnung |
 | 3 | Rahmendaten vollständig; jedes Bild hat Datei und Beschreibung | Fehler |
 | 4 | Brief vorhanden, höchstens 600 Zeichen | Fehler |
 | 5 | Blick in die Bibliothek: genau 1 Bild | Fehler |
-| 6 | `plan` vollständig, `aufloesung_beim_besuch` ist true oder false | Fehler |
-| 7 | Genau 4 Abschnitte | Fehler |
+| 6 | `plan` vollständig (mit `motiv`), `aufloesung_beim_besuch` ist true oder false | Fehler |
+| 7 | Genau 3 Abschnitte | Fehler |
 | 8 | Jedes Variantenfeld enthält genau die Varianten aus Ableitungsregel 1 | Fehler |
 | 9 | Längengrenzen der Abschnitte eingehalten | Fehler |
 | 10 | Bildfolgen: 1–4 Einträge; Bild-Eintrag nach den Regeln aus 0.5 (Wort, Liste, `suchwort`) | Fehler bzw. Warnung bei `picto: null` mit `suchwort` |
 | 11 | `wortbilder` vorhanden, wenn Ableitungsregel 2 greift; jedes Wort steht in einem `stufe1`-Text | Fehler bzw. Warnung |
-| 12 | Je Sprachcode der Lerngruppe eine Übersetzung mit 4 Texten; keine Übersetzung ohne Sprachcode | Fehler |
+| 12 | Je Sprachcode der Lerngruppe eine Übersetzung mit 3 Texten; keine Übersetzung ohne Sprachcode | Fehler |
 | 13 | Übersetzungen innerhalb der Längengrenzen der übersetzten Stufe | Warnung |
 | 14 | `antwortbrief`: alle 6 Felder vorhanden, Längengrenzen eingehalten | Fehler |
 | 15 | `suchkarte.kartenkopf` höchstens 40 Zeichen; `luecken` vorhanden | Fehler |
-| 16 | Keine Felder aus Schema 0.5 (`knoten`, `enden`, `teamnamen`, `absenden_text`) | Fehler |
+| 16 | Keine Felder aus Schema 0.5 (`knoten`, `enden`, `teamnamen`, `absenden_text`) oder 0.6 (`plan.hinweis`) | Fehler |
 | 17 | Tablets mindestens so viele wie Varianten | Warnung (organisatorisch) |
 
 **Ohne geladene Lerngruppe** (JSON nur eingefügt): Regel 8 prüft, dass alle Variantenfelder dieselben Varianten enthalten; die Regeln 2, 11 (Pflicht), 12 und 17 entfallen.
@@ -199,4 +201,4 @@ Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen d
 
 ## Umsetzungsstand
 
-Stand 30.10.2026: Schema 0.6 ist spezifiziert, aber noch nicht umgesetzt. `index.html` und `validate04.py` prüfen und zeigen weiterhin Schema 0.5.
+Stand 30.10.2026: Schema 0.7 ist spezifiziert, aber noch nicht umgesetzt. `index.html` und `validate04.py` prüfen und zeigen weiterhin Schema 0.5.
