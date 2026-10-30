@@ -82,7 +82,7 @@ Aufbau wie bisher: `meta`, `rahmen` (setzt das System), `generiert` (erzeugt das
 
 | Feld | Inhalt | Regel |
 | --- | --- | --- |
-| `plan` | Planung der Geschichte, wird nicht angezeigt | `ort`, `ausgangslage`, `hinweis`, `offene_frage` (je höchstens 200 Zeichen), `aufloesung_beim_besuch` (true/false) |
+| `plan` | Planung der Geschichte, wird nicht angezeigt | `motiv` (ab system_2 v0.6), `ort`, `ausgangslage`, `hinweis`, `offene_frage` (je höchstens 200 Zeichen), `aufloesung_beim_besuch` (true/false) |
 | `brief` | Fridos Brief an die Klasse | `text` höchstens 600 Zeichen, wird gemeinsam vorgelesen, keine Varianten; `quellen` = genutzte Felder |
 | `bibliotheksblick` | Foto der Bibliothek | genau `[{"bild": 0, "quellen": ["programmprofil.foto"]}]` |
 | `geschichte` | lineare Geschichte | `kulisse`, `kulisse_quellen`, `abschnitte` (genau 4) |
@@ -144,7 +144,7 @@ Unverändert gegenüber 0.5: Bild-Eintrag `{"picto", "wort", "suchwort"}`; `pict
   "rahmen": {"_herkunft": "P", "klasse": "3b", "bibliothek": "Stadtbibliothek Straubing", "programmtitel": "Bibliotheksdetektive", "bilder": [{"datei": "bilder/bilderbuchecke.svg", "beschreibung": "Bilderbuchecke in der Kinderbibliothek"}]},
   "generiert": {
     "_herkunft": "G",
-    "plan": {"ort": "Ausleihtheke", "ausgangslage": "<…>", "hinweis": "<…>", "offene_frage": "<…>", "aufloesung_beim_besuch": true},
+    "plan": {"motiv": "<…>", "ort": "Ausleihtheke", "ausgangslage": "<…>", "hinweis": "<…>", "offene_frage": "<…>", "aufloesung_beim_besuch": true},
     "brief": {"text": "Hallo 3b! <…> euer Frido", "quellen": ["lerngruppe.klasse", "programmprofil.worum_geht_es"]},
     "bibliotheksblick": [{"bild": 0, "quellen": ["programmprofil.foto"]}],
     "geschichte": {
