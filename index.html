@@ -570,19 +570,16 @@ function renderTablet(app, stufe){
     app.append(wrap); return;
   }
 
-  if(T.fund){
-    const f = T.fund;
-    // Erst den Text des erreichten Abschnitts zeigen: Dort entdecken Frido und die Kinder das Fundstück.
-    const ziel = T.path.length<3 ? g.knoten[T.path] : g.enden[T.path];
-    const zielText = ziel && ziel.text ? ziel.text[key] : "";
-    if(zielText) wrap.append(el("div",{class:"story"}, el("p",{}, zielText)), el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>zielText)));
+  // Ein Bildschirm je Abschnitt: Text (dort wird das Fundstück entdeckt) → Fundstück einpacken → dann erst die Wahl bzw. der Suchauftrag.
+  const pending = T.fund;
+  function foundBox(abschnittText){
+    const f = pending;
     const big = el("span",{class:"big","aria-hidden":"true"}, f.symbol||"🎁");
-    wrap.append(el("div",{class:"found"}, big,
+    if(!reduceMotion() && big.animate) setTimeout(()=>big.animate([{opacity:0},{opacity:1}],{duration:500,easing:"ease-out"}),0);
+    if(stufe===1) setTimeout(()=>speak((abschnittText? abschnittText+" " : "")+"Gefunden: "+f.name),50);
+    return el("div",{class:"found"}, big,
       el("p",{}, "Gefunden: "+f.name),
-      el("button",{class:"btn primary",type:"button",onclick:()=>{ T.funde.push(f); T.fund=null; render(); if(stufe===1) speakNow(); }},"In euren Rucksack packen")));
-    if(!reduceMotion() && big.animate) big.animate([{opacity:0},{opacity:1}],{duration:500,easing:"ease-out"});
-    if(stufe===1) setTimeout(()=>speak("Gefunden: "+f.name),50);
-    app.append(wrap); return;
+      el("button",{class:"btn primary",type:"button",onclick:()=>{ T.funde.push(f); T.fund=null; render(); if(stufe===1 && T.path.length===3) speakNow(); }},"In euren Rucksack packen"));
   }
 
   const depth = T.path.length;
@@ -597,7 +594,9 @@ function renderTablet(app, stufe){
     const k = g.knoten[id];
     const text = k.text[key];
     wrap.append(el("div",{class:"story"}, el("p",{}, text)), el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>text)));
-    wrap.append(el("p",{class:"talk"},"Besprecht: Was wollt ihr tun?"));
+    if(pending){ wrap.append(foundBox(text)); }
+    else wrap.append(el("p",{class:"talk"},"Besprecht: Was wollt ihr tun?"));
+    if(!pending)
     wrap.append(el("div",{class:"choices"}, ["A","B"].map((c,i)=>{
       const o = k.optionen[i];
       return el("button",{class:"choice "+c.toLowerCase(),type:"button",onclick:()=>{ T.path+=c; T.fund = o.fund || {name:"Fundstück",symbol:"🎁"}; render(); }},
@@ -607,6 +606,10 @@ function renderTablet(app, stufe){
   }else{
     const e = g.enden[T.path];
     const m = merkmale(T.path);
+    if(pending){
+      wrap.append(el("div",{class:"story"}, el("p",{}, e.text[key])), el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>e.text[key])));
+      wrap.append(foundBox(e.text[key]));
+    }else{
     wrap.append(el("div",{class:"story"}, el("p",{}, e.text[key])), el("div",{class:"row"}, readBtn(()=>e.text[key]+" "+suchauftrag(T.path, Number(key.slice(5))))));
     wrap.append(el("section",{class:"task"}, el("h2",{},"Euer Suchauftrag"), el("p",{}, suchauftrag(T.path, Number(key.slice(5))))));
     wrap.append(el("p",{class:"talk"},"Das macht ihr jetzt mit eurer Suchkarte:"));
@@ -615,6 +618,7 @@ function renderTablet(app, stufe){
       el("li",{}, "Kreuzt euren Suchauftrag an:", el("div",{class:"result-pics"}, m.map(x=>el("div",{}, picNode(x,"pm"), x.label)))),
       el("li",{}, VORHERSAGE)));
     wrap.append(el("p",{class:"muted"},"Zeigt eure Suchkarte dann eurer Lehrkraft. Euer Suchauftrag kommt in "+FIGUR+"s Rucksack."));
+    }
   }
   wrap.append(el("div",{class:"row",style:"margin-top:1.2rem"},
     el("button",{class:"btn",type:"button",disabled:T.path.length===0,onclick:()=>{ T.path=T.path.slice(0,-1); T.funde=T.funde.slice(0,T.path.length); T.fund=null; render(); }},"Einen Schritt zurück"),
