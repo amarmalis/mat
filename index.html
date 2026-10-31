@@ -201,8 +201,9 @@ input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);pad
 .card .sterne{display:flex;gap:2mm;margin-top:.5mm}
 .card .sterne svg{width:10.5mm;height:10.5mm}
 .card .g9{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:13mm;gap:1.4mm}
-.card .g9 > div{display:flex;align-items:center;gap:1.2mm;border:1px solid #888;border-radius:1.5mm;padding:.6mm 1.2mm;font-size:8.4pt;line-height:1.1;overflow:hidden;word-break:normal;hyphens:auto}
-.card .g9 .sym{font-size:12pt}
+.card .g9 > div{display:flex;align-items:center;gap:.9mm;border:1px solid #888;border-radius:1.5mm;padding:.6mm 1.4mm .6mm 1.2mm;font-size:8.1pt;line-height:1.1;overflow:hidden;word-break:normal;hyphens:auto}
+.card .g9 .sym{font-size:11pt}
+.card .g9 .t{min-width:0;hyphens:auto;-webkit-hyphens:auto}
 .card .g9 > div.w{grid-column:1 / -1}
 .card .g9 .l{flex:1;align-self:flex-end;border-bottom:1px solid #000;height:4mm;margin:0 1mm 1.6mm}
 .card .zeile3{display:flex;align-items:center;gap:4mm}
@@ -745,7 +746,7 @@ function karte(){
     el("div",{class:"weiter-k"}, pfeilSvg(), el("span",{}, K.thema+" ", el("span",{class:"klein"},K.thema_hinweis))),
     el("div",{class:"g9"}, (IV.thema.listen[k]||[]).map(th=> th.weitere
       ? el("div",{class:"w"}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label+":", el("span",{class:"l"}))
-      : el("div",{}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label)))))));
+      : el("div",{}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), el("span",{class:"t"},th.label))))))));
   c.append(el("div",{class:"zeile3"}, el("h3",{},K.format),
     el("div",{class:"opts"}, Object.values(IV.format.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), el("img",{src:o.bild,alt:""}), o.kurz)))));
   c.append(el("div",{class:"fund"}, el("span",{},K.fund), el("span",{class:"l"}), el("span",{class:"l voll"})));
