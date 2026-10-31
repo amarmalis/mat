@@ -10,30 +10,31 @@
 @font-face{font-family:"Source Sans 3";src:url("assets/fonts/source-sans-3-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
 :root{
   --paper:#F5F8F2; --surface:#FFFFFF; --ink:#1F2A1F; --muted:#56665A; --line:#D5DDD0;
-  --moss:#3E6B48; --moss-ink:#FFFFFF; --bark:#6B4E31; --sun:#F4D58D;
+  --moss:#3E6B48; --moss-ink:#FFFFFF; --sun:#F4D58D;
   --opt-a:#F6E3A1; --opt-a-line:#D9B94A; --opt-b:#CFE3D1; --opt-b-line:#7FAE88;
   --ok:#2E7D4F; --bad:#B23A3A; --warn:#8A5A00; --star:#E0A100;
   --radius-lg:22px; --radius-sm:10px;
+  --col:940px;
   --font:"Source Sans 3","Verdana","Tahoma",system-ui,sans-serif;
   box-sizing:border-box;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --paper:#141A15; --surface:#1C241D; --ink:#E8EFE6; --muted:#A6B5A8; --line:#2F3A30;
-    --moss:#8CC09A; --moss-ink:#102014; --bark:#C9A27A; --sun:#6B5A28;
+    --moss:#8CC09A; --moss-ink:#102014; --sun:#6B5A28;
     --opt-a:#4A3F1C; --opt-a-line:#9C8436; --opt-b:#21392A; --opt-b-line:#4E7C5A;
     --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A; --star:#F2C14E;
   }
 }
 :root[data-theme="dark"]{
   --paper:#141A15; --surface:#1C241D; --ink:#E8EFE6; --muted:#A6B5A8; --line:#2F3A30;
-  --moss:#8CC09A; --moss-ink:#102014; --bark:#C9A27A; --sun:#6B5A28;
+  --moss:#8CC09A; --moss-ink:#102014; --sun:#6B5A28;
   --opt-a:#4A3F1C; --opt-a-line:#9C8436; --opt-b:#21392A; --opt-b-line:#4E7C5A;
   --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A; --star:#F2C14E;
 }
 *,*::before,*::after{box-sizing:inherit}
 html{height:100%}
-body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.5;
+body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:19px;line-height:1.5;
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 button,input,textarea,select{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--moss);outline-offset:3px}
@@ -46,52 +47,57 @@ body.kid .topnav,body.kid .lizenz{display:none}
 .topnav a[aria-current="page"]{background:var(--moss);color:var(--moss-ink)}
 main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
 
-.btn{text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;border:2px solid var(--moss);background:var(--surface);color:var(--ink);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;font-weight:700}
+.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:2px solid var(--moss);background:var(--surface);color:var(--ink);padding:.6rem 1.3rem;border-radius:999px;cursor:pointer;font-weight:700}
 .btn.primary{background:var(--moss);color:var(--moss-ink)}
 .btn.small{padding:.25rem .7rem;font-size:.9rem}
+.btn.big{font-size:1.3rem;padding:.8rem 1.8rem}
 .btn:disabled{opacity:.4;cursor:default}
 .row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
 .muted{color:var(--muted)}
-.figure-badge{display:inline-grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;flex:none}
-.figure-badge.bild{background:none;width:3.6rem;height:3.6rem;overflow:hidden}
-.figure-badge.bild img{width:100%;height:100%;display:block}
 .stars{color:var(--star);letter-spacing:.05em;white-space:nowrap}
+.figure-badge{display:inline-grid;place-items:center;width:3.6rem;height:3.6rem;border-radius:50%;overflow:hidden;flex:none}
+.figure-badge img{width:100%;height:100%;display:block}
+
+/* Gemeinsame Spalte (Whiteboard und Tablet) */
+.col{max-width:var(--col);margin:0 auto}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.4rem}
+.nav .spacer{flex:1}
 
 /* Whiteboard */
-.wb-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
-.stepper{display:flex;gap:.5rem 1rem;flex-wrap:wrap;align-items:baseline}
-.stepper .phase{font-size:.85rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-.stepper button{border:none;background:none;padding:.3rem .2rem;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;font-size:1rem}
+.stepper{display:flex;gap:.3rem 1.4rem;flex-wrap:wrap;margin:0 0 1.4rem;border-bottom:1px solid var(--line)}
+.stepper button{border:none;background:none;padding:.4rem .1rem .55rem;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px;font-size:1.05rem}
 .stepper button[aria-current="step"]{color:var(--ink);border-color:var(--moss);font-weight:700}
-.stage{min-height:52vh}
-.stage-nav{display:flex;justify-content:space-between;margin-top:1.5rem}
-.letter{background:#FFFDF7;color:#1F2A1F;border:1px solid #D8CBB0;border-top:8px solid var(--moss);border-radius:6px;padding:2rem 2.2rem;max-width:62ch;box-shadow:0 1px 0 #E6DCC4,0 10px 24px rgba(40,50,30,.08)}
-.letter .head{display:flex;gap:1rem;align-items:center;margin-bottom:1rem}
-.letter p{font-size:1.6rem;line-height:1.55;margin:0 0 .6rem}
-.letter p:last-child{margin-bottom:0}
-.brief-bild{width:6.5rem;height:auto;flex:none}
+.letter{position:relative;background:#FFFDF7;color:#1F2A1F;border:1px solid #E2D6BC;border-radius:4px;padding:2.4rem 3rem 2.6rem;
+  box-shadow:0 1px 0 #EADFC8,0 2px 0 #FFFDF7,0 3px 0 #E2D6BC,0 14px 30px rgba(40,50,30,.10)}
+.letter .kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:1.6rem;padding-bottom:1rem;border-bottom:2px solid #EADFC8}
+.letter h2{font-size:2.4rem;line-height:1.15;margin:.2rem 0 0;color:#2F4F37}
+.marke{flex:none;width:7.5rem;padding:.35rem;border:3px dashed #B9A77E;border-radius:6px;background:#F3EBD8;transform:rotate(3deg)}
+.marke img{display:block;width:100%;height:auto}
+.letter p{font-size:1.7rem;line-height:1.55;margin:0 0 1rem}
+.letter .anrede{margin-bottom:1.2rem}
+.letter .gruss{font-style:italic;font-size:2rem;margin:1.6rem 0 0;color:#2F4F37}
 .lead{font-size:1.5rem;margin:0 0 1rem}
-.bubble{display:flex;gap:.8rem;align-items:center;background:var(--surface);border:2px solid var(--moss);border-radius:var(--radius-lg);padding:.9rem 1.2rem;font-size:1.4rem;margin:0 0 1rem}
-.peek{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1.2rem;align-items:start}
+.bubble{display:flex;gap:.8rem;align-items:center;background:var(--surface);border:2px solid var(--moss);border-radius:var(--radius-lg);padding:.9rem 1.2rem;font-size:1.45rem;margin:0 0 1rem}
+.peek{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1.2rem;align-items:start}
 .peek-img{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden}
 .peek-img img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--paper)}
 .peek-img .noimg{aspect-ratio:16/10;display:grid;place-items:center;font-size:5rem;background:var(--paper)}
 .collect{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem}
 .guess-form{display:flex;gap:.5rem}
-.guess-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:.6rem 1rem;background:var(--paper);font-size:1.2rem}
+.guess-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:.6rem 1rem;background:var(--paper);font-size:1.25rem}
 .plus-btn{width:2.9rem;height:2.9rem;border-radius:50%;border:2px solid var(--moss);background:var(--moss);color:var(--moss-ink);cursor:pointer;font-weight:700;font-size:1.5rem;line-height:1;flex:none}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem}
-.chip{display:inline-flex;align-items:center;gap:.3rem;background:var(--opt-b);border:1px solid var(--opt-b-line);border-radius:999px;padding:.25rem .4rem .25rem .9rem;font-size:1.2rem}
+.chip{display:inline-flex;align-items:center;gap:.3rem;background:var(--opt-b);border:1px solid var(--opt-b-line);border-radius:999px;padding:.25rem .4rem .25rem .9rem;font-size:1.25rem}
 .chip button{border:none;background:none;cursor:pointer;font-size:1.2rem;line-height:1;padding:.1rem .35rem;color:var(--muted)}
 .qr-box{display:grid;place-items:center;width:240px;height:240px;background:#fff;padding:10px;border-radius:var(--radius-sm);border:1px solid var(--line)}
 .qr-box img,.qr-box canvas{width:220px!important;height:220px!important}
 .qr-fallback{font-size:.75rem;word-break:break-all;color:#333}
 .split{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start}
-.todo{list-style:none;padding:0;margin:0 0 1rem;display:grid;gap:.5rem;counter-reset:todo}
-.todo li{counter-increment:todo;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem .9rem;font-size:1.3rem}
-.todo li::before{content:counter(todo) ". ";font-weight:700;color:var(--moss)}
+.steps{list-style:none;padding:0;margin:0 0 1rem;display:grid;gap:.6rem;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:.9rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.7rem 1rem;font-size:1.35rem}
+.steps li::before{content:counter(s);flex:none;display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:50%;background:var(--moss);color:var(--moss-ink);font-weight:700;font-size:1.2rem}
 .tip{background:var(--surface);border-left:4px solid var(--moss);padding:.7rem 1rem;margin:0 0 1rem;font-size:1.05rem}
-.brieffeld{width:100%;min-height:24rem;font-family:var(--font);font-size:1.35rem;line-height:1.5;border:1px solid #D8CBB0;border-top:8px solid var(--moss);border-radius:6px;padding:1.2rem 1.4rem;background:#FFFDF7;color:#1F2A1F}
+.brieffeld{width:100%;min-height:20rem;font-family:var(--font);font-size:1.4rem;line-height:1.5;border:1px solid #E2D6BC;border-radius:4px;padding:1.4rem 1.8rem;background:#FFFDF7;color:#1F2A1F;box-shadow:0 10px 24px rgba(40,50,30,.08)}
 .mail{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);margin-top:1rem;overflow:hidden}
 .mail dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;margin:0;padding:.8rem 1.1rem;border-bottom:1px solid var(--line);font-size:1rem}
 .mail dt{color:var(--muted)}
@@ -99,45 +105,51 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
 .mail pre{margin:0;padding:1rem 1.1rem;white-space:pre-wrap;font-family:var(--font);font-size:1rem}
 .mail .row{padding:.8rem 1.1rem;border-top:1px solid var(--line)}
 @keyframes paddle{0%{transform:translateX(-30px)}100%{transform:translateX(30px)}}
-.boot{width:16rem;height:auto;animation:paddle 2.4s ease-in-out infinite alternate}
+.boot{width:18rem;height:auto;animation:paddle 2.4s ease-in-out infinite alternate}
 
 /* Tablet */
-.tablet{max-width:760px;margin:0 auto}
-.tbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
-.level-tag{font-size:1.1rem;color:var(--muted);display:flex;align-items:center;gap:.6rem}
-.level-tag .stars{font-size:1.5rem}
-.progress{font-size:1rem;color:var(--muted)}
-.story{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.6rem 1.8rem;margin:.6rem 0 1rem}
-.story p{margin:0;font-size:1.5rem;line-height:1.6}
-.story .wb{font-weight:700;text-decoration:underline dotted var(--moss) 2px;text-underline-offset:4px}
-.story .wb img{height:1.6em;width:auto;vertical-align:middle;margin-left:.15em}
-.pictos{display:flex;gap:.7rem;flex-wrap:wrap;margin:0 0 1rem;padding:0;list-style:none}
-.pictos li{display:flex;flex-direction:column;align-items:center;gap:.2rem;background:var(--paper);border:2px solid var(--line);border-radius:var(--radius-sm);padding:.4rem .6rem;min-width:5.5rem;font-weight:700;font-size:1.05rem}
-.pictos img{width:4.5rem;height:4.5rem;object-fit:contain}
-.pictos li.nopic{justify-content:center;min-height:6.2rem}
-.uebers{margin-top:1rem;padding-top:1rem;border-top:2px dashed var(--line)}
-.uebers p{font-size:1.35rem}
-.talk{font-size:1.25rem;margin:.2rem 0 .8rem;font-weight:700}
-.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1rem 0}
-.choice{border-radius:var(--radius-lg);padding:1.1rem;cursor:pointer;border:3px solid var(--opt-b-line);background:var(--opt-b);display:flex;flex-direction:column;align-items:center;gap:.4rem;font-weight:700;font-size:1.3rem;color:var(--ink);text-align:center}
-.choice .pic{font-size:3rem;line-height:1}
-.choice img.pic{width:4.5rem;height:4.5rem;object-fit:contain}
-.choice .sub{font-weight:400;font-size:1.05rem;line-height:1.4}
-.choice.stufe{background:var(--surface);border-color:var(--line)}
-.choice.stufe .stars{font-size:2.6rem}
-.choice[aria-pressed="true"]{border-color:var(--moss);box-shadow:0 0 0 3px var(--moss) inset}
-.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1rem 0}
-.grid9 .choice{font-size:1.1rem;padding:.8rem .5rem;background:var(--surface);border-color:var(--line)}
-.grid9 .choice .pic{font-size:2.4rem}
-.ivtext{font-size:1.45rem;line-height:1.55;margin:.4rem 0 1rem}
-.ivtr{font-size:1.25rem;color:var(--muted);border-left:4px solid var(--line);padding-left:.8rem;margin:-.4rem 0 1rem}
-.auswahl{display:inline-flex;flex-wrap:wrap;gap:.3rem;vertical-align:middle}
-.auswahl span{background:var(--opt-a);border:2px solid var(--opt-a-line);border-radius:999px;padding:0 .7rem;font-weight:700}
-.runde{display:inline-block;background:var(--sun);border-radius:999px;padding:.1rem .8rem;font-size:1rem;font-weight:700;color:var(--ink)}
-.tnav{display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-top:1.2rem}
-.figure-hello{display:flex;gap:1rem;align-items:center}
-.figure-hello img{width:7rem;height:auto;flex:none}
-body.gross .story p,body.gross .ivtext{font-size:2rem}
+.tablet{--col:1000px}
+.tbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:2.6rem;margin-bottom:.8rem}
+.tbar .stars{font-size:1.9rem}
+.runde{display:inline-block;background:var(--sun);border-radius:999px;padding:.15rem .9rem;font-size:1.05rem;font-weight:700;color:var(--ink);margin-left:.8rem;vertical-align:middle}
+.tablet h1{font-size:2.3rem;line-height:1.2;margin:0 0 1.2rem}
+.card-k{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:2rem 2.2rem}
+.big-text{font-size:1.9rem;line-height:1.75;margin:0}
+.big-text .wb{font-weight:700;text-decoration:underline dotted var(--moss) 2px;text-underline-offset:5px}
+.big-text .wb img{height:1.5em;width:auto;vertical-align:middle;margin-left:.15em}
+.pictos{display:flex;gap:1rem;flex-wrap:wrap;margin:0 0 1.4rem;padding:0;list-style:none}
+.pictos li{display:flex;flex-direction:column;align-items:center;gap:.3rem;background:var(--paper);border:2px solid var(--line);border-radius:var(--radius-sm);padding:.6rem .8rem;min-width:7rem;font-weight:700;font-size:1.15rem}
+.pictos img{width:6rem;height:6rem;object-fit:contain}
+.uebers{margin-top:1.4rem;padding-top:1.2rem;border-top:2px dashed var(--line)}
+.uebers p{font-size:1.6rem;line-height:1.6;margin:0}
+.ivtr{font-size:1.4rem;color:var(--muted);border-left:4px solid var(--line);padding-left:.9rem;margin:-.6rem 0 1rem}
+.tsteps{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:1rem;counter-reset:t}
+.tsteps li{counter-increment:t;display:flex;gap:1.1rem;align-items:center;font-size:1.75rem;line-height:1.45}
+.tsteps li::before{content:counter(t);flex:none;display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--moss);color:var(--moss-ink);font-weight:700;font-size:1.6rem}
+.rollen{list-style:none;padding:0;margin:0;display:grid;gap:1.1rem}
+.rollen li{display:flex;gap:1.2rem;align-items:center;font-size:1.85rem;line-height:1.4}
+.rollen .sym{flex:none;display:grid;place-items:center;width:4.6rem;height:4.6rem;border-radius:50%;background:var(--opt-b);border:3px solid var(--opt-b-line);font-size:2.4rem}
+.hinweis{display:flex;gap:.7rem;align-items:center;background:var(--opt-a);border:2px solid var(--opt-a-line);border-radius:var(--radius-sm);padding:.6rem 1rem;font-size:1.35rem;font-weight:700;margin:0 0 1.2rem}
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.choice{border-radius:var(--radius-lg);padding:1.3rem 1.1rem;cursor:pointer;border:3px solid var(--line);background:var(--surface);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-weight:700;font-size:1.55rem;color:var(--ink);text-align:center}
+.choice .pic{font-size:3.6rem;line-height:1}
+.choice img.pic{width:6rem;height:6rem;object-fit:contain}
+.choice .sub{font-weight:400;font-size:1.3rem;line-height:1.4}
+.choice.stufe .stars{font-size:3.4rem;letter-spacing:.1em}
+.choice[aria-pressed="true"]{border-color:var(--moss);background:var(--opt-b);box-shadow:0 0 0 3px var(--moss) inset}
+.choice:disabled{opacity:.45;cursor:default}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.grid9 .choice{font-size:1.25rem;padding:1rem .6rem}
+.grid9 .choice .pic{font-size:3rem}
+.zahl{font-size:1.2rem;color:var(--muted);margin:.8rem 0 0}
+.auswahl{display:flex;flex-wrap:wrap;gap:1rem}
+.auswahl div{display:flex;flex-direction:column;align-items:center;gap:.4rem;min-width:9rem;background:var(--opt-a);border:3px solid var(--opt-a-line);border-radius:var(--radius-lg);padding:1rem 1.2rem;font-weight:700;font-size:1.35rem;text-align:center}
+.auswahl .pic{font-size:3.2rem;line-height:1}
+.auswahl img.pic{width:4.8rem;height:4.8rem;object-fit:contain}
+.aufgabe{display:flex;gap:1rem;align-items:center;margin-top:1.6rem;background:var(--sun);border-radius:var(--radius-lg);padding:1rem 1.4rem;font-size:1.8rem;font-weight:700;color:var(--ink)}
+.figure-hello{display:flex;gap:1.6rem;align-items:center}
+.figure-hello img{width:9rem;height:auto;flex:none}
+body.gross .big-text,body.gross .tsteps li,body.gross .rollen li{font-size:2.4rem}
 body.gross{--ink:#000;--surface:#fff;--paper:#fff;--line:#555}
 
 /* Lehrkraft */
@@ -157,9 +169,6 @@ body.gross{--ink:#000;--surface:#fff;--paper:#fff;--line:#555}
 .edit textarea{width:100%;min-height:4.5rem;font-family:var(--font);font-size:1rem;line-height:1.45;border:1px solid var(--line);border-radius:var(--radius-sm);padding:.5rem .6rem;background:var(--paper)}
 .edit.is-changed textarea{border-color:var(--warn);border-width:2px}
 .ro{background:var(--paper);border-radius:var(--radius-sm);padding:.5rem .7rem;font-size:.95rem;margin:.3rem 0 .8rem}
-.table-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:.95rem}
-th,td{border-bottom:1px solid var(--line);text-align:left;padding:.4rem .5rem;vertical-align:top}
 textarea.json{width:100%;min-height:14rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem;background:var(--paper)}
 input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);padding:.5rem;background:var(--paper)}
 .wide{width:100%}
@@ -168,37 +177,42 @@ input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);pad
 .phases{margin:0;padding-left:1.2rem}
 .phases li{margin:.25rem 0}
 
-/* Suchkarten (Druck: zwei Karten je A4-Hochformat) */
-.sheet{background:#fff;color:#1F2A1F;max-width:210mm;margin:0 auto 1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.12)}
-.card{height:148mm;padding:7mm 8mm 6mm;display:flex;flex-direction:column;gap:2.2mm;font-size:10pt;line-height:1.25;overflow:hidden}
-.card + .card{border-top:1.5px dashed #888;position:relative}
-.card + .card::before{content:"✂";position:absolute;top:-3.4mm;left:4mm;font-size:12pt;background:#fff;padding:0 1mm;color:#666}
+/* Lesefutter-Karten (Druck: zwei Karten je A4-Hochformat) */
+.sheet{background:#fff;color:#000;max-width:210mm;margin:0 auto 1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.card{height:148mm;padding:6mm 8mm 5mm;display:flex;flex-direction:column;gap:2mm;font-size:10pt;line-height:1.2;overflow:hidden;color:#000}
+.card + .card{border-top:1.5px dashed #777;position:relative}
+.card + .card::before{content:"✂";position:absolute;top:-3.4mm;left:4mm;font-size:12pt;background:#fff;padding:0 1mm;color:#555}
 .card .kopf{display:flex;align-items:center;gap:4mm}
-.card .kopf h2{font-size:14pt;margin:0;flex:1}
-.card .kopf img{width:13mm;height:auto}
+.card .kopf h2{font-size:15pt;margin:0;flex:1}
+.card .kopf img{height:15mm;width:auto}
+.card .stufe-k{text-align:center;font-size:9pt;font-weight:700}
 .card .name{display:flex;gap:2mm;align-items:flex-end;font-size:10.5pt}
-.card .name span{flex:1;border-bottom:1.2px solid #555;height:6mm}
-.card .zeile{display:grid;grid-template-columns:1fr 1fr;gap:6mm;align-items:start}
-.card h3{font-size:10.5pt;margin:0 0 1.2mm}
-.card .opts{display:flex;gap:2mm}
-.card .opt{display:flex;align-items:center;gap:2mm;border:1.2px solid #C9D2C4;border-radius:2mm;padding:1.6mm 2.4mm;flex:1;font-size:11pt}
-.card .opt .sym{font-size:15pt;line-height:1}
-.card .opt img{width:9mm;height:9mm;object-fit:contain}
-.sq{width:4.6mm;height:4.6mm;border:1.4px solid #1F2A1F;border-radius:.8mm;flex:none;display:inline-block}
-.card .sterne{display:flex;gap:2mm}
-.card .sterne svg{width:11mm;height:11mm}
-.card .themen{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
-.card .themen h4{font-size:9.5pt;margin:0 0 1mm;display:flex;align-items:center;gap:1.5mm}
-.card .g9{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2mm}
-.card .g9 > div{display:flex;align-items:center;gap:1.4mm;border:1px solid #D5DDD0;border-radius:1.5mm;padding:1mm 1.4mm;font-size:9pt;line-height:1.15;min-height:12.5mm}
-.card .g9 .sym{font-size:13pt}
-.card .g9 > div.w{flex-direction:column;align-items:stretch;justify-content:center;gap:1.6mm}
-.card .g9 .wk{display:flex;align-items:center;gap:1.4mm}
-.card .g9 .l{display:block;border-bottom:1px solid #555;height:3.5mm;margin:0 1mm}
-.card .hinweis{margin-top:auto;border-left:2mm solid #7FAE88;background:#F2F7F0;padding:1.6mm 2.4mm;font-size:9.5pt}
+.card .name span{flex:1;border-bottom:1.2px solid #000;height:6mm}
+.card h3{font-size:10.5pt;margin:0}
+.card .wahl{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.card .spalte{display:flex;flex-direction:column;gap:1.2mm}
+.card .opt{display:flex;align-items:center;gap:2mm;border:1.4px solid #000;border-radius:2mm;padding:1.4mm 2.4mm;font-size:11pt;font-weight:700}
+.card .opt .sym{font-size:14pt;line-height:1}
+.card .opt img{width:8mm;height:8mm;object-fit:contain}
+.card .weiter-k{display:flex;align-items:center;gap:2mm;font-size:9.5pt;font-weight:700;padding-left:2mm}
+.card .weiter-k .klein{font-weight:400}
+.card .pfeil{width:4.5mm;height:6mm;flex:none}
+.sq{width:4.4mm;height:4.4mm;border:1.4px solid #000;border-radius:.8mm;flex:none;display:inline-block}
+.card .sterne{display:flex;gap:2mm;margin-top:.5mm}
+.card .sterne svg{width:10.5mm;height:10.5mm}
+.card .g9{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:13mm;gap:1.4mm}
+.card .g9 > div{display:flex;align-items:center;gap:1.2mm;border:1px solid #888;border-radius:1.5mm;padding:.6mm 1.2mm;font-size:8.4pt;line-height:1.1;overflow:hidden;word-break:normal;hyphens:auto}
+.card .g9 .sym{font-size:12pt}
+.card .g9 > div.w{grid-column:1 / -1}
+.card .g9 .l{flex:1;align-self:flex-end;border-bottom:1px solid #000;height:4mm;margin:0 1mm 1.6mm}
+.card .zeile3{display:flex;align-items:center;gap:4mm}
+.card .zeile3 .opts{display:flex;gap:2mm;flex:1}
+.card .zeile3 .opt{flex:1;font-weight:400}
+.card .fund{margin-top:auto;display:grid;grid-template-columns:auto 1fr;column-gap:2mm;row-gap:3mm;align-items:end;font-size:10pt;font-weight:700}
+.card .fund .l{border-bottom:1.2px solid #000;height:5mm}
+.card .fund .l.voll{grid-column:1 / -1}
 @page{size:A4 portrait;margin:0}
 
-/* Bibliothek, Druck */
 .lizenz{font-size:.85rem;color:var(--muted);max-width:1100px;margin:0 auto;padding:0 1rem 2rem}
 .lizenz a{color:var(--muted)}
 @media print{
@@ -208,11 +222,14 @@ input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);pad
   .sheet{box-shadow:none;margin:0;page-break-after:always;break-after:page;width:210mm}
 }
 @media (max-width:760px){
-  .letter{padding:1.3rem}
-  .letter p,.lead{font-size:1.3rem}
-  .story p,.ivtext{font-size:1.3rem}
-  .story{padding:1.1rem 1.2rem}
-  .wb-head,.split,.peek{display:block}
+  .letter{padding:1.4rem}
+  .letter p{font-size:1.3rem}
+  .letter h2{font-size:1.7rem}
+  .marke{width:5rem}
+  .big-text,.tsteps li,.rollen li{font-size:1.4rem}
+  .tablet h1{font-size:1.7rem}
+  .card-k{padding:1.2rem}
+  .split,.peek{display:block}
   .qr-box{margin-bottom:1rem}
   .grid9{grid-template-columns:repeat(2,1fr)}
 }
@@ -224,7 +241,7 @@ input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);pad
   <span class="title">Material-Seite (Prototyp)</span>
   <a href="#klasse" data-view="klasse">Klasse (Whiteboard)</a>
   <a href="#tablet" data-view="tablet">Tablet</a>
-  <a href="#suchkarte" data-view="suchkarte">Suchkarten</a>
+  <a href="#suchkarte" data-view="suchkarte">Lesefutter-Karten</a>
   <a href="#lehrkraft" data-view="lehrkraft">Lehrkraft</a>
 </nav>
 <main id="app">Inhalte werden geladen …</main>
@@ -234,19 +251,17 @@ input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);pad
 // ===== Festes im Template =====
 const FIGUR = "Frido";
 const FIGUR_KOPF = "assets/biber/biber-kopf.svg";
-const FIGUR_BRIEF = "assets/biber/biber-winkt.svg";
+const FIGUR_WINKT = "assets/biber/biber-winkt.svg";
 const FIGUR_BOOT = "assets/biber/biber-unterwegs.svg";
-// In der Bildfassung steht das ARASAAC-Piktogramm „Biber“ für Frido; die Website zeigt dafür die Frido-Figur.
+const FIGUR_BUCH = "assets/biber/biber-buch.svg";
+// Das ARASAAC-Piktogramm „Biber“ steht für Frido; die Website zeigt dafür die Frido-Figur.
 const FIGUR_PICTO = 7055;
 const FRAGE_BIBLIOTHEK = "Was erwartet euch beim Besuch? Was vermutet ihr?";
 const STUFEN = {1:{sym:"⭐", name:"ein Stern"}, 2:{sym:"⭐⭐", name:"zwei Sterne"}, 3:{sym:"⭐⭐⭐", name:"drei Sterne"}};
-const ABSCHNITTE = ["Aufbruch","Ankunft","Offenes Ende"];
-const KULISSEN = ["programmwelt","thema","allgemein"];
 const LIM_TEXT = {stufe1:180, stufe2:300, stufe3:450};
-const LIM_BRIEF = 600, LIM_PLAN = 200, LIM_KOPF = 40, LIM_WORT = 15, LIM_SUCHWORT = 30, WORTBILDER_MAX = 20;
+const LIM_BRIEF = 400, LIM_WORT = 15, LIM_SUCHWORT = 30, WORTBILDER_MAX = 20;
 const LIM_AB = {anrede:80, einleitung:300, vor_vermutungen:120, vor_fragen:120, schluss:200, gruss:60};
 const AB_FELDER = ["anrede","einleitung","vor_vermutungen","vor_fragen","schluss","gruss"];
-const PLAN_FELDER = ["motiv","ort","ausgangslage","offene_frage"];
 const AB_LABEL = {anrede:"Anrede", einleitung:"Einleitung", vor_vermutungen:"Überleitung zu den Vermutungen", vor_fragen:"Überleitung zu den Fragen", schluss:"Schluss", gruss:"Gruß"};
 const SPRACHEN = {ar:["Arabisch","العربية"], bg:["Bulgarisch","Български"], en:["Englisch","English"], es:["Spanisch","Español"], fa:["Persisch","فارسی"], it:["Italienisch","Italiano"], pl:["Polnisch","Polski"], ro:["Rumänisch","Română"], ru:["Russisch","Русский"], tr:["Türkisch","Türkçe"], uk:["Ukrainisch","Українська"]};
 const RTL = ["ar","fa"];
@@ -287,7 +302,7 @@ async function ladeInterview(){
 async function pruefePictoDateien(){
   PICTO_DA = new Set();
   const ids = new Set();
-  try{ allBildEintraege(G()).forEach(e=>{ if(isInt(e.picto)) ids.add(e.picto); }); }catch(e){}
+  try{ allBildEintraege(G()).forEach(e=>{ if(isInt(e.picto) && e.picto!==FIGUR_PICTO) ids.add(e.picto); }); }catch(e){}
   await Promise.all([...ids].map(async id=>{
     try{ const r = await fetch("assets/pictos/"+id+".png",{method:"HEAD",cache:"no-store"}); if(r.ok) PICTO_DA.add(id); }catch(e){}
   }));
@@ -336,7 +351,7 @@ function speak(text, lang){
   try{
     if(!("speechSynthesis" in window)) return;
     speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text.replace(/[🎤💬⭐]/gu,"")); u.lang=lang||"de-DE"; u.rate=0.9;
+    const u = new SpeechSynthesisUtterance(String(text).replace(/[🎤💬⭐✏️🔁]/gu,"")); u.lang=lang||"de-DE"; u.rate=0.9;
     speechSynthesis.speak(u);
   }catch(e){}
 }
@@ -349,58 +364,67 @@ function qr(container, text, size){
     new QRCode(container,{text, width:size, height:size, correctLevel:QRCode.CorrectLevel.M});
   }catch(e){ container.append(el("span",{class:"qr-fallback"}, text)); }
 }
-function figBadge(){ return el("span",{class:"figure-badge bild","aria-hidden":"true"}, el("img",{src:FIGUR_KOPF,alt:""})); }
+function figBadge(){ return el("span",{class:"figure-badge","aria-hidden":"true"}, el("img",{src:FIGUR_KOPF,alt:""})); }
 function bild(i){ const b = R().bilder; return (Array.isArray(b) && Number.isInteger(i) && b[i]) ? b[i] : null; }
 function imgOrSymbol(i){
   const b = bild(i);
   return b ? el("img",{src:b.datei, alt:b.beschreibung||("Bild der "+R().bibliothek)}) : el("div",{class:"noimg","aria-hidden":"true"},"🏛️");
 }
-function paras(text){ return String(text||"").split(/\n+/).filter(Boolean).map(t=>el("p",{},t)); }
-function abschnitte(){ try{ const a = G().geschichte.abschnitte; return Array.isArray(a) ? a : []; }catch(e){ return []; } }
+function abschnitte(){ try{ const a = G().sachtext.abschnitte; return Array.isArray(a) ? a : []; }catch(e){ return []; } }
 function stufenListe(){
   const t = abschnitte()[0] && abschnitte()[0].text;
   return [1,2,3].filter(n=>isObj(t) && typeof t["stufe"+n]==="string");
 }
-function hatBild(){ const t = abschnitte()[0] && abschnitte()[0].text; return isObj(t) && Array.isArray(t.bild); }
 function spracheName(c){ return SPRACHEN[c] ? SPRACHEN[c][0] : c; }
 function spracheNativ(c){ return SPRACHEN[c] ? SPRACHEN[c][1] : c; }
 function fill(t, vars){ return String(t||"").replace(/\{(\w+)\}/g,(m,k)=>vars[k]!=null?vars[k]:m); }
+function hatBilddatei(e){ return !!e && (e.picto===FIGUR_PICTO || (isInt(e.picto) && PICTO_DA.has(e.picto))); }
 function pictoNode(e){
-  const li = el("li",{});
-  if(e.picto===FIGUR_PICTO){ li.append(el("img",{src:FIGUR_KOPF,alt:""}), el("span",{}, FIGUR)); return li; }
-  if(isInt(e.picto) && PICTO_DA.has(e.picto)) li.append(el("img",{src:"assets/pictos/"+e.picto+".png",alt:""}));
-  else li.classList.add("nopic");
-  li.append(el("span",{}, e.wort||"?"));
-  return li;
+  if(e.picto===FIGUR_PICTO) return el("li",{}, el("img",{src:FIGUR_KOPF,alt:""}), el("span",{}, FIGUR));
+  return el("li",{}, el("img",{src:"assets/pictos/"+e.picto+".png",alt:""}), el("span",{}, e.wort||"?"));
+}
+// Brief in Anrede, Hauptteil und Gruß zerlegen (Zeilenumbrüche; ältere Texte ohne Umbruch werden erkannt)
+function briefTeile(text){
+  let zeilen = String(text||"").split(/\n+/).map(s=>s.trim()).filter(Boolean);
+  let anrede = null, gruss = null;
+  if(zeilen.length && /^Hallo[^!]{0,40}!/.test(zeilen[0])){
+    const m = /^(Hallo[^!]{0,40}!)\s*(.*)$/.exec(zeilen[0]);
+    anrede = m[1]; if(m[2]) zeilen[0] = m[2]; else zeilen.shift();
+  }
+  if(zeilen.length){
+    const letzte = zeilen[zeilen.length-1];
+    const m = /^(.*?[.!?])?\s*((?:[^.!?]{0,30},\s*)?euer\s+\S+)\s*$/.exec(letzte);
+    if(m){ gruss = m[2]; if(m[1]) zeilen[zeilen.length-1] = m[1]; else zeilen.pop(); }
+  }
+  return {anrede, haupt:zeilen, gruss};
 }
 
 // ===== Whiteboard =====
 let slide = 0;
-const STEPS = [["1","Brief"],["1","Bibliothek"],["2","Tablets"],["3","Fragen"],["3","Antwortbrief"]];
+const STEPS = ["Brief","Bibliothek","Tablets","Fragen","Antwortbrief"];
 function renderKlasse(app){
   if(slide>=STEPS.length) slide=STEPS.length-1;
-  const stepper = el("div",{class:"stepper"});
-  let last = null;
-  STEPS.forEach(([ph,name],i)=>{
-    if(ph!==last){ stepper.append(el("span",{class:"phase"},"Phase "+ph)); last = ph; }
-    stepper.append(el("button",{type:"button","aria-current":i===slide?"step":false,onclick:()=>{slide=i;render();}},name));
-  });
-  const stage = el("section",{class:"stage"});
-  const name = STEPS[slide][1];
+  const col = el("div",{class:"col"});
+  col.append(el("div",{class:"stepper no-print"}, STEPS.map((name,i)=>el("button",{type:"button","aria-current":i===slide?"step":false,onclick:()=>{slide=i;render();}},name))));
+  const name = STEPS[slide];
+  const stage = el("section",{});
   if(name==="Brief") stage.append(slideBrief());
   if(name==="Bibliothek") stage.append(slideBibliothek());
   if(name==="Tablets") stage.append(slideTablets());
   if(name==="Fragen") stage.append(slideFragen());
   if(name==="Antwortbrief") stage.append(slideAntwortbrief());
-  const nav = el("div",{class:"stage-nav no-print"},
-    el("button",{class:"btn",type:"button",disabled:slide===0,onclick:()=>{slide--;render();}},"Zurück"),
-    el("button",{class:"btn primary",type:"button",disabled:slide===STEPS.length-1,onclick:()=>{slide++;render();}},"Weiter"));
-  app.append(el("div",{class:"wb-head"}, stepper), stage, nav);
+  col.append(stage, el("div",{class:"nav no-print"},
+    slide>0 ? el("button",{class:"btn",type:"button",onclick:()=>{slide--;render();}},"Zurück") : el("span",{class:"spacer"}),
+    slide<STEPS.length-1 ? el("button",{class:"btn primary",type:"button",onclick:()=>{slide++;render();}},"Weiter") : null));
+  app.append(col);
 }
 function slideBrief(){
-  return el("div",{class:"letter"},
-    el("div",{class:"head"}, el("img",{class:"brief-bild",src:FIGUR_BRIEF,alt:"Frido, der Biber, winkt"}), el("strong",{},"Post für die "+R().klasse)),
-    paras(G().brief.text));
+  const t = briefTeile(G().brief.text);
+  return el("article",{class:"letter"},
+    el("div",{class:"kopf"}, el("h2",{},"Post für die "+R().klasse), el("div",{class:"marke"}, el("img",{src:FIGUR_WINKT,alt:"Frido, der Biber, winkt"}))),
+    t.anrede ? el("p",{class:"anrede"}, t.anrede) : null,
+    t.haupt.map(z=>el("p",{}, z)),
+    t.gruss ? el("p",{class:"gruss"}, t.gruss) : null);
 }
 function sammelListe(key, label, placeholder){
   const chips = el("div",{class:"chips","aria-live":"polite"});
@@ -429,17 +453,14 @@ function slideBibliothek(){
 function slideTablets(){
   const q = el("div",{class:"qr-box"});
   setTimeout(()=>qr(q, tabletUrl(), 220),0);
+  const schritte = IV ? IV.start.schritte : [];
   return el("div",{},
     el("p",{class:"lead"},"Jetzt arbeitet ihr zu zweit am Tablet."),
     el("div",{class:"split"},
       el("div",{}, q, el("a",{class:"btn no-print",href:"#tablet",style:"margin-top:.8rem"},"Auf diesem Gerät öffnen")),
       el("div",{},
-        el("ol",{class:"todo"},
-          el("li",{},"Scannt den Code."),
-          el("li",{},"Wählt eure Lesestufe: ", el("span",{class:"stars"},"⭐ ⭐⭐ ⭐⭐⭐")),
-          el("li",{},"Lest die Geschichte von "+FIGUR+"."),
-          el("li",{},"Interviewt euch und füllt eure Suchkarten aus.")),
-        el("p",{class:"tip no-print"},"Für die Lehrkraft: Jedes Kind braucht eine Suchkarte. Sie lassen sich in der Ansicht „Suchkarten“ drucken (zwei Karten je A4-Blatt)."))));
+        el("ol",{class:"steps"}, el("li",{},"Scannt den Code."), schritte.map(s=>el("li",{}, s))),
+        el("p",{class:"tip no-print"},"Für die Lehrkraft: Legen Sie die Lesefutter-Karten bereit (ein A4-Blatt mit zwei Karten je Paar, Ansicht „Lesefutter-Karten“). Die Kinder holen sie sich erst am Ende des Interviews."))));
 }
 function slideFragen(){
   return el("div",{},
@@ -461,9 +482,10 @@ let zeigeMail = false;
 function slideAntwortbrief(){
   const box = el("div",{});
   if(WB.gesendet){
-    box.append(el("div",{class:"letter",style:"text-align:center"},
-      el("img",{class:"boot",src:FIGUR_BOOT,alt:"Frido paddelt im Boot zur Bibliothek"}),
-      el("p",{style:"margin-top:1rem"},"Ich bringe euren Brief jetzt zur "+R().bibliothek+". Bis bald, euer "+FIGUR+"!")));
+    box.append(el("article",{class:"letter",style:"text-align:center"},
+      el("img",{class:"boot",src:FIGUR_BOOT,alt:"Frido bringt den Brief im Boot zur Bibliothek"}),
+      el("p",{style:"margin-top:1.2rem"},"Ich bringe euren Brief jetzt zur "+R().bibliothek+"."),
+      el("p",{class:"gruss"},"euer "+FIGUR)));
     box.append(el("div",{class:"row no-print",style:"margin-top:1.2rem"},
       el("button",{class:"btn",type:"button",onclick:()=>{ WB.gesendet=false; saveState(); render(); }},"Brief wieder öffnen"),
       resetBtn()));
@@ -472,14 +494,13 @@ function slideAntwortbrief(){
   box.append(el("p",{class:"lead"},"Euer Brief an die "+R().bibliothek+". Ihr könnt ihn noch ändern."));
   const ta = el("textarea",{class:"brieffeld","aria-label":"Brief der Klasse an die Bibliothek",spellcheck:"true"});
   ta.value = briefText();
-  ta.addEventListener("input",()=>{ WB.brief = ta.value; saveState(); const p=document.getElementById("mailtext"); if(p) p.textContent=ta.value; });
   const grow = ()=>{ ta.style.height="auto"; ta.style.height=(ta.scrollHeight+4)+"px"; };
-  ta.addEventListener("input", grow); setTimeout(grow,0);
+  ta.addEventListener("input",()=>{ WB.brief = ta.value; saveState(); grow(); const p=document.getElementById("mailtext"); if(p) p.textContent=ta.value; });
+  setTimeout(grow,0);
   box.append(ta);
-  const row = el("div",{class:"row no-print",style:"margin-top:.8rem"},
+  box.append(el("div",{class:"row no-print",style:"margin-top:.8rem"},
     el("button",{class:"btn primary",type:"button",onclick:()=>{ zeigeMail=!zeigeMail; render(); }}, zeigeMail?"Vorschau schließen":"Mail-Vorschau ansehen"),
-    WB.brief!=null ? el("button",{class:"btn",type:"button",onclick:()=>{ WB.brief=null; saveState(); render(); }},"Vermutungen und Fragen neu einsetzen") : null);
-  box.append(row);
+    WB.brief!=null ? el("button",{class:"btn",type:"button",onclick:()=>{ WB.brief=null; saveState(); render(); }},"Vermutungen und Fragen neu einsetzen") : null));
   if(zeigeMail){
     const msg = el("span",{class:"muted"});
     box.append(el("section",{class:"mail no-print","aria-label":"Mail-Vorschau"},
@@ -506,27 +527,35 @@ function resetBtn(){
 
 // ===== Tablet =====
 let T = null;
-function neuesTablet(){ return {stufe:null, phase:"wahl", ab:0, tr:null, iv:{schritt:"einstieg", runde:1, art:null, thema:null, format:null, sprache:null}, hist:[]}; }
-function kurz(){ return T.stufe===1; }
-function ivT(obj){ return obj ? (kurz() ? (obj.kurz ?? obj.lang) : (obj.lang ?? obj.kurz)) : ""; }
+function neuesTablet(){ return {stufe:null, phase:"start", ab:0, tr:null, iv:{schritt:"rollen", runde:1, art:null, themen:[], format:null, sprache:null}, erg:{}, hist:[]}; }
+function S(obj){ // Text der gewählten Lesestufe aus {stufe1, stufe2, stufe3}
+  if(obj==null) return "";
+  if(typeof obj==="string") return obj;
+  return obj["stufe"+T.stufe] ?? obj.stufe3 ?? obj.stufe2 ?? obj.stufe1 ?? "";
+}
+function zeigeGross(){ return !!(LG && LG.foerder && (LG.foerder.sehen||0)>0); }
 function renderTablet(app){
   if(!T) T = neuesTablet();
-  const wrap = el("div",{class:"tablet"});
+  if(!IV){ app.append(el("div",{class:"panel"}, el("p",{style:"margin:0"},"Die Texte für das Tablet fehlen (assets/interview/de.json)."))); return; }
+  const wrap = el("div",{class:"tablet col"});
   const gross = document.body.classList.contains("gross");
   wrap.append(el("div",{class:"tbar"},
-    el("div",{class:"level-tag"}, T.stufe ? el("span",{class:"stars","aria-label":"Lesestufe "+STUFEN[T.stufe].name}, STUFEN[T.stufe].sym) : el("span",{},FIGUR+"s Geschichte"),
-      T.phase==="geschichte" ? el("span",{class:"progress"},"Teil "+(T.ab+1)+" von "+abschnitte().length) : null,
-      T.phase==="interview" && T.iv.runde===2 ? el("span",{class:"runde"},"Rollen getauscht") : null),
-    el("button",{class:"btn small",type:"button","aria-pressed":gross?"true":"false",onclick:()=>{ document.body.classList.toggle("gross"); render(); }},"A+ Große Schrift")));
-  if(T.phase==="wahl") tabletWahl(wrap);
-  else if(T.phase==="geschichte") tabletGeschichte(wrap);
+    el("div",{}, T.stufe ? el("span",{class:"stars","aria-label":"Lesestufe: "+STUFEN[T.stufe].name}, STUFEN[T.stufe].sym) : null,
+      T.phase==="interview" && T.iv.runde===2 && ["art","thema","format"].includes(T.iv.schritt) ? el("span",{class:"runde"},"Rollen getauscht") : null),
+    zeigeGross() ? el("button",{class:"btn small",type:"button","aria-pressed":gross?"true":"false",onclick:()=>{ document.body.classList.toggle("gross"); render(); }},"A+ Große Schrift") : null));
+  if(T.phase==="start") tabletStart(wrap);
+  else if(T.phase==="sachtext") tabletSachtext(wrap);
   else tabletInterview(wrap);
   app.append(wrap);
 }
-function tabletWahl(wrap){
-  wrap.append(el("div",{class:"story figure-hello"}, el("img",{src:FIGUR_BRIEF,alt:""}), el("p",{},"Wählt eure Lesestufe.")));
-  wrap.append(el("div",{class:"pick"}, stufenListe().map(n=>el("button",{class:"choice stufe",type:"button",onclick:()=>{ T.stufe=n; T.phase="geschichte"; T.ab=0; render(); if(n===1) setTimeout(()=>speak(abschnittText()),60); }},
-    el("span",{class:"stars","aria-hidden":"true"}, STUFEN[n].sym), el("span",{class:"sub"}, STUFEN[n].name)))));
+function tabletStart(wrap){
+  const bib = R().bibliothek;
+  wrap.append(el("h1",{}, fill(IV.start.titel,{bibliothek:bib})));
+  wrap.append(el("div",{class:"card-k figure-hello"}, el("img",{src:FIGUR_WINKT,alt:""}),
+    el("ol",{class:"tsteps",style:"margin:0"}, IV.start.schritte.map(s=>el("li",{}, s)))));
+  wrap.append(el("p",{class:"big-text",style:"margin:1.6rem 0 1rem;font-weight:700"}, IV.start.frage));
+  wrap.append(el("div",{class:"pick"}, stufenListe().map(n=>el("button",{class:"choice stufe",type:"button","aria-label":STUFEN[n].name,onclick:()=>{ T.stufe=n; T.phase="sachtext"; T.ab=0; render(); }},
+    el("span",{class:"stars","aria-hidden":"true"}, STUFEN[n].sym)))));
 }
 function wortbildRegex(){
   const wb = Array.isArray(G().wortbilder) ? G().wortbilder.filter(e=>isObj(e) && typeof e.wort==="string" && e.wort) : [];
@@ -535,7 +564,7 @@ function wortbildRegex(){
   return {re:new RegExp("(?<![\\p{L}\\p{N}])("+words.join("|")+")(?![\\p{L}\\p{N}])","gu"), map:Object.fromEntries(wb.map(e=>[e.wort, e]))};
 }
 function textMitWortbildern(text){
-  const p = el("p",{});
+  const p = el("p",{class:"big-text"});
   const wr = T.stufe===1 ? wortbildRegex() : null;
   if(!wr){ p.textContent = text; return p; }
   let last = 0;
@@ -543,147 +572,194 @@ function textMitWortbildern(text){
     p.append(text.slice(last, m.index));
     const e = wr.map[m[0]];
     const s = el("span",{class:"wb"}, m[0]);
-    if(e && e.picto===FIGUR_PICTO) s.append(el("img",{src:FIGUR_KOPF,alt:""}));
-    else if(e && isInt(e.picto) && PICTO_DA.has(e.picto)) s.append(el("img",{src:"assets/pictos/"+e.picto+".png",alt:""}));
+    if(hatBilddatei(e)) s.append(el("img",{src:e.picto===FIGUR_PICTO?FIGUR_KOPF:"assets/pictos/"+e.picto+".png",alt:""}));
     p.append(s); last = m.index + m[0].length;
   }
   p.append(text.slice(last));
   return p;
 }
 function abschnittText(){ const a = abschnitte()[T.ab]; return a ? a.text["stufe"+T.stufe] : ""; }
-function tabletGeschichte(wrap){
+function tabletSachtext(wrap){
   const a = abschnitte()[T.ab]; if(!a){ T.phase="interview"; return tabletInterview(wrap); }
-  const card = el("div",{class:"story"});
-  if(Array.isArray(a.text.bild)) card.append(el("ul",{class:"pictos","aria-label":"Bildfassung"}, a.text.bild.map(pictoNode)));
+  wrap.append(el("h1",{}, IV.sachtext.titel));
+  const card = el("div",{class:"card-k"});
+  const bilder = Array.isArray(a.text.bild) ? a.text.bild.filter(hatBilddatei) : [];
+  if(bilder.length) card.append(el("ul",{class:"pictos","aria-label":"Bildfassung"}, bilder.map(pictoNode)));
   const text = abschnittText();
   card.append(textMitWortbildern(text));
   const ue = isObj(G().uebersetzungen) ? G().uebersetzungen : {};
   if(T.tr && ue[T.tr] && Array.isArray(ue[T.tr].abschnitte)){
-    const rtl = RTL.includes(T.tr);
-    card.append(el("div",{class:"uebers",lang:T.tr,dir:rtl?"rtl":"ltr"}, el("p",{}, ue[T.tr].abschnitte[T.ab]||"")));
+    card.append(el("div",{class:"uebers",lang:T.tr,dir:RTL.includes(T.tr)?"rtl":"ltr"}, el("p",{}, ue[T.tr].abschnitte[T.ab]||"")));
   }
   wrap.append(card);
-  const tools = el("div",{class:"row"});
+  const tools = el("div",{class:"row",style:"margin-top:1rem"});
   if(T.stufe===1) tools.append(readBtn(()=>text));
   Object.keys(ue).forEach(c=>tools.append(el("button",{class:"btn",type:"button","aria-pressed":T.tr===c?"true":"false",onclick:()=>{ T.tr = T.tr===c ? null : c; render(); }},
     T.tr===c ? "Übersetzung ausblenden" : "Auch auf "+spracheName(c)+" lesen ("+spracheNativ(c)+")")));
-  wrap.append(tools);
+  if(tools.childNodes.length) wrap.append(tools);
   const letzte = T.ab===abschnitte().length-1;
-  wrap.append(el("div",{class:"tnav"},
-    el("button",{class:"btn",type:"button",onclick:()=>{ if(T.ab===0){ T.phase="wahl"; T.stufe=null; } else T.ab--; render(); }},"Zurück"),
-    el("button",{class:"btn primary",type:"button",onclick:()=>{ if(letzte){ T.phase="interview"; T.iv.schritt="einstieg"; } else T.ab++; render(); if(T.stufe===1 && !letzte) setTimeout(()=>speak(abschnittText()),60); }}, letzte?"Weiter zum Interview":"Weiter")));
+  wrap.append(el("div",{class:"nav"},
+    el("button",{class:"btn big",type:"button",onclick:()=>{ if(T.ab===0){ T.phase="start"; T.stufe=null; } else T.ab--; render(); }}, IV.knopf.zurueck),
+    el("button",{class:"btn primary big",type:"button",onclick:()=>{ if(letzte){ T.phase="interview"; T.iv.schritt="rollen"; } else T.ab++; render(); }}, letzte ? IV.sachtext.weiter : IV.knopf.weiter)));
 }
 function geheZu(schritt){ T.hist.push(JSON.stringify(T.iv)); T.iv.schritt = schritt; render(); }
 function ivZurueck(){
   if(T.hist.length){ T.iv = JSON.parse(T.hist.pop()); }
-  else { T.phase="geschichte"; T.ab=abschnitte().length-1; }
+  else { T.phase="sachtext"; T.ab=abschnitte().length-1; }
   render();
 }
-function trBox(getter){
+function trText(getter){
   const c = T.iv.sprache; if(!c || !IV_TR[c]) return null;
-  const t = getter(IV_TR[c]); if(!t) return null;
-  return el("p",{class:"ivtr",lang:c,dir:RTL.includes(c)?"rtl":"ltr"}, t);
+  try{ const t = getter(IV_TR[c]); return t ? el("p",{class:"ivtr",lang:c,dir:RTL.includes(c)?"rtl":"ltr"}, t) : null; }catch(e){ return null; }
 }
-function ivAbsatz(text, trGetter, vorlesen=true){
-  const nodes = [el("p",{class:"ivtext"}, text)];
-  const tb = trGetter ? trBox(trGetter) : null; if(tb) nodes.push(tb);
-  if(T.stufe===1 && vorlesen) nodes.push(el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>text)));
-  return nodes;
+function navIv(...rechts){ return el("div",{class:"nav"}, el("button",{class:"btn big",type:"button",onclick:ivZurueck}, IV.knopf.zurueck), ...rechts); }
+function themaListe(art){ return IV.thema.listen[art || T.iv.art] || []; }
+function auswahlKarten(erg){
+  const a = IV.art.optionen[erg.art], f = IV.format.optionen[erg.format];
+  const karten = [el("div",{}, el("span",{class:"pic","aria-hidden":"true"}, a.symbol), a.label)];
+  erg.themen.forEach(i=>{ const th = themaListe(erg.art)[i]; karten.push(el("div",{}, el("span",{class:"pic","aria-hidden":"true"}, th.symbol), th.weitere ? th.label+" (Stichwort)" : th.label)); });
+  karten.push(el("div",{}, el("img",{class:"pic",src:f.bild,alt:""}), f.kurz));
+  return karten;
 }
-function auswahlListe(){
-  const a = IV.art.optionen[T.iv.art], th = IV.thema.listen[T.iv.art][T.iv.thema], f = IV.format.optionen[T.iv.format];
-  return [a.label, th.weitere ? th.label+" (Stichwort)" : th.label, f.kurz];
+function auswahlText(erg){
+  const a = IV.art.optionen[erg.art], f = IV.format.optionen[erg.format];
+  return [a.label, ...erg.themen.map(i=>themaListe(erg.art)[i].label), f.kurz].join(", ");
+}
+function rundeFertig(){
+  T.erg[T.iv.runde] = {art:T.iv.art, themen:T.iv.themen.slice(), format:T.iv.format};
+  if(T.iv.runde===1) geheZu("tausch"); else geheZu("holen");
 }
 function tabletInterview(wrap){
-  if(!IV){ wrap.append(el("div",{class:"story"}, el("p",{},"Die Fragen für das Interview fehlen (assets/interview/de.json)."))); return; }
   const s = T.iv.schritt, bib = R().bibliothek;
-  const box = el("div",{class:"story"});
-  const nav = el("div",{class:"tnav"}, el("button",{class:"btn",type:"button",onclick:ivZurueck},"Zurück"));
-  if(s==="einstieg"){
-    box.append(el("div",{class:"figure-hello"}, el("img",{src:FIGUR_BRIEF,alt:""}), el("div",{}, ...ivAbsatz(fill(ivT(IV.einstieg),{bibliothek:bib}), tr=>fill(ivT(tr.einstieg),{bibliothek:bib})))));
-    nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("rollen")},"Weiter"));
-  }else if(s==="rollen"){
-    if(T.iv.runde===1) box.append(...ivAbsatz(ivT(IV.rollen), tr=>ivT(tr.rollen)));
+  const lesen = [];
+  if(s==="rollen"){
+    const r = IV.rollen["stufe"+T.stufe];
+    wrap.append(el("h1",{}, IV.rollen.titel));
+    const card = el("div",{class:"card-k"});
+    if(T.iv.runde===1){
+      const intro = fill(r.intro,{bibliothek:bib});
+      card.append(el("p",{class:"big-text",style:"margin-bottom:1.4rem"}, intro));
+      card.append(el("ul",{class:"rollen"},
+        el("li",{}, el("span",{class:"sym","aria-hidden":"true"},"🎤"), r.fragt),
+        el("li",{}, el("span",{class:"sym","aria-hidden":"true"},"💬"), r.antwortet),
+        el("li",{}, el("span",{class:"sym","aria-hidden":"true"},"🔁"), r.tausch)));
+      lesen.push(intro, r.fragt, r.antwortet, r.tausch);
+    }
     const codes = Object.keys(IV_TR);
     if(codes.length){
-      box.append(el("p",{class:"talk"}, IV.rollen.sprache));
-      box.append(el("div",{class:"row"}, [null, ...codes].map(c=>el("button",{class:"btn",type:"button","aria-pressed":T.iv.sprache===c?"true":"false",onclick:()=>{ T.iv.sprache=c; render(); }}, c ? spracheNativ(c) : "nur Deutsch"))));
+      card.append(el("p",{class:"big-text",style:"margin-top:1.4rem;font-size:1.4rem;font-weight:700"}, "💬 "+IV.rollen.sprache));
+      card.append(el("div",{class:"row"}, [null, ...codes].map(c=>el("button",{class:"btn",type:"button","aria-pressed":T.iv.sprache===c?"true":"false",onclick:()=>{ T.iv.sprache=c; render(); }}, c ? spracheNativ(c) : "nur Deutsch"))));
     }
-    nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("art")}, IV.rollen.knopf));
+    wrap.append(card);
+    wrap.append(navIv(el("button",{class:"btn primary big",type:"button",onclick:()=>geheZu("art")}, IV.knopf.weiter)));
   }else if(s==="art"){
-    box.append(...ivAbsatz(ivT(IV.art), tr=>ivT(tr.art)));
-    box.append(el("div",{class:"pick"}, Object.entries(IV.art.optionen).map(([k,o])=>el("button",{class:"choice",type:"button",onclick:()=>{ T.iv.art=k; T.iv.thema=null; geheZu("thema"); }},
-      el("span",{class:"pic","aria-hidden":"true"}, o.symbol), el("span",{}, o.label), kurz() ? null : el("span",{class:"sub"}, o.lang)))));
+    const frage = S(IV.art.frage);
+    wrap.append(el("h1",{}, frage)); lesen.push(frage);
+    const tb = trText(tr=>S(tr.art.frage)); if(tb) wrap.append(tb);
+    wrap.append(el("div",{class:"pick"}, Object.entries(IV.art.optionen).map(([k,o])=>el("button",{class:"choice",type:"button","aria-pressed":T.iv.art===k?"true":"false",onclick:()=>{ if(T.iv.art!==k){ T.iv.art=k; T.iv.themen=[]; } geheZu("thema"); }},
+      el("span",{class:"pic","aria-hidden":"true"}, o.symbol), el("span",{}, o.label), el("span",{class:"sub"}, S(o))))));
+    Object.values(IV.art.optionen).forEach(o=>lesen.push(o.label+": "+S(o)));
+    wrap.append(navIv());
   }else if(s==="thema"){
-    const frage = kurz() ? IV.thema.kurz : IV.thema.lang[T.iv.art];
-    box.append(...ivAbsatz(frage, tr=>kurz() ? tr.thema.kurz : (tr.thema.lang||{})[T.iv.art]));
-    const liste = IV.thema.listen[T.iv.art];
-    box.append(el("div",{class:"grid9"}, liste.map((th,i)=>el("button",{class:"choice",type:"button","aria-pressed":T.iv.thema===i?"true":"false",onclick:()=>{ T.iv.thema=i; if(th.weitere) render(); else geheZu("format"); }},
-      el("span",{class:"pic","aria-hidden":"true"}, th.symbol), el("span",{}, th.label)))));
-    if(T.iv.thema!=null && liste[T.iv.thema].weitere){
-      box.append(...ivAbsatz(IV.thema.weitere, tr=>tr.thema.weitere));
-      nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("format")},"Weiter"));
-    }
+    const frage = S(IV.thema.frage)[T.iv.art];
+    wrap.append(el("h1",{}, frage)); lesen.push(frage);
+    const tb = trText(tr=>S(tr.thema.frage)[T.iv.art]); if(tb) wrap.append(tb);
+    const max = IV.thema.max || 3, liste = themaListe();
+    wrap.append(el("div",{class:"grid9"}, liste.map((th,i)=>{
+      const an = T.iv.themen.includes(i);
+      return el("button",{class:"choice",type:"button","aria-pressed":an?"true":"false",disabled:(!an && T.iv.themen.length>=max),onclick:()=>{
+        if(an) T.iv.themen = T.iv.themen.filter(x=>x!==i); else T.iv.themen.push(i);
+        render(); }},
+        el("span",{class:"pic","aria-hidden":"true"}, th.symbol), el("span",{}, th.label));
+    })));
+    wrap.append(el("p",{class:"zahl"}, T.iv.themen.length+" von "+max+" gewählt"));
+    if(T.iv.themen.some(i=>liste[i].weitere)){ const w = S(IV.thema.weitere); wrap.append(el("p",{class:"hinweis",style:"margin-top:1rem"}, el("span",{"aria-hidden":"true"},"✏️"), w)); lesen.push(w); }
+    wrap.append(navIv(el("button",{class:"btn primary big",type:"button",disabled:!T.iv.themen.length,onclick:()=>geheZu("format")}, IV.knopf.weiter)));
   }else if(s==="format"){
-    box.append(...ivAbsatz(ivT(IV.format), tr=>ivT(tr.format)));
-    box.append(el("div",{class:"pick"}, Object.entries(IV.format.optionen).map(([k,o])=>el("button",{class:"choice",type:"button",onclick:()=>{ T.iv.format=k; geheZu("zusammen"); }},
-      el("img",{class:"pic",src:o.bild,alt:""}), el("span",{}, kurz() ? o.kurz : o.label)))));
-  }else if(s==="zusammen"){
-    const teile = auswahlListe();
-    const vorlage = ivT(IV.zusammenfassung);
-    const [vor, nach] = vorlage.split("{auswahl}");
-    box.append(el("p",{class:"ivtext"}, vor, el("span",{class:"auswahl"}, teile.map(t=>el("span",{},t))), nach||""));
-    const tb = trBox(tr=>ivT(tr.zusammenfassung)); if(tb){ tb.textContent = fill(tb.textContent,{auswahl:teile.join(" · ")}); box.append(tb); }
-    if(T.stufe===1) box.append(el("div",{class:"row"}, readBtn(()=>fill(vorlage,{auswahl:teile.join(", ")}))));
-    if(T.iv.runde===1){
-      nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>{
-        T.hist.push(JSON.stringify(T.iv));
-        T.iv = {schritt:Object.keys(IV_TR).length ? "rollen" : "art", runde:2, art:null, thema:null, format:null, sprache:null};
-        render(); }}, IV.zusammenfassung.knopf));
-    }else nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("ende")}, IV.abschluss_knopf||"Fertig"));
+    const frage = S(IV.format.frage);
+    wrap.append(el("h1",{}, frage)); lesen.push(frage);
+    const tb = trText(tr=>S(tr.format.frage)); if(tb) wrap.append(tb);
+    wrap.append(el("div",{class:"pick"}, Object.entries(IV.format.optionen).map(([k,o])=>el("button",{class:"choice",type:"button","aria-pressed":T.iv.format===k?"true":"false",onclick:()=>{ T.iv.format=k; rundeFertig(); }},
+      el("img",{class:"pic",src:o.bild,alt:""}), el("span",{}, o.label)))));
+    wrap.append(navIv());
+  }else if(s==="tausch"){
+    const t = S(IV.tauschen);
+    wrap.append(el("p",{class:"aufgabe",style:"margin-top:0"}, el("span",{"aria-hidden":"true"},"🔁"), t)); lesen.push(t);
+    wrap.append(navIv(el("button",{class:"btn primary big",type:"button",onclick:()=>{
+      T.hist.push(JSON.stringify(T.iv));
+      T.iv = {schritt:Object.keys(IV_TR).length ? "rollen" : "art", runde:2, art:null, themen:[], format:null, sprache:null};
+      render(); }}, IV.knopf.weiter)));
+  }else if(s==="holen"){
+    const k = IV.karte_holen["stufe"+T.stufe];
+    wrap.append(el("h1",{}, IV.karte_holen.titel));
+    wrap.append(el("div",{class:"card-k"}, el("ol",{class:"tsteps",style:"margin:0"}, k.map(x=>el("li",{}, x)))));
+    lesen.push(...k);
+    wrap.append(navIv(el("button",{class:"btn primary big",type:"button",onclick:()=>geheZu("uebertragen")}, IV.knopf.weiter)));
+  }else if(s==="uebertragen"){
+    const u = IV.uebertragen, sterne = STUFEN[T.stufe].sym;
+    const titel = S(u.titel);
+    wrap.append(el("h1",{}, titel));
+    [1,2].forEach(n=>{ const erg = T.erg[n]; if(!erg) return;
+      const kopf = fill(u.runde,{n});
+      wrap.append(el("div",{class:"card-k",style:"margin-bottom:1rem"}, el("p",{class:"big-text",style:"font-size:1.4rem;font-weight:700;margin-bottom:.8rem"}, kopf), el("div",{class:"auswahl"}, auswahlKarten(erg))));
+      lesen.push(kopf.replace("💬","")+": "+auswahlText(erg)); });
+    const schritte = u["stufe"+T.stufe].map(x=>fill(x,{sterne}));
+    wrap.append(el("ol",{class:"tsteps"}, schritte.map(x=>el("li",{}, x))));
+    lesen.push(...u["stufe"+T.stufe].map(x=>fill(x,{sterne:STUFEN[T.stufe].name})));
+    wrap.append(navIv(el("button",{class:"btn primary big",type:"button",onclick:()=>geheZu("ende")}, IV.knopf.weiter)));
   }else if(s==="ende"){
-    const sterne = STUFEN[T.stufe].sym;
-    box.append(el("div",{class:"figure-hello"}, el("img",{src:FIGUR_BRIEF,alt:""}),
-      el("div",{}, ...ivAbsatz(fill(ivT(IV.sterne),{sterne}), tr=>fill(ivT(tr.sterne),{sterne}), false), ...ivAbsatz(ivT(IV.abschluss), tr=>ivT(tr.abschluss), false),
-        T.stufe===1 ? el("div",{class:"row"}, readBtn(()=>fill(ivT(IV.sterne),{sterne})+" "+ivT(IV.abschluss))) : null)));
-    nav.append(el("button",{class:"btn",type:"button",onclick:()=>{ T = neuesTablet(); render(); }},"Von vorn"));
+    const t2 = S(IV.abschluss);
+    wrap.append(el("div",{class:"card-k figure-hello"}, el("img",{src:FIGUR_WINKT,alt:""}), el("p",{class:"big-text"}, t2)));
+    lesen.push(t2);
+    wrap.append(navIv(el("button",{class:"btn primary big",type:"button",onclick:()=>{ T = neuesTablet(); render(); }}, IV.knopf.fertig)));
   }
-  wrap.append(box, nav);
+  if(T.stufe===1 && lesen.length){
+    const nav = wrap.querySelector(".nav");
+    const r = el("div",{class:"row",style:"margin-top:1rem"}, readBtn(()=>lesen.join(" ")));
+    if(nav) wrap.insertBefore(r, nav); else wrap.append(r);
+  }
 }
 
-// ===== Suchkarten =====
+// ===== Lesefutter-Karten (Titel fest, nicht vom Modell) =====
 function sternSvg(){
   const s = document.createElementNS("http://www.w3.org/2000/svg","svg");
   s.setAttribute("viewBox","0 0 24 24"); s.setAttribute("aria-hidden","true");
   s.innerHTML = '<path d="M12 2.2l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.3l-6 3.3 1.3-6.7-5-4.7 6.8-.8z" fill="none" stroke="#1F2A1F" stroke-width="1.3" stroke-linejoin="round"/>';
   return s;
 }
+function pfeilSvg(){
+  const s = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  s.setAttribute("viewBox","0 0 20 24"); s.setAttribute("aria-hidden","true"); s.setAttribute("class","pfeil");
+  s.innerHTML = '<path d="M10 1 V20 M3 13 L10 21 L17 13" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>';
+  return s;
+}
 function karte(){
-  const K = IV.karte, kopf = (G().suchkarte && G().suchkarte.kartenkopf) || ("Suchkarte der "+R().klasse);
+  const K = IV.karte, kopf = fill(K.titel,{klasse:R().klasse});
   const c = el("section",{class:"card"});
-  c.append(el("div",{class:"kopf"}, el("img",{src:FIGUR_KOPF,alt:""}), el("h2",{},kopf),
-    el("div",{}, el("div",{style:"font-size:9pt"},K.stufe), el("div",{class:"sterne"}, sternSvg(), sternSvg(), sternSvg()))));
+  c.append(el("div",{class:"kopf"}, el("img",{src:FIGUR_BUCH,alt:""}), el("h2",{},kopf),
+    el("div",{class:"stufe-k"}, el("div",{},K.stufe), el("div",{class:"sterne"}, sternSvg(), sternSvg(), sternSvg()))));
   c.append(el("div",{class:"name"}, K.name+":", el("span",{})));
-  c.append(el("div",{class:"zeile"},
-    el("div",{}, el("h3",{},K.art), el("div",{class:"opts"}, Object.values(IV.art.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), el("span",{class:"sym"},o.symbol), o.label)))),
-    el("div",{}, el("h3",{},K.format), el("div",{class:"opts"}, Object.values(IV.format.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), el("img",{src:o.bild,alt:""}), o.kurz))))));
-  c.append(el("div",{}, el("h3",{},K.thema), el("div",{class:"themen"}, Object.entries(IV.thema.listen).map(([k,liste])=>el("div",{},
-    el("h4",{}, el("span",{class:"sym"},IV.art.optionen[k].symbol), IV.art.optionen[k].label),
-    el("div",{class:"g9"}, liste.map(th=> th.weitere
-      ? el("div",{class:"w"}, el("span",{class:"wk"}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label+":"), el("span",{class:"l"}))
-      : el("div",{}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label))))))));
-  c.append(el("div",{class:"hinweis"}, K.hinweis));
+  c.append(el("h3",{},K.art));
+  c.append(el("div",{class:"wahl"}, Object.entries(IV.art.optionen).map(([k,o])=>el("div",{class:"spalte"},
+    el("div",{class:"opt"}, el("span",{class:"sq"}), el("span",{class:"sym"},o.symbol), o.label),
+    el("div",{class:"weiter-k"}, pfeilSvg(), el("span",{}, K.thema+" ", el("span",{class:"klein"},K.thema_hinweis))),
+    el("div",{class:"g9"}, (IV.thema.listen[k]||[]).map(th=> th.weitere
+      ? el("div",{class:"w"}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label+":", el("span",{class:"l"}))
+      : el("div",{}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label)))))));
+  c.append(el("div",{class:"zeile3"}, el("h3",{},K.format),
+    el("div",{class:"opts"}, Object.values(IV.format.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), el("img",{src:o.bild,alt:""}), o.kurz)))));
+  c.append(el("div",{class:"fund"}, el("span",{},K.fund), el("span",{class:"l"}), el("span",{class:"l voll"})));
   return c;
 }
 function renderSuchkarte(app){
-  if(!IV){ app.append(el("div",{class:"panel"}, el("p",{style:"margin:0"},"Die Fragen für das Interview fehlen (assets/interview/de.json)."))); return; }
+  if(!IV){ app.append(el("div",{class:"panel"}, el("p",{style:"margin:0"},"Die Texte für die Lesefutter-Karte fehlen (assets/interview/de.json)."))); return; }
   app.append(el("div",{class:"row no-print",style:"margin-bottom:1rem"},
-    el("button",{class:"btn primary",type:"button",onclick:()=>window.print()},"Suchkarten drucken"),
-    el("span",{class:"muted"},"Ein A4-Blatt enthält zwei Karten zum Auseinanderschneiden. Stellen Sie im Druckdialog die Anzahl der Kopien ein (ein Blatt für zwei Kinder), Hochformat, Skalierung 100 %.")));
+    el("button",{class:"btn primary",type:"button",onclick:()=>window.print()},"Lesefutter-Karten drucken"),
+    el("span",{class:"muted"},"Ein A4-Blatt enthält zwei Karten zum Auseinanderschneiden.")));
   app.append(el("div",{class:"sheet"}, karte(), karte()));
 }
 
-// ===== Prüfung Material-Schema 0.7 (spiegelt werkzeuge/validate07.py) =====
+// ===== Prüfung Material-Schema 0.8 (spiegelt werkzeuge/validate08.py) =====
 function expectedVariants(lg){
   const v = new Set(Array.isArray(lg.lesestufen) ? lg.lesestufen : []);
   const f = lg.foerder || {};
@@ -711,7 +787,7 @@ function checkEntry(e, where, liste, bad, warn){
 }
 function allBildEintraege(g){
   const out = [];
-  const ab = isObj(g.geschichte) && Array.isArray(g.geschichte.abschnitte) ? g.geschichte.abschnitte : [];
+  const ab = isObj(g.sachtext) && Array.isArray(g.sachtext.abschnitte) ? g.sachtext.abschnitte : [];
   ab.forEach(a=>{ if(isObj(a) && isObj(a.text) && Array.isArray(a.text.bild)) a.text.bild.forEach(e=>{ if(isObj(e)) out.push(e); }); });
   if(Array.isArray(g.wortbilder)) g.wortbilder.forEach(e=>{ if(isObj(e)) out.push(e); });
   return out;
@@ -719,12 +795,12 @@ function allBildEintraege(g){
 function validate(d, lg, liste, lgId){
   const res=[]; const add=(s,t)=>res.push({s,t});
   const meta=isObj(d.meta)?d.meta:{}, r=isObj(d.rahmen)?d.rahmen:{}, g=isObj(d.generiert)?d.generiert:{};
-  const gs=isObj(g.geschichte)?g.geschichte:{};
-  const ab=Array.isArray(gs.abschnitte)?gs.abschnitte:[];
+  const st=isObj(g.sachtext)?g.sachtext:{};
+  const ab=Array.isArray(st.abschnitte)?st.abschnitte:[];
   lg = isObj(lg) ? lg : null;
   // Regel 1
   const sv = meta.schema_version;
-  add(sv==="0.7"?"ok":"bad", "Schema-Version 0.7"+(sv==="0.7"?"":" (gefunden: "+(sv==null?"keine":String(sv))+")"));
+  add(sv==="0.8"?"ok":"bad", "Schema-Version 0.8"+(sv==="0.8"?"":" (gefunden: "+(sv==null?"keine":String(sv))+")"));
   // Regel 2
   if(lg){
     const ok = meta.lerngruppe===lgId;
@@ -738,24 +814,22 @@ function validate(d, lg, liste, lgId){
   // Regel 4
   const bt = isObj(g.brief) ? g.brief.text : undefined;
   ok = typeof bt==="string" && bt.length>0 && bt.length<=LIM_BRIEF;
-  add(ok?"ok":"bad","Brief vorhanden, max. 600 Zeichen"+(typeof bt==="string"?" ("+bt.length+")":""));
+  add(ok?"ok":"bad","Brief vorhanden, max. 400 Zeichen"+(typeof bt==="string"?" ("+bt.length+")":""));
   // Regel 5
+  if(typeof bt==="string" && bt){
+    const anrede = "Hallo "+String(r.klasse||"")+"!";
+    ok = bt.trim().startsWith(anrede) && bt.trim().endsWith("euer Frido");
+    add(ok?"ok":"warn","Brief beginnt mit „"+anrede+"“ und endet mit „euer Frido“");
+  }
+  // Regel 6
   const bb = g.bibliotheksblick;
   ok = Array.isArray(bb) && bb.length===1 && bb.every(x=>isObj(x) && isInt(x.bild) && Array.isArray(bilder) && x.bild>=0 && x.bild<bilder.length);
   add(ok?"ok":"bad","Blick in die Bibliothek: genau 1 Bild");
-  // Regel 6
-  const pl = isObj(g.plan) ? g.plan : null;
-  const pf = [];
-  if(!pl) pf.push("fehlt");
-  else{
-    PLAN_FELDER.forEach(f=>{ const v=pl[f]; if(typeof v!=="string" || !v.trim()) pf.push(f+" leer"); else if(v.length>LIM_PLAN) pf.push(f+" ("+v.length+")"); });
-    if(typeof pl.aufloesung_beim_besuch!=="boolean") pf.push("aufloesung_beim_besuch");
-  }
-  add(pf.length?"bad":"ok","Plan vollständig (motiv, ort, ausgangslage, offene_frage je max. 200 Zeichen; aufloesung_beim_besuch)"+(pf.length?" – "+cutList(pf):""));
   // Regel 7
-  const kOk = KULISSEN.includes(gs.kulisse);
-  ok = ab.length===3 && ab.every(a=>isObj(a) && isObj(a.text)) && kOk;
-  add(ok?"ok":"bad","Genau 3 Abschnitte, Kulisse programmwelt, thema oder allgemein"+(ok?"":" (Abschnitte: "+ab.length+", Kulisse: "+(gs.kulisse==null?"keine":gs.kulisse)+")"));
+  const q = st.quellen;
+  const qOk = Array.isArray(q) && q.length>0 && q.every(x=>typeof x==="string" && x);
+  ok = ab.length>=1 && ab.length<=2 && ab.every(a=>isObj(a) && isObj(a.text)) && qOk;
+  add(ok?"ok":"bad","Sachtext mit 1 oder 2 Abschnitten und Quellen"+(ok?"":" (Abschnitte: "+ab.length+", Quellen: "+(qOk?"ja":"keine")+")"));
   // Regel 8
   let soll, basis;
   if(lg){ soll = expectedVariants(lg); basis = "Lerngruppe"; }
@@ -811,11 +885,11 @@ function validate(d, lg, liste, lgId){
     Object.keys(ueObj).forEach(c=>{ if(!sollSpr.includes(c)) ueBad.push(c+" ohne Sprachcode in der Lerngruppe"); });
   }
   Object.entries(ueObj).forEach(([c,u])=>{
-    if(!isObj(u) || !Array.isArray(u.abschnitte) || u.abschnitte.length!==3 || !u.abschnitte.every(t=>typeof t==="string" && t)){ ueBad.push(c+" (3 Texte)"); return; }
+    if(!isObj(u) || !Array.isArray(u.abschnitte) || u.abschnitte.length!==ab.length || !u.abschnitte.every(t=>typeof t==="string" && t)){ ueBad.push(c+" ("+ab.length+" Texte)"); return; }
     if(!(u.stufe in LIM_TEXT)){ ueBad.push(c+" (stufe)"); return; }
     u.abschnitte.forEach((t,i)=>{ if(t.length>LIM_TEXT[u.stufe]) ueWarn.push(c+"/Abschnitt "+(i+1)+" ("+t.length+")"); });
   });
-  if(sollSpr || Object.keys(ueObj).length) add(ueBad.length?"bad":"ok","Übersetzungen: je Sprache der Lerngruppe 3 Texte"+(ueBad.length?" – "+cutList(ueBad):""));
+  if(sollSpr || Object.keys(ueObj).length) add(ueBad.length?"bad":"ok","Übersetzungen: je Sprache der Lerngruppe ein Text je Abschnitt"+(ueBad.length?" – "+cutList(ueBad):""));
   if(Object.keys(ueObj).length) add(ueWarn.length?"warn":"ok","Übersetzungen innerhalb der Längengrenze der übersetzten Stufe"+(ueWarn.length?" – "+cutList(ueWarn):""));
   // Regel 14
   const abr = isObj(g.antwortbrief) ? g.antwortbrief : null;
@@ -824,15 +898,10 @@ function validate(d, lg, liste, lgId){
   else AB_FELDER.forEach(f=>{ const v=abr[f]; if(typeof v!=="string" || !v.trim()) abBad.push(f+" leer"); else if(v.length>LIM_AB[f]) abBad.push(f+" ("+v.length+")"); });
   add(abBad.length?"bad":"ok","Antwortbrief: 6 Felder, Längengrenzen eingehalten"+(abBad.length?" – "+cutList(abBad):""));
   // Regel 15
-  const kk = isObj(g.suchkarte) ? g.suchkarte.kartenkopf : undefined;
-  ok = typeof kk==="string" && kk.length>0 && kk.length<=LIM_KOPF && Array.isArray(g.luecken);
-  add(ok?"ok":"bad","Kartenkopf (max. 40 Zeichen) und Lückenliste vorhanden");
+  add(Array.isArray(g.luecken)?"ok":"bad","Lückenliste vorhanden");
   // Regel 16
-  const alt = [];
-  ["knoten","enden"].forEach(k=>{ if(k in gs) alt.push("geschichte."+k); });
-  ["teamnamen","absenden_text"].forEach(k=>{ if(k in g) alt.push(k); });
-  if(pl && ("hinweis" in pl)) alt.push("plan.hinweis");
-  add(alt.length?"bad":"ok","Keine Felder aus Schema 0.5 oder 0.6"+(alt.length?" – "+cutList(alt):""));
+  const alt = ["geschichte","plan","teamnamen","absenden_text"].filter(k=>k in g);
+  add(alt.length?"bad":"ok","Keine Felder aus früheren Schemata"+(alt.length?" – "+cutList(alt):""));
   // Regel 17
   if(lg && isInt(lg.tablets)){
     const nv = expectedVariants(lg).size;
@@ -850,7 +919,7 @@ function lgInfo(){
   const v = ["stufe1","stufe2","stufe3","bild"].filter(x=>ev.has(x)).map(x=>x==="bild" ? "Bildfassung" : STUFEN[Number(x.slice(-1))].sym);
   return el("ul",{style:"margin:0"},
     el("li",{},"Klasse: "+(LG.klasse||"–")+", Tablets: "+(LG.tablets??"–")+", Jahrgänge: "+((LG.jahrgaenge||[]).join(", ")||"–")),
-    el("li",{},"Varianten im Material: "+(v.join(", ")||"–")),
+    el("li",{},"Varianten des Sachtexts: "+(v.join(", ")||"–")),
     el("li",{},"Förderbedarfe: "+(fb.join(", ")||"keine")),
     el("li",{},"Familiensprachen: "+((LG.sprachen||[]).map(spracheName).join(", ")||"keine")));
 }
@@ -859,7 +928,7 @@ function editField(path, label, limit){
   if(typeof orig!=="string") return null;
   const changed = Object.prototype.hasOwnProperty.call(EDITS, path);
   const wrap = el("div",{class:"edit"+(changed?" is-changed":"")});
-  const ta = el("textarea",{"aria-label":label, rows:String(Math.min(8, Math.max(2, Math.ceil(orig.length/90))))});
+  const ta = el("textarea",{"aria-label":label, rows:String(Math.min(8, Math.max(2, Math.ceil(orig.length/90)+(orig.split("\n").length-1))))});
   ta.value = changed ? EDITS[path] : orig;
   const count = el("span",{class:"count"});
   const upd = ()=>{ count.textContent = ta.value.length+(limit?" / "+limit:"")+" Zeichen"; count.classList.toggle("over", !!limit && ta.value.length>limit); };
@@ -888,20 +957,19 @@ function download(name, text){
 function durchsicht(){
   const g = DATA.generiert, n = Object.keys(EDITS).length;
   const p = el("section",{class:"panel"}, el("h2",{},"Durchsicht und Korrektur"));
-  p.append(el("p",{style:"margin-top:0"},"Lesen Sie Brief, Geschichte und Antwortbrief vor der Stunde. Auch regelkonforme Texte können vereinzelt Aussagen enthalten, die nicht stimmen (zum Beispiel über den Ablauf des Besuchs). Korrigieren Sie sie direkt im Feld."));
+  p.append(el("p",{style:"margin-top:0"},"Lesen Sie Brief, Sachtext und Antwortbrief vor der Stunde. Auch regelkonforme Texte können vereinzelt Aussagen enthalten, die nicht stimmen (zum Beispiel über den Ablauf des Besuchs). Korrigieren Sie sie direkt im Feld."));
   p.append(el("p",{class:"tip",style:"font-size:1rem"},"Änderungen gelten zunächst nur in diesem Browser (Whiteboard). Damit auch die Tablets sie zeigen, laden Sie die geprüfte Fassung herunter und legen sie als materialien/"+(MATERIAL_ID||"<ID>")+".json ins Repository."));
   p.append(el("div",{class:"row",style:"margin-bottom:.4rem"},
     el("button",{class:"btn primary",type:"button",onclick:()=>download((MATERIAL_ID||(DATA.meta&&DATA.meta.lerngruppe)||"material")+".json", JSON.stringify(geprueftesJSON(),null,2))},"Geprüfte Fassung herunterladen"),
     n ? el("button",{class:"btn",type:"button",onclick:()=>{ EDITS={}; saveEdits(); render(); }},"Alle Änderungen verwerfen") : null,
     el("span",{class:"muted"}, n ? n+" Text"+(n===1?"":"e")+" geändert" : "Noch nichts geändert")));
-  if(isObj(g.plan)) p.append(el("h3",{},"Plan der Geschichte (wird nicht angezeigt)"),
-    el("div",{class:"ro"}, el("div",{}, el("strong",{},"Motiv: "), g.plan.motiv||"–"), el("div",{}, el("strong",{},"Offene Frage: "), g.plan.offene_frage||"–"),
-      el("div",{}, el("strong",{},"Auflösung beim Besuch angekündigt: "), g.plan.aufloesung_beim_besuch ? "ja" : "nein")));
-  p.append(el("h3",{},"Fridos Brief (Phase 1)"), editField("brief.text","Brief",LIM_BRIEF));
-  (g.geschichte && g.geschichte.abschnitte || []).forEach((a,i)=>{
-    p.append(el("h3",{},"Geschichte, Teil "+(i+1)+": "+(ABSCHNITTE[i]||"")));
-    [1,2,3].forEach(s=>{ const f = editField("geschichte.abschnitte."+i+".text.stufe"+s, STUFEN[s].sym, LIM_TEXT["stufe"+s]); if(f) p.append(f); });
-    if(isObj(a.text) && Array.isArray(a.text.bild)) p.append(el("div",{class:"ro"}, el("strong",{},"Bildfassung: "), a.text.bild.map(e=>(e.wort||"?")+(e.picto==null?" (Piktogramm fehlt)":"")).join(" · ")));
+  p.append(el("h3",{},"Fridos Brief (Phase 1)"), editField("brief.text","Brief (Anrede, Hauptteil und „euer Frido“ je in einer eigenen Zeile)",LIM_BRIEF));
+  const st = isObj(g.sachtext) ? g.sachtext : {};
+  if(Array.isArray(st.quellen)) p.append(el("div",{class:"ro"}, el("strong",{},"Quellen des Sachtexts: "), st.quellen.join(", ")));
+  (Array.isArray(st.abschnitte) ? st.abschnitte : []).forEach((a,i,arr)=>{
+    p.append(el("h3",{},"Sachtext"+(arr.length>1?", Teil "+(i+1):"")+" (Phase 2)"));
+    [1,2,3].forEach(s=>{ const f = editField("sachtext.abschnitte."+i+".text.stufe"+s, STUFEN[s].sym, LIM_TEXT["stufe"+s]); if(f) p.append(f); });
+    if(isObj(a.text) && Array.isArray(a.text.bild)) p.append(el("div",{class:"ro"}, el("strong",{},"Bildfassung: "), a.text.bild.map(e=>(e.wort||"?")+(hatBilddatei(e)?"":" (ohne Bild, wird nicht angezeigt)")).join(" · ")));
     Object.entries(isObj(g.uebersetzungen)?g.uebersetzungen:{}).forEach(([c,u])=>{
       if(isObj(u) && Array.isArray(u.abschnitte)) p.append(el("div",{class:"ro",lang:c,dir:RTL.includes(c)?"rtl":"ltr"}, el("strong",{lang:"de",dir:"ltr"}, spracheName(c)+" (maschinell übersetzt, nicht geprüft): "), u.abschnitte[i]||""));
     });
@@ -911,15 +979,24 @@ function durchsicht(){
   return p;
 }
 function renderLehrkraft(app){
-  const g=G(), r=R(), meta=DATA.meta||{};
+  const meta=DATA.meta||{};
+  const sv = meta.schema_version;
+  if(sv!=="0.8"){
+    app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"},"Lehrkraftansicht"));
+    app.append(el("section",{class:"panel"}, el("h2",{},"Material im falschen Schema"),
+      el("p",{style:"margin:0"},"Das geladene Material hat das Schema "+(sv||"ohne Angabe")+". Diese Seite zeigt und prüft nur Schema 0.8 (Sachtext). Laden Sie unten Material aus System Prompt 2 v0.8.")));
+    app.append(ladenPanel());
+    return;
+  }
+  const g=G(), r=R();
   app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"},"Lehrkraftansicht: "+r.programmtitel+", Klasse "+r.klasse));
   app.append(el("section",{class:"panel"}, el("h2",{},"Ablauf der Stunde"),
     el("ol",{class:"phases"},
       el("li",{}, el("strong",{},"Phase 1, ganze Klasse (8 Min.): "),"Fridos Brief am Whiteboard vorlesen, Foto der Bibliothek ansehen, Vermutungen sammeln. Sie tippen die Vermutungen mit."),
-      el("li",{}, el("strong",{},"Phase 2, Paare am Tablet (25 Min.): "),"Code scannen, Lesestufe wählen, Geschichte lesen, dann Interview mit Rollentausch. Jedes Kind bekommt dabei seine Suchkarte ausgefüllt."),
+      el("li",{}, el("strong",{},"Phase 2, Paare am Tablet (25 Min.): "),"Code scannen, Lesestufe wählen, Sachtext „Das erwartet euch“ lesen, dann Interview mit Rollentausch; die Antworten tippen die Kinder am Tablet an. Erst danach holen sie sich ein Blatt mit zwei Lesefutter-Karten, schneiden es durch und übertragen ihre Antworten."),
       el("li",{}, el("strong",{},"Phase 3, ganze Klasse (7 Min.): "),"Fragen an die Bibliothek sammeln. Die Website setzt Vermutungen und Fragen in den Brief der Klasse ein; Sie können ihn ändern und abschicken.")),
     el("div",{class:"row",style:"margin-top:.8rem"},
-      el("a",{class:"btn",href:"#suchkarte"},"Suchkarten drucken"),
+      el("a",{class:"btn",href:"#suchkarte"},"Lesefutter-Karten drucken"),
       el("a",{class:"btn",href:"#klasse"},"Zum Whiteboard"))));
   const l = Array.isArray(g.luecken)?g.luecken:[];
   app.append(el("section",{class:"panel"}, el("h2",{},"Fehlende Angaben im Programmprofil"), l.length? el("ul",{style:"margin:0"}, l.map(x=>el("li",{},x))) : el("p",{style:"margin:0"},"Keine.")));
@@ -933,27 +1010,29 @@ function renderLehrkraft(app){
   const fehlend = ids.filter(id=>id!==FIGUR_PICTO && !PICTO_DA.has(id));
   const ohne = [...new Set(allBildEintraege(g).filter(e=>e.picto===null).map(e=>e.wort+(e.suchwort?" (Suchwort: "+e.suchwort+")":"")))];
   app.append(el("section",{class:"panel"}, el("h2",{},"Piktogramme"),
-    ids.includes(FIGUR_PICTO) ? el("p",{style:"margin-top:0"},"Das Piktogramm „Biber“ ("+FIGUR_PICTO+") zeigt die Seite als Frido-Figur; dafür ist keine Bilddatei nötig.") : null,
-    el("p",{style:"margin-top:0"}, fehlend.length ? "Diese Bilddateien fehlen noch im Ordner assets/pictos/ (Dateiname <ID>.png, von arasaac.org): "+fehlend.join(", ")+". Bis dahin zeigt das Tablet nur das Wort." : "Alle Bilddateien zu den Piktogramm-IDs sind vorhanden."),
-    ohne.length ? el("p",{style:"margin:0"},"Ohne Piktogramm in der Liste: "+ohne.join("; ")+".") : null));
-  const q=[["Brief",g.brief&&g.brief.quellen],["Geschichte ("+(g.geschichte&&g.geschichte.kulisse)+")",g.geschichte&&g.geschichte.kulisse_quellen],["Piktogramme",["ARASAAC (arasaac.org), CC BY-NC-SA 4.0"]],["Figur Frido",["eigene Zeichnung"]]];
+    el("p",{style:"margin-top:0"}, fehlend.length ? "Diese Bilddateien fehlen noch im Ordner assets/pictos/ (Dateiname <ID>.png, von arasaac.org): "+fehlend.join(", ")+". Einträge ohne Bilddatei zeigt das Tablet nicht an." : "Alle Bilddateien zu den Piktogramm-IDs sind vorhanden."),
+    ohne.length ? el("p",{style:"margin:0"},"Ohne Piktogramm in der Liste (werden nicht angezeigt): "+ohne.join("; ")+".") : null));
+  const q=[["Brief",g.brief&&g.brief.quellen],["Sachtext",g.sachtext&&g.sachtext.quellen],["Piktogramme",["ARASAAC (arasaac.org), CC BY-NC-SA 4.0"]],["Figur Frido",["eigene Zeichnung"]]];
   app.append(el("section",{class:"panel"}, el("h2",{},"Quellen"), el("ul",{style:"margin:0"}, q.map(([n,s])=>el("li",{}, n+": "+((s&&s.length)?s.join(", "):"keine Angabe"))))));
-  const ta = el("textarea",{class:"json","aria-label":"JSON der Material-Seite",spellcheck:"false"}); ta.value = JSON.stringify(DATA,null,2);
+  app.append(ladenPanel());
+  const bu = el("input",{type:"text",class:"wide",value:baseUrl()});
+  app.append(el("section",{class:"panel"}, el("h2",{},"Adresse für den QR-Code"),
+    el("p",{style:"margin-top:0"},"Der QR-Code für die Tablets führt zu dieser Adresse. Normalerweise müssen Sie hier nichts ändern."),
+    bu, el("div",{class:"row",style:"margin-top:.6rem"}, el("button",{class:"btn",type:"button",onclick:()=>{ store("ms_base",bu.value.trim()||null); render(); }},"Adresse übernehmen"))));
+}
+function ladenPanel(){
+  const ta = el("textarea",{class:"json","aria-label":"JSON der Material-Seite",spellcheck:"false"}); if(DATA) ta.value = JSON.stringify(DATA,null,2);
   const msg = el("div",{class:"msg"});
-  app.append(el("section",{class:"panel"}, el("h2",{},"Inhalte laden"),
-    el("p",{style:"margin-top:0"}, MATERIAL_ID ? "Dieses Material stammt aus der Datei materialien/"+MATERIAL_ID+".json. Hier eingefügtes JSON gilt nur zum Ausprobieren und wird nicht gespeichert." : "Fügen Sie hier das JSON ein, das das Sprachmodell erzeugt hat. Es wird nur in diesem Browser gespeichert."),
+  return el("section",{class:"panel"}, el("h2",{},"Inhalte laden"),
+    el("p",{style:"margin-top:0"}, MATERIAL_ID ? "Dieses Material stammt aus der Datei materialien/"+MATERIAL_ID+".json. Hier eingefügtes JSON gilt nur zum Ausprobieren und wird nicht gespeichert." : "Fügen Sie hier das JSON ein, das das Sprachmodell erzeugt hat. Es wird nur in diesem Browser gespeichert. Die Lerngruppe wird über meta.lerngruppe aus dem Ordner „lerngruppen“ nachgeladen."),
     ta,
     el("div",{class:"row",style:"margin-top:.6rem"},
       el("button",{class:"btn primary",type:"button",onclick:()=>{
         try{ const d=JSON.parse(ta.value); if(!d.rahmen||!d.generiert) throw new Error("Die Bereiche „rahmen“ und „generiert“ fehlen.");
           DATA=d; MERGED=null; if(!MATERIAL_ID){ store("ms_json",JSON.stringify(d)); } ladeLerngruppe(d).then(ladeInterview).then(pruefePictoDateien).then(render); }
         catch(err){ msg.className="msg bad"; msg.textContent="Nicht geladen: "+err.message; } }},"JSON laden"),
-      el("button",{class:"btn",type:"button",onclick:()=>{ if(MATERIAL_ID) location.reload(); else { store("ms_json",null); DATA=localData(); MERGED=null; render(); } }}, MATERIAL_ID?"Gespeichertes Material neu laden":"Eingefügtes Material entfernen")),
-    msg));
-  const bu = el("input",{type:"text",class:"wide",value:baseUrl()});
-  app.append(el("section",{class:"panel"}, el("h2",{},"Adresse für den QR-Code"),
-    el("p",{style:"margin-top:0"},"Der QR-Code für die Tablets führt zu dieser Adresse. Normalerweise müssen Sie hier nichts ändern."),
-    bu, el("div",{class:"row",style:"margin-top:.6rem"}, el("button",{class:"btn",type:"button",onclick:()=>{ store("ms_base",bu.value.trim()||null); render(); }},"Adresse übernehmen"))));
+      DATA ? el("button",{class:"btn",type:"button",onclick:()=>{ if(MATERIAL_ID) location.reload(); else { store("ms_json",null); DATA=localData(); MERGED=null; render(); } }}, MATERIAL_ID?"Gespeichertes Material neu laden":"Eingefügtes Material entfernen") : null),
+    msg);
 }
 
 // ===== Router =====
@@ -964,31 +1043,11 @@ function currentView(){
   if(h==="suchkarte") return "suchkarte";
   return "klasse";
 }
-function renderLeer(app, lehrkraft){
-  app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"}, lehrkraft ? "Lehrkraftansicht" : "Noch kein Material"));
-  if(!lehrkraft){
-    app.append(el("section",{class:"panel"}, el("p",{style:"margin-top:0"},"Für diese Seite ist noch kein Material geladen. Öffnen Sie den Link mit der Material-ID (…/index.html?id=…) oder fügen Sie das Material in der Lehrkraftansicht ein."),
-      el("a",{class:"btn",href:"#lehrkraft"},"Zur Lehrkraftansicht")));
-    return;
-  }
-  const ta = el("textarea",{class:"json","aria-label":"JSON der Material-Seite",spellcheck:"false"});
-  const msg = el("div",{class:"msg"});
-  app.append(el("section",{class:"panel"}, el("h2",{},"Inhalte laden"),
-    el("p",{style:"margin-top:0"},"Fügen Sie hier das JSON ein, das das Sprachmodell erzeugt hat. Es wird nur in diesem Browser gespeichert. Die Lerngruppe wird über meta.lerngruppe aus dem Ordner „lerngruppen“ nachgeladen."),
-    ta,
-    el("div",{class:"row",style:"margin-top:.6rem"},
-      el("button",{class:"btn primary",type:"button",onclick:()=>{
-        try{ const d=JSON.parse(ta.value); if(!d.rahmen||!d.generiert) throw new Error("Die Bereiche „rahmen“ und „generiert“ fehlen.");
-          DATA=d; MERGED=null; store("ms_json",JSON.stringify(d)); ladeLerngruppe(d).then(ladeInterview).then(pruefePictoDateien).then(render); }
-        catch(err){ msg.className="msg bad"; msg.textContent="Nicht geladen: "+err.message; } }},"JSON laden")),
-    msg));
-}
-let letzteAnsicht = null;
 function render(){
   try{ if("speechSynthesis" in window) speechSynthesis.cancel(); }catch(e){}
   const app=document.getElementById("app"); app.innerHTML="";
   const v=currentView();
-  if(v!==letzteAnsicht){ window.scrollTo(0,0); letzteAnsicht = v; }
+  window.scrollTo(0,0);
   document.body.classList.toggle("kid", v==="tablet");
   if(v!=="tablet") document.body.classList.remove("gross");
   document.querySelectorAll(".topnav a").forEach(a=>a.setAttribute("aria-current", a.dataset.view===v?"page":"false"));
@@ -997,7 +1056,20 @@ function render(){
       el("p",{class:"muted"},"Prüfen Sie, ob die Datei im Ordner „materialien“ liegt und genauso heißt wie die ID im Link.")));
     return;
   }
-  if(!DATA){ renderLeer(app, v==="lehrkraft"); return; }
+  if(!DATA){
+    if(v==="lehrkraft"){ app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"},"Lehrkraftansicht"), ladenPanel()); return; }
+    app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"},"Noch kein Material"),
+      el("section",{class:"panel"}, el("p",{style:"margin-top:0"},"Für diese Seite ist noch kein Material geladen. Öffnen Sie den Link mit der Material-ID (…/index.html?id=…) oder fügen Sie das Material in der Lehrkraftansicht ein."),
+        el("a",{class:"btn",href:"#lehrkraft"},"Zur Lehrkraftansicht")));
+    return;
+  }
+  const sv = DATA.meta && DATA.meta.schema_version;
+  if(sv!=="0.8" && v!=="lehrkraft"){
+    app.append(el("div",{class:"panel"}, el("h2",{},"Material passt nicht zu dieser Seite"),
+      el("p",{},"Diese Seite zeigt Material im Schema 0.8 (Sachtext). Das geladene Material hat das Schema "+(sv||"ohne Angabe")+"."),
+      el("a",{class:"btn",href:"#lehrkraft"},"Zur Lehrkraftansicht")));
+    return;
+  }
   try{
     if(v==="tablet") renderTablet(app);
     else if(v==="lehrkraft") renderLehrkraft(app);
@@ -1006,7 +1078,7 @@ function render(){
   }catch(err){
     app.innerHTML="";
     app.append(el("div",{class:"panel"}, el("h2",{},"Die Seite kann nicht dargestellt werden"),
-      el("p",{},"Das Material passt nicht zum Schema 0.7: "+err.message+"."),
+      el("p",{},"Das Material passt nicht zum Schema 0.8: "+err.message+"."),
       el("a",{class:"btn",href:"#lehrkraft"},"Zur Lehrkraftansicht")));
   }
 }

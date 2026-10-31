@@ -4,8 +4,8 @@
   <g clip-path="url(#badgeclip)"><g transform="translate(-30 -22)">
     <path d="M70 250 C70 214 110 196 150 196 C190 196 230 214 230 250 Z" fill="#9A6233" stroke="#2B2118" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
     
-  <path d="M96 182 C120 200 180 200 204 182 L206 198 C180 216 120 216 94 198 Z" fill="#3E6B48" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M104 192 C128 206 172 206 196 192" fill="none" stroke="#5E8F68" stroke-width="3" stroke-dasharray="6 7"/>
+  <path d="M106 185 C126 201 174 201 194 185 C201 189 203 198 197 204 C175 220 125 220 103 204 C97 198 99 189 106 185 Z" fill="#3E6B48" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M112 196 C132 208 168 208 188 196" fill="none" stroke="#5E8F68" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"/>
   
     <path d="M60 236 C60 270 240 270 240 236 L240 300 L60 300 Z" fill="#9A6233"/>
     

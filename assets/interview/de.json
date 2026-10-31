@@ -1,85 +1,248 @@
 {
   "sprache": "de",
   "name": "Deutsch",
-  "hinweis": "Wortlaut aus dem Dokument „Interview Suchkarte – Wortlaut (Entwurf)“, Stand 30.10.2026. „lang“ = Lesestufen ⭐⭐ und ⭐⭐⭐, „kurz“ = Lesestufe ⭐. {bibliothek}, {auswahl} und {sterne} setzt die Website ein. Die Texte unter „sterne“ und „abschluss_knopf“ sind neu (31.10.2026) und noch nicht redigiert. Symbole der Themen sind Platzhalter.",
-  "einstieg": {
-    "lang": "Bald besucht ihr die {bibliothek}. Dort könnt ihr euch selbst ein Buch aussuchen und darin stöbern. Um zu wissen, wonach ihr suchen wollt, bekommt jeder von euch eine Such-Karte. Ihr interviewt euch und füllt die Karte für euren Partner aus.",
-    "kurz": "Bald seid ihr in der {bibliothek}. Dort sucht ihr ein Buch aus. Dafür macht ihr eine Suchkarte. Ihr fragt euch gegenseitig."
+  "hinweis": "Wortlaut des Tablets und der Lesefutter-Karte, Stand 31.10.2026 (Ablauf: Antworten am Tablet antippen, Lesefutter-Karte erst am Ende ausfüllen). Drei Fassungen je Text: stufe1 (⭐), stufe2 (⭐⭐), stufe3 (⭐⭐⭐). Grundlage: Dokument „Interview Suchkarte – Wortlaut (Entwurf)“ und die Anmerkungen von A. Marx vom 31.10.2026; die ⭐⭐-Fassungen und Texte, die dort nicht stehen, sind Entwürfe (noch zu redigieren). {bibliothek}, {sterne} setzt die Website ein. Symbole der Themen sind Platzhalter.",
+  "start": {
+    "titel": "Euer Besuch in der {bibliothek}",
+    "schritte": [
+      "Wählt eure Lesestufe.",
+      "Lest, was euch in der Bibliothek erwartet.",
+      "Interviewt euch und füllt eure Lesefutter-Karten aus."
+    ],
+    "frage": "Welche Lesestufe wählt ihr?"
+  },
+  "sachtext": {
+    "titel": "Das erwartet euch",
+    "weiter": "Weiter zum Interview"
   },
   "rollen": {
-    "lang": "Wer nimmt zuerst das 🎤 Mikrofon, wer die 💬 Sprechblase? 🎤 fragt. 💬 antwortet. 🎤 kreuzt die Antworten auf der Karte von 💬 an. Danach tauscht ihr die Symbole.",
-    "kurz": "Wer hat das 🎤 Mikrofon? Wer die 💬 Sprechblase? 🎤 fragt. 💬 sagt die Antwort. 🎤 kreuzt an. Dann tauscht ihr.",
-    "knopf": "🎤 fragt jetzt 💬",
-    "sprache": "💬: In welcher Sprache möchtest du die Fragen zusätzlich sehen?"
+    "titel": "So geht das Interview",
+    "stufe1": {
+      "intro": "Bald seid ihr in der {bibliothek}. Dort sucht ihr ein Buch aus. Jetzt fragt ihr euch gegenseitig, was ihr lesen wollt.",
+      "fragt": "Ein Kind fragt und tippt die Antworten an.",
+      "antwortet": "Das andere Kind antwortet.",
+      "tausch": "Dann tauscht ihr."
+    },
+    "stufe2": {
+      "intro": "Bald besucht ihr die {bibliothek}. Dort sucht ihr euch selbst ein Buch aus. Jetzt interviewt ihr euch: Was möchtet ihr lesen?",
+      "fragt": "Ein Kind fängt mit den Fragen an und tippt die Antworten an.",
+      "antwortet": "Das andere Kind antwortet.",
+      "tausch": "Danach tauscht ihr."
+    },
+    "stufe3": {
+      "intro": "Bald besucht ihr die {bibliothek}. Dort könnt ihr euch selbst ein Buch aussuchen und darin stöbern. Um zu wissen, wonach ihr suchen wollt, interviewt ihr euch jetzt gegenseitig.",
+      "fragt": "Ein Kind fängt mit den Fragen an und tippt die Antworten an.",
+      "antwortet": "Das andere Kind antwortet.",
+      "tausch": "Danach tauscht ihr."
+    },
+    "sprache": "In welcher Sprache möchtest du die Fragen zusätzlich sehen?"
   },
   "art": {
-    "lang": "Was für ein Buch möchtest du lesen?",
-    "kurz": "Was willst du lesen? Ein Sachbuch: Da lernst du echte Sachen. Oder eine Geschichte: Da ist alles ausgedacht.",
+    "frage": {
+      "stufe1": "Was willst du suchen?",
+      "stufe2": "Was für ein Buch möchtest du suchen?",
+      "stufe3": "Was für ein Buch möchtest du suchen?"
+    },
     "optionen": {
-      "sachbuch": {"label": "Sachbuch", "symbol": "💡", "lang": "Ein Sachbuch: Darin erfährst du echte Dinge, zum Beispiel, wie Tiere leben."},
-      "geschichte": {"label": "Geschichte", "symbol": "📖", "lang": "Eine Geschichte: Darin passiert etwas Lustiges oder Spannendes, zum Beispiel in einer Detektivgeschichte."}
+      "sachbuch": {
+        "label": "Sachbuch",
+        "symbol": "💡",
+        "stufe1": "Da lernst du echte Sachen.",
+        "stufe2": "Darin stehen echte Dinge, zum Beispiel über Tiere.",
+        "stufe3": "Darin erfährst du echte Dinge, zum Beispiel, wie Tiere leben."
+      },
+      "geschichte": {
+        "label": "Geschichte",
+        "symbol": "📖",
+        "stufe1": "Da ist alles ausgedacht.",
+        "stufe2": "Darin ist alles ausgedacht, zum Beispiel lustig oder spannend.",
+        "stufe3": "Darin passiert etwas Lustiges oder Spannendes, zum Beispiel in einer Detektivgeschichte."
+      }
     }
   },
   "thema": {
-    "lang": {
-      "sachbuch": "Worüber möchtest du etwas herausfinden?",
-      "geschichte": "Wovon soll deine Geschichte handeln?"
+    "frage": {
+      "stufe1": {
+        "sachbuch": "Worüber willst du lesen? Zeig auf bis zu drei Bilder.",
+        "geschichte": "Worüber willst du lesen? Zeig auf bis zu drei Bilder."
+      },
+      "stufe2": {
+        "sachbuch": "Worüber möchtest du etwas wissen? Du kannst bis zu drei Themen wählen.",
+        "geschichte": "Worum soll es in deiner Geschichte gehen? Du kannst bis zu drei Themen wählen."
+      },
+      "stufe3": {
+        "sachbuch": "Worüber möchtest du etwas herausfinden? Du kannst bis zu drei Themen wählen.",
+        "geschichte": "Wovon soll deine Geschichte handeln? Du kannst bis zu drei Themen wählen."
+      }
     },
-    "kurz": "Worüber willst du lesen? Zeig auf ein Bild.",
-    "weitere": "Was denn? Schreib es auf die Karte.",
+    "max": 3,
+    "weitere": {
+      "stufe1": "Was? Schreib es auf die Karte.",
+      "stufe2": "Was denn? Schreib es auf die Karte.",
+      "stufe3": "Was denn? Schreib es auf die Karte."
+    },
     "listen": {
       "sachbuch": [
-        {"label": "Tiere und Dinosaurier", "symbol": "🦕"},
-        {"label": "Natur", "symbol": "🌳"},
-        {"label": "Weltraum", "symbol": "🚀"},
-        {"label": "Erde und Länder", "symbol": "🌍"},
-        {"label": "Technik und Erfindungen", "symbol": "⚙️"},
-        {"label": "Körper und Gefühle", "symbol": "❤️"},
-        {"label": "Leben früher (Römer, Ägypter …)", "symbol": "🏺"},
-        {"label": "Sport", "symbol": "⚽"},
-        {"label": "Weitere", "symbol": "✏️", "weitere": true}
+        {
+          "label": "Tiere und Dinosaurier",
+          "symbol": "🐢"
+        },
+        {
+          "label": "Natur",
+          "symbol": "🌳"
+        },
+        {
+          "label": "Weltraum",
+          "symbol": "🚀"
+        },
+        {
+          "label": "Erde und Länder",
+          "symbol": "🌍"
+        },
+        {
+          "label": "Technik und Erfindungen",
+          "symbol": "⚙️"
+        },
+        {
+          "label": "Körper und Gefühle",
+          "symbol": "🧍"
+        },
+        {
+          "label": "Leben früher (Römer, Ägypter …)",
+          "symbol": "🏺"
+        },
+        {
+          "label": "Sport",
+          "symbol": "⚽"
+        },
+        {
+          "label": "Weitere",
+          "symbol": "✏️",
+          "weitere": true
+        }
       ],
       "geschichte": [
-        {"label": "Tiere", "symbol": "🐾"},
-        {"label": "Fantasie", "symbol": "🐉"},
-        {"label": "Freundschaft", "symbol": "🤝"},
-        {"label": "Familie und Schule", "symbol": "🏫"},
-        {"label": "Abenteuer", "symbol": "🧭"},
-        {"label": "Detektive", "symbol": "🔍"},
-        {"label": "Lustiges", "symbol": "😄"},
-        {"label": "Gruseliges", "symbol": "👻"},
-        {"label": "Weitere", "symbol": "✏️", "weitere": true}
+        {
+          "label": "Tiere",
+          "symbol": "🐾"
+        },
+        {
+          "label": "Fantasie",
+          "symbol": "🐉"
+        },
+        {
+          "label": "Freundschaft",
+          "symbol": "🤝"
+        },
+        {
+          "label": "Familie und Schule",
+          "symbol": "🏫"
+        },
+        {
+          "label": "Abenteuer",
+          "symbol": "🏴‍☠️"
+        },
+        {
+          "label": "Detektive",
+          "symbol": "🔍"
+        },
+        {
+          "label": "Lustiges",
+          "symbol": "😄"
+        },
+        {
+          "label": "Gruseliges",
+          "symbol": "👻"
+        },
+        {
+          "label": "Weitere",
+          "symbol": "✏️",
+          "weitere": true
+        }
       ]
     }
   },
   "format": {
-    "lang": "Wie soll dein Buch aussehen?",
-    "kurz": "Viele Bilder oder viel Text?",
+    "frage": {
+      "stufe1": "Viele Bilder oder viel Text?",
+      "stufe2": "Wie soll dein Buch aussehen?",
+      "stufe3": "Wie soll dein Buch aussehen?"
+    },
     "optionen": {
-      "bilder": {"label": "Mit vielen Bildern", "kurz": "viele Bilder", "bild": "assets/pictos/bilder.png"},
-      "text": {"label": "Mit viel Text", "kurz": "viel Text", "bild": "assets/pictos/text.png"}
+      "bilder": {
+        "label": "Mit vielen Bildern",
+        "kurz": "viele Bilder",
+        "bild": "assets/pictos/bilder.png"
+      },
+      "text": {
+        "label": "Mit viel Text",
+        "kurz": "viel Text",
+        "bild": "assets/pictos/text.png"
+      }
     }
   },
-  "zusammenfassung": {
-    "lang": "Das sucht 💬: {auswahl}. Kreuzt das jetzt auf der Karte von 💬 an. Stimmt alles?",
-    "kurz": "💬 sucht: {auswahl}. Kreuzt das auf der Suchkarte an.",
-    "knopf": "Fertig, jetzt tauschen"
+  "tauschen": {
+    "stufe1": "Tauscht jetzt.",
+    "stufe2": "Tauscht jetzt die Rollen.",
+    "stufe3": "Tauscht jetzt die Rollen: Wer eben gefragt hat, antwortet jetzt."
   },
-  "sterne": {
-    "lang": "Malt auf beiden Karten so viele Sterne aus, wie eure Lesestufe hat: {sterne}. Die Sterne helfen euch beim Aussuchen in der Bibliothek.",
-    "kurz": "Malt auf beiden Karten {sterne} aus."
+  "karte_holen": {
+    "titel": "Eure Lesefutter-Karten",
+    "stufe1": [
+      "Holt euch ein Blatt mit zwei Lesefutter-Karten.",
+      "Schneidet es in der Mitte durch. Jeder bekommt eine Karte."
+    ],
+    "stufe2": [
+      "Holt euch jetzt ein Blatt mit zwei Lesefutter-Karten.",
+      "Schneidet es in der Mitte durch. Jeder bekommt eine Karte."
+    ],
+    "stufe3": [
+      "Holt euch jetzt ein Blatt mit zwei Lesefutter-Karten.",
+      "Schneidet es in der Mitte durch, sodass jeder eine Karte hat."
+    ]
+  },
+  "uebertragen": {
+    "titel": {
+      "stufe1": "Das habt ihr gewählt",
+      "stufe2": "Das habt ihr ausgewählt",
+      "stufe3": "Das habt ihr ausgewählt"
+    },
+    "runde": "Runde {n}: Das hat 💬 gewählt",
+    "stufe1": [
+      "Kreuzt eure Antworten auf eurer Karte an.",
+      "Malt {sterne} aus.",
+      "Schreibt euren Namen darauf."
+    ],
+    "stufe2": [
+      "Jeder kreuzt seine Antworten auf seiner Karte an.",
+      "Malt {sterne} aus. So viele Sterne hat eure Lesestufe.",
+      "Schreibt euren Namen darauf."
+    ],
+    "stufe3": [
+      "Jeder kreuzt seine eigenen Antworten auf seiner Karte an.",
+      "Malt so viele Sterne aus, wie eure Lesestufe hat: {sterne}. Sie helfen euch beim Aussuchen in der Bibliothek.",
+      "Schreibt euren Namen darauf."
+    ]
   },
   "abschluss": {
-    "lang": "Super! Jedes Kind hat jetzt seine Suchkarte. Gebt sie eurer Lehrkraft. Beim Besuch nehmt ihr sie mit in die Bibliothek.",
-    "kurz": "Super! Jetzt hat jedes Kind eine Suchkarte. Gebt sie eurer Lehrkraft."
+    "stufe1": "Super! Jetzt hat jedes Kind eine Lesefutter-Karte. Gebt sie eurer Lehrkraft.",
+    "stufe2": "Super! Jedes Kind hat jetzt seine Lesefutter-Karte. Gebt sie eurer Lehrkraft.",
+    "stufe3": "Super! Jedes Kind hat jetzt seine Lesefutter-Karte. Gebt sie eurer Lehrkraft. Beim Besuch nehmt ihr sie mit in die Bibliothek."
   },
-  "abschluss_knopf": "Fertig",
+  "knopf": {
+    "weiter": "Weiter",
+    "zurueck": "Zurück",
+    "fertig": "Fertig",
+    "von_vorn": "Von vorn"
+  },
   "karte": {
+    "titel": "Lesefutter-Karte der {klasse}",
     "name": "Name",
-    "stufe": "Unsere Lesestufe – malt aus:",
-    "art": "1. Was für ein Buch?",
-    "thema": "2. Worüber?",
+    "stufe": "Meine Lesestufe",
+    "art": "1. Was für ein Buch möchtest du suchen?",
+    "thema": "2. Wovon soll es handeln?",
+    "thema_hinweis": "Bis zu drei Kreuze.",
     "format": "3. Wie soll es aussehen?",
-    "hinweis": "Schau dir das gewählte Buch genau an. Sieht es ansprechend aus? Möchtest du es lesen?"
+    "fund": "Dieses Buch habe ich mir ausgesucht:"
   }
 }

@@ -1,22 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 300" role="img" aria-label="Biber paddelt im Boot zur Bibliothek">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 300" role="img" aria-label="Biber bringt einen Brief im Boot zur Bibliothek">
   <path d="M0 250 Q30 238 60 250 T120 250 T180 250 T240 250 T300 250 T360 250 T420 250 V300 H0 Z" fill="#7FB3C8"/>
   <g transform="translate(30 0)">
     
-  <g transform="translate(188 118) rotate(6)">
-    <rect x="0" y="0" width="74" height="84" rx="20" fill="#E4572E" stroke="#2B2118" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M10 15.12 C10 -6 64 -6 64 15.12 L68 35.28 C44.4 42.0 29.6 42.0 6 35.28 Z" fill="#2E8C8C" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-    <circle cx="37.0" cy="36.96" r="6" fill="#F2C14E" stroke="#2B2118" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-    <rect x="13.32" y="50.4" width="47.36" height="25.2" rx="9" fill="#F2C14E" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-    <line x1="13.32" y1="57.120000000000005" x2="60.68" y2="57.120000000000005" stroke="#2B2118" stroke-width="2.5"/>
-    <line x1="4" y1="47.040000000000006" x2="4" y2="78.96" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="7 6" opacity=".9"/>
-    <path d="M22.2 4 C22.2 -14 51.8 -14 51.8 4" fill="none" stroke="#2B2118" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <g transform="translate(192 156) rotate(-8)">
+    <rect x="0" y="0" width="78" height="50" rx="5" fill="#FFFDF7" stroke="#2B2118" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M3 4 L39 30 L75 4" fill="none" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M3 47 L30 24 M75 47 L48 24" fill="none" stroke="#2B2118" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+    <rect x="58" y="8" width="12" height="14" rx="1.5" fill="#3E6B48" stroke="#2B2118" stroke-width="2"/>
   </g>
     <g transform="translate(-30 4) scale(.82)">
       <path d="M150 168 C206 168 232 220 230 270 L70 270 C68 220 94 168 150 168 Z" fill="#9A6233" stroke="#2B2118" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
       
-  <path d="M96 182 C120 200 180 200 204 182 L206 198 C180 216 120 216 94 198 Z" fill="#3E6B48" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M104 192 C128 206 172 206 196 192" fill="none" stroke="#5E8F68" stroke-width="3" stroke-dasharray="6 7"/>
-  <path d="M176 196 L194 238 L180 236 L172 244 L164 204 Z" fill="#3E6B48" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M106 185 C126 201 174 201 194 185 C201 189 203 198 197 204 C175 220 125 220 103 204 C97 198 99 189 106 185 Z" fill="#3E6B48" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M112 196 C132 208 168 208 188 196" fill="none" stroke="#5E8F68" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"/>
+  <path d="M162 205 C170 206 176 208 180 206 C183 218 186 228 190 236 C186 240 180 238 177 236 C174 241 169 243 165 240 C162 228 161 216 162 205 Z" fill="#3E6B48" stroke="#2B2118" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
       
   <g transform="translate(0 0) scale(1.0) translate(150 0) scale(0.9 1) translate(-150 0)">
     <circle cx="104" cy="84" r="17" fill="#9A6233" stroke="#2B2118" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
