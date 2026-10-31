@@ -1,7 +1,7 @@
 {
   "schema_version": "0.4",
   "quelle": "ARASAAC (arasaac.org), CC BY-NC-SA 4.0; IDs per Suche (de, bestsearch/search) am 16.10. und 18.10.2026",
-  "hinweis": "Dateien liegen als assets/pictos/<id>.png. Einträge je Programm ergänzen.",
+  "hinweis": "Dateien liegen als assets/pictos/<id>.png. Einträge je Programm ergänzen. Am 31.10.2026 von Hand ersetzt (Bildauswahl A. Marx): gehen 2432 → 32908, Kind 2484 → 2485, suchen 6946 → 6947.",
   "pictos": [
     {
       "id": 3065,
@@ -72,7 +72,7 @@
       "wort": "Bus"
     },
     {
-      "id": 6946,
+      "id": 6947,
       "wort": "suchen"
     },
     {
@@ -104,7 +104,7 @@
       "wort": "malen"
     },
     {
-      "id": 2432,
+      "id": 32908,
       "wort": "gehen"
     },
     {
@@ -152,7 +152,7 @@
       "wort": "Hut"
     },
     {
-      "id": 2484,
+      "id": 2485,
       "wort": "Kind"
     },
     {

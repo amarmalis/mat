@@ -15,7 +15,8 @@ Das Datenmodell legt drei Datenstrukturen des Prototyps fest: das Programmprofil
 | `programme/<programm>.json` | Programmprofil der Bibliothek | Bibliotheksformular; Stufe 1 füllt vor, die Bibliothek prüft |
 | `lerngruppen/<ID>.json` | Angaben der Lehrkraft | Lerngruppen-Formular (von Hand im Prototyp) |
 | `materialien/<ID>.json` | Material: Fridos Brief, Geschichte, Rahmen des Antwortbriefs, Übersetzungen der Geschichte | LLM-Aufruf 2 (Stufe 2) |
-| `assets/interview/<sprache>.json` | Interviewfragen und Themen in einer Familiensprache | einmal je Sprache übersetzt (KI-gestützt), unabhängig vom Material |
+| `assets/interview/de.json` | Wortlaut des Interviews (Fassungen „lang“ für ⭐⭐/⭐⭐⭐ und „kurz“ für ⭐), Themenlisten, Beschriftung der Suchkarte | von Hand, aus dem Dokument „Interview Suchkarte – Wortlaut“ |
+| `assets/interview/<sprache>.json` | dieselbe Struktur in einer Familiensprache | einmal je Sprache übersetzt (KI-gestützt), unabhängig vom Material; noch keine vorhanden |
 | `assets/pictos/liste.json` | erlaubte Piktogramme: ID und Wort | von Hand, je Programm ergänzt |
 
 Neu gegenüber 0.5: Die Sprachfassung als eigene Materialdatei (`<ID>.<sprache>.json`) entfällt. Übersetzt wird nur noch die Geschichte, und zwar innerhalb der Materialdatei. Interviewfragen und Themen sind fest und werden deshalb nur einmal je Sprache übersetzt.
@@ -168,7 +169,7 @@ Unverändert gegenüber 0.5: Bild-Eintrag `{"picto", "wort", "suchwort"}`; `pict
 
 ## Prüfregeln (Schema 0.7)
 
-Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen die Lehrkraftansicht (`index.html`) und `werkzeuge/validate04.py` (nach Anpassung).
+Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen die Lehrkraftansicht (`index.html`) und `werkzeuge/validate07.py`; beide liefern für dasselbe Material dieselben Meldungen (geprüft am 31.10.2026 mit drei Testdateien). Material im Schema 0.5 prüft weiterhin `werkzeuge/validate04.py`.
 
 | Nr. | Regel | Bei Verstoß |
 | --- | --- | --- |
@@ -195,10 +196,13 @@ Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen d
 ## Offene Punkte
 
 - Längengrenzen der Abschnitte (180/300/450) und des Briefs (600) sind Setzungen; nach dem ersten Test prüfen.
-- `assets/interview/<sprache>.json`: Aufbau festlegen, sobald der Wortlaut des Interviews fertig ist.
-- Bildsymbole für die 16 Themen und die Rollen (🎤, 💬) sind noch festzulegen; sie gehören zur Website, nicht zum Material.
+- `assets/interview/<sprache>.json`: Aufbau wie `de.json`; Übersetzungen erst, wenn der Wortlaut fertig redigiert ist. Ohne Datei bietet das Tablet keine Sprachwahl im Interview an.
+- Bildsymbole für die 16 Themen und die Rollen (🎤, 💬) sind noch festzulegen; sie gehören zur Website, nicht zum Material. In `de.json` stehen vorläufig Emoji als Platzhalter.
+- Piktogramm-Dateien: Das Tablet zeigt ein Piktogramm nur, wenn `assets/pictos/<ID>.png` vorhanden ist, sonst nur das Wort. Die Lehrkraftansicht listet fehlende Dateien. Ausnahme: Das Piktogramm „Biber“ (7055) steht in der Bildfassung für Frido; die Website zeigt dafür die Frido-Figur (`assets/biber/biber-kopf.svg`) mit dem Wort „Frido“, eine Datei `7055.png` ist nicht nötig.
 - Datenmodell, Prompts und Prüfwerkzeuge werden weiterhin von Hand gleich gehalten.
 
 ## Umsetzungsstand
 
-Stand 30.10.2026: Schema 0.7 ist spezifiziert, aber noch nicht umgesetzt. `index.html` und `validate04.py` prüfen und zeigen weiterhin Schema 0.5.
+Stand 31.10.2026: `index.html` zeigt und prüft Schema 0.7 (Whiteboard mit Brief, Bibliothek, Tablets, Fragen und Antwortbrief; Tablet mit Lesestufenwahl, Geschichte und Interview; Suchkarten-Druck; Lehrkraftansicht mit Durchsicht und Korrektur). `werkzeuge/validate07.py` ist die Python-Fassung der Prüfung. `materialien/4713.json` ist das Ergebnis von Lauf 8 (system_2 v0.7).
+
+Korrekturen der Lehrkraft speichert die Lehrkraftansicht nur im Browser. Damit die Tablets sie zeigen, lädt die Lehrkraft die geprüfte Fassung herunter (`meta.hinweis` vermerkt Datum und geänderte Felder) und ersetzt damit `materialien/<ID>.json`. In der Anwendung übernähme das die Plattform.

@@ -1,0 +1,85 @@
+{
+  "sprache": "de",
+  "name": "Deutsch",
+  "hinweis": "Wortlaut aus dem Dokument „Interview Suchkarte – Wortlaut (Entwurf)“, Stand 30.10.2026. „lang“ = Lesestufen ⭐⭐ und ⭐⭐⭐, „kurz“ = Lesestufe ⭐. {bibliothek}, {auswahl} und {sterne} setzt die Website ein. Die Texte unter „sterne“ und „abschluss_knopf“ sind neu (31.10.2026) und noch nicht redigiert. Symbole der Themen sind Platzhalter.",
+  "einstieg": {
+    "lang": "Bald besucht ihr die {bibliothek}. Dort könnt ihr euch selbst ein Buch aussuchen und darin stöbern. Um zu wissen, wonach ihr suchen wollt, bekommt jeder von euch eine Such-Karte. Ihr interviewt euch und füllt die Karte für euren Partner aus.",
+    "kurz": "Bald seid ihr in der {bibliothek}. Dort sucht ihr ein Buch aus. Dafür macht ihr eine Suchkarte. Ihr fragt euch gegenseitig."
+  },
+  "rollen": {
+    "lang": "Wer nimmt zuerst das 🎤 Mikrofon, wer die 💬 Sprechblase? 🎤 fragt. 💬 antwortet. 🎤 kreuzt die Antworten auf der Karte von 💬 an. Danach tauscht ihr die Symbole.",
+    "kurz": "Wer hat das 🎤 Mikrofon? Wer die 💬 Sprechblase? 🎤 fragt. 💬 sagt die Antwort. 🎤 kreuzt an. Dann tauscht ihr.",
+    "knopf": "🎤 fragt jetzt 💬",
+    "sprache": "💬: In welcher Sprache möchtest du die Fragen zusätzlich sehen?"
+  },
+  "art": {
+    "lang": "Was für ein Buch möchtest du lesen?",
+    "kurz": "Was willst du lesen? Ein Sachbuch: Da lernst du echte Sachen. Oder eine Geschichte: Da ist alles ausgedacht.",
+    "optionen": {
+      "sachbuch": {"label": "Sachbuch", "symbol": "💡", "lang": "Ein Sachbuch: Darin erfährst du echte Dinge, zum Beispiel, wie Tiere leben."},
+      "geschichte": {"label": "Geschichte", "symbol": "📖", "lang": "Eine Geschichte: Darin passiert etwas Lustiges oder Spannendes, zum Beispiel in einer Detektivgeschichte."}
+    }
+  },
+  "thema": {
+    "lang": {
+      "sachbuch": "Worüber möchtest du etwas herausfinden?",
+      "geschichte": "Wovon soll deine Geschichte handeln?"
+    },
+    "kurz": "Worüber willst du lesen? Zeig auf ein Bild.",
+    "weitere": "Was denn? Schreib es auf die Karte.",
+    "listen": {
+      "sachbuch": [
+        {"label": "Tiere und Dinosaurier", "symbol": "🦕"},
+        {"label": "Natur", "symbol": "🌳"},
+        {"label": "Weltraum", "symbol": "🚀"},
+        {"label": "Erde und Länder", "symbol": "🌍"},
+        {"label": "Technik und Erfindungen", "symbol": "⚙️"},
+        {"label": "Körper und Gefühle", "symbol": "❤️"},
+        {"label": "Leben früher (Römer, Ägypter …)", "symbol": "🏺"},
+        {"label": "Sport", "symbol": "⚽"},
+        {"label": "Weitere", "symbol": "✏️", "weitere": true}
+      ],
+      "geschichte": [
+        {"label": "Tiere", "symbol": "🐾"},
+        {"label": "Fantasie", "symbol": "🐉"},
+        {"label": "Freundschaft", "symbol": "🤝"},
+        {"label": "Familie und Schule", "symbol": "🏫"},
+        {"label": "Abenteuer", "symbol": "🧭"},
+        {"label": "Detektive", "symbol": "🔍"},
+        {"label": "Lustiges", "symbol": "😄"},
+        {"label": "Gruseliges", "symbol": "👻"},
+        {"label": "Weitere", "symbol": "✏️", "weitere": true}
+      ]
+    }
+  },
+  "format": {
+    "lang": "Wie soll dein Buch aussehen?",
+    "kurz": "Viele Bilder oder viel Text?",
+    "optionen": {
+      "bilder": {"label": "Mit vielen Bildern", "kurz": "viele Bilder", "bild": "assets/pictos/bilder.png"},
+      "text": {"label": "Mit viel Text", "kurz": "viel Text", "bild": "assets/pictos/text.png"}
+    }
+  },
+  "zusammenfassung": {
+    "lang": "Das sucht 💬: {auswahl}. Kreuzt das jetzt auf der Karte von 💬 an. Stimmt alles?",
+    "kurz": "💬 sucht: {auswahl}. Kreuzt das auf der Suchkarte an.",
+    "knopf": "Fertig, jetzt tauschen"
+  },
+  "sterne": {
+    "lang": "Malt auf beiden Karten so viele Sterne aus, wie eure Lesestufe hat: {sterne}. Die Sterne helfen euch beim Aussuchen in der Bibliothek.",
+    "kurz": "Malt auf beiden Karten {sterne} aus."
+  },
+  "abschluss": {
+    "lang": "Super! Jedes Kind hat jetzt seine Suchkarte. Gebt sie eurer Lehrkraft. Beim Besuch nehmt ihr sie mit in die Bibliothek.",
+    "kurz": "Super! Jetzt hat jedes Kind eine Suchkarte. Gebt sie eurer Lehrkraft."
+  },
+  "abschluss_knopf": "Fertig",
+  "karte": {
+    "name": "Name",
+    "stufe": "Unsere Lesestufe – malt aus:",
+    "art": "1. Was für ein Buch?",
+    "thema": "2. Worüber?",
+    "format": "3. Wie soll es aussehen?",
+    "hinweis": "Schau dir das gewählte Buch genau an. Sieht es ansprechend aus? Möchtest du es lesen?"
+  }
+}

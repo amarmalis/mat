@@ -12,7 +12,7 @@
   --paper:#F5F8F2; --surface:#FFFFFF; --ink:#1F2A1F; --muted:#56665A; --line:#D5DDD0;
   --moss:#3E6B48; --moss-ink:#FFFFFF; --bark:#6B4E31; --sun:#F4D58D;
   --opt-a:#F6E3A1; --opt-a-line:#D9B94A; --opt-b:#CFE3D1; --opt-b-line:#7FAE88;
-  --ok:#2E7D4F; --bad:#B23A3A; --warn:#8A5A00;
+  --ok:#2E7D4F; --bad:#B23A3A; --warn:#8A5A00; --star:#E0A100;
   --radius-lg:22px; --radius-sm:10px;
   --font:"Source Sans 3","Verdana","Tahoma",system-ui,sans-serif;
   box-sizing:border-box;
@@ -22,23 +22,23 @@
     --paper:#141A15; --surface:#1C241D; --ink:#E8EFE6; --muted:#A6B5A8; --line:#2F3A30;
     --moss:#8CC09A; --moss-ink:#102014; --bark:#C9A27A; --sun:#6B5A28;
     --opt-a:#4A3F1C; --opt-a-line:#9C8436; --opt-b:#21392A; --opt-b-line:#4E7C5A;
-    --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A;
+    --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A; --star:#F2C14E;
   }
 }
 :root[data-theme="dark"]{
   --paper:#141A15; --surface:#1C241D; --ink:#E8EFE6; --muted:#A6B5A8; --line:#2F3A30;
   --moss:#8CC09A; --moss-ink:#102014; --bark:#C9A27A; --sun:#6B5A28;
   --opt-a:#4A3F1C; --opt-a-line:#9C8436; --opt-b:#21392A; --opt-b-line:#4E7C5A;
-  --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A;
+  --ok:#7CCB98; --bad:#E58A8A; --warn:#E2B85A; --star:#F2C14E;
 }
 *,*::before,*::after{box-sizing:inherit}
 html{height:100%}
 body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.5;
   padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-button,input,textarea{font:inherit;color:inherit}
+button,input,textarea,select{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--moss);outline-offset:3px}
 img,svg{max-width:100%}
-body.kid .topnav{display:none}
+body.kid .topnav,body.kid .lizenz{display:none}
 
 .topnav{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;padding:.6rem 1rem;border-bottom:1px solid var(--line);background:var(--surface)}
 .topnav .title{font-weight:700;margin-right:auto;color:var(--muted);font-size:.95rem}
@@ -48,211 +48,208 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
 
 .btn{text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;border:2px solid var(--moss);background:var(--surface);color:var(--ink);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;font-weight:700}
 .btn.primary{background:var(--moss);color:var(--moss-ink)}
+.btn.small{padding:.25rem .7rem;font-size:.9rem}
 .btn:disabled{opacity:.4;cursor:default}
 .row{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
 .muted{color:var(--muted)}
-.figure-badge{display:inline-grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--moss);color:var(--moss-ink);font-weight:700;font-size:1.2rem;flex:none}
+.figure-badge{display:inline-grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;flex:none}
+.figure-badge.bild{background:none;width:3.6rem;height:3.6rem;overflow:hidden}
+.figure-badge.bild img{width:100%;height:100%;display:block}
+.stars{color:var(--star);letter-spacing:.05em;white-space:nowrap}
 
 /* Whiteboard */
 .wb-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
-.stepper{display:flex;gap:.5rem;flex-wrap:wrap}
+.stepper{display:flex;gap:.5rem 1rem;flex-wrap:wrap;align-items:baseline}
+.stepper .phase{font-size:.85rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
 .stepper button{border:none;background:none;padding:.3rem .2rem;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;font-size:1rem}
 .stepper button[aria-current="step"]{color:var(--ink);border-color:var(--moss);font-weight:700}
-.pack-widget{display:flex;align-items:center;gap:.6rem;flex:none}
-.pack-widget .count{font-size:1rem;color:var(--muted)}
-.pack-widget img{height:130px;width:auto;display:block;transition:transform .25s}
-.pack-widget.bump img{transform:scale(1.06)}
 .stage{min-height:52vh}
 .stage-nav{display:flex;justify-content:space-between;margin-top:1.5rem}
 .letter{background:#FFFDF7;color:#1F2A1F;border:1px solid #D8CBB0;border-top:8px solid var(--moss);border-radius:6px;padding:2rem 2.2rem;max-width:62ch;box-shadow:0 1px 0 #E6DCC4,0 10px 24px rgba(40,50,30,.08)}
 .letter .head{display:flex;gap:1rem;align-items:center;margin-bottom:1rem}
-.letter p{font-size:1.6rem;line-height:1.55;margin:0}
+.letter p{font-size:1.6rem;line-height:1.55;margin:0 0 .6rem}
+.letter p:last-child{margin-bottom:0}
+.brief-bild{width:6.5rem;height:auto;flex:none}
 .lead{font-size:1.5rem;margin:0 0 1rem}
-
-.peek{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.2rem}
-.peek-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column}
-.peek-card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--paper)}
-.peek-card .noimg{aspect-ratio:16/10;display:grid;place-items:center;font-size:5rem;background:var(--paper)}
-.peek-body{padding:1rem 1.2rem 1.2rem;display:flex;flex-direction:column;gap:.7rem}
-.peek-body .q{font-size:1.4rem;line-height:1.45;margin:0;display:flex;gap:.7rem;align-items:flex-start}
-.peek-body .q .figure-badge{width:2.4rem;height:2.4rem;font-size:.9rem}
+.bubble{display:flex;gap:.8rem;align-items:center;background:var(--surface);border:2px solid var(--moss);border-radius:var(--radius-lg);padding:.9rem 1.2rem;font-size:1.4rem;margin:0 0 1rem}
+.peek{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1.2rem;align-items:start}
+.peek-img{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden}
+.peek-img img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--paper)}
+.peek-img .noimg{aspect-ratio:16/10;display:grid;place-items:center;font-size:5rem;background:var(--paper)}
+.collect{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem}
 .guess-form{display:flex;gap:.5rem}
-.guess-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:.5rem 1rem;background:var(--paper)}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.chip{display:inline-flex;align-items:center;gap:.3rem;background:var(--opt-b);border:1px solid var(--opt-b-line);border-radius:999px;padding:.2rem .4rem .2rem .8rem;font-size:1rem}
-.chip button{border:none;background:none;cursor:pointer;font-size:1.1rem;line-height:1;padding:.1rem .3rem;color:var(--muted)}
-.flying{position:fixed;z-index:50;pointer-events:none;background:var(--sun);border:1px solid var(--opt-a-line);border-radius:999px;padding:.2rem .7rem;font-size:1rem;white-space:nowrap}
-
-.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-.level{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.2rem;text-align:center}
-.level .sym{font-size:3rem;line-height:1}
-.level .qr{display:grid;place-items:center;margin:.8rem auto;width:180px;height:180px;background:#fff;padding:8px;border-radius:var(--radius-sm)}
-.level .qr img,.level .qr canvas{width:164px!important;height:164px!important}
+.guess-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:.6rem 1rem;background:var(--paper);font-size:1.2rem}
+.plus-btn{width:2.9rem;height:2.9rem;border-radius:50%;border:2px solid var(--moss);background:var(--moss);color:var(--moss-ink);cursor:pointer;font-weight:700;font-size:1.5rem;line-height:1;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{display:inline-flex;align-items:center;gap:.3rem;background:var(--opt-b);border:1px solid var(--opt-b-line);border-radius:999px;padding:.25rem .4rem .25rem .9rem;font-size:1.2rem}
+.chip button{border:none;background:none;cursor:pointer;font-size:1.2rem;line-height:1;padding:.1rem .35rem;color:var(--muted)}
+.qr-box{display:grid;place-items:center;width:240px;height:240px;background:#fff;padding:10px;border-radius:var(--radius-sm);border:1px solid var(--line)}
+.qr-box img,.qr-box canvas{width:220px!important;height:220px!important}
 .qr-fallback{font-size:.75rem;word-break:break-all;color:#333}
-.tip{background:var(--surface);border-left:4px solid var(--moss);padding:.7rem 1rem;margin:0 0 1rem;font-size:1.25rem}
-
-.pack{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.2rem 1.4rem;margin-bottom:1rem}
-.pack h2{font-size:1.2rem;margin:0 0 .6rem}
-.pack-row{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--line)}
-.pack-row:last-child{border-bottom:none}
-.pack-row .pics{font-size:1.5rem;letter-spacing:.15rem}
-.counter{display:flex;align-items:center;gap:.5rem}
-.counter button{width:2.4rem;height:2.4rem;border-radius:50%;border:2px solid var(--moss);background:var(--surface);cursor:pointer;font-weight:700;font-size:1.2rem}
-.counter output{min-width:2ch;text-align:center;font-size:1.4rem;font-weight:700}
-.sent{margin-top:1rem;border-left:4px solid var(--moss);padding:.8rem 1rem;background:var(--surface)}
-@keyframes flyoff{0%{transform:translate(0,0) rotate(0)}40%{transform:translate(20vw,-4px) rotate(-2deg)}100%{transform:translate(120vw,0) rotate(0)}}
-.flyoff{animation:flyoff 2.2s ease-in forwards}
+.split{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start}
+.todo{list-style:none;padding:0;margin:0 0 1rem;display:grid;gap:.5rem;counter-reset:todo}
+.todo li{counter-increment:todo;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem .9rem;font-size:1.3rem}
+.todo li::before{content:counter(todo) ". ";font-weight:700;color:var(--moss)}
+.tip{background:var(--surface);border-left:4px solid var(--moss);padding:.7rem 1rem;margin:0 0 1rem;font-size:1.05rem}
+.brieffeld{width:100%;min-height:24rem;font-family:var(--font);font-size:1.35rem;line-height:1.5;border:1px solid #D8CBB0;border-top:8px solid var(--moss);border-radius:6px;padding:1.2rem 1.4rem;background:#FFFDF7;color:#1F2A1F}
+.mail{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);margin-top:1rem;overflow:hidden}
+.mail dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;margin:0;padding:.8rem 1.1rem;border-bottom:1px solid var(--line);font-size:1rem}
+.mail dt{color:var(--muted)}
+.mail dd{margin:0}
+.mail pre{margin:0;padding:1rem 1.1rem;white-space:pre-wrap;font-family:var(--font);font-size:1rem}
+.mail .row{padding:.8rem 1.1rem;border-top:1px solid var(--line)}
+@keyframes paddle{0%{transform:translateX(-30px)}100%{transform:translateX(30px)}}
+.boot{width:16rem;height:auto;animation:paddle 2.4s ease-in-out infinite alternate}
 
 /* Tablet */
-.tablet{max-width:720px;margin:0 auto}
-.tbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.level-tag{font-size:1.1rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
-.slots{display:flex;gap:.4rem}
-.slot{width:2.8rem;height:2.8rem;border-radius:12px;border:2px dashed var(--line);display:grid;place-items:center;font-size:1.5rem;background:var(--surface)}
-.slot.filled{border-style:solid;border-color:var(--moss)}
-.roles{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin:.8rem 0 0;font-size:1.05rem}
-.roles span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.2rem .8rem}
-.story{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.6rem 1.8rem;margin:1rem 0}
-.story p{margin:0;font-size:1.5rem;line-height:1.55}
-.talk{font-size:1.2rem;margin:.2rem 0 .8rem;font-weight:700}
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.choice{border-radius:var(--radius-lg);padding:1.1rem;cursor:pointer;border:3px solid;display:flex;flex-direction:column;align-items:center;gap:.4rem;font-weight:700;font-size:1.25rem;color:var(--ink);text-align:center}
+.tablet{max-width:760px;margin:0 auto}
+.tbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
+.level-tag{font-size:1.1rem;color:var(--muted);display:flex;align-items:center;gap:.6rem}
+.level-tag .stars{font-size:1.5rem}
+.progress{font-size:1rem;color:var(--muted)}
+.story{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.6rem 1.8rem;margin:.6rem 0 1rem}
+.story p{margin:0;font-size:1.5rem;line-height:1.6}
+.story .wb{font-weight:700;text-decoration:underline dotted var(--moss) 2px;text-underline-offset:4px}
+.story .wb img{height:1.6em;width:auto;vertical-align:middle;margin-left:.15em}
+.pictos{display:flex;gap:.7rem;flex-wrap:wrap;margin:0 0 1rem;padding:0;list-style:none}
+.pictos li{display:flex;flex-direction:column;align-items:center;gap:.2rem;background:var(--paper);border:2px solid var(--line);border-radius:var(--radius-sm);padding:.4rem .6rem;min-width:5.5rem;font-weight:700;font-size:1.05rem}
+.pictos img{width:4.5rem;height:4.5rem;object-fit:contain}
+.pictos li.nopic{justify-content:center;min-height:6.2rem}
+.uebers{margin-top:1rem;padding-top:1rem;border-top:2px dashed var(--line)}
+.uebers p{font-size:1.35rem}
+.talk{font-size:1.25rem;margin:.2rem 0 .8rem;font-weight:700}
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1rem 0}
+.choice{border-radius:var(--radius-lg);padding:1.1rem;cursor:pointer;border:3px solid var(--opt-b-line);background:var(--opt-b);display:flex;flex-direction:column;align-items:center;gap:.4rem;font-weight:700;font-size:1.3rem;color:var(--ink);text-align:center}
 .choice .pic{font-size:3rem;line-height:1}
-.choice.a{background:var(--opt-a);border-color:var(--opt-a-line)}
-.choice.b{background:var(--opt-b);border-color:var(--opt-b-line)}
-.teams{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0}
-.team{border:3px solid var(--line);background:var(--surface);border-radius:var(--radius-lg);padding:1rem;font-weight:700;font-size:1.2rem;cursor:pointer}
-.team[aria-pressed="true"]{border-color:var(--moss);background:var(--opt-b)}
-.found{text-align:center;padding:2rem 1rem}
-.found .big{font-size:6rem;line-height:1;display:inline-block}
-.found p{font-size:1.6rem;margin:.6rem 0 1.2rem}
-.task{background:var(--opt-a);border:3px solid var(--opt-a-line);border-radius:var(--radius-lg);padding:1.2rem 1.4rem;margin:1rem 0}
-.task h2{margin:0 0 .4rem;font-size:1.2rem}
-.task p{margin:0;font-size:1.4rem;line-height:1.5}
-.result-pics{display:flex;gap:1rem;flex-wrap:wrap;margin:.6rem 0 1rem}
-.result-pics div{background:var(--surface);border:2px solid var(--moss);border-radius:var(--radius-sm);padding:.6rem 1rem;text-align:center;min-width:7rem}
-.result-pics span{display:block;font-size:2.4rem}
-.todo{list-style:none;padding:0;margin:0 0 1rem;display:grid;gap:.5rem;counter-reset:todo}
-.todo li{counter-increment:todo;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem .9rem;font-size:1.2rem}
-.todo li::before{content:counter(todo) ". ";font-weight:700;color:var(--moss)}
+.choice img.pic{width:4.5rem;height:4.5rem;object-fit:contain}
+.choice .sub{font-weight:400;font-size:1.05rem;line-height:1.4}
+.choice.stufe{background:var(--surface);border-color:var(--line)}
+.choice.stufe .stars{font-size:2.6rem}
+.choice[aria-pressed="true"]{border-color:var(--moss);box-shadow:0 0 0 3px var(--moss) inset}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1rem 0}
+.grid9 .choice{font-size:1.1rem;padding:.8rem .5rem;background:var(--surface);border-color:var(--line)}
+.grid9 .choice .pic{font-size:2.4rem}
+.ivtext{font-size:1.45rem;line-height:1.55;margin:.4rem 0 1rem}
+.ivtr{font-size:1.25rem;color:var(--muted);border-left:4px solid var(--line);padding-left:.8rem;margin:-.4rem 0 1rem}
+.auswahl{display:inline-flex;flex-wrap:wrap;gap:.3rem;vertical-align:middle}
+.auswahl span{background:var(--opt-a);border:2px solid var(--opt-a-line);border-radius:999px;padding:0 .7rem;font-weight:700}
+.runde{display:inline-block;background:var(--sun);border-radius:999px;padding:.1rem .8rem;font-size:1rem;font-weight:700;color:var(--ink)}
+.tnav{display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-top:1.2rem}
+.figure-hello{display:flex;gap:1rem;align-items:center}
+.figure-hello img{width:7rem;height:auto;flex:none}
+body.gross .story p,body.gross .ivtext{font-size:2rem}
+body.gross{--ink:#000;--surface:#fff;--paper:#fff;--line:#555}
 
 /* Lehrkraft */
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:1.1rem 1.3rem;margin-bottom:1.2rem}
 .panel h2{font-size:1.2rem;margin:0 0 .6rem}
+.panel h3{font-size:1.05rem;margin:1.2rem 0 .4rem}
 .checks{list-style:none;padding:0;margin:0}
 .checks li{padding:.15rem 0}
 .checks .ok::before{content:"✓ ";color:var(--ok);font-weight:700}
 .checks .bad::before{content:"✗ ";color:var(--bad);font-weight:700}
 .checks .warn::before{content:"! ";color:var(--warn);font-weight:700}
-.tree{list-style:none;padding-left:0;margin:0}
-.tree ul{list-style:none;padding-left:1.4rem;border-left:2px solid var(--line);margin:.3rem 0 .3rem .4rem}
-.tree li{margin:.35rem 0}
-.tree .opt{display:inline-block;font-weight:700;color:var(--moss);margin-right:.4rem}
-.tree .end{background:var(--paper);border-radius:var(--radius-sm);padding:.4rem .7rem;display:block}
-.variants{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;font-size:.9rem;margin-top:.2rem}
-.variants div{background:var(--paper);padding:.4rem .5rem;border-radius:8px}
+.edit{margin:.5rem 0 .9rem}
+.edit label{display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;font-weight:700;font-size:.95rem}
+.edit .count{font-weight:400;color:var(--muted);font-size:.85rem}
+.edit .count.over{color:var(--bad);font-weight:700}
+.edit .changed{background:var(--sun);border-radius:999px;padding:0 .5rem;font-size:.8rem;color:var(--ink)}
+.edit textarea{width:100%;min-height:4.5rem;font-family:var(--font);font-size:1rem;line-height:1.45;border:1px solid var(--line);border-radius:var(--radius-sm);padding:.5rem .6rem;background:var(--paper)}
+.edit.is-changed textarea{border-color:var(--warn);border-width:2px}
+.ro{background:var(--paper);border-radius:var(--radius-sm);padding:.5rem .7rem;font-size:.95rem;margin:.3rem 0 .8rem}
 .table-wrap{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:.95rem}
 th,td{border-bottom:1px solid var(--line);text-align:left;padding:.4rem .5rem;vertical-align:top}
-textarea{width:100%;min-height:14rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem;background:var(--paper)}
+textarea.json{width:100%;min-height:14rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;border:1px solid var(--line);border-radius:var(--radius-sm);padding:.6rem;background:var(--paper)}
 input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);padding:.5rem;background:var(--paper)}
 .wide{width:100%}
 .msg{margin-top:.5rem}
 .msg.bad{color:var(--bad)}
+.phases{margin:0;padding-left:1.2rem}
+.phases li{margin:.25rem 0}
 
-/* Bibliothek */
-.report{max-width:820px;margin:0 auto}
-.report h1{font-size:2rem;margin:.2rem 0 .3rem;display:flex;gap:.8rem;align-items:center}
-.guess-group{display:grid;grid-template-columns:140px 1fr;gap:1rem;align-items:start;padding:.6rem 0;border-bottom:1px solid var(--line)}
-.guess-group img,.guess-group .noimg{width:140px;aspect-ratio:16/10;object-fit:cover;border-radius:8px;background:var(--paper);display:grid;place-items:center;font-size:2.4rem}
+/* Suchkarten (Druck: zwei Karten je A4-Hochformat) */
+.sheet{background:#fff;color:#1F2A1F;max-width:210mm;margin:0 auto 1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.card{height:148mm;padding:7mm 8mm 6mm;display:flex;flex-direction:column;gap:2.2mm;font-size:10pt;line-height:1.25;overflow:hidden}
+.card + .card{border-top:1.5px dashed #888;position:relative}
+.card + .card::before{content:"✂";position:absolute;top:-3.4mm;left:4mm;font-size:12pt;background:#fff;padding:0 1mm;color:#666}
+.card .kopf{display:flex;align-items:center;gap:4mm}
+.card .kopf h2{font-size:14pt;margin:0;flex:1}
+.card .kopf img{width:13mm;height:auto}
+.card .name{display:flex;gap:2mm;align-items:flex-end;font-size:10.5pt}
+.card .name span{flex:1;border-bottom:1.2px solid #555;height:6mm}
+.card .zeile{display:grid;grid-template-columns:1fr 1fr;gap:6mm;align-items:start}
+.card h3{font-size:10.5pt;margin:0 0 1.2mm}
+.card .opts{display:flex;gap:2mm}
+.card .opt{display:flex;align-items:center;gap:2mm;border:1.2px solid #C9D2C4;border-radius:2mm;padding:1.6mm 2.4mm;flex:1;font-size:11pt}
+.card .opt .sym{font-size:15pt;line-height:1}
+.card .opt img{width:9mm;height:9mm;object-fit:contain}
+.sq{width:4.6mm;height:4.6mm;border:1.4px solid #1F2A1F;border-radius:.8mm;flex:none;display:inline-block}
+.card .sterne{display:flex;gap:2mm}
+.card .sterne svg{width:11mm;height:11mm}
+.card .themen{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.card .themen h4{font-size:9.5pt;margin:0 0 1mm;display:flex;align-items:center;gap:1.5mm}
+.card .g9{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2mm}
+.card .g9 > div{display:flex;align-items:center;gap:1.4mm;border:1px solid #D5DDD0;border-radius:1.5mm;padding:1mm 1.4mm;font-size:9pt;line-height:1.15;min-height:12.5mm}
+.card .g9 .sym{font-size:13pt}
+.card .g9 > div.w{flex-direction:column;align-items:stretch;justify-content:center;gap:1.6mm}
+.card .g9 .wk{display:flex;align-items:center;gap:1.4mm}
+.card .g9 .l{display:block;border-bottom:1px solid #555;height:3.5mm;margin:0 1mm}
+.card .hinweis{margin-top:auto;border-left:2mm solid #7FAE88;background:#F2F7F0;padding:1.6mm 2.4mm;font-size:9.5pt}
+@page{size:A4 portrait;margin:0}
 
-/* Suchkarte */
-.card{background:#fff;color:#1F2A1F;border:2px dashed #7FAE88;border-radius:var(--radius-sm);padding:1.4rem 1.6rem;max-width:760px;margin:0 auto 1.5rem}
-.card h2{margin:0 0 .4rem;font-size:1.5rem}
-.card .line{border-bottom:2px solid #9AA89C;min-height:2rem;margin:.3rem 0 .9rem}
-.card .pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.5rem 0}
-.card .box{display:flex;align-items:center;gap:.6rem;border:2px solid #D5DDD0;border-radius:var(--radius-sm);padding:.5rem .7rem;font-size:1.15rem}
-.card .sq{width:1.6rem;height:1.6rem;border:2px solid #1F2A1F;border-radius:4px;flex:none;display:inline-block}
-.card .box .pic{font-size:1.8rem}
-.card .box img.pic{width:4.2rem;height:4.2rem;object-fit:contain;flex:none}
-.card .syms{display:flex;gap:1.2rem;font-size:1.15rem;align-items:center;flex-wrap:wrap}
-.card .predict{border:2px solid #D5DDD0;border-radius:var(--radius-sm);min-height:9rem;margin:.4rem 0 .3rem}
-.card .legend{font-size:.95rem;color:#56665A}
-.card .mini-qr{display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap}
-.card .mini-qr div{text-align:center;font-size:.85rem}
-.card .mini-qr .qr{width:84px;height:84px;display:grid;place-items:center}
-.card .mini-qr .qr img,.card .mini-qr .qr canvas{width:80px!important;height:80px!important}
-.card .smileys{display:flex;gap:1.5rem;font-size:2.4rem;margin-bottom:.6rem}
-
-.figure-badge.bild{background:none;width:3.6rem;height:3.6rem;overflow:hidden}
-.figure-badge.bild img{width:100%;height:100%;display:block}
-.brief-bild{width:6.5rem;height:auto;flex:none}
-.bubble{display:flex;gap:.8rem;align-items:center;background:var(--surface);border:2px solid var(--moss);border-radius:var(--radius-lg);padding:.9rem 1.2rem;font-size:1.4rem;margin:0 0 1rem}
-.plus-btn{width:2.8rem;height:2.8rem;border-radius:50%;border:2px solid var(--moss);background:var(--surface);color:var(--ink);cursor:pointer;font-weight:700;font-size:1.5rem;line-height:1;flex:none}
-img.pm{height:2.2rem;width:auto;vertical-align:middle;display:inline-block}
-.card img.pm{height:2.2rem}
-.result-pics img.pm{height:3.4rem}
-.pack-row .pics img.pm{height:2rem}
+/* Bibliothek, Druck */
 .lizenz{font-size:.85rem;color:var(--muted);max-width:1100px;margin:0 auto;padding:0 1rem 2rem}
 .lizenz a{color:var(--muted)}
-body.kid .lizenz{display:none}
 @media print{
-  .topnav,.no-print{display:none!important}
+  .topnav,.no-print,.lizenz{display:none!important}
   body{background:#fff;color:#000}
-  main{padding:0}
-  .card{page-break-after:always;border-color:#999}
-  .report .panel{border-color:#999}
+  main{padding:0;max-width:none}
+  .sheet{box-shadow:none;margin:0;page-break-after:always;break-after:page;width:210mm}
 }
-@media (max-width:640px){
-  .choices,.teams{grid-template-columns:1fr}
+@media (max-width:760px){
   .letter{padding:1.3rem}
   .letter p,.lead{font-size:1.3rem}
-  .story p{font-size:1.3rem}
+  .story p,.ivtext{font-size:1.3rem}
   .story{padding:1.1rem 1.2rem}
-  .variants{grid-template-columns:1fr}
-  .wb-head{flex-direction:column}
-  .guess-group{grid-template-columns:1fr}
+  .wb-head,.split,.peek{display:block}
+  .qr-box{margin-bottom:1rem}
+  .grid9{grid-template-columns:repeat(2,1fr)}
 }
-@media (prefers-reduced-motion:reduce){
-  .pack-widget img{transition:none}
-  .flyoff{animation:none}
-}
+@media (prefers-reduced-motion:reduce){ .boot{animation:none} }
 </style>
 </head>
 <body>
 <nav class="topnav no-print" aria-label="Ansichten">
   <span class="title">Material-Seite (Prototyp)</span>
   <a href="#klasse" data-view="klasse">Klasse (Whiteboard)</a>
-  <a href="#tablet-2" data-view="tablet">Tablet</a>
-  <a href="#suchkarte" data-view="suchkarte">Suchkarte</a>
+  <a href="#tablet" data-view="tablet">Tablet</a>
+  <a href="#suchkarte" data-view="suchkarte">Suchkarten</a>
   <a href="#lehrkraft" data-view="lehrkraft">Lehrkraft</a>
 </nav>
 <main id="app">Inhalte werden geladen …</main>
 <footer class="lizenz no-print">Piktogramme: <a href="https://arasaac.org">ARASAAC</a>, Lizenz <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">CC BY-NC-SA 4.0</a>. Diese Seite steht unter derselben Lizenz.</footer>
 
 <script>
-// ===== Festes im Template (T) =====
+// ===== Festes im Template =====
 const FIGUR = "Frido";
 const FIGUR_KOPF = "assets/biber/biber-kopf.svg";
-const FIGUR_BRIEF = "assets/biber/biber-rucksack.svg";
+const FIGUR_BRIEF = "assets/biber/biber-winkt.svg";
 const FIGUR_BOOT = "assets/biber/biber-unterwegs.svg";
-const FIGUR_PACKT = "assets/biber/biber-packt.svg";
-const FRAGE_BIBLIOTHEK = "Was kann man in der Bibliothek erleben?";
-const MERKMALE = [
-  [{key:"lustig", label:"lustig", img:"lustig.png", pic:"😄"}, {key:"spannend", label:"spannend", img:"spannend.png", pic:"😮"}],
-  [{key:"tier", label:"Tier", img:"tier.png", pic:"🦔"}, {key:"kind", label:"Kind", img:"kind.png", pic:"🧒"}],
-  [{key:"bilder", label:"viele Bilder", img:"bilder.png", pic:"🖼️"}, {key:"text", label:"viel Text", img:"text.png", pic:"📖"}]
-];
-const STUFEN = {1:{name:"Blatt", sym:"🍃"}, 2:{name:"Baum", sym:"🌳"}, 3:{name:"Wald", sym:"🌲"}};
-const VORHERSAGE = "Zeichnet oder schreibt ein Stichwort: Worum geht es wohl in eurem Buch?";
-const KNOTEN_IDS = ["S","A","B","AA","AB","BA","BB"];
-const ENDEN_IDS = ["AAA","AAB","ABA","ABB","BAA","BAB","BBA","BBB"];
-const LIM_TEXT = {stufe1:120, stufe2:220, stufe3:350};
-const LIM_AUFTRAG = {stufe1:80, stufe2:120, stufe3:160};
-const BEISPIEL = null;
-const BEISPIEL_LG = null;
-const BEISPIEL_PICTOS = {"schema_version": "0.4", "quelle": "ARASAAC (arasaac.org), CC BY-NC-SA 4.0; IDs per Suche (de, bestsearch/search) am 16.10. und 18.10.2026", "hinweis": "Dateien liegen als assets/pictos/<id>.png. Einträge je Programm ergänzen.", "pictos": [{"id": 3065, "wort": "Bibliothek"}, {"id": 2450, "wort": "Buch"}, {"id": 2386, "wort": "Regal"}, {"id": 3129, "wort": "Tisch"}, {"id": 3264, "wort": "Kissen"}, {"id": 2487, "wort": "Computer"}, {"id": 27499, "wort": "Bibliothekarin"}, {"id": 2456, "wort": "Lehrerin"}, {"id": 3082, "wort": "Schule"}, {"id": 2475, "wort": "Rucksack"}, {"id": 2688, "wort": "Brief"}, {"id": 24296, "wort": "Karte"}, {"id": 2440, "wort": "Bleistift"}, {"id": 7055, "wort": "Biber"}, {"id": 4920, "wort": "Boot"}, {"id": 3244, "wort": "Tür"}, {"id": 2263, "wort": "Bus"}, {"id": 6946, "wort": "suchen"}, {"id": 5990, "wort": "finden"}, {"id": 2447, "wort": "lesen"}, {"id": 2381, "wort": "zuhören"}, {"id": 5973, "wort": "vorlesen"}, {"id": 6612, "wort": "zeigen"}, {"id": 2380, "wort": "schreiben"}, {"id": 5574, "wort": "malen"}, {"id": 2432, "wort": "gehen"}, {"id": 8109, "wort": "warten"}, {"id": 9840, "wort": "fragen"}, {"id": 8662, "wort": "denken"}, {"id": 3245, "wort": "froh"}, {"id": 27703, "wort": "neugierig"}, {"id": 6009, "wort": "hallo"}, {"id": 5583, "wort": "ja"}, {"id": 5525, "wort": "nein"}, {"id": 7116, "wort": "Gruppe"}, {"id": 5935, "wort": "Kasten"}, {"id": 2572, "wort": "Hut"}, {"id": 2484, "wort": "Kind"}, {"id": 9927, "wort": "Lupe"}, {"id": 2359, "wort": "Notizbuch"}, {"id": 24829, "wort": "Rätsel"}, {"id": 38792, "wort": "lachen"}, {"id": 8349, "wort": "Papier"}, {"id": 27786, "wort": "Pfote"}, {"id": 2451, "wort": "Schlüssel"}, {"id": 6901, "wort": "Tier"}, {"id": 2360, "wort": "Bild"}]};
-const LIM_LABEL = 40, LIM_FUND = 25, LIM_WORT = 15, LIM_SUCHWORT = 30, LIM_TEAM = 30, WORTBILDER_MAX = 20;
+// In der Bildfassung steht das ARASAAC-Piktogramm „Biber“ für Frido; die Website zeigt dafür die Frido-Figur.
+const FIGUR_PICTO = 7055;
+const FRAGE_BIBLIOTHEK = "Was erwartet euch beim Besuch? Was vermutet ihr?";
+const STUFEN = {1:{sym:"⭐", name:"ein Stern"}, 2:{sym:"⭐⭐", name:"zwei Sterne"}, 3:{sym:"⭐⭐⭐", name:"drei Sterne"}};
+const ABSCHNITTE = ["Aufbruch","Ankunft","Offenes Ende"];
+const KULISSEN = ["programmwelt","thema","allgemein"];
+const LIM_TEXT = {stufe1:180, stufe2:300, stufe3:450};
+const LIM_BRIEF = 600, LIM_PLAN = 200, LIM_KOPF = 40, LIM_WORT = 15, LIM_SUCHWORT = 30, WORTBILDER_MAX = 20;
+const LIM_AB = {anrede:80, einleitung:300, vor_vermutungen:120, vor_fragen:120, schluss:200, gruss:60};
+const AB_FELDER = ["anrede","einleitung","vor_vermutungen","vor_fragen","schluss","gruss"];
+const PLAN_FELDER = ["motiv","ort","ausgangslage","offene_frage"];
+const AB_LABEL = {anrede:"Anrede", einleitung:"Einleitung", vor_vermutungen:"Überleitung zu den Vermutungen", vor_fragen:"Überleitung zu den Fragen", schluss:"Schluss", gruss:"Gruß"};
+const SPRACHEN = {ar:["Arabisch","العربية"], bg:["Bulgarisch","Български"], en:["Englisch","English"], es:["Spanisch","Español"], fa:["Persisch","فارسی"], it:["Italienisch","Italiano"], pl:["Polnisch","Polski"], ro:["Rumänisch","Română"], ru:["Russisch","Русский"], tr:["Türkisch","Türkçe"], uk:["Ukrainisch","Українська"]};
+const RTL = ["ar","fa"];
 
 // ===== Speicher (nur dieser Browser) =====
 function store(key, val){
@@ -266,39 +263,61 @@ function store(key, val){
 const MATERIAL_ID = new URLSearchParams(location.search).get("id");
 let DATA = null, LOAD_ERROR = "";
 let LG = null, LG_ID = null, PICTOS = null;
+let IV = null, IV_TR = {}, PICTO_DA = new Set();
 function localData(){
   const raw = store("ms_json");
-  if(raw){ try{ const d = JSON.parse(raw); if(d && d.rahmen && d.generiert){ LG = null; LG_ID = null; return d; } }catch(e){} }
-  if(!BEISPIEL){ LG = null; LG_ID = null; return null; }
-  LG = BEISPIEL_LG; LG_ID = (BEISPIEL.meta && BEISPIEL.meta.lerngruppe) || null;
-  return BEISPIEL;
+  if(raw){ try{ const d = JSON.parse(raw); if(d && d.rahmen && d.generiert) return d; }catch(e){} }
+  return null;
 }
-// Lerngruppe zum eingefügten Material nachladen (meta.lerngruppe -> lerngruppen/<ID>.json)
 async function ladeLerngruppe(d){
   LG = null; LG_ID = null;
   const id = d && d.meta && d.meta.lerngruppe;
   if(typeof id !== "string" || !/^[A-Za-z0-9_-]{1,40}$/.test(id)) return;
   try{ const r = await fetch("lerngruppen/"+id+".json",{cache:"no-store"}); if(r.ok){ LG = await r.json(); LG_ID = id; } }catch(e){}
 }
-const G = () => DATA.generiert;
-const R = () => DATA.rahmen;
-// Lesestufen, die das Material enthält (aus Knoten S), und die Standardstufe
-function stufenListe(){
-  try{ const t = G().geschichte.knoten.S.text; return [1,2,3].filter(n=>t && typeof t["stufe"+n]==="string"); }catch(e){ return []; }
+async function ladeInterview(){
+  try{ const r = await fetch("assets/interview/de.json",{cache:"no-store"}); if(r.ok) IV = await r.json(); }catch(e){}
+  IV_TR = {};
+  const codes = (LG && Array.isArray(LG.sprachen)) ? LG.sprachen : [];
+  for(const c of codes){
+    if(!/^[a-z]{2}$/.test(c)) continue;
+    try{ const r = await fetch("assets/interview/"+c+".json",{cache:"no-store"}); if(r.ok) IV_TR[c] = await r.json(); }catch(e){}
+  }
 }
-function stdStufe(){ const l = stufenListe(); return l.includes(2) ? 2 : (l[0] || 2); }
-function hatBild(){ try{ return Array.isArray(G().geschichte.knoten.S.text.bild); }catch(e){ return false; } }
-function bildText(b){ return Array.isArray(b) ? b.map(x=>(x&&x.wort||"?")+(x&&x.picto==null?" (Piktogramm fehlt)":"")).join(" · ") : "–"; }
+async function pruefePictoDateien(){
+  PICTO_DA = new Set();
+  const ids = new Set();
+  try{ allBildEintraege(G()).forEach(e=>{ if(isInt(e.picto)) ids.add(e.picto); }); }catch(e){}
+  await Promise.all([...ids].map(async id=>{
+    try{ const r = await fetch("assets/pictos/"+id+".png",{method:"HEAD",cache:"no-store"}); if(r.ok) PICTO_DA.add(id); }catch(e){}
+  }));
+}
 
-// ===== Zustand am Whiteboard (Rucksack) =====
-const STATE_KEY = "ms_state_" + (MATERIAL_ID || "lokal");
-function emptyState(){ return {vermutungen:[], counts:Object.fromEntries(ENDEN_IDS.map(id=>[id,0])), gesendet:false}; }
+// ===== Redaktionelle Durchsicht: Änderungen der Lehrkraft (nur dieser Browser) =====
+const EDIT_KEY = "ms_edit_" + (MATERIAL_ID || "lokal");
+let EDITS = {};
+function loadEdits(){ try{ const e = JSON.parse(store(EDIT_KEY)||"{}"); EDITS = (e && typeof e==="object") ? e : {}; }catch(e){ EDITS = {}; } }
+function saveEdits(){ store(EDIT_KEY, Object.keys(EDITS).length ? JSON.stringify(EDITS) : null); MERGED = null; }
+function getPath(o, path){ return path.split(".").reduce((a,k)=>(a==null?undefined:a[k]), o); }
+function setPath(o, path, v){ const ks = path.split("."); const last = ks.pop(); let a = o; for(const k of ks){ if(a[k]==null) return; a = a[k]; } a[last] = v; }
+let MERGED = null;
+function M(){
+  if(MERGED) return MERGED;
+  const d = JSON.parse(JSON.stringify(DATA));
+  for(const [p,v] of Object.entries(EDITS)){ if(typeof getPath(d.generiert, p)==="string") setPath(d.generiert, p, v); }
+  MERGED = d; return d;
+}
+const G = () => M().generiert;
+const R = () => M().rahmen;
+
+// ===== Zustand am Whiteboard =====
+const STATE_KEY = "ms_wb_" + (MATERIAL_ID || "lokal");
+function emptyState(){ return {vermutungen:[], fragen:[], brief:null, gesendet:false}; }
 let WB = emptyState();
 function loadState(){
-  try{ const s = JSON.parse(store(STATE_KEY)||"null"); if(s && s.counts && Array.isArray(s.vermutungen)) WB = Object.assign(emptyState(), s); }catch(e){}
+  try{ const s = JSON.parse(store(STATE_KEY)||"null"); if(s && Array.isArray(s.vermutungen)) WB = Object.assign(emptyState(), s); }catch(e){}
 }
 function saveState(){ store(STATE_KEY, JSON.stringify(WB)); }
-function packCount(){ return WB.vermutungen.length + Object.values(WB.counts).reduce((a,b)=>a+b,0); }
 
 // ===== Hilfsfunktionen =====
 function el(tag, attrs={}, ...kids){
@@ -311,393 +330,360 @@ function el(tag, attrs={}, ...kids){
   for(const c of kids.flat()){ if(c==null||c===false) continue; n.append(c instanceof Node ? c : document.createTextNode(String(c))); }
   return n;
 }
-const reduceMotion = () => { try{ return matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } };
-function speak(text){
+function isInt(v){ return typeof v==="number" && Number.isInteger(v); }
+function isObj(v){ return v!==null && typeof v==="object" && !Array.isArray(v); }
+function speak(text, lang){
   try{
     if(!("speechSynthesis" in window)) return;
     speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text); u.lang="de-DE"; u.rate=0.9;
+    const u = new SpeechSynthesisUtterance(text.replace(/[🎤💬⭐]/gu,"")); u.lang=lang||"de-DE"; u.rate=0.9;
     speechSynthesis.speak(u);
   }catch(e){}
 }
 function readBtn(getText){ return el("button",{class:"btn",type:"button",onclick:()=>speak(getText())},"🔊 Vorlesen"); }
 function baseUrl(){ return store("ms_base") || location.href.split("#")[0]; }
-function tabletUrl(n){ return baseUrl() + "#tablet-" + n; }
+function tabletUrl(){ return baseUrl() + "#tablet"; }
 function qr(container, text, size){
   try{
     if(typeof QRCode==="undefined") throw new Error("no lib");
     new QRCode(container,{text, width:size, height:size, correctLevel:QRCode.CorrectLevel.M});
   }catch(e){ container.append(el("span",{class:"qr-fallback"}, text)); }
 }
-function merkmale(path){ return path.split("").map((c,i)=>MERKMALE[i][c==="A"?0:1]); }
-// Suchauftrag aus den drei Merkmalen des Weges (Schema 0.5: nicht mehr im Material)
-function suchauftrag(path, n){
-  const [m1,m2,m3] = merkmale(path).map(x=>x.key);
-  const adj = m1==="lustig" ? "lustiges" : "spannendes";
-  const wer = m2==="tier" ? "ein Tier" : "ein Kind";
-  const hat = m3==="bilder" ? "viele Bilder" : "viel Text";
-  const mit = m3==="bilder" ? "mit vielen Bildern" : "mit viel Text";
-  if(n===1) return "Sucht ein "+adj+" Buch über "+wer+". Es hat "+hat+".";
-  const t = "Sucht in der Bibliothek ein "+adj+" Buch "+mit+", in dem "+wer+" die Hauptrolle spielt.";
-  return n===2 ? t : t+" Haltet den Titel auf eurer Suchkarte fest.";
-}
-function auftragObj(path){ return Object.fromEntries([1,2,3].map(n=>["stufe"+n, suchauftrag(path,n)])); }
-function picNode(m, cls){
-  const c = cls||"pm";
-  return m.img ? el("img",{class:c, src:"assets/pictos/"+m.img, alt:"", "aria-hidden":"true"}) : el("span",{class:c,"aria-hidden":"true"}, m.pic);
-}
 function figBadge(){ return el("span",{class:"figure-badge bild","aria-hidden":"true"}, el("img",{src:FIGUR_KOPF,alt:""})); }
 function bild(i){ const b = R().bilder; return (Array.isArray(b) && Number.isInteger(i) && b[i]) ? b[i] : null; }
-function libSymbol(){ return el("div",{class:"noimg","aria-hidden":"true"},"🏛️"); }
 function imgOrSymbol(i){
   const b = bild(i);
-  return b ? el("img",{src:b.datei, alt:b.beschreibung||("Bild der "+R().bibliothek)}) : libSymbol();
+  return b ? el("img",{src:b.datei, alt:b.beschreibung||("Bild der "+R().bibliothek)}) : el("div",{class:"noimg","aria-hidden":"true"},"🏛️");
 }
-
-// Rucksack-Symbol
-function packSvg(n){
-  const fill = Math.min(n,10)/10;
-  const h = 46*fill;
-  return `<svg viewBox="0 0 64 72" aria-hidden="true">
-    <path d="M20 14 C20 4 44 4 44 14" fill="none" stroke="#B8401F" stroke-width="4"/>
-    <rect x="8" y="14" width="48" height="54" rx="14" fill="#E4572E" stroke="#B8401F" stroke-width="4"/>
-    <clipPath id="pc"><rect x="10" y="16" width="44" height="50" rx="12"/></clipPath>
-    <path d="M10 24 C18 14 46 14 54 24 L54 36 L10 36 Z" fill="#2E8C8C" clip-path="url(#pc)"/>
-    <rect clip-path="url(#pc)" x="10" y="${66-h}" width="44" height="${h}" fill="#F2C14E" opacity=".85"/>
-    <rect x="20" y="40" width="24" height="16" rx="5" fill="#F2C14E" stroke="#B8401F" stroke-width="3"/>
-  </svg>`;
+function paras(text){ return String(text||"").split(/\n+/).filter(Boolean).map(t=>el("p",{},t)); }
+function abschnitte(){ try{ const a = G().geschichte.abschnitte; return Array.isArray(a) ? a : []; }catch(e){ return []; } }
+function stufenListe(){
+  const t = abschnitte()[0] && abschnitte()[0].text;
+  return [1,2,3].filter(n=>isObj(t) && typeof t["stufe"+n]==="string");
 }
-function packImg(){ return `<img src="${FIGUR_PACKT}" alt="" style="height:130px;width:auto;display:block">`; }
-function packWidget(){
-  if(WB.gesendet) return el("div",{class:"pack-widget"}, el("span",{class:"count"}, FIGUR+" ist mit dem Rucksack unterwegs"));
-  const w = el("div",{class:"pack-widget",id:"pack","aria-live":"polite"});
-  w.innerHTML = packImg();
-  w.append(el("span",{class:"count"}, FIGUR+"s Rucksack: "+packCount()));
-  return w;
-}
-function refreshPack(){
-  const w = document.getElementById("pack"); if(!w) return;
-  w.innerHTML = packImg();
-  w.append(el("span",{class:"count"}, FIGUR+"s Rucksack: "+packCount()));
-  if(!reduceMotion()){ w.classList.add("bump"); setTimeout(()=>w.classList.remove("bump"),260); }
-}
-function flyToPack(fromEl, label){
-  const target = document.getElementById("pack");
-  if(!target || !fromEl || reduceMotion() || !document.body.animate){ refreshPack(); return; }
-  const a = fromEl.getBoundingClientRect(), b = target.getBoundingClientRect();
-  const f = el("div",{class:"flying"}, label);
-  f.style.left = a.left+"px"; f.style.top = a.top+"px";
-  document.body.append(f);
-  const dx = (b.left+b.width/2) - (a.left+20), dy = (b.top+b.height/2) - (a.top+10);
-  f.animate([{transform:"translate(0,0) scale(1)",opacity:1},{transform:`translate(${dx}px,${dy}px) scale(.3)`,opacity:.3}],{duration:700,easing:"ease-in"})
-   .onfinish = ()=>{ f.remove(); refreshPack(); };
+function hatBild(){ const t = abschnitte()[0] && abschnitte()[0].text; return isObj(t) && Array.isArray(t.bild); }
+function spracheName(c){ return SPRACHEN[c] ? SPRACHEN[c][0] : c; }
+function spracheNativ(c){ return SPRACHEN[c] ? SPRACHEN[c][1] : c; }
+function fill(t, vars){ return String(t||"").replace(/\{(\w+)\}/g,(m,k)=>vars[k]!=null?vars[k]:m); }
+function pictoNode(e){
+  const li = el("li",{});
+  if(e.picto===FIGUR_PICTO){ li.append(el("img",{src:FIGUR_KOPF,alt:""}), el("span",{}, FIGUR)); return li; }
+  if(isInt(e.picto) && PICTO_DA.has(e.picto)) li.append(el("img",{src:"assets/pictos/"+e.picto+".png",alt:""}));
+  else li.classList.add("nopic");
+  li.append(el("span",{}, e.wort||"?"));
+  return li;
 }
 
 // ===== Whiteboard =====
 let slide = 0;
-function steps(){
-  const s = ["Brief"];
-  if(Array.isArray(G().bibliotheksblick) && G().bibliotheksblick.length) s.push("Bibliothek");
-  s.push("Geschichte","Rucksack");
-  return s;
-}
+const STEPS = [["1","Brief"],["1","Bibliothek"],["2","Tablets"],["3","Fragen"],["3","Antwortbrief"]];
 function renderKlasse(app){
-  const S = steps(); if(slide>=S.length) slide=S.length-1;
-  const head = el("div",{class:"wb-head"},
-    el("div",{class:"stepper"}, S.map((name,i)=>el("button",{type:"button","aria-current":i===slide?"step":false,onclick:()=>{slide=i;render();}},name))),
-    packWidget());
+  if(slide>=STEPS.length) slide=STEPS.length-1;
+  const stepper = el("div",{class:"stepper"});
+  let last = null;
+  STEPS.forEach(([ph,name],i)=>{
+    if(ph!==last){ stepper.append(el("span",{class:"phase"},"Phase "+ph)); last = ph; }
+    stepper.append(el("button",{type:"button","aria-current":i===slide?"step":false,onclick:()=>{slide=i;render();}},name));
+  });
   const stage = el("section",{class:"stage"});
-  const name = S[slide];
+  const name = STEPS[slide][1];
   if(name==="Brief") stage.append(slideBrief());
   if(name==="Bibliothek") stage.append(slideBibliothek());
-  if(name==="Geschichte") stage.append(slideGeschichte());
-  if(name==="Rucksack") stage.append(slideRucksack());
-  const nav = el("div",{class:"stage-nav"},
+  if(name==="Tablets") stage.append(slideTablets());
+  if(name==="Fragen") stage.append(slideFragen());
+  if(name==="Antwortbrief") stage.append(slideAntwortbrief());
+  const nav = el("div",{class:"stage-nav no-print"},
     el("button",{class:"btn",type:"button",disabled:slide===0,onclick:()=>{slide--;render();}},"Zurück"),
-    el("button",{class:"btn primary",type:"button",disabled:slide===S.length-1,onclick:()=>{slide++;render();}},"Weiter"));
-  app.append(head, stage, nav);
+    el("button",{class:"btn primary",type:"button",disabled:slide===STEPS.length-1,onclick:()=>{slide++;render();}},"Weiter"));
+  app.append(el("div",{class:"wb-head"}, stepper), stage, nav);
 }
 function slideBrief(){
-  const text = G().brief.text;
   return el("div",{class:"letter"},
-    el("div",{class:"head"}, el("img",{class:"brief-bild",src:FIGUR_BRIEF,alt:"Frido mit Rucksack"}), el("strong",{},"Post für die "+R().klasse)),
-    el("p",{}, text));
+    el("div",{class:"head"}, el("img",{class:"brief-bild",src:FIGUR_BRIEF,alt:"Frido, der Biber, winkt"}), el("strong",{},"Post für die "+R().klasse)),
+    paras(G().brief.text));
+}
+function sammelListe(key, label, placeholder){
+  const chips = el("div",{class:"chips","aria-live":"polite"});
+  WB[key].forEach((t,i)=>chips.append(el("span",{class:"chip"}, t,
+    el("button",{type:"button","aria-label":label+" entfernen",onclick:()=>{ WB[key].splice(i,1); WB.brief=null; saveState(); render(); }},"×"))));
+  const input = el("input",{type:"text","aria-label":label,placeholder, maxlength:"80"});
+  const add = e=>{
+    e.preventDefault();
+    const t = input.value.trim(); if(!t) return;
+    WB[key].push(t); WB.brief=null; saveState(); render();
+    setTimeout(()=>{ const i = document.querySelector(".guess-form input"); if(i) i.focus(); },0);
+  };
+  return el("div",{class:"collect"},
+    el("form",{class:"guess-form",onsubmit:add}, input, el("button",{class:"plus-btn",type:"submit","aria-label":label+" hinzufügen"},"+")),
+    WB[key].length ? chips : el("p",{class:"muted",style:"margin:0"},"Noch nichts eingetragen."));
 }
 function slideBibliothek(){
-  const wrap = el("div",{});
-  wrap.append(el("p",{class:"lead"},"Ein Blick in die "+R().bibliothek+". Was vermutet ihr?"));
-  wrap.append(el("div",{class:"bubble"}, figBadge(), FRAGE_BIBLIOTHEK));
-  const grid = el("div",{class:"peek"});
-  G().bibliotheksblick.forEach((entry, idx)=>{
-    const chips = el("div",{class:"chips"});
-    WB.vermutungen.filter(v=>v.blick===idx).forEach(v=>{
-      chips.append(el("span",{class:"chip"}, v.text,
-        el("button",{type:"button","aria-label":"Vermutung entfernen",onclick:()=>{ WB.vermutungen = WB.vermutungen.filter(x=>x!==v); saveState(); render(); }},"×")));
-    });
-    const input = el("input",{type:"text","aria-label":"Vermutung der Klasse",placeholder:"Vermutung eintippen", maxlength:"60"});
-    const add = e=>{
-      e.preventDefault();
-      const t = input.value.trim(); if(!t) return;
-      WB.vermutungen.push({blick:idx, bild:entry.bild, text:t}); saveState();
-      flyToPack(input, "💬 "+t);
-      input.value="";
-      setTimeout(render, reduceMotion()?0:720);
-    };
-    grid.append(el("article",{class:"peek-card"},
-      imgOrSymbol(entry.bild),
-      el("div",{class:"peek-body"},
-        el("form",{class:"guess-form",onsubmit:add}, input, el("button",{class:"plus-btn",type:"submit","aria-label":"Vermutung in den Rucksack legen"},"+")),
-        chips)));
-  });
-  wrap.append(grid);
-  return wrap;
+  const entry = (G().bibliotheksblick||[])[0] || {bild:0};
+  return el("div",{},
+    el("p",{class:"lead"},"Ein Blick in die "+R().bibliothek+"."),
+    el("div",{class:"bubble"}, figBadge(), FRAGE_BIBLIOTHEK),
+    el("div",{class:"peek"},
+      el("div",{class:"peek-img"}, imgOrSymbol(entry.bild)),
+      sammelListe("vermutungen","Vermutung","Vermutung eintippen")));
 }
-function slideGeschichte(){
+function slideTablets(){
+  const q = el("div",{class:"qr-box"});
+  setTimeout(()=>qr(q, tabletUrl(), 220),0);
+  return el("div",{},
+    el("p",{class:"lead"},"Jetzt arbeitet ihr zu zweit am Tablet."),
+    el("div",{class:"split"},
+      el("div",{}, q, el("a",{class:"btn no-print",href:"#tablet",style:"margin-top:.8rem"},"Auf diesem Gerät öffnen")),
+      el("div",{},
+        el("ol",{class:"todo"},
+          el("li",{},"Scannt den Code."),
+          el("li",{},"Wählt eure Lesestufe: ", el("span",{class:"stars"},"⭐ ⭐⭐ ⭐⭐⭐")),
+          el("li",{},"Lest die Geschichte von "+FIGUR+"."),
+          el("li",{},"Interviewt euch und füllt eure Suchkarten aus.")),
+        el("p",{class:"tip no-print"},"Für die Lehrkraft: Jedes Kind braucht eine Suchkarte. Sie lassen sich in der Ansicht „Suchkarten“ drucken (zwei Karten je A4-Blatt)."))));
+}
+function slideFragen(){
+  return el("div",{},
+    el("p",{class:"lead"},"Was wollt ihr die "+R().bibliothek+" fragen?"),
+    el("div",{class:"bubble"}, figBadge(), "Ich bringe eure Fragen mit eurem Brief zur Bibliothek."),
+    sammelListe("fragen","Frage","Frage eintippen"));
+}
+function composeBrief(){
+  const a = G().antwortbrief || {};
+  const teile = [a.anrede, a.einleitung];
+  if(WB.vermutungen.length) teile.push(a.vor_vermutungen + "\n" + WB.vermutungen.map(v=>"– "+v).join("\n"));
+  if(WB.fragen.length) teile.push(a.vor_fragen + "\n" + WB.fragen.map(v=>"– "+v).join("\n"));
+  teile.push(a.schluss, a.gruss);
+  return teile.filter(Boolean).join("\n\n");
+}
+function briefText(){ return WB.brief!=null ? WB.brief : composeBrief(); }
+function betreff(){ return "Brief der Klasse "+R().klasse+" zum Programm „"+R().programmtitel+"“"; }
+let zeigeMail = false;
+function slideAntwortbrief(){
   const box = el("div",{});
-  box.append(el("p",{class:"lead"},"Jetzt seid ihr dran! Arbeitet zu zweit. Scannt mit eurem Tablet den Code mit eurem Zeichen."));
-  box.append(el("p",{class:"tip"},"Einigt euch vorher: Wer ist Kind 1, wer ist Kind 2? Am Ende kommt euer Suchauftrag in "+FIGUR+"s Rucksack."));
-  const grid = el("div",{class:"levels"});
-  stufenListe().forEach(n=>{
-    const q = el("div",{class:"qr"});
-    grid.append(el("div",{class:"level"},
-      el("div",{class:"sym","aria-hidden":"true"},STUFEN[n].sym), el("strong",{},STUFEN[n].name), q,
-      el("a",{class:"btn",href:"#tablet-"+n},"Auf diesem Gerät öffnen")));
-    setTimeout(()=>qr(q, tabletUrl(n), 164),0);
-  });
-  box.append(grid);
+  if(WB.gesendet){
+    box.append(el("div",{class:"letter",style:"text-align:center"},
+      el("img",{class:"boot",src:FIGUR_BOOT,alt:"Frido paddelt im Boot zur Bibliothek"}),
+      el("p",{style:"margin-top:1rem"},"Ich bringe euren Brief jetzt zur "+R().bibliothek+". Bis bald, euer "+FIGUR+"!")));
+    box.append(el("div",{class:"row no-print",style:"margin-top:1.2rem"},
+      el("button",{class:"btn",type:"button",onclick:()=>{ WB.gesendet=false; saveState(); render(); }},"Brief wieder öffnen"),
+      resetBtn()));
+    return box;
+  }
+  box.append(el("p",{class:"lead"},"Euer Brief an die "+R().bibliothek+". Ihr könnt ihn noch ändern."));
+  const ta = el("textarea",{class:"brieffeld","aria-label":"Brief der Klasse an die Bibliothek",spellcheck:"true"});
+  ta.value = briefText();
+  ta.addEventListener("input",()=>{ WB.brief = ta.value; saveState(); const p=document.getElementById("mailtext"); if(p) p.textContent=ta.value; });
+  const grow = ()=>{ ta.style.height="auto"; ta.style.height=(ta.scrollHeight+4)+"px"; };
+  ta.addEventListener("input", grow); setTimeout(grow,0);
+  box.append(ta);
+  const row = el("div",{class:"row no-print",style:"margin-top:.8rem"},
+    el("button",{class:"btn primary",type:"button",onclick:()=>{ zeigeMail=!zeigeMail; render(); }}, zeigeMail?"Vorschau schließen":"Mail-Vorschau ansehen"),
+    WB.brief!=null ? el("button",{class:"btn",type:"button",onclick:()=>{ WB.brief=null; saveState(); render(); }},"Vermutungen und Fragen neu einsetzen") : null);
+  box.append(row);
+  if(zeigeMail){
+    const msg = el("span",{class:"muted"});
+    box.append(el("section",{class:"mail no-print","aria-label":"Mail-Vorschau"},
+      el("dl",{},
+        el("dt",{},"An"), el("dd",{}, R().bibliothek+" ", el("span",{class:"muted"},"(Adresse aus BipaMap.NRW)")),
+        el("dt",{},"Betreff"), el("dd",{}, betreff())),
+      el("pre",{id:"mailtext"}, briefText()),
+      el("div",{class:"row"},
+        el("button",{class:"btn primary",type:"button",onclick:()=>{ WB.gesendet=true; zeigeMail=false; saveState(); render(); }},"Abschicken"),
+        el("button",{class:"btn",type:"button",onclick:async()=>{ try{ await navigator.clipboard.writeText(betreff()+"\n\n"+briefText()); msg.textContent="Text kopiert."; }catch(e){ msg.textContent="Kopieren nicht möglich. Bitte den Text im Feld markieren und kopieren."; } }},"Text kopieren"),
+        msg),
+      el("p",{class:"muted",style:"margin:0;padding:0 1.1rem 1rem;font-size:.95rem"},"Im Prototyp wird keine Mail verschickt. In der Anwendung geht der Brief an die Adresse, die die Bibliothek in BipaMap.NRW hinterlegt hat.")));
+  }
   return box;
 }
-function slideRucksack(){
-  const box = el("div",{});
-  if(WB.gesendet) return renderGesendet(box);
-  box.append(el("p",{class:"lead"},"Packt "+FIGUR+"s Rucksack fertig: Welche Suchaufträge habt ihr?"));
-  const v = el("section",{class:"pack"}, el("h2",{},"Vermutungen im Rucksack ("+WB.vermutungen.length+")"));
-  if(WB.vermutungen.length){
-    v.append(el("div",{class:"chips"}, WB.vermutungen.map(x=>el("span",{class:"chip",style:"padding-right:.8rem"},"💬 "+x.text))));
-  }else v.append(el("p",{class:"muted",style:"margin:0"},"Noch keine. Ihr könnt sie beim Bildschirm „Bibliothek“ eintragen."));
-  box.append(v);
-  const s = el("section",{class:"pack"}, el("h2",{},"Suchaufträge der Paare"));
-  ENDEN_IDS.forEach(id=>{
-    const m = merkmale(id);
-    const out = el("output",{},String(WB.counts[id]));
-    const plus = el("button",{type:"button","aria-label":"Ein Paar mehr",onclick:()=>{ WB.counts[id]++; saveState(); out.textContent=WB.counts[id]; total.textContent=sumPairs(); flyToPack(plus, m.map(x=>x.label).join(" · ")); }},"+");
-    s.append(el("div",{class:"pack-row"},
-      el("span",{class:"pics","aria-hidden":"true"}, m.map(x=>picNode(x))),
-      el("span",{}, m.map(x=>x.label).join(", ")),
-      el("div",{class:"counter"},
-        el("button",{type:"button","aria-label":"Ein Paar weniger",onclick:()=>{ if(WB.counts[id]>0){ WB.counts[id]--; saveState(); out.textContent=WB.counts[id]; total.textContent=sumPairs(); refreshPack(); } }},"−"),
-        out, plus)));
-  });
-  const total = el("strong",{},String(sumPairs()));
-  s.append(el("p",{style:"margin:.6rem 0 0"},"Paare insgesamt: ", total));
-  box.append(s);
-  box.append(el("div",{class:"row"},
-    el("button",{class:"btn primary",type:"button",onclick:send},"Rucksack losschicken"),
-    resetBtn()));
-  return box;
-}
-function sumPairs(){ return Object.values(WB.counts).reduce((a,b)=>a+b,0); }
 function resetBtn(){
   let armed=false;
   const b = el("button",{class:"btn",type:"button",onclick:()=>{
-    if(!armed){ armed=true; b.textContent="Wirklich alles leeren?"; return; }
-    WB = emptyState(); saveState(); render();
-  }},"Rucksack leeren");
+    if(!armed){ armed=true; b.textContent="Wirklich alles löschen?"; return; }
+    WB = emptyState(); saveState(); slide=0; render();
+  }},"Vermutungen, Fragen und Brief löschen");
   return b;
-}
-function send(){
-  WB.gesendet = true; saveState();
-  const pack = document.getElementById("pack");
-  if(pack && !reduceMotion()){ pack.classList.add("flyoff"); setTimeout(render, 1500); } else render();
-}
-function payload(){
-  const o = {k:R().klasse, p:R().programmtitel, b:R().bibliothek, s:{}, v:WB.vermutungen.map(x=>[x.bild==null?-1:x.bild, x.text])};
-  ENDEN_IDS.forEach(id=>{ if(WB.counts[id]>0) o.s[id]=WB.counts[id]; });
-  const bytes = new TextEncoder().encode(JSON.stringify(o));
-  let bin=""; bytes.forEach(c=>bin+=String.fromCharCode(c));
-  return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
-}
-function unpayload(s){
-  const b64 = s.replace(/-/g,"+").replace(/_/g,"/");
-  const bin = atob(b64); const bytes = Uint8Array.from(bin, c=>c.charCodeAt(0));
-  return JSON.parse(new TextDecoder().decode(bytes));
-}
-function bibUrl(){ return baseUrl() + "#bibliothek=" + payload(); }
-function renderGesendet(box){
-  const t = G().absenden_text || ("Ich bringe euren Rucksack jetzt zur Bibliothek. Bis bald, euer "+FIGUR+"!");
-  box.append(el("div",{class:"letter"},
-    el("div",{class:"head"}, el("img",{class:"brief-bild",src:FIGUR_BOOT,alt:"Frido paddelt im Boot"}), el("strong",{},"Der Rucksack ist unterwegs")),
-    el("p",{}, t)));
-  const msg = el("span",{class:"muted"});
-  box.append(el("section",{class:"sent"},
-    el("p",{style:"margin:.2rem 0 .6rem"}, el("strong",{},"Rückmeldung für die "+R().bibliothek)),
-    el("p",{style:"margin:0 0 .8rem"},"Im Prototyp wird nichts automatisch gesendet. Schicken Sie den Link an die Bibliothek. Dort lässt sich die Rückmeldung ansehen und ausdrucken."),
-    el("div",{class:"row"},
-      el("a",{class:"btn primary",href:bibUrl(),target:"_blank",rel:"noopener"},"Ansicht für die Bibliothek öffnen"),
-      el("button",{class:"btn",type:"button",onclick:async()=>{ try{ await navigator.clipboard.writeText(bibUrl()); msg.textContent="Link kopiert."; }catch(e){ msg.textContent="Kopieren nicht möglich. Bitte den Link über „Ansicht öffnen“ aus der Adresszeile kopieren."; } }},"Link kopieren"),
-      msg)));
-  box.append(el("div",{class:"row",style:"margin-top:1rem"},
-    el("button",{class:"btn",type:"button",onclick:()=>{ WB.gesendet=false; saveState(); render(); }},"Rucksack wieder öffnen"),
-    resetBtn()));
-  return box;
 }
 
 // ===== Tablet =====
-let T = {stufe:2, team:null, started:false, path:"", funde:[], fund:null};
-function renderTablet(app, stufe){
-  if(!stufenListe().includes(stufe)){
-    app.append(el("div",{class:"panel"}, el("h2",{},"Diese Stufe gibt es hier nicht"),
-      el("p",{},"Das Material dieser Klasse enthält die Stufe „"+STUFEN[stufe].name+"“ nicht."),
-      el("a",{class:"btn",href:"#klasse"},"Zur Klassenansicht")));
-    return;
-  }
-  if(T.stufe!==stufe) T = {stufe, team:null, started:false, path:"", funde:[], fund:null};
-  const key = "stufe"+stufe, g = G().geschichte;
-  const wrap = el("div",{class:"tablet s"+stufe});
-  const slots = el("div",{class:"slots","aria-label":"Eure Fundstücke"},
-    [0,1,2].map(i=>{ const f=T.funde[i]; return el("div",{class:"slot"+(f?" filled":""),title:f?f.name:"leer"}, f?f.symbol||"🎁":""); }));
+let T = null;
+function neuesTablet(){ return {stufe:null, phase:"wahl", ab:0, tr:null, iv:{schritt:"einstieg", runde:1, art:null, thema:null, format:null, sprache:null}, hist:[]}; }
+function kurz(){ return T.stufe===1; }
+function ivT(obj){ return obj ? (kurz() ? (obj.kurz ?? obj.lang) : (obj.lang ?? obj.kurz)) : ""; }
+function renderTablet(app){
+  if(!T) T = neuesTablet();
+  const wrap = el("div",{class:"tablet"});
+  const gross = document.body.classList.contains("gross");
   wrap.append(el("div",{class:"tbar"},
-    el("div",{class:"level-tag"}, el("span",{style:"font-size:1.8rem","aria-hidden":"true"},STUFEN[stufe].sym), T.team ? T.team : "Euer Zeichen: "+STUFEN[stufe].name),
-    T.started ? slots : null));
-
-  if(!T.started){
-    const names = (Array.isArray(G().teamnamen) && G().teamnamen.length) ? G().teamnamen : ["Team Spurensucher","Team Leseforscher","Team Bücherfüchse","Team Entdecker"];
-    wrap.append(el("div",{class:"story"}, el("p",{}, FIGUR+" nimmt euch mit auf ein Abenteuer in der Bibliothek. Ihr entscheidet, was ihr tut.")));
-    wrap.append(el("p",{class:"talk"},"Wählt euren Teamnamen:"));
-    wrap.append(el("div",{class:"teams"}, names.map(n=>el("button",{class:"team",type:"button","aria-pressed":T.team===n?"true":"false",onclick:()=>{T.team=n;render();}},n))));
-    wrap.append(el("p",{class:"talk"},"Einigt euch: Wer ist Kind 1, wer ist Kind 2?"));
-    wrap.append(el("button",{class:"btn primary",type:"button",disabled:!T.team,style:"font-size:1.3rem",onclick:()=>{T.started=true;render();if(stufe===1)speakNow();}},"Los geht's"));
-    app.append(wrap); return;
-  }
-
-  // Ein Bildschirm je Abschnitt: Text (dort wird das Fundstück entdeckt) → Fundstück einpacken → dann erst die Wahl bzw. der Suchauftrag.
-  const pending = T.fund;
-  function foundBox(abschnittText){
-    const f = pending;
-    const big = el("span",{class:"big","aria-hidden":"true"}, f.symbol||"🎁");
-    if(!reduceMotion() && big.animate) setTimeout(()=>big.animate([{opacity:0},{opacity:1}],{duration:500,easing:"ease-out"}),0);
-    if(stufe===1) setTimeout(()=>speak((abschnittText? abschnittText+" " : "")+"Gefunden: "+f.name),50);
-    return el("div",{class:"found"}, big,
-      el("p",{}, "Gefunden: "+f.name),
-      el("button",{class:"btn primary",type:"button",onclick:()=>{ T.funde.push(f); T.fund=null; render(); if(stufe===1 && T.path.length===3) speakNow(); }},"In euren Rucksack packen"));
-  }
-
-  const depth = T.path.length;
-  const reader = depth%2===0 ? 1 : 2, decider = reader===1 ? 2 : 1;
-  const roles = el("div",{class:"roles"},
-    el("span",{}, stufe===1 ? "🔊 Kind "+reader+" startet das Vorlesen" : "📖 Kind "+reader+" liest vor"),
-    depth<3 ? el("span",{}, "🧭 Kind "+decider+" tippt eure Entscheidung") : null);
-  wrap.append(roles);
-
-  if(depth<3){
-    const id = depth===0 ? "S" : T.path;
-    const k = g.knoten[id];
-    const text = k.text[key];
-    wrap.append(el("div",{class:"story"}, el("p",{}, text)), el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>text)));
-    if(pending){ wrap.append(foundBox(text)); }
-    else wrap.append(el("p",{class:"talk"},"Besprecht: Was wollt ihr tun?"));
-    if(!pending)
-    wrap.append(el("div",{class:"choices"}, ["A","B"].map((c,i)=>{
-      const o = k.optionen[i];
-      return el("button",{class:"choice "+c.toLowerCase(),type:"button",onclick:()=>{ T.path+=c; T.fund = o.fund || {name:"Fundstück",symbol:"🎁"}; render(); }},
-        o.symbol ? el("span",{class:"pic","aria-hidden":"true"}, o.symbol) : null,
-        el("span",{}, o.label[key]));
-    })));
-  }else{
-    const e = g.enden[T.path];
-    const m = merkmale(T.path);
-    if(pending){
-      wrap.append(el("div",{class:"story"}, el("p",{}, e.text[key])), el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>e.text[key])));
-      wrap.append(foundBox(e.text[key]));
-    }else{
-    wrap.append(el("div",{class:"story"}, el("p",{}, e.text[key])), el("div",{class:"row"}, readBtn(()=>e.text[key]+" "+suchauftrag(T.path, Number(key.slice(5))))));
-    wrap.append(el("section",{class:"task"}, el("h2",{},"Euer Suchauftrag"), el("p",{}, suchauftrag(T.path, Number(key.slice(5))))));
-    wrap.append(el("p",{class:"talk"},"Das macht ihr jetzt mit eurer Suchkarte:"));
-    wrap.append(el("ol",{class:"todo"},
-      el("li",{}, "Schreibt euren Teamnamen auf: ", el("strong",{},T.team)),
-      el("li",{}, "Kreuzt euren Suchauftrag an:", el("div",{class:"result-pics"}, m.map(x=>el("div",{}, picNode(x,"pm"), x.label)))),
-      el("li",{}, VORHERSAGE)));
-    wrap.append(el("p",{class:"muted"},"Zeigt eure Suchkarte dann eurer Lehrkraft. Euer Suchauftrag kommt in "+FIGUR+"s Rucksack."));
-    }
-  }
-  wrap.append(el("div",{class:"row",style:"margin-top:1.2rem"},
-    el("button",{class:"btn",type:"button",disabled:T.path.length===0,onclick:()=>{ T.path=T.path.slice(0,-1); T.funde=T.funde.slice(0,T.path.length); T.fund=null; render(); }},"Einen Schritt zurück"),
-    el("button",{class:"btn",type:"button",onclick:()=>{ T.path=""; T.funde=[]; T.fund=null; render(); }},"Von vorn")));
+    el("div",{class:"level-tag"}, T.stufe ? el("span",{class:"stars","aria-label":"Lesestufe "+STUFEN[T.stufe].name}, STUFEN[T.stufe].sym) : el("span",{},FIGUR+"s Geschichte"),
+      T.phase==="geschichte" ? el("span",{class:"progress"},"Teil "+(T.ab+1)+" von "+abschnitte().length) : null,
+      T.phase==="interview" && T.iv.runde===2 ? el("span",{class:"runde"},"Rollen getauscht") : null),
+    el("button",{class:"btn small",type:"button","aria-pressed":gross?"true":"false",onclick:()=>{ document.body.classList.toggle("gross"); render(); }},"A+ Große Schrift")));
+  if(T.phase==="wahl") tabletWahl(wrap);
+  else if(T.phase==="geschichte") tabletGeschichte(wrap);
+  else tabletInterview(wrap);
   app.append(wrap);
 }
-function speakNow(){
-  const key="stufe"+T.stufe, g=G().geschichte;
-  const t = T.path.length<3 ? g.knoten[T.path===""?"S":T.path].text[key] : g.enden[T.path].text[key]+" "+suchauftrag(T.path, Number(key.slice(5)));
-  speak(t);
+function tabletWahl(wrap){
+  wrap.append(el("div",{class:"story figure-hello"}, el("img",{src:FIGUR_BRIEF,alt:""}), el("p",{},"Wählt eure Lesestufe.")));
+  wrap.append(el("div",{class:"pick"}, stufenListe().map(n=>el("button",{class:"choice stufe",type:"button",onclick:()=>{ T.stufe=n; T.phase="geschichte"; T.ab=0; render(); if(n===1) setTimeout(()=>speak(abschnittText()),60); }},
+    el("span",{class:"stars","aria-hidden":"true"}, STUFEN[n].sym), el("span",{class:"sub"}, STUFEN[n].name)))));
 }
-
-// ===== Suchkarte =====
-function renderSuchkarte(app){
-  const kopf = (G().suchkarte && G().suchkarte.kartenkopf) || ("Suchkarte der "+R().klasse);
-  app.append(el("div",{class:"row no-print",style:"margin-bottom:1rem"},
-    el("button",{class:"btn primary",type:"button",onclick:()=>window.print()},"Suchkarte drucken"),
-    el("span",{class:"muted"},"Vorderseite und Rückseite werden auf zwei Seiten gedruckt.")));
-  const front = el("section",{class:"card","aria-label":"Vorderseite"});
-  front.append(el("h2",{},kopf));
-  front.append(el("div",{},"Unser Team:"), el("div",{class:"line"}));
-  front.append(el("div",{},"Unsere Namen:"), el("div",{class:"line"}));
-  front.append(el("div",{class:"syms"},"Unser Zeichen:", stufenListe().map(n=>el("span",{}, el("span",{class:"sq"}), " "+STUFEN[n].sym+" "+STUFEN[n].name))));
-  front.append(el("p",{style:"margin:1rem 0 .2rem"}, el("strong",{},"Unser Suchauftrag. Kreuzt an:")));
-  MERKMALE.forEach(pair=>front.append(el("div",{class:"pair"}, pair.map(m=>el("div",{class:"box"}, el("span",{class:"sq"}), picNode(m,"pic"), m.label)))));
-  front.append(el("p",{style:"margin:1rem 0 .2rem"}, el("strong",{},"Was ist wohl in unserem Buch?")));
-  front.append(el("div",{class:"predict"}));
-    const mini = el("div",{class:"mini-qr"});
-  stufenListe().forEach(n=>{ const q=el("div",{class:"qr"}); mini.append(el("div",{}, q, STUFEN[n].sym+" "+STUFEN[n].name)); setTimeout(()=>qr(q,tabletUrl(n),80),0); });
-  front.append(mini);
-  const back = el("section",{class:"card","aria-label":"Rückseite"},
-    el("h2",{},"In der Bibliothek"),
-    el("div",{},"Unser Buch heißt:"), el("div",{class:"line"}), el("div",{class:"line"}),
-    el("p",{style:"margin:1rem 0 .2rem"}, el("strong",{},"Hat unsere Vermutung gestimmt?")),
-    el("div",{class:"smileys"},"😀","😐","🙁"),
-    el("p",{style:"margin:1rem 0 .2rem"}, el("strong",{},"Nach dem Besuch: Hat das Buch gepasst?")),
-    el("div",{class:"smileys"},"😀","😐","🙁"));
-  app.append(front, back);
+function wortbildRegex(){
+  const wb = Array.isArray(G().wortbilder) ? G().wortbilder.filter(e=>isObj(e) && typeof e.wort==="string" && e.wort) : [];
+  if(!wb.length) return null;
+  const words = wb.map(e=>e.wort).sort((a,b)=>b.length-a.length).map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"));
+  return {re:new RegExp("(?<![\\p{L}\\p{N}])("+words.join("|")+")(?![\\p{L}\\p{N}])","gu"), map:Object.fromEntries(wb.map(e=>[e.wort, e]))};
 }
-
-// ===== Rückmeldung für die Bibliothek =====
-function renderBibliothek(app, raw){
-  let d;
-  try{ d = unpayload(raw); }catch(e){
-    app.append(el("div",{class:"panel"}, el("h2",{},"Rückmeldung nicht lesbar"), el("p",{},"Der Link ist unvollständig. Bitten Sie die Lehrkraft, ihn noch einmal zu kopieren.")));
-    return;
+function textMitWortbildern(text){
+  const p = el("p",{});
+  const wr = T.stufe===1 ? wortbildRegex() : null;
+  if(!wr){ p.textContent = text; return p; }
+  let last = 0;
+  for(const m of text.matchAll(wr.re)){
+    p.append(text.slice(last, m.index));
+    const e = wr.map[m[0]];
+    const s = el("span",{class:"wb"}, m[0]);
+    if(e && e.picto===FIGUR_PICTO) s.append(el("img",{src:FIGUR_KOPF,alt:""}));
+    else if(e && isInt(e.picto) && PICTO_DA.has(e.picto)) s.append(el("img",{src:"assets/pictos/"+e.picto+".png",alt:""}));
+    p.append(s); last = m.index + m[0].length;
   }
-  const r = el("div",{class:"report"});
-  r.append(el("div",{class:"row no-print",style:"justify-content:flex-end;margin-bottom:.5rem"}, el("button",{class:"btn",type:"button",onclick:()=>window.print()},"Drucken")));
-  r.append(el("h1",{}, figBadge(), "Das hat "+FIGUR+" uns von euch gebracht"));
-  r.append(el("p",{class:"muted",style:"margin-top:0;font-size:1.1rem"},"Klasse "+d.k+", Programm „"+d.p+"“"));
-  const s = el("section",{class:"panel"}, el("h2",{},"Suchaufträge der Paare"));
-  const rows = Object.entries(d.s||{}).filter(([id])=>ENDEN_IDS.includes(id)).sort((a,b)=>b[1]-a[1]);
-  if(rows.length) rows.forEach(([id,n])=>{ const m=merkmale(id);
-    s.append(el("div",{class:"pack-row"}, el("span",{class:"pics","aria-hidden":"true"}, m.map(x=>picNode(x))),
-      el("span",{}, "ein "+(m[0].key==="lustig"?"lustiges":"spannendes")+" Buch "+(m[2].key==="bilder"?"mit vielen Bildern":"mit viel Text")+", Hauptrolle: "+m[1].label),
-      el("strong",{}, n+" "+(n===1?"Paar":"Paare")))); });
-  else s.append(el("p",{style:"margin:0"},"Keine Suchaufträge eingetragen."));
-  r.append(s);
-  const v = el("section",{class:"panel"}, el("h2",{},"Vermutungen der Klasse"));
-  const groups = {};
-  (d.v||[]).forEach(([b,t])=>{ (groups[b]=groups[b]||[]).push(t); });
-  const keys = Object.keys(groups);
-  if(keys.length) keys.forEach(k=>{
-    const i = Number(k), b = (DATA && i>=0) ? bild(i) : null;
-    v.append(el("div",{class:"guess-group"},
-      b ? el("img",{src:b.datei,alt:b.beschreibung||""}) : el("div",{class:"noimg","aria-hidden":"true"},"🏛️"),
-      el("div",{}, el("strong",{}, b ? (b.ort||b.beschreibung) : "Zur Bibliothek"), el("div",{class:"chips",style:"margin-top:.4rem"}, groups[k].map(t=>el("span",{class:"chip",style:"padding-right:.8rem"},"💬 "+t))))));
-  });
-  else v.append(el("p",{style:"margin:0"},"Keine Vermutungen eingetragen."));
-  r.append(v);
-  app.append(r);
+  p.append(text.slice(last));
+  return p;
+}
+function abschnittText(){ const a = abschnitte()[T.ab]; return a ? a.text["stufe"+T.stufe] : ""; }
+function tabletGeschichte(wrap){
+  const a = abschnitte()[T.ab]; if(!a){ T.phase="interview"; return tabletInterview(wrap); }
+  const card = el("div",{class:"story"});
+  if(Array.isArray(a.text.bild)) card.append(el("ul",{class:"pictos","aria-label":"Bildfassung"}, a.text.bild.map(pictoNode)));
+  const text = abschnittText();
+  card.append(textMitWortbildern(text));
+  const ue = isObj(G().uebersetzungen) ? G().uebersetzungen : {};
+  if(T.tr && ue[T.tr] && Array.isArray(ue[T.tr].abschnitte)){
+    const rtl = RTL.includes(T.tr);
+    card.append(el("div",{class:"uebers",lang:T.tr,dir:rtl?"rtl":"ltr"}, el("p",{}, ue[T.tr].abschnitte[T.ab]||"")));
+  }
+  wrap.append(card);
+  const tools = el("div",{class:"row"});
+  if(T.stufe===1) tools.append(readBtn(()=>text));
+  Object.keys(ue).forEach(c=>tools.append(el("button",{class:"btn",type:"button","aria-pressed":T.tr===c?"true":"false",onclick:()=>{ T.tr = T.tr===c ? null : c; render(); }},
+    T.tr===c ? "Übersetzung ausblenden" : "Auch auf "+spracheName(c)+" lesen ("+spracheNativ(c)+")")));
+  wrap.append(tools);
+  const letzte = T.ab===abschnitte().length-1;
+  wrap.append(el("div",{class:"tnav"},
+    el("button",{class:"btn",type:"button",onclick:()=>{ if(T.ab===0){ T.phase="wahl"; T.stufe=null; } else T.ab--; render(); }},"Zurück"),
+    el("button",{class:"btn primary",type:"button",onclick:()=>{ if(letzte){ T.phase="interview"; T.iv.schritt="einstieg"; } else T.ab++; render(); if(T.stufe===1 && !letzte) setTimeout(()=>speak(abschnittText()),60); }}, letzte?"Weiter zum Interview":"Weiter")));
+}
+function geheZu(schritt){ T.hist.push(JSON.stringify(T.iv)); T.iv.schritt = schritt; render(); }
+function ivZurueck(){
+  if(T.hist.length){ T.iv = JSON.parse(T.hist.pop()); }
+  else { T.phase="geschichte"; T.ab=abschnitte().length-1; }
+  render();
+}
+function trBox(getter){
+  const c = T.iv.sprache; if(!c || !IV_TR[c]) return null;
+  const t = getter(IV_TR[c]); if(!t) return null;
+  return el("p",{class:"ivtr",lang:c,dir:RTL.includes(c)?"rtl":"ltr"}, t);
+}
+function ivAbsatz(text, trGetter, vorlesen=true){
+  const nodes = [el("p",{class:"ivtext"}, text)];
+  const tb = trGetter ? trBox(trGetter) : null; if(tb) nodes.push(tb);
+  if(T.stufe===1 && vorlesen) nodes.push(el("div",{class:"row",style:"margin-bottom:.8rem"}, readBtn(()=>text)));
+  return nodes;
+}
+function auswahlListe(){
+  const a = IV.art.optionen[T.iv.art], th = IV.thema.listen[T.iv.art][T.iv.thema], f = IV.format.optionen[T.iv.format];
+  return [a.label, th.weitere ? th.label+" (Stichwort)" : th.label, f.kurz];
+}
+function tabletInterview(wrap){
+  if(!IV){ wrap.append(el("div",{class:"story"}, el("p",{},"Die Fragen für das Interview fehlen (assets/interview/de.json)."))); return; }
+  const s = T.iv.schritt, bib = R().bibliothek;
+  const box = el("div",{class:"story"});
+  const nav = el("div",{class:"tnav"}, el("button",{class:"btn",type:"button",onclick:ivZurueck},"Zurück"));
+  if(s==="einstieg"){
+    box.append(el("div",{class:"figure-hello"}, el("img",{src:FIGUR_BRIEF,alt:""}), el("div",{}, ...ivAbsatz(fill(ivT(IV.einstieg),{bibliothek:bib}), tr=>fill(ivT(tr.einstieg),{bibliothek:bib})))));
+    nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("rollen")},"Weiter"));
+  }else if(s==="rollen"){
+    if(T.iv.runde===1) box.append(...ivAbsatz(ivT(IV.rollen), tr=>ivT(tr.rollen)));
+    const codes = Object.keys(IV_TR);
+    if(codes.length){
+      box.append(el("p",{class:"talk"}, IV.rollen.sprache));
+      box.append(el("div",{class:"row"}, [null, ...codes].map(c=>el("button",{class:"btn",type:"button","aria-pressed":T.iv.sprache===c?"true":"false",onclick:()=>{ T.iv.sprache=c; render(); }}, c ? spracheNativ(c) : "nur Deutsch"))));
+    }
+    nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("art")}, IV.rollen.knopf));
+  }else if(s==="art"){
+    box.append(...ivAbsatz(ivT(IV.art), tr=>ivT(tr.art)));
+    box.append(el("div",{class:"pick"}, Object.entries(IV.art.optionen).map(([k,o])=>el("button",{class:"choice",type:"button",onclick:()=>{ T.iv.art=k; T.iv.thema=null; geheZu("thema"); }},
+      el("span",{class:"pic","aria-hidden":"true"}, o.symbol), el("span",{}, o.label), kurz() ? null : el("span",{class:"sub"}, o.lang)))));
+  }else if(s==="thema"){
+    const frage = kurz() ? IV.thema.kurz : IV.thema.lang[T.iv.art];
+    box.append(...ivAbsatz(frage, tr=>kurz() ? tr.thema.kurz : (tr.thema.lang||{})[T.iv.art]));
+    const liste = IV.thema.listen[T.iv.art];
+    box.append(el("div",{class:"grid9"}, liste.map((th,i)=>el("button",{class:"choice",type:"button","aria-pressed":T.iv.thema===i?"true":"false",onclick:()=>{ T.iv.thema=i; if(th.weitere) render(); else geheZu("format"); }},
+      el("span",{class:"pic","aria-hidden":"true"}, th.symbol), el("span",{}, th.label)))));
+    if(T.iv.thema!=null && liste[T.iv.thema].weitere){
+      box.append(...ivAbsatz(IV.thema.weitere, tr=>tr.thema.weitere));
+      nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("format")},"Weiter"));
+    }
+  }else if(s==="format"){
+    box.append(...ivAbsatz(ivT(IV.format), tr=>ivT(tr.format)));
+    box.append(el("div",{class:"pick"}, Object.entries(IV.format.optionen).map(([k,o])=>el("button",{class:"choice",type:"button",onclick:()=>{ T.iv.format=k; geheZu("zusammen"); }},
+      el("img",{class:"pic",src:o.bild,alt:""}), el("span",{}, kurz() ? o.kurz : o.label)))));
+  }else if(s==="zusammen"){
+    const teile = auswahlListe();
+    const vorlage = ivT(IV.zusammenfassung);
+    const [vor, nach] = vorlage.split("{auswahl}");
+    box.append(el("p",{class:"ivtext"}, vor, el("span",{class:"auswahl"}, teile.map(t=>el("span",{},t))), nach||""));
+    const tb = trBox(tr=>ivT(tr.zusammenfassung)); if(tb){ tb.textContent = fill(tb.textContent,{auswahl:teile.join(" · ")}); box.append(tb); }
+    if(T.stufe===1) box.append(el("div",{class:"row"}, readBtn(()=>fill(vorlage,{auswahl:teile.join(", ")}))));
+    if(T.iv.runde===1){
+      nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>{
+        T.hist.push(JSON.stringify(T.iv));
+        T.iv = {schritt:Object.keys(IV_TR).length ? "rollen" : "art", runde:2, art:null, thema:null, format:null, sprache:null};
+        render(); }}, IV.zusammenfassung.knopf));
+    }else nav.append(el("button",{class:"btn primary",type:"button",onclick:()=>geheZu("ende")}, IV.abschluss_knopf||"Fertig"));
+  }else if(s==="ende"){
+    const sterne = STUFEN[T.stufe].sym;
+    box.append(el("div",{class:"figure-hello"}, el("img",{src:FIGUR_BRIEF,alt:""}),
+      el("div",{}, ...ivAbsatz(fill(ivT(IV.sterne),{sterne}), tr=>fill(ivT(tr.sterne),{sterne}), false), ...ivAbsatz(ivT(IV.abschluss), tr=>ivT(tr.abschluss), false),
+        T.stufe===1 ? el("div",{class:"row"}, readBtn(()=>fill(ivT(IV.sterne),{sterne})+" "+ivT(IV.abschluss))) : null)));
+    nav.append(el("button",{class:"btn",type:"button",onclick:()=>{ T = neuesTablet(); render(); }},"Von vorn"));
+  }
+  wrap.append(box, nav);
 }
 
-// ===== Lehrkraft =====
-// ===== Prüfung Material-Schema 0.5 (spiegelt v04/validate04.py) =====
-// Ergebnis: Liste von {s, t} mit s in "ok" | "warn" | "bad".
-function isInt(v){ return typeof v==="number" && Number.isInteger(v); }
-function isObj(v){ return v!==null && typeof v==="object" && !Array.isArray(v); }
+// ===== Suchkarten =====
+function sternSvg(){
+  const s = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  s.setAttribute("viewBox","0 0 24 24"); s.setAttribute("aria-hidden","true");
+  s.innerHTML = '<path d="M12 2.2l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.3l-6 3.3 1.3-6.7-5-4.7 6.8-.8z" fill="none" stroke="#1F2A1F" stroke-width="1.3" stroke-linejoin="round"/>';
+  return s;
+}
+function karte(){
+  const K = IV.karte, kopf = (G().suchkarte && G().suchkarte.kartenkopf) || ("Suchkarte der "+R().klasse);
+  const c = el("section",{class:"card"});
+  c.append(el("div",{class:"kopf"}, el("img",{src:FIGUR_KOPF,alt:""}), el("h2",{},kopf),
+    el("div",{}, el("div",{style:"font-size:9pt"},K.stufe), el("div",{class:"sterne"}, sternSvg(), sternSvg(), sternSvg()))));
+  c.append(el("div",{class:"name"}, K.name+":", el("span",{})));
+  c.append(el("div",{class:"zeile"},
+    el("div",{}, el("h3",{},K.art), el("div",{class:"opts"}, Object.values(IV.art.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), el("span",{class:"sym"},o.symbol), o.label)))),
+    el("div",{}, el("h3",{},K.format), el("div",{class:"opts"}, Object.values(IV.format.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), el("img",{src:o.bild,alt:""}), o.kurz))))));
+  c.append(el("div",{}, el("h3",{},K.thema), el("div",{class:"themen"}, Object.entries(IV.thema.listen).map(([k,liste])=>el("div",{},
+    el("h4",{}, el("span",{class:"sym"},IV.art.optionen[k].symbol), IV.art.optionen[k].label),
+    el("div",{class:"g9"}, liste.map(th=> th.weitere
+      ? el("div",{class:"w"}, el("span",{class:"wk"}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label+":"), el("span",{class:"l"}))
+      : el("div",{}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label))))))));
+  c.append(el("div",{class:"hinweis"}, K.hinweis));
+  return c;
+}
+function renderSuchkarte(app){
+  if(!IV){ app.append(el("div",{class:"panel"}, el("p",{style:"margin:0"},"Die Fragen für das Interview fehlen (assets/interview/de.json)."))); return; }
+  app.append(el("div",{class:"row no-print",style:"margin-bottom:1rem"},
+    el("button",{class:"btn primary",type:"button",onclick:()=>window.print()},"Suchkarten drucken"),
+    el("span",{class:"muted"},"Ein A4-Blatt enthält zwei Karten zum Auseinanderschneiden. Stellen Sie im Druckdialog die Anzahl der Kopien ein (ein Blatt für zwei Kinder), Hochformat, Skalierung 100 %.")));
+  app.append(el("div",{class:"sheet"}, karte(), karte()));
+}
+
+// ===== Prüfung Material-Schema 0.7 (spiegelt werkzeuge/validate07.py) =====
 function expectedVariants(lg){
   const v = new Set(Array.isArray(lg.lesestufen) ? lg.lesestufen : []);
   const f = lg.foerder || {};
@@ -707,6 +693,8 @@ function expectedVariants(lg){
 }
 function wortbilderRequired(lg){ const f = lg.foerder || {}; return (f.lernen||0)>0 || (f.sprache||0)>0; }
 function cutList(a){ return a.slice(0,6).join(", ")+(a.length>6?" …":""); }
+function setEq(a, b){ if(a.size!==b.size) return false; for(const x of a) if(!b.has(x)) return false; return true; }
+function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 function checkEntry(e, where, liste, bad, warn){
   if(!isObj(e)){ bad.push(where+" (kein Objekt)"); return; }
   const w = e.wort;
@@ -721,20 +709,26 @@ function checkEntry(e, where, liste, bad, warn){
     if(liste && !liste.includes(p)) bad.push(where+" (ID "+p+" nicht in Liste)");
   }else bad.push(where+" (picto)");
 }
-function setEq(a, b){ if(a.size!==b.size) return false; for(const x of a) if(!b.has(x)) return false; return true; }
-function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+function allBildEintraege(g){
+  const out = [];
+  const ab = isObj(g.geschichte) && Array.isArray(g.geschichte.abschnitte) ? g.geschichte.abschnitte : [];
+  ab.forEach(a=>{ if(isObj(a) && isObj(a.text) && Array.isArray(a.text.bild)) a.text.bild.forEach(e=>{ if(isObj(e)) out.push(e); }); });
+  if(Array.isArray(g.wortbilder)) g.wortbilder.forEach(e=>{ if(isObj(e)) out.push(e); });
+  return out;
+}
 function validate(d, lg, liste, lgId){
   const res=[]; const add=(s,t)=>res.push({s,t});
   const meta=isObj(d.meta)?d.meta:{}, r=isObj(d.rahmen)?d.rahmen:{}, g=isObj(d.generiert)?d.generiert:{};
-  const gs=isObj(g.geschichte)?g.geschichte:{}, k=isObj(gs.knoten)?gs.knoten:{}, e=isObj(gs.enden)?gs.enden:{};
+  const gs=isObj(g.geschichte)?g.geschichte:{};
+  const ab=Array.isArray(gs.abschnitte)?gs.abschnitte:[];
   lg = isObj(lg) ? lg : null;
   // Regel 1
   const sv = meta.schema_version;
-  add(sv==="0.5"?"ok":"bad", "Schema-Version 0.5"+(sv==="0.5"?"":" (gefunden: "+(sv===undefined||sv===null?"None":String(sv))+")"));
+  add(sv==="0.7"?"ok":"bad", "Schema-Version 0.7"+(sv==="0.7"?"":" (gefunden: "+(sv==null?"keine":String(sv))+")"));
   // Regel 2
   if(lg){
     const ok = meta.lerngruppe===lgId;
-    add(ok?"ok":"warn", "Verweis auf Lerngruppe "+lgId+(ok?"":" (im Material: "+(meta.lerngruppe==null?"None":meta.lerngruppe)+")"));
+    add(ok?"ok":"warn", "Verweis auf Lerngruppe "+lgId+(ok?"":" (im Material: "+(meta.lerngruppe==null?"keiner":meta.lerngruppe)+")"));
   }else add("warn","Lerngruppe nicht geladen: Prüfung ohne Abgleich mit der Lerngruppe");
   // Regel 3
   let ok = !!(r.klasse && r.bibliothek && r.programmtitel);
@@ -743,74 +737,50 @@ function validate(d, lg, liste, lgId){
   add(ok?"ok":"bad","Rahmendaten vollständig, jedes Bild mit Datei und Beschreibung");
   // Regel 4
   const bt = isObj(g.brief) ? g.brief.text : undefined;
-  ok = typeof bt==="string" && bt.length>0 && bt.length<=500;
-  add(ok?"ok":"bad","Brief vorhanden, max. 500 Zeichen"+(typeof bt==="string"?" ("+bt.length+")":""));
+  ok = typeof bt==="string" && bt.length>0 && bt.length<=LIM_BRIEF;
+  add(ok?"ok":"bad","Brief vorhanden, max. 600 Zeichen"+(typeof bt==="string"?" ("+bt.length+")":""));
   // Regel 5
   const bb = g.bibliotheksblick;
   ok = Array.isArray(bb) && bb.length===1 && bb.every(x=>isObj(x) && isInt(x.bild) && Array.isArray(bilder) && x.bild>=0 && x.bild<bilder.length);
   add(ok?"ok":"bad","Blick in die Bibliothek: genau 1 Bild");
   // Regel 6
-  const mk = KNOTEN_IDS.filter(i=>!isObj(k[i]));
-  const me = ENDEN_IDS.filter(i=>!isObj(e[i]));
-  const bo = KNOTEN_IDS.filter(i=>isObj(k[i]) && !(Array.isArray(k[i].optionen) && k[i].optionen.length===2));
-  const msg=[];
-  if(mk.length) msg.push("fehlende Knoten: "+cutList(mk));
-  if(me.length) msg.push("fehlende Enden: "+cutList(me));
-  if(bo.length) msg.push("nicht genau 2 Optionen: "+cutList(bo));
-  add(msg.length?"bad":"ok","7 Knoten, 8 Enden, je 2 Optionen"+(msg.length?" ("+msg.join("; ")+")":""));
-  // Variantenfelder
-  const felder=[];
-  KNOTEN_IDS.forEach(i=>{ const n=k[i]; if(!isObj(n)) return;
-    felder.push([i, n.text, "text"]);
-    (Array.isArray(n.optionen)?n.optionen:[]).forEach((o,j)=>{ if(isObj(o)) felder.push([i+"/Option"+(j+1), o.label, "label"]); });
-  });
-  ENDEN_IDS.forEach(i=>{ const n=e[i]; if(!isObj(n)) return;
-    felder.push([i, n.text, "text"]);
-  });
-  const mitAuftrag = ENDEN_IDS.filter(i=>isObj(e[i]) && ("suchauftrag" in e[i]));
-  add(mitAuftrag.length?"bad":"ok","Suchaufträge erzeugt das Template (nicht im Material)"+(mitAuftrag.length?" – entfernen bei: "+cutList(mitAuftrag):""));
+  const pl = isObj(g.plan) ? g.plan : null;
+  const pf = [];
+  if(!pl) pf.push("fehlt");
+  else{
+    PLAN_FELDER.forEach(f=>{ const v=pl[f]; if(typeof v!=="string" || !v.trim()) pf.push(f+" leer"); else if(v.length>LIM_PLAN) pf.push(f+" ("+v.length+")"); });
+    if(typeof pl.aufloesung_beim_besuch!=="boolean") pf.push("aufloesung_beim_besuch");
+  }
+  add(pf.length?"bad":"ok","Plan vollständig (motiv, ort, ausgangslage, offene_frage je max. 200 Zeichen; aufloesung_beim_besuch)"+(pf.length?" – "+cutList(pf):""));
   // Regel 7
+  const kOk = KULISSEN.includes(gs.kulisse);
+  ok = ab.length===3 && ab.every(a=>isObj(a) && isObj(a.text)) && kOk;
+  add(ok?"ok":"bad","Genau 3 Abschnitte, Kulisse programmwelt, thema oder allgemein"+(ok?"":" (Abschnitte: "+ab.length+", Kulisse: "+(gs.kulisse==null?"keine":gs.kulisse)+")"));
+  // Regel 8
   let soll, basis;
   if(lg){ soll = expectedVariants(lg); basis = "Lerngruppe"; }
-  else{ const s0 = isObj(k.S) ? k.S.text : undefined; soll = new Set(isObj(s0) ? Object.keys(s0) : []); basis = "Knoten S"; }
+  else{ const t0 = ab[0] && isObj(ab[0].text) ? ab[0].text : null; soll = new Set(t0 ? Object.keys(t0) : []); basis = "Abschnitt 1"; }
   const falsch=[];
-  felder.forEach(([wo,obj,art])=>{
-    const erwartet = new Set([...soll].filter(x=>!(art==="auftrag" && x==="bild")));
-    const ist = new Set(isObj(obj) ? Object.keys(obj) : []);
-    if(!setEq(ist, erwartet)) falsch.push(wo);
-  });
+  ab.forEach((a,i)=>{ const ist = new Set(isObj(a) && isObj(a.text) ? Object.keys(a.text) : []); if(!setEq(ist, soll)) falsch.push("Abschnitt "+(i+1)); });
   const vtext = [...soll].sort().join(", ") || "keine";
   add((falsch.length||!soll.size)?"bad":"ok","Varianten wie "+basis+" ("+vtext+")"+(falsch.length?" – abweichend: "+cutList(falsch):""));
-  // Regel 8
+  // Regel 9
   const lang=[];
-  felder.forEach(([wo,obj,art])=>{
-    if(!isObj(obj)) return;
-    ["stufe1","stufe2","stufe3"].forEach(s=>{
-      if(!(s in obj)) return;
-      const t=obj[s];
-      const lim = art==="label" ? LIM_LABEL : (art==="auftrag" ? LIM_AUFTRAG[s] : LIM_TEXT[s]);
-      if(typeof t!=="string" || !t) lang.push(wo+"/"+s+" (leer)");
-      else if(t.length>lim) lang.push(wo+"/"+s+" ("+t.length+")");
-    });
+  ab.forEach((a,i)=>{ if(!isObj(a)||!isObj(a.text)) return;
+    ["stufe1","stufe2","stufe3"].forEach(s=>{ if(!(s in a.text)) return; const t=a.text[s];
+      if(typeof t!=="string" || !t) lang.push("Abschnitt "+(i+1)+"/"+s+" (leer)");
+      else if(t.length>LIM_TEXT[s]) lang.push("Abschnitt "+(i+1)+"/"+s+" ("+t.length+")"); });
   });
-  KNOTEN_IDS.forEach(i=>{ const n=k[i]; if(!isObj(n)) return;
-    (Array.isArray(n.optionen)?n.optionen:[]).forEach((o,j)=>{
-      const f = isObj(o) ? o.fund : undefined;
-      if(!isObj(f) || typeof f.name!=="string" || !f.name) lang.push(i+"/Option"+(j+1)+"/Fund (fehlt)");
-      else if(f.name.length>LIM_FUND) lang.push(i+"/Option"+(j+1)+"/Fund ("+f.name.length+")");
-    });
-  });
-  add(lang.length?"bad":"ok","Längengrenzen eingehalten"+(lang.length?" – "+cutList(lang):""));
-  // Regeln 9-12
+  add(lang.length?"bad":"ok","Längengrenzen der Abschnitte (180/300/450)"+(lang.length?" – "+cutList(lang):""));
+  // Regel 10
   const folgeBad=[], eintragBad=[], eintragWarn=[];
-  felder.forEach(([wo,obj,art])=>{
-    if(!isObj(obj) || !("bild" in obj) || art==="auftrag") return;
-    const b=obj.bild; const lo=1, hi = art==="label" ? 1 : 4;
-    if(!Array.isArray(b) || b.length<lo || b.length>hi){ folgeBad.push(wo); return; }
-    b.forEach((ent,x)=>checkEntry(ent, wo+"/bild"+(x+1), liste, eintragBad, eintragWarn));
+  ab.forEach((a,i)=>{ if(!isObj(a)||!isObj(a.text)||!("bild" in a.text)) return;
+    const b=a.text.bild;
+    if(!Array.isArray(b) || b.length<1 || b.length>4){ folgeBad.push("Abschnitt "+(i+1)); return; }
+    b.forEach((e,x)=>checkEntry(e, "Abschnitt "+(i+1)+"/Bild "+(x+1), liste, eintragBad, eintragWarn));
   });
-  add(folgeBad.length?"bad":"ok","Bildfolgen: 1–4 Einträge, bei Optionen genau 1"+(folgeBad.length?" – falsch: "+cutList(folgeBad):""));
-  // Regel 13
+  add(folgeBad.length?"bad":"ok","Bildfolgen: 1–4 Einträge"+(folgeBad.length?" – falsch: "+cutList(folgeBad):""));
+  // Regel 11
   const wb = g.wortbilder; const wbBad=[], wbWarn=[];
   const pflicht = !!lg && wortbilderRequired(lg);
   if(wb===undefined || wb===null){
@@ -818,85 +788,157 @@ function validate(d, lg, liste, lgId){
   }else if(!Array.isArray(wb) || wb.length<1 || wb.length>WORTBILDER_MAX){
     add("bad","Wortbilder: 1–20 Einträge");
   }else{
-    wb.forEach((ent,x)=>checkEntry(ent, "Wortbild"+(x+1), liste, wbBad, wbWarn));
+    wb.forEach((e,x)=>checkEntry(e, "Wortbild "+(x+1), liste, wbBad, wbWarn));
     add(wbBad.length?"bad":"ok","Wortbilder gültig ("+wb.length+")"+(wbBad.length?" – falsch: "+cutList(wbBad):""));
-    // Regel 14
-    const s1 = [...Object.values(k), ...Object.values(e)].filter(n=>isObj(n) && isObj(n.text)).map(n=>n.text.stufe1).filter(t=>typeof t==="string");
+    const s1 = ab.filter(a=>isObj(a)&&isObj(a.text)&&typeof a.text.stufe1==="string").map(a=>a.text.stufe1);
     const fehlt=[];
-    wb.forEach(ent=>{
-      const w = isObj(ent) ? ent.wort : undefined;
-      if(typeof w==="string" && w){
-        const re = new RegExp("(?<![\\p{L}\\p{N}_])"+escRe(w)+"(?![\\p{L}\\p{N}_])","iu");
-        if(!s1.some(t=>re.test(t))) fehlt.push(w);
-      }
-    });
-    add(fehlt.length?"warn":"ok","Jedes Wortbild kommt in einem Blatt-Text vor"+(fehlt.length?" – nicht gefunden: "+cutList(fehlt):""));
+    wb.forEach(e=>{ const w = isObj(e) ? e.wort : undefined;
+      if(typeof w==="string" && w){ const re = new RegExp("(?<![\\p{L}\\p{N}_])"+escRe(w)+"(?![\\p{L}\\p{N}_])","iu"); if(!s1.some(t=>re.test(t))) fehlt.push(w); } });
+    add(fehlt.length?"warn":"ok","Jedes Wortbild kommt in einem ⭐-Text vor"+(fehlt.length?" – nicht gefunden: "+cutList(fehlt):""));
   }
-  // Regeln 10-12 zusammengefasst
   const alleBad = eintragBad.concat(wbBad), alleWarn = eintragWarn.concat(wbWarn);
   add(alleBad.length?"bad":"ok","Bild-Einträge: ein Wort (max. 15 Zeichen), Piktogramm aus der Liste"+(alleBad.length?" – falsch: "+cutList(alleBad):""));
   if(!liste) add("warn","Piktogramm-Liste nicht geladen: IDs nicht abgeglichen");
   add(alleWarn.length?"warn":"ok","Alle Piktogramme vorhanden"+(alleWarn.length?" – nachtragen: "+cutList(alleWarn):""));
+  // Regeln 12 und 13
+  const ue = g.uebersetzungen;
+  const ueObj = isObj(ue) ? ue : {};
+  const ueBad=[], ueWarn=[];
+  if(ue!==undefined && ue!==null && !isObj(ue)) ueBad.push("kein Objekt");
+  const sollSpr = lg && Array.isArray(lg.sprachen) ? lg.sprachen : null;
+  if(sollSpr){
+    sollSpr.forEach(c=>{ if(!(c in ueObj)) ueBad.push(c+" fehlt"); });
+    Object.keys(ueObj).forEach(c=>{ if(!sollSpr.includes(c)) ueBad.push(c+" ohne Sprachcode in der Lerngruppe"); });
+  }
+  Object.entries(ueObj).forEach(([c,u])=>{
+    if(!isObj(u) || !Array.isArray(u.abschnitte) || u.abschnitte.length!==3 || !u.abschnitte.every(t=>typeof t==="string" && t)){ ueBad.push(c+" (3 Texte)"); return; }
+    if(!(u.stufe in LIM_TEXT)){ ueBad.push(c+" (stufe)"); return; }
+    u.abschnitte.forEach((t,i)=>{ if(t.length>LIM_TEXT[u.stufe]) ueWarn.push(c+"/Abschnitt "+(i+1)+" ("+t.length+")"); });
+  });
+  if(sollSpr || Object.keys(ueObj).length) add(ueBad.length?"bad":"ok","Übersetzungen: je Sprache der Lerngruppe 3 Texte"+(ueBad.length?" – "+cutList(ueBad):""));
+  if(Object.keys(ueObj).length) add(ueWarn.length?"warn":"ok","Übersetzungen innerhalb der Längengrenze der übersetzten Stufe"+(ueWarn.length?" – "+cutList(ueWarn):""));
+  // Regel 14
+  const abr = isObj(g.antwortbrief) ? g.antwortbrief : null;
+  const abBad=[];
+  if(!abr) abBad.push("fehlt");
+  else AB_FELDER.forEach(f=>{ const v=abr[f]; if(typeof v!=="string" || !v.trim()) abBad.push(f+" leer"); else if(v.length>LIM_AB[f]) abBad.push(f+" ("+v.length+")"); });
+  add(abBad.length?"bad":"ok","Antwortbrief: 6 Felder, Längengrenzen eingehalten"+(abBad.length?" – "+cutList(abBad):""));
   // Regel 15
-  const tn = g.teamnamen;
-  const okNamen = Array.isArray(tn) && tn.every(n=>typeof n==="string" && n.length>0 && n.length<=LIM_TEAM);
+  const kk = isObj(g.suchkarte) ? g.suchkarte.kartenkopf : undefined;
+  ok = typeof kk==="string" && kk.length>0 && kk.length<=LIM_KOPF && Array.isArray(g.luecken);
+  add(ok?"ok":"bad","Kartenkopf (max. 40 Zeichen) und Lückenliste vorhanden");
+  // Regel 16
+  const alt = [];
+  ["knoten","enden"].forEach(k=>{ if(k in gs) alt.push("geschichte."+k); });
+  ["teamnamen","absenden_text"].forEach(k=>{ if(k in g) alt.push(k); });
+  if(pl && ("hinweis" in pl)) alt.push("plan.hinweis");
+  add(alt.length?"bad":"ok","Keine Felder aus Schema 0.5 oder 0.6"+(alt.length?" – "+cutList(alt):""));
+  // Regel 17
   if(lg && isInt(lg.tablets)){
-    const sollN = Math.max(2, lg.tablets);
-    ok = okNamen && tn.length===sollN;
-    add(ok?"ok":"bad","Teamnamen: "+sollN+" (= Tablets, mind. 2), je max. 30 Zeichen"+(ok?"":" (gefunden: "+(Array.isArray(tn)?tn.length:"keine")+")"));
-    // Regel 16
     const nv = expectedVariants(lg).size;
     add(lg.tablets>=nv?"ok":"warn","Tablets ("+lg.tablets+") reichen für alle Varianten ("+nv+")");
-  }else{
-    ok = okNamen && tn.length>=2;
-    add(ok?"ok":"bad","Teamnamen: mind. 2, je max. 30 Zeichen");
   }
-  // Regel 17
-  const at = g.absenden_text;
-  ok = typeof at==="string" && at.length>0 && at.length<=200 && Array.isArray(g.luecken);
-  add(ok?"ok":"bad","Absendetext (max. 200 Zeichen) und Lückenliste vorhanden");
   return res;
 }
+
+// ===== Lehrkraft =====
 function lgInfo(){
   if(!LG) return el("p",{style:"margin:0"},"Keine Lerngruppe geladen. Die Prüfung gleicht das Material nicht mit den Angaben der Lehrkraft ab.");
   const f = LG.foerder || {};
   const fb = [["sehen","Sehen"],["lernen","Lernen"],["sprache","Sprache"],["motorik","Motorik"]].filter(([key])=>(f[key]||0)>0).map(([key,name])=>name+": "+f[key]);
   const ev = expectedVariants(LG);
-  const v = ["stufe1","stufe2","stufe3","bild"].filter(x=>ev.has(x)).map(x=>x==="bild" ? "Bildvariante" : STUFEN[Number(x.slice(-1))].name);
+  const v = ["stufe1","stufe2","stufe3","bild"].filter(x=>ev.has(x)).map(x=>x==="bild" ? "Bildfassung" : STUFEN[Number(x.slice(-1))].sym);
   return el("ul",{style:"margin:0"},
     el("li",{},"Klasse: "+(LG.klasse||"–")+", Tablets: "+(LG.tablets??"–")+", Jahrgänge: "+((LG.jahrgaenge||[]).join(", ")||"–")),
     el("li",{},"Varianten im Material: "+(v.join(", ")||"–")),
     el("li",{},"Förderbedarfe: "+(fb.join(", ")||"keine")),
-    el("li",{},"Sprachfassungen: "+((LG.sprachen||[]).join(", ")||"keine")));
+    el("li",{},"Familiensprachen: "+((LG.sprachen||[]).map(spracheName).join(", ")||"keine")));
 }
-
+function editField(path, label, limit){
+  const orig = getPath(DATA.generiert, path);
+  if(typeof orig!=="string") return null;
+  const changed = Object.prototype.hasOwnProperty.call(EDITS, path);
+  const wrap = el("div",{class:"edit"+(changed?" is-changed":"")});
+  const ta = el("textarea",{"aria-label":label, rows:String(Math.min(8, Math.max(2, Math.ceil(orig.length/90))))});
+  ta.value = changed ? EDITS[path] : orig;
+  const count = el("span",{class:"count"});
+  const upd = ()=>{ count.textContent = ta.value.length+(limit?" / "+limit:"")+" Zeichen"; count.classList.toggle("over", !!limit && ta.value.length>limit); };
+  upd();
+  ta.addEventListener("input", upd);
+  ta.addEventListener("change", ()=>{
+    if(ta.value===orig) delete EDITS[path]; else EDITS[path]=ta.value;
+    saveEdits(); render();
+  });
+  wrap.append(el("label",{}, label, count, changed ? el("span",{class:"changed"},"geändert") : null,
+    changed ? el("button",{class:"btn small",type:"button",onclick:()=>{ delete EDITS[path]; saveEdits(); render(); }},"Original") : null), ta);
+  return wrap;
+}
+function geprueftesJSON(){
+  const d = JSON.parse(JSON.stringify(M()));
+  const n = Object.keys(EDITS).length;
+  const heute = new Date().toISOString().slice(0,10);
+  const v = "Redaktionell durchgesehen am "+heute+(n ? "; "+n+" Text"+(n===1?"":"e")+" geändert ("+Object.keys(EDITS).join(", ")+")" : "; ohne Änderungen")+".";
+  d.meta = d.meta || {}; d.meta.hinweis = d.meta.hinweis ? d.meta.hinweis+" "+v : v;
+  return d;
+}
+function download(name, text){
+  const a = el("a",{href:URL.createObjectURL(new Blob([text],{type:"application/json"})), download:name});
+  document.body.append(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function durchsicht(){
+  const g = DATA.generiert, n = Object.keys(EDITS).length;
+  const p = el("section",{class:"panel"}, el("h2",{},"Durchsicht und Korrektur"));
+  p.append(el("p",{style:"margin-top:0"},"Lesen Sie Brief, Geschichte und Antwortbrief vor der Stunde. Auch regelkonforme Texte können vereinzelt Aussagen enthalten, die nicht stimmen (zum Beispiel über den Ablauf des Besuchs). Korrigieren Sie sie direkt im Feld."));
+  p.append(el("p",{class:"tip",style:"font-size:1rem"},"Änderungen gelten zunächst nur in diesem Browser (Whiteboard). Damit auch die Tablets sie zeigen, laden Sie die geprüfte Fassung herunter und legen sie als materialien/"+(MATERIAL_ID||"<ID>")+".json ins Repository."));
+  p.append(el("div",{class:"row",style:"margin-bottom:.4rem"},
+    el("button",{class:"btn primary",type:"button",onclick:()=>download((MATERIAL_ID||(DATA.meta&&DATA.meta.lerngruppe)||"material")+".json", JSON.stringify(geprueftesJSON(),null,2))},"Geprüfte Fassung herunterladen"),
+    n ? el("button",{class:"btn",type:"button",onclick:()=>{ EDITS={}; saveEdits(); render(); }},"Alle Änderungen verwerfen") : null,
+    el("span",{class:"muted"}, n ? n+" Text"+(n===1?"":"e")+" geändert" : "Noch nichts geändert")));
+  if(isObj(g.plan)) p.append(el("h3",{},"Plan der Geschichte (wird nicht angezeigt)"),
+    el("div",{class:"ro"}, el("div",{}, el("strong",{},"Motiv: "), g.plan.motiv||"–"), el("div",{}, el("strong",{},"Offene Frage: "), g.plan.offene_frage||"–"),
+      el("div",{}, el("strong",{},"Auflösung beim Besuch angekündigt: "), g.plan.aufloesung_beim_besuch ? "ja" : "nein")));
+  p.append(el("h3",{},"Fridos Brief (Phase 1)"), editField("brief.text","Brief",LIM_BRIEF));
+  (g.geschichte && g.geschichte.abschnitte || []).forEach((a,i)=>{
+    p.append(el("h3",{},"Geschichte, Teil "+(i+1)+": "+(ABSCHNITTE[i]||"")));
+    [1,2,3].forEach(s=>{ const f = editField("geschichte.abschnitte."+i+".text.stufe"+s, STUFEN[s].sym, LIM_TEXT["stufe"+s]); if(f) p.append(f); });
+    if(isObj(a.text) && Array.isArray(a.text.bild)) p.append(el("div",{class:"ro"}, el("strong",{},"Bildfassung: "), a.text.bild.map(e=>(e.wort||"?")+(e.picto==null?" (Piktogramm fehlt)":"")).join(" · ")));
+    Object.entries(isObj(g.uebersetzungen)?g.uebersetzungen:{}).forEach(([c,u])=>{
+      if(isObj(u) && Array.isArray(u.abschnitte)) p.append(el("div",{class:"ro",lang:c,dir:RTL.includes(c)?"rtl":"ltr"}, el("strong",{lang:"de",dir:"ltr"}, spracheName(c)+" (maschinell übersetzt, nicht geprüft): "), u.abschnitte[i]||""));
+    });
+  });
+  p.append(el("h3",{},"Rahmen des Antwortbriefs (Phase 3)"));
+  AB_FELDER.forEach(f=>{ const e = editField("antwortbrief."+f, AB_LABEL[f], LIM_AB[f]); if(e) p.append(e); });
+  return p;
+}
 function renderLehrkraft(app){
   const g=G(), r=R(), meta=DATA.meta||{};
   app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"},"Lehrkraftansicht: "+r.programmtitel+", Klasse "+r.klasse));
-  app.append(el("section",{class:"panel"}, el("h2",{},"Einsatz"),
-    el("p",{style:"margin:0"},"Dauer ca. 30 Minuten. Brief und Blick in die Bibliothek gemeinsam am Whiteboard; tippen Sie die Vermutungen der Klasse als Stichwörter ein. Danach öffnen die Paare die Geschichte am Tablet über den Code mit ihrem Zeichen und füllen die Suchkarte aus. Zum Schluss zählen Sie die Suchaufträge aus und schicken den Rucksack los.")));
+  app.append(el("section",{class:"panel"}, el("h2",{},"Ablauf der Stunde"),
+    el("ol",{class:"phases"},
+      el("li",{}, el("strong",{},"Phase 1, ganze Klasse (8 Min.): "),"Fridos Brief am Whiteboard vorlesen, Foto der Bibliothek ansehen, Vermutungen sammeln. Sie tippen die Vermutungen mit."),
+      el("li",{}, el("strong",{},"Phase 2, Paare am Tablet (25 Min.): "),"Code scannen, Lesestufe wählen, Geschichte lesen, dann Interview mit Rollentausch. Jedes Kind bekommt dabei seine Suchkarte ausgefüllt."),
+      el("li",{}, el("strong",{},"Phase 3, ganze Klasse (7 Min.): "),"Fragen an die Bibliothek sammeln. Die Website setzt Vermutungen und Fragen in den Brief der Klasse ein; Sie können ihn ändern und abschicken.")),
+    el("div",{class:"row",style:"margin-top:.8rem"},
+      el("a",{class:"btn",href:"#suchkarte"},"Suchkarten drucken"),
+      el("a",{class:"btn",href:"#klasse"},"Zum Whiteboard"))));
   const l = Array.isArray(g.luecken)?g.luecken:[];
-  app.append(el("section",{class:"panel"}, el("h2",{},"Fehlende Angaben"), l.length? el("ul",{style:"margin:0"}, l.map(x=>el("li",{},x))) : el("p",{style:"margin:0"},"Keine.")));
-  app.append(el("section",{class:"panel"}, el("h2",{},"Automatische Prüfung"), el("ul",{class:"checks"}, validate(DATA, LG, PICTOS, LG_ID).map(c=>el("li",{class:c.s},c.t)))));
+  app.append(el("section",{class:"panel"}, el("h2",{},"Fehlende Angaben im Programmprofil"), l.length? el("ul",{style:"margin:0"}, l.map(x=>el("li",{},x))) : el("p",{style:"margin:0"},"Keine.")));
+  app.append(el("section",{class:"panel"}, el("h2",{},"Automatische Prüfung"), el("ul",{class:"checks"}, validate(M(), LG, PICTOS, LG_ID).map(c=>el("li",{class:c.s},c.t)))));
+  app.append(durchsicht());
   app.append(el("section",{class:"panel"}, el("h2",{},"Lerngruppe"), lgInfo()));
   app.append(el("section",{class:"panel"}, el("h2",{},"Herkunft"),
     el("p",{style:"margin:0"},"Erzeugt von: "+(meta.erzeugt_von||"keine Angabe")+". Prompt-Version: "+(meta.prompt_version||"keine Angabe")+". Datum: "+(meta.erzeugt_am||"keine Angabe")+"."),
     meta.hinweis ? el("p",{class:"muted",style:"margin:.4rem 0 0"}, meta.hinweis) : null));
-  if(Array.isArray(g.bibliotheksblick)&&g.bibliotheksblick.length){
-    app.append(el("section",{class:"panel"}, el("h2",{},"Blick in die Bibliothek"),
-      el("ul",{style:"margin:0"}, g.bibliotheksblick.map(b=>{ const bi=bild(b.bild); return el("li",{}, (bi?(bi.ort||bi.beschreibung):"ohne Bild")+": "+FRAGE_BIBLIOTHEK); }))));
-  }
-  app.append(el("section",{class:"panel"}, el("h2",{},"Teamnamen"), el("p",{style:"margin:0"}, (g.teamnamen||[]).join(", ")||"keine")));
-  const zu = el("table",{}, el("thead",{}, el("tr",{}, el("th",{},"Entscheidung"), el("th",{},"Linke Antwort steht für"), el("th",{},"Rechte Antwort steht für"))),
-    el("tbody",{}, MERKMALE.map((p,i)=>el("tr",{}, el("td",{},String(i+1)), el("td",{},picNode(p[0]), " "+p[0].label), el("td",{},picNode(p[1]), " "+p[1].label)))));
-  app.append(el("section",{class:"panel"}, el("h2",{},"Zuordnung der Entscheidungen"), el("div",{class:"table-wrap"},zu)));
+  const ids = [...new Set(allBildEintraege(g).filter(e=>isInt(e.picto)).map(e=>e.picto))].sort((a,b)=>a-b);
+  const fehlend = ids.filter(id=>id!==FIGUR_PICTO && !PICTO_DA.has(id));
+  const ohne = [...new Set(allBildEintraege(g).filter(e=>e.picto===null).map(e=>e.wort+(e.suchwort?" (Suchwort: "+e.suchwort+")":"")))];
+  app.append(el("section",{class:"panel"}, el("h2",{},"Piktogramme"),
+    ids.includes(FIGUR_PICTO) ? el("p",{style:"margin-top:0"},"Das Piktogramm „Biber“ ("+FIGUR_PICTO+") zeigt die Seite als Frido-Figur; dafür ist keine Bilddatei nötig.") : null,
+    el("p",{style:"margin-top:0"}, fehlend.length ? "Diese Bilddateien fehlen noch im Ordner assets/pictos/ (Dateiname <ID>.png, von arasaac.org): "+fehlend.join(", ")+". Bis dahin zeigt das Tablet nur das Wort." : "Alle Bilddateien zu den Piktogramm-IDs sind vorhanden."),
+    ohne.length ? el("p",{style:"margin:0"},"Ohne Piktogramm in der Liste: "+ohne.join("; ")+".") : null));
   const q=[["Brief",g.brief&&g.brief.quellen],["Geschichte ("+(g.geschichte&&g.geschichte.kulisse)+")",g.geschichte&&g.geschichte.kulisse_quellen],["Piktogramme",["ARASAAC (arasaac.org), CC BY-NC-SA 4.0"]],["Figur Frido",["eigene Zeichnung"]]];
   app.append(el("section",{class:"panel"}, el("h2",{},"Quellen"), el("ul",{style:"margin:0"}, q.map(([n,s])=>el("li",{}, n+": "+((s&&s.length)?s.join(", "):"keine Angabe"))))));
-  let alle = store("ms_alle")==="1";
-  app.append(el("section",{class:"panel"}, el("h2",{},"Geschichte prüfen (Stufe "+STUFEN[stdStufe()].name+")"),
-    el("label",{class:"row",style:"margin-bottom:.6rem"}, el("input",{type:"checkbox",checked:alle,onchange:ev=>{ store("ms_alle",ev.target.checked?"1":"0"); render(); }}),"Alle Varianten nebeneinander zeigen"),
-    buildTree("",alle)));
-  const ta = el("textarea",{"aria-label":"JSON der Material-Seite",spellcheck:"false"}); ta.value = JSON.stringify(DATA,null,2);
+  const ta = el("textarea",{class:"json","aria-label":"JSON der Material-Seite",spellcheck:"false"}); ta.value = JSON.stringify(DATA,null,2);
   const msg = el("div",{class:"msg"});
   app.append(el("section",{class:"panel"}, el("h2",{},"Inhalte laden"),
     el("p",{style:"margin-top:0"}, MATERIAL_ID ? "Dieses Material stammt aus der Datei materialien/"+MATERIAL_ID+".json. Hier eingefügtes JSON gilt nur zum Ausprobieren und wird nicht gespeichert." : "Fügen Sie hier das JSON ein, das das Sprachmodell erzeugt hat. Es wird nur in diesem Browser gespeichert."),
@@ -904,45 +946,23 @@ function renderLehrkraft(app){
     el("div",{class:"row",style:"margin-top:.6rem"},
       el("button",{class:"btn primary",type:"button",onclick:()=>{
         try{ const d=JSON.parse(ta.value); if(!d.rahmen||!d.generiert) throw new Error("Die Bereiche „rahmen“ und „generiert“ fehlen.");
-          DATA=d; if(!MATERIAL_ID){ store("ms_json",JSON.stringify(d)); ladeLerngruppe(d).then(render); } else render(); }
+          DATA=d; MERGED=null; if(!MATERIAL_ID){ store("ms_json",JSON.stringify(d)); } ladeLerngruppe(d).then(ladeInterview).then(pruefePictoDateien).then(render); }
         catch(err){ msg.className="msg bad"; msg.textContent="Nicht geladen: "+err.message; } }},"JSON laden"),
-      el("button",{class:"btn",type:"button",onclick:()=>{ if(MATERIAL_ID) location.reload(); else { store("ms_json",null); DATA=localData(); render(); } }}, MATERIAL_ID?"Gespeichertes Material neu laden":(BEISPIEL?"Beispiel wiederherstellen":"Eingefügtes Material entfernen"))),
+      el("button",{class:"btn",type:"button",onclick:()=>{ if(MATERIAL_ID) location.reload(); else { store("ms_json",null); DATA=localData(); MERGED=null; render(); } }}, MATERIAL_ID?"Gespeichertes Material neu laden":"Eingefügtes Material entfernen")),
     msg));
   const bu = el("input",{type:"text",class:"wide",value:baseUrl()});
-  app.append(el("section",{class:"panel"}, el("h2",{},"Adresse für die QR-Codes"),
-    el("p",{style:"margin-top:0"},"Die QR-Codes führen zu dieser Adresse. Normalerweise müssen Sie hier nichts ändern."),
+  app.append(el("section",{class:"panel"}, el("h2",{},"Adresse für den QR-Code"),
+    el("p",{style:"margin-top:0"},"Der QR-Code für die Tablets führt zu dieser Adresse. Normalerweise müssen Sie hier nichts ändern."),
     bu, el("div",{class:"row",style:"margin-top:.6rem"}, el("button",{class:"btn",type:"button",onclick:()=>{ store("ms_base",bu.value.trim()||null); render(); }},"Adresse übernehmen"))));
-}
-function buildTree(path, alle){
-  const g=G().geschichte;
-  const key = "stufe"+stdStufe();
-  const show = obj => alle ? el("div",{class:"variants"}, stufenListe().map(n=>el("div",{}, STUFEN[n].sym+" ", obj["stufe"+n])), (hatBild() && obj.bild) ? el("div",{}, "🖼️ ", bildText(obj.bild)) : null) : el("span",{}, obj[key]);
-  if(path.length===3){
-    const e=g.enden[path];
-    return el("div",{class:"end"}, show(e.text), el("div",{style:"margin-top:.3rem"}, el("strong",{},"Suchauftrag (Template): "), show(auftragObj(path))));
-  }
-  const k=g.knoten[path===""?"S":path];
-  const ul=el("ul",{class:path===""?"tree":""});
-  const li=el("li",{}, show(k.text));
-  const sub=el("ul",{});
-  ["A","B"].forEach((c,i)=>{ const o=k.optionen[i], m=MERKMALE[path.length][i];
-    sub.append(el("li",{},
-      el("span",{class:"opt"}, (o.symbol?o.symbol+" ":"")+o.label[key]),
-      el("span",{class:"muted",style:"font-size:.9rem"}, "Merkmal: "+m.label+". Fund: "+(o.fund?(o.fund.symbol||"")+" "+o.fund.name:"–")),
-      buildTree(path+c, alle)));
-  });
-  li.append(sub); ul.append(li); return ul;
 }
 
 // ===== Router =====
 function currentView(){
   const h = location.hash.replace("#","");
-  if(h.startsWith("bibliothek=")) return {view:"bibliothek", raw:h.slice(11)};
-  const m = /^tablet-(\d)$/.exec(h);
-  if(m && STUFEN[m[1]]) return {view:"tablet", stufe:Number(m[1])};
-  if(h==="lehrkraft") return {view:"lehrkraft"};
-  if(h==="suchkarte") return {view:"suchkarte"};
-  return {view:"klasse"};
+  if(h==="tablet" || /^tablet-\d$/.test(h)) return "tablet";
+  if(h==="lehrkraft") return "lehrkraft";
+  if(h==="suchkarte") return "suchkarte";
+  return "klasse";
 }
 function renderLeer(app, lehrkraft){
   app.append(el("h1",{style:"font-size:1.6rem;margin-top:0"}, lehrkraft ? "Lehrkraftansicht" : "Noch kein Material"));
@@ -951,7 +971,7 @@ function renderLeer(app, lehrkraft){
       el("a",{class:"btn",href:"#lehrkraft"},"Zur Lehrkraftansicht")));
     return;
   }
-  const ta = el("textarea",{"aria-label":"JSON der Material-Seite",spellcheck:"false"});
+  const ta = el("textarea",{class:"json","aria-label":"JSON der Material-Seite",spellcheck:"false"});
   const msg = el("div",{class:"msg"});
   app.append(el("section",{class:"panel"}, el("h2",{},"Inhalte laden"),
     el("p",{style:"margin-top:0"},"Fügen Sie hier das JSON ein, das das Sprachmodell erzeugt hat. Es wird nur in diesem Browser gespeichert. Die Lerngruppe wird über meta.lerngruppe aus dem Ordner „lerngruppen“ nachgeladen."),
@@ -959,32 +979,34 @@ function renderLeer(app, lehrkraft){
     el("div",{class:"row",style:"margin-top:.6rem"},
       el("button",{class:"btn primary",type:"button",onclick:()=>{
         try{ const d=JSON.parse(ta.value); if(!d.rahmen||!d.generiert) throw new Error("Die Bereiche „rahmen“ und „generiert“ fehlen.");
-          DATA=d; store("ms_json",JSON.stringify(d)); ladeLerngruppe(d).then(render); }
+          DATA=d; MERGED=null; store("ms_json",JSON.stringify(d)); ladeLerngruppe(d).then(ladeInterview).then(pruefePictoDateien).then(render); }
         catch(err){ msg.className="msg bad"; msg.textContent="Nicht geladen: "+err.message; } }},"JSON laden")),
     msg));
 }
+let letzteAnsicht = null;
 function render(){
   try{ if("speechSynthesis" in window) speechSynthesis.cancel(); }catch(e){}
   const app=document.getElementById("app"); app.innerHTML="";
   const v=currentView();
-  document.body.classList.toggle("kid", v.view==="tablet"||v.view==="bibliothek");
-  document.querySelectorAll(".topnav a").forEach(a=>a.setAttribute("aria-current", a.dataset.view===v.view?"page":"false"));
+  if(v!==letzteAnsicht){ window.scrollTo(0,0); letzteAnsicht = v; }
+  document.body.classList.toggle("kid", v==="tablet");
+  if(v!=="tablet") document.body.classList.remove("gross");
+  document.querySelectorAll(".topnav a").forEach(a=>a.setAttribute("aria-current", a.dataset.view===v?"page":"false"));
   if(LOAD_ERROR){
     app.append(el("div",{class:"panel"}, el("h2",{},"Material nicht gefunden"), el("p",{},LOAD_ERROR),
       el("p",{class:"muted"},"Prüfen Sie, ob die Datei im Ordner „materialien“ liegt und genauso heißt wie die ID im Link.")));
     return;
   }
-  if(!DATA){ renderLeer(app, v.view==="lehrkraft"); return; }
+  if(!DATA){ renderLeer(app, v==="lehrkraft"); return; }
   try{
-    if(v.view==="tablet") renderTablet(app, v.stufe);
-    else if(v.view==="bibliothek") renderBibliothek(app, v.raw);
-    else if(v.view==="lehrkraft") renderLehrkraft(app);
-    else if(v.view==="suchkarte") renderSuchkarte(app);
+    if(v==="tablet") renderTablet(app);
+    else if(v==="lehrkraft") renderLehrkraft(app);
+    else if(v==="suchkarte") renderSuchkarte(app);
     else renderKlasse(app);
   }catch(err){
     app.innerHTML="";
     app.append(el("div",{class:"panel"}, el("h2",{},"Die Seite kann nicht dargestellt werden"),
-      el("p",{},"Das Material passt nicht zum Schema: "+err.message+"."),
+      el("p",{},"Das Material passt nicht zum Schema 0.7: "+err.message+"."),
       el("a",{class:"btn",href:"#lehrkraft"},"Zur Lehrkraftansicht")));
   }
 }
@@ -1002,10 +1024,11 @@ async function init(){
         try{ const rl = await fetch("lerngruppen/"+MATERIAL_ID+".json",{cache:"no-store"}); if(rl.ok) LG = await rl.json(); }catch(e){ LG = null; }
       }catch(err){ LOAD_ERROR = err.message || "Die Inhalte konnten nicht geladen werden."; }
     }
-  }else{ DATA = localData(); if(DATA && DATA!==BEISPIEL) await ladeLerngruppe(DATA); }
+  }else{ DATA = localData(); if(DATA) await ladeLerngruppe(DATA); }
   try{ const rp = await fetch("assets/pictos/liste.json",{cache:"no-store"}); if(rp.ok){ const pl = await rp.json(); PICTOS = (pl.pictos||[]).map(p=>p.id); } }catch(e){}
-  if(!PICTOS && BEISPIEL_PICTOS) PICTOS = (BEISPIEL_PICTOS.pictos||[]).map(p=>p.id);
-  loadState();
+  loadEdits(); loadState();
+  await ladeInterview();
+  if(DATA) await pruefePictoDateien();
   window.addEventListener("hashchange", render);
   render();
 }

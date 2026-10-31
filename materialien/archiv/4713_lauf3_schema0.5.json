@@ -1,0 +1,760 @@
+{
+  "meta": {
+    "schema_version": "0.5",
+    "lerngruppe": "4713",
+    "erzeugt_von": "Claude Sonnet 5.5 (claude.ai, Denkaufwand „hoch“)",
+    "prompt_version": "system_2 v0.2",
+    "erzeugt_am": "2026-10-18",
+    "hinweis": "Piktogramme redaktionell nachgetragen (18.10.2026); „Schriftrolle“ ohne passendes Piktogramm."
+  },
+  "rahmen": {
+    "_herkunft": "P",
+    "klasse": "3b",
+    "bibliothek": "Stadtbibliothek Straubing",
+    "programmtitel": "Bibliotheksdetektive",
+    "bilder": [
+      {
+        "datei": "bilder/bilderbuchecke.svg",
+        "beschreibung": "Bilderbuchecke in der Kinderbibliothek"
+      }
+    ]
+  },
+  "generiert": {
+    "_herkunft": "G",
+    "brief": {
+      "text": "Hallo 3b! Ich bin Frido, ein Biber. Bald besucht ihr die Stadtbibliothek Straubing und werdet dort zu Bibliotheksdetektiven. Eine Bücherkiste ist gestohlen worden, und ihr spürt sie auf! Ihr erkundet die Kinderbibliothek und löst Text-Rätsel und Puzzles. Mein Rucksack ist noch ganz leer. Den packt ihr heute mit mir. Dann bringe ich ihn zur Bibliothek. Bis bald, euer Frido",
+      "quellen": [
+        "lerngruppe.klasse",
+        "programmprofil.bibliothek",
+        "programmprofil.titel",
+        "programmprofil.worum_geht_es",
+        "programmprofil.orte"
+      ]
+    },
+    "bibliotheksblick": [
+      {
+        "bild": 0,
+        "quellen": [
+          "programmprofil.foto"
+        ]
+      }
+    ],
+    "teamnamen": [
+      "Team Lupe",
+      "Team Spürnase",
+      "Team Fußspur",
+      "Team Notizbuch",
+      "Team Detektivhut",
+      "Team Rätselfuchs",
+      "Team Bücherspur",
+      "Team Geheimakte"
+    ],
+    "geschichte": {
+      "kulisse": "programmwelt",
+      "kulisse_quellen": [
+        "programmprofil.orte",
+        "programmprofil.buch_oder_thema",
+        "programmprofil.worum_geht_es"
+      ],
+      "knoten": {
+        "S": {
+          "text": {
+            "stufe1": "Die Bücherkiste ist weg! Frido hört es kichern. Und es raschelt.",
+            "stufe2": "Frido steht in der Kinderbibliothek. Die Bücherkiste ist verschwunden! Hinter einem Regal kichert es. Aus der Ecke raschelt es leise.",
+            "stufe3": "Frido steht in der Kinderbibliothek und traut seinen Augen kaum: Die Bücherkiste ist verschwunden! Plötzlich kichert es hinter einem Regal. Gleichzeitig raschelt es geheimnisvoll in der Ecke. Wohin gehen Frido und ihr zuerst?",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              },
+              {
+                "picto": 5935,
+                "wort": "Kiste"
+              },
+              {
+                "picto": 3065,
+                "wort": "Bibliothek"
+              }
+            ]
+          },
+          "optionen": [
+            {
+              "label": {
+                "stufe1": "Zum Kichern gehen",
+                "stufe2": "Wir gehen dem Kichern nach.",
+                "stufe3": "Wir folgen dem leisen Kichern.",
+                "bild": [
+                  {
+                    "picto": 38792,
+                    "wort": "lachen"
+                  }
+                ]
+              },
+              "symbol": "😄",
+              "fund": {
+                "name": "Komischer Hut",
+                "symbol": "🎩"
+              }
+            },
+            {
+              "label": {
+                "stufe1": "Zum Rascheln gehen",
+                "stufe2": "Wir gehen dem Rascheln nach.",
+                "stufe3": "Wir schleichen dem Rascheln nach.",
+                "bild": [
+                  {
+                    "picto": 2381,
+                    "wort": "zuhören"
+                  }
+                ]
+              },
+              "symbol": "🔦",
+              "fund": {
+                "name": "Lupe",
+                "symbol": "🔍"
+              }
+            }
+          ]
+        },
+        "A": {
+          "text": {
+            "stufe1": "Ein komischer Hut! Frido lacht. Da sind Pfotenspuren. Da ruft ein Kind.",
+            "stufe2": "In der Bilderbuchecke liegt ein komischer Hut. Frido lacht und packt ihn ein. Da sind Pfotenspuren! Und ein Kind ruft leise.",
+            "stufe3": "Das Kichern kommt aus der Bilderbuchecke. Dort liegt ein komischer Hut! Frido muss lachen und packt ihn in den Rucksack. Plötzlich entdeckt er Pfotenspuren, und irgendwo ruft eine Kinderstimme. Wem folgt ihr?",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 38792,
+                "wort": "lachen"
+              },
+              {
+                "picto": 2572,
+                "wort": "Hut"
+              },
+              {
+                "picto": 5990,
+                "wort": "finden"
+              }
+            ]
+          },
+          "optionen": [
+            {
+              "label": {
+                "stufe1": "Den Spuren folgen",
+                "stufe2": "Wir folgen den Spuren.",
+                "stufe3": "Wir gehen den Pfotenabdrücken nach.",
+                "bild": [
+                  {
+                    "picto": 27786,
+                    "wort": "Pfotenspur"
+                  }
+                ]
+              },
+              "symbol": "🐾",
+              "fund": {
+                "name": "Feder",
+                "symbol": "🪶"
+              }
+            },
+            {
+              "label": {
+                "stufe1": "Zur Stimme gehen",
+                "stufe2": "Wir gehen zur Kinderstimme.",
+                "stufe3": "Wir suchen das Kind mit der Stimme.",
+                "bild": [
+                  {
+                    "picto": 2484,
+                    "wort": "Kind"
+                  }
+                ]
+              },
+              "symbol": "🧒",
+              "fund": {
+                "name": "Kleiner Turnschuh",
+                "symbol": "👟"
+              }
+            }
+          ]
+        },
+        "B": {
+          "text": {
+            "stufe1": "Es raschelt! Frido findet eine Lupe. Da sind Pfotenspuren. Ein Kind flüstert.",
+            "stufe2": "Im Gang der Sachbuchregale liegt eine Lupe. Frido nimmt sie mit. Im Staub sind Pfotenspuren. Ein Kind flüstert irgendwo.",
+            "stufe3": "Das Rascheln kommt aus dem Gang der Sachbuchregale. Dort liegt eine Lupe! Frido steckt sie in den Rucksack. Im Staub entdeckt er Pfotenspuren, und irgendwo flüstert eine Kinderstimme. Wem folgt ihr?",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 5990,
+                "wort": "finden"
+              },
+              {
+                "picto": 9927,
+                "wort": "Lupe"
+              },
+              {
+                "picto": 2381,
+                "wort": "zuhören"
+              }
+            ]
+          },
+          "optionen": [
+            {
+              "label": {
+                "stufe1": "Der Spur nachgehen",
+                "stufe2": "Wir gehen der Pfotenspur nach.",
+                "stufe3": "Wir folgen der Pfotenspur im Staub.",
+                "bild": [
+                  {
+                    "picto": 27786,
+                    "wort": "Pfotenspur"
+                  }
+                ]
+              },
+              "symbol": "👣",
+              "fund": {
+                "name": "Fellbüschel",
+                "symbol": "🧶"
+              }
+            },
+            {
+              "label": {
+                "stufe1": "Dem Flüstern folgen",
+                "stufe2": "Wir lauschen dem Flüstern.",
+                "stufe3": "Wir lauschen dem flüsternden Kind.",
+                "bild": [
+                  {
+                    "picto": 2484,
+                    "wort": "Kind"
+                  }
+                ]
+              },
+              "symbol": "🤫",
+              "fund": {
+                "name": "Kleiner Schlüssel",
+                "symbol": "🗝️"
+              }
+            }
+          ]
+        },
+        "AA": {
+          "text": {
+            "stufe1": "Ein Tier rennt weg. Da liegt eine Bildkarte. Da liegt ein Zettel.",
+            "stufe2": "Die Spuren enden bei den Sachbuchregalen. Ein Tier rennt weg und lässt eine bunte Bildkarte und einen langen Zettel fallen.",
+            "stufe3": "Die Pfotenspuren führen bis zu den Sachbuchregalen. Dort huscht ein flauschiges Tier davon und lässt zwei Dinge fallen: eine bunte Bildkarte und einen langen Zettel voller Wörter. Was hebt Frido auf?",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 6901,
+                "wort": "Tier"
+              },
+              {
+                "picto": 2360,
+                "wort": "Bildkarte"
+              },
+              {
+                "picto": 8349,
+                "wort": "Zettel"
+              }
+            ]
+          },
+          "optionen": [
+            {
+              "label": {
+                "stufe1": "Die Bildkarte nehmen",
+                "stufe2": "Wir nehmen die bunte Bildkarte.",
+                "stufe3": "Wir heben die bunte Bildkarte auf.",
+                "bild": [
+                  {
+                    "picto": 2360,
+                    "wort": "Bildkarte"
+                  }
+                ]
+              },
+              "symbol": "🖼️",
+              "fund": {
+                "name": "Bunte Bildkarte",
+                "symbol": "🖼️"
+              }
+            },
+            {
+              "label": {
+                "stufe1": "Den Zettel lesen",
+                "stufe2": "Wir lesen den langen Zettel.",
+                "stufe3": "Wir lesen den Zettel voller Wörter.",
+                "bild": [
+                  {
+                    "picto": 2447,
+                    "wort": "lesen"
+                  }
+                ]
+              },
+              "symbol": "📄",
+              "fund": {
+                "name": "Zettel voller Wörter",
+                "symbol": "📝"
+              }
+            }
+          ]
+        },
+        "AB": {
+          "text": {
+            "stufe1": "Ein Kind winkt und ist weg. Da liegt ein Bilderrätsel. Da liegt ein Brief.",
+            "stufe2": "Die Stimme führt zur Ausleihtheke. Ein Kind winkt und ist weg. Es lässt ein Bilderrätsel und einen langen Brief da.",
+            "stufe3": "Die Kinderstimme führt Frido zur Ausleihtheke. Ein Kind winkt lachend und verschwindet hinter einem Regal. Auf der Theke liegen ein buntes Bilderrätsel und ein langer Brief voller Wörter. Was nimmt Frido mit?",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 2484,
+                "wort": "Kind"
+              },
+              {
+                "picto": 24829,
+                "wort": "Bilderrätsel"
+              },
+              {
+                "picto": 2688,
+                "wort": "Brief"
+              }
+            ]
+          },
+          "optionen": [
+            {
+              "label": {
+                "stufe1": "Das Bilderrätsel nehmen",
+                "stufe2": "Wir nehmen das Bilderrätsel.",
+                "stufe3": "Wir betrachten das bunte Bilderrätsel.",
+                "bild": [
+                  {
+                    "picto": 24829,
+                    "wort": "Bilderrätsel"
+                  }
+                ]
+              },
+              "symbol": "🧩",
+              "fund": {
+                "name": "Bilderrätsel",
+                "symbol": "🧩"
+              }
+            },
+            {
+              "label": {
+                "stufe1": "Den Brief lesen",
+                "stufe2": "Wir lesen den langen Brief.",
+                "stufe3": "Wir öffnen den langen Brief.",
+                "bild": [
+                  {
+                    "picto": 2688,
+                    "wort": "Brief"
+                  }
+                ]
+              },
+              "symbol": "✉️",
+              "fund": {
+                "name": "Langer Brief",
+                "symbol": "✉️"
+              }
+            }
+          ]
+        },
+        "BA": {
+          "text": {
+            "stufe1": "Die Spur endet. Da ist eine Karte mit Bildern. Da ist eine Rolle mit Wörtern.",
+            "stufe2": "Die Pfotenspur endet in der Bilderbuchecke. Auf einem Kissen liegen eine Rätselkarte voller Bilder und eine Schriftrolle voller Wörter.",
+            "stufe3": "Die Pfotenspur endet in der Bilderbuchecke. Etwas Kleines huscht davon. Auf einem Kissen liegen eine Rätselkarte voller bunter Bilder und eine geheimnisvolle Schriftrolle voller Wörter. Was packt Frido ein?",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 6901,
+                "wort": "Tier"
+              },
+              {
+                "picto": 24829,
+                "wort": "Rätselkarte"
+              },
+              {
+                "picto": null,
+                "wort": "Schriftrolle",
+                "suchwort": "Schriftrolle Pergament"
+              }
+            ]
+          },
+          "optionen": [
+            {
+              "label": {
+                "stufe1": "Die Karte nehmen",
+                "stufe2": "Wir nehmen die Rätselkarte.",
+                "stufe3": "Wir greifen nach der Rätselkarte.",
+                "bild": [
+                  {
+                    "picto": 24829,
+                    "wort": "Rätselkarte"
+                  }
+                ]
+              },
+              "symbol": "🃏",
+              "fund": {
+                "name": "Rätselkarte",
+                "symbol": "🃏"
+              }
+            },
+            {
+              "label": {
+                "stufe1": "Die Rolle öffnen",
+                "stufe2": "Wir öffnen die Schriftrolle.",
+                "stufe3": "Wir rollen die Schriftrolle auf.",
+                "bild": [
+                  {
+                    "picto": null,
+                    "wort": "Schriftrolle",
+                    "suchwort": "Schriftrolle Pergament"
+                  }
+                ]
+              },
+              "symbol": "📜",
+              "fund": {
+                "name": "Schriftrolle",
+                "symbol": "📜"
+              }
+            }
+          ]
+        },
+        "BB": {
+          "text": {
+            "stufe1": "Der Schlüssel passt ins Kästchen! Da ist ein Bilder-Code. Da ist ein Notizbuch.",
+            "stufe2": "Das Flüstern führt zu einem Kästchen. Der kleine Schlüssel passt! Darin liegen ein Bilder-Code und ein dickes Notizbuch.",
+            "stufe3": "Ein Kind flüstert hinter dem Regal und läuft davon. Dort steht ein verschlossenes Kästchen, und Fridos kleiner Schlüssel passt! Darin liegen ein bunter Bilder-Code und ein dickes Notizbuch voller Wörter. Was nimmt Frido?",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 2484,
+                "wort": "Kind"
+              },
+              {
+                "picto": 2451,
+                "wort": "Schlüssel"
+              },
+              {
+                "picto": 2359,
+                "wort": "Notizbuch"
+              }
+            ]
+          },
+          "optionen": [
+            {
+              "label": {
+                "stufe1": "Den Bilder-Code nehmen",
+                "stufe2": "Wir nehmen den Bilder-Code.",
+                "stufe3": "Wir schauen uns den Bilder-Code an.",
+                "bild": [
+                  {
+                    "picto": 24829,
+                    "wort": "Bilder-Code"
+                  }
+                ]
+              },
+              "symbol": "🔐",
+              "fund": {
+                "name": "Bilder-Code",
+                "symbol": "🔐"
+              }
+            },
+            {
+              "label": {
+                "stufe1": "Das Notizbuch lesen",
+                "stufe2": "Wir lesen das Notizbuch.",
+                "stufe3": "Wir blättern im dicken Notizbuch.",
+                "bild": [
+                  {
+                    "picto": 2359,
+                    "wort": "Notizbuch"
+                  }
+                ]
+              },
+              "symbol": "📒",
+              "fund": {
+                "name": "Dickes Notizbuch",
+                "symbol": "📒"
+              }
+            }
+          ]
+        }
+      },
+      "enden": {
+        "AAA": {
+          "text": {
+            "stufe1": "Auf der Karte tanzt ein Tier. Frido lacht. Er hat eine Buch-Idee!",
+            "stufe2": "Auf der bunten Karte tanzt ein Tier mit Hut. Frido muss laut lachen. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Auf der bunten Karte tanzt ein Tier mit einem viel zu großen Hut, und alle Bilder sehen zum Schreien komisch aus. Frido prustet vor Lachen. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 3245,
+                "wort": "froh"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        },
+        "AAB": {
+          "text": {
+            "stufe1": "Der Zettel erzählt von einem Tier. Frido lacht. Er hat eine Buch-Idee!",
+            "stufe2": "Der lange Zettel erzählt von einem Tier mit lustigen Streichen. Frido kichert beim Lesen. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Auf dem langen Zettel steht eine Geschichte von einem Tier, das nur Unsinn im Kopf hat. Frido liest und muss immer wieder lachen. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 2447,
+                "wort": "lesen"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        },
+        "ABA": {
+          "text": {
+            "stufe1": "Im Bilderrätsel macht ein Kind Faxen. Frido lacht. Er hat eine Buch-Idee!",
+            "stufe2": "Im bunten Bilderrätsel schneidet ein Kind lustige Grimassen. Frido lacht laut. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Im bunten Bilderrätsel schneidet ein Kind eine Grimasse nach der anderen, und Frido kann nicht mehr aufhören zu lachen. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 2484,
+                "wort": "Kind"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        },
+        "ABB": {
+          "text": {
+            "stufe1": "Im Brief erzählt ein Kind einen Witz. Frido lacht. Er hat eine Buch-Idee!",
+            "stufe2": "Im langen Brief erzählt ein Kind seinen besten Witz. Frido lacht laut. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Der lange Brief ist voller Wörter: Ein Kind erzählt darin eine Geschichte mit vielen komischen Einfällen. Frido kichert bei jedem Satz. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 2688,
+                "wort": "Brief"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        },
+        "BAA": {
+          "text": {
+            "stufe1": "Auf der Karte laufen Pfotenspuren. Frido ist gespannt. Er hat eine Buch-Idee!",
+            "stufe2": "Auf der Rätselkarte laufen Pfotenspuren quer durch viele Bilder. Frido ist gespannt. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Auf der Rätselkarte führen Pfotenspuren durch ein Bild nach dem anderen, bis in einen dunklen Winkel. Frido ist gespannt. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 27786,
+                "wort": "Pfotenspur"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        },
+        "BAB": {
+          "text": {
+            "stufe1": "Die Rolle erzählt von einem Tier. Frido ist gespannt. Er hat eine Buch-Idee!",
+            "stufe2": "Die Schriftrolle erzählt von einem Tier, das nachts durch die Regale schleicht. Frido ist gespannt. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Auf der Schriftrolle steht eine lange Geschichte von einem Tier, das nachts leise durch die Regale schleicht. Frido liest sie atemlos. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": null,
+                "wort": "Schriftrolle",
+                "suchwort": "Schriftrolle Pergament"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        },
+        "BBA": {
+          "text": {
+            "stufe1": "Im Bilder-Code sucht ein Kind. Frido ist gespannt. Er hat eine Buch-Idee!",
+            "stufe2": "Im Bilder-Code sucht ein Kind etwas, Bild für Bild. Frido ist gespannt. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Der Bilder-Code zeigt Bild für Bild, wie ein Kind etwas Geheimnisvolles sucht. Frido ist gespannt. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 2484,
+                "wort": "Kind"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        },
+        "BBB": {
+          "text": {
+            "stufe1": "Ein Kind schrieb ein Geheimnis auf. Frido staunt. Er hat eine Buch-Idee!",
+            "stufe2": "Im Notizbuch hat ein Kind ein Geheimnis aufgeschrieben, Seite für Seite. Frido staunt. Er hat eine Idee, welches Buch ihr suchen könnt.",
+            "stufe3": "Das dicke Notizbuch ist voller Wörter: Ein Kind hat darin ein Geheimnis Seite für Seite aufgeschrieben. Frido staunt und liest leise. Dann hat er eine Idee, welches Buch ihr suchen könnt.",
+            "bild": [
+              {
+                "picto": 7055,
+                "wort": "Biber"
+              },
+              {
+                "picto": 2359,
+                "wort": "Notizbuch"
+              },
+              {
+                "picto": 2450,
+                "wort": "Buch"
+              },
+              {
+                "picto": 6946,
+                "wort": "suchen"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "absenden_text": "Tschüss, 3b! Ich nehme euren gepackten Rucksack mit und bringe ihn jetzt zur Stadtbibliothek Straubing. Dort wissen alle, was ihr sucht und vermutet. Bis bald!",
+    "suchkarte": {
+      "kartenkopf": "Bibliotheksdetektive: Klasse 3b"
+    },
+    "luecken": [],
+    "wortbilder": [
+      {
+        "picto": 7055,
+        "wort": "Frido"
+      },
+      {
+        "picto": 5935,
+        "wort": "Bücherkiste"
+      },
+      {
+        "picto": 2484,
+        "wort": "Kind"
+      },
+      {
+        "picto": 2688,
+        "wort": "Brief"
+      },
+      {
+        "picto": 9927,
+        "wort": "Lupe"
+      },
+      {
+        "picto": 2572,
+        "wort": "Hut"
+      },
+      {
+        "picto": 6901,
+        "wort": "Tier"
+      },
+      {
+        "picto": 8349,
+        "wort": "Zettel"
+      },
+      {
+        "picto": 2451,
+        "wort": "Schlüssel"
+      },
+      {
+        "picto": 2359,
+        "wort": "Notizbuch"
+      },
+      {
+        "picto": 27786,
+        "wort": "Pfotenspuren"
+      }
+    ]
+  }
+}
