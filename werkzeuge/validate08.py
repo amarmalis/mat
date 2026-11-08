@@ -114,7 +114,7 @@ def validate(d, lg, liste, lg_id):
     # Regel 5
     if isinstance(bt, str) and bt:
         anrede = "Hallo " + str(r.get("klasse") or "") + "!"
-        ok = bt.strip().startswith(anrede) and bt.strip().endswith("euer Frido")
+        ok = bt.strip().startswith(anrede) and bt.strip().lower().endswith("euer frido")
         add("ok" if ok else "warn", "Brief beginnt mit „" + anrede + "“ und endet mit „euer Frido“")
     # Regel 6
     bb = g.get("bibliotheksblick")

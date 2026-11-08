@@ -6,6 +6,8 @@
 <title>Material-Seite</title>
 <script src="assets/qrcode.min.js"></script>
 <style>
+@font-face{font-family:"Andika";src:url("assets/fonts/andika-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Andika";src:url("assets/fonts/andika-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:"Source Sans 3";src:url("assets/fonts/source-sans-3-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Source Sans 3";src:url("assets/fonts/source-sans-3-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
 :root{
@@ -15,7 +17,7 @@
   --ok:#2E7D4F; --bad:#B23A3A; --warn:#8A5A00; --star:#E0A100;
   --radius-lg:22px; --radius-sm:10px;
   --col:940px;
-  --font:"Source Sans 3","Verdana","Tahoma",system-ui,sans-serif;
+  --font:"Andika","Source Sans 3","Verdana","Tahoma",system-ui,sans-serif;
   box-sizing:border-box;
 }
 @media (prefers-color-scheme:dark){
@@ -76,12 +78,24 @@ main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
 .letter p{font-size:1.7rem;line-height:1.55;margin:0 0 1rem}
 .letter .anrede{margin-bottom:1.2rem}
 .letter .gruss{font-style:italic;font-size:2rem;margin:1.6rem 0 0;color:#2F4F37}
+.letter.antwort{padding:2rem 2.6rem 2.2rem}
+.letter.antwort .kopf{margin-bottom:.6rem}
+.letter.antwort h2{font-size:2rem}
+.letter .absender{font-size:1.2rem;color:#5B6B5E;margin:0 0 1rem}
+.letter.antwort .brieffeld{border:0;box-shadow:none;background:transparent;padding:0;min-height:12rem;font-size:1.5rem;resize:none}
+.letter.antwort .brieffeld:focus{outline:2px dashed #B9A77E;outline-offset:6px}
 .lead{font-size:1.5rem;margin:0 0 1rem}
 .bubble{display:flex;gap:.8rem;align-items:center;background:var(--surface);border:2px solid var(--moss);border-radius:var(--radius-lg);padding:.9rem 1.2rem;font-size:1.45rem;margin:0 0 1rem}
 .peek{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1.2rem;align-items:start}
 .peek-img{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden}
 .peek-img img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--paper)}
 .peek-img .noimg{aspect-ratio:16/10;display:grid;place-items:center;font-size:5rem;background:var(--paper)}
+.peek-v{display:flex;flex-direction:column;gap:1rem}
+.wb-titel{font-size:2rem;line-height:1.2;margin:0}
+.peek-v .peek-img img,.peek-v .peek-img .noimg{aspect-ratio:auto;height:min(36vh,340px);width:100%;object-fit:cover}
+.auftrag{background:var(--surface);border:2px solid var(--moss);border-radius:var(--radius-lg);padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.9rem}
+.auftrag .frage{display:flex;gap:.8rem;align-items:center;font-size:1.45rem;font-weight:700}
+.auftrag .collect{background:none;border:0;padding:0}
 .collect{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem}
 .guess-form{display:flex;gap:.5rem}
 .guess-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:.6rem 1rem;background:var(--paper);font-size:1.25rem}
@@ -201,9 +215,30 @@ input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);pad
 .card .sterne{display:flex;gap:2mm;margin-top:.5mm}
 .card .sterne svg{width:10.5mm;height:10.5mm}
 .card .g9{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:13mm;gap:1.4mm}
-.card .g9 > div{display:flex;align-items:center;gap:.9mm;border:1px solid #888;border-radius:1.5mm;padding:.6mm 1.4mm .6mm 1.2mm;font-size:8.1pt;line-height:1.1;overflow:hidden;word-break:normal;hyphens:auto}
-.card .g9 .sym{font-size:11pt}
-.card .g9 .t{min-width:0;hyphens:auto;-webkit-hyphens:auto}
+.card .g9 > div{display:flex;align-items:center;gap:.7mm;border:1px solid #888;border-radius:1.5mm;padding:.6mm 1.2mm .6mm 1.1mm;font-size:7.8pt;line-height:1.1;overflow:hidden;word-break:normal;hyphens:auto}
+.card .g9 .sym{font-size:9.5pt}
+.card .credit{font-size:5.5pt;color:#444;text-align:right;margin:1.2mm 0 0}
+.osym{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.22em;margin-right:.15em}
+.sternreihe{display:inline-flex;gap:.12em;vertical-align:-.2em}
+.sternreihe svg{width:1.15em;height:1.15em}
+.stars .sternreihe svg{width:1.6rem;height:1.6rem}
+.card .zeile3 .sym.hatbild img{width:8mm;height:8mm}
+.pic.hatbild img{display:block;width:5.2rem;height:5.2rem}
+.grid9 .pic.hatbild img{width:4rem;height:4rem}
+.auswahl .pic.hatbild img{width:3.4rem;height:3.4rem}
+.zeilen{display:flex;flex-direction:column}
+.zeile{display:grid;grid-template-columns:minmax(10rem,15rem) 1fr;gap:1rem;align-items:center;padding:.7rem 0;border-top:1px solid var(--line)}
+.zeile:first-child{border-top:0;padding-top:0}
+.zfrage{font-size:1.05rem;font-weight:700;line-height:1.3}
+.zeile .auswahl{gap:.6rem}
+.zeile .auswahl div{min-width:7rem;padding:.5rem .8rem;border-width:2px;font-size:1rem}
+.zeile .auswahl .pic.hatbild img{width:2.4rem;height:2.4rem}
+.card .sym.hatbild{flex:none}
+.card .sym.hatbild img{width:7mm;height:7mm;display:block}
+.card .g9 .sym.hatbild img{width:5.6mm;height:5.6mm}
+.card .opt .sym.hatbild img{width:7mm;height:7mm}
+
+.card .g9 .t{min-width:0;hyphens:manual;-webkit-hyphens:manual;letter-spacing:-.1px}
 .card .g9 > div.w{grid-column:1 / -1}
 .card .g9 .l{flex:1;align-self:flex-end;border-bottom:1px solid #000;height:4mm;margin:0 1mm 1.6mm}
 .card .zeile3{display:flex;align-items:center;gap:4mm}
@@ -246,7 +281,7 @@ input[type=text]{border:1px solid var(--line);border-radius:var(--radius-sm);pad
   <a href="#lehrkraft" data-view="lehrkraft">Lehrkraft</a>
 </nav>
 <main id="app">Inhalte werden geladen …</main>
-<footer class="lizenz no-print">Piktogramme: <a href="https://arasaac.org">ARASAAC</a>, Lizenz <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">CC BY-NC-SA 4.0</a>. Diese Seite steht unter derselben Lizenz.</footer>
+<footer class="lizenz no-print">Piktogramme: <a href="https://arasaac.org">ARASAAC</a>, Lizenz <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">CC BY-NC-SA 4.0</a>. Symbole: <a href="https://openmoji.org">OpenMoji</a>, Lizenz <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de">CC BY-SA 4.0</a>. Schrift: Andika (SIL, OFL). Diese Seite steht unter der Lizenz CC BY-NC-SA 4.0.</footer>
 
 <script>
 // ===== Festes im Template =====
@@ -356,7 +391,7 @@ function speak(text, lang){
     speechSynthesis.speak(u);
   }catch(e){}
 }
-function readBtn(getText){ return el("button",{class:"btn",type:"button",onclick:()=>speak(getText())},"🔊 Vorlesen"); }
+function readBtn(getText){ return el("button",{class:"btn",type:"button",onclick:()=>speak(getText())},osym("1F50A"), " Vorlesen"); }
 function baseUrl(){ return store("ms_base") || location.href.split("#")[0]; }
 function tabletUrl(){ return baseUrl() + "#tablet"; }
 function qr(container, text, size){
@@ -425,7 +460,7 @@ function slideBrief(){
     el("div",{class:"kopf"}, el("h2",{},"Post für die "+R().klasse), el("div",{class:"marke"}, el("img",{src:FIGUR_WINKT,alt:"Frido, der Biber, winkt"}))),
     t.anrede ? el("p",{class:"anrede"}, t.anrede) : null,
     t.haupt.map(z=>el("p",{}, z)),
-    t.gruss ? el("p",{class:"gruss"}, t.gruss) : null);
+    t.gruss ? el("p",{class:"gruss"}, t.gruss.charAt(0).toUpperCase()+t.gruss.slice(1)) : null);
 }
 function sammelListe(key, label, placeholder){
   const chips = el("div",{class:"chips","aria-live":"polite"});
@@ -444,11 +479,11 @@ function sammelListe(key, label, placeholder){
 }
 function slideBibliothek(){
   const entry = (G().bibliotheksblick||[])[0] || {bild:0};
-  return el("div",{},
-    el("p",{class:"lead"},"Ein Blick in die "+R().bibliothek+"."),
-    el("div",{class:"bubble"}, figBadge(), FRAGE_BIBLIOTHEK),
-    el("div",{class:"peek"},
-      el("div",{class:"peek-img"}, imgOrSymbol(entry.bild)),
+  return el("div",{class:"peek-v"},
+    el("h2",{class:"wb-titel"},"Ein Blick in die "+R().bibliothek),
+    el("div",{class:"peek-img"}, imgOrSymbol(entry.bild)),
+    el("div",{class:"auftrag"},
+      el("div",{class:"frage"}, figBadge(), FRAGE_BIBLIOTHEK),
       sammelListe("vermutungen","Vermutung","Vermutung eintippen")));
 }
 function slideTablets(){
@@ -464,10 +499,11 @@ function slideTablets(){
         el("p",{class:"tip no-print"},"Für die Lehrkraft: Legen Sie die Lesefutter-Karten bereit (ein A4-Blatt mit zwei Karten je Paar, Ansicht „Lesefutter-Karten“). Die Kinder holen sie sich erst am Ende des Interviews."))));
 }
 function slideFragen(){
-  return el("div",{},
-    el("p",{class:"lead"},"Was wollt ihr die "+R().bibliothek+" fragen?"),
-    el("div",{class:"bubble"}, figBadge(), "Ich bringe eure Fragen mit eurem Brief zur Bibliothek."),
-    sammelListe("fragen","Frage","Frage eintippen"));
+  return el("div",{class:"peek-v"},
+    el("h2",{class:"wb-titel"},"Eure Fragen an die "+R().bibliothek),
+    el("div",{class:"auftrag"},
+      el("div",{class:"frage"}, figBadge(), "Was wollt ihr die Bibliothek fragen? Ich bringe eure Fragen mit eurem Brief hin."),
+      sammelListe("fragen","Frage","Frage eintippen")));
 }
 function composeBrief(){
   const a = G().antwortbrief || {};
@@ -479,42 +515,32 @@ function composeBrief(){
 }
 function briefText(){ return WB.brief!=null ? WB.brief : composeBrief(); }
 function betreff(){ return "Brief der Klasse "+R().klasse+" zum Programm „"+R().programmtitel+"“"; }
-let zeigeMail = false;
 function slideAntwortbrief(){
-  const box = el("div",{});
+  const box = el("div",{class:"peek-v"});
   if(WB.gesendet){
     box.append(el("article",{class:"letter",style:"text-align:center"},
       el("img",{class:"boot",src:FIGUR_BOOT,alt:"Frido bringt den Brief im Boot zur Bibliothek"}),
       el("p",{style:"margin-top:1.2rem"},"Ich bringe euren Brief jetzt zur "+R().bibliothek+"."),
-      el("p",{class:"gruss"},"euer "+FIGUR)));
-    box.append(el("div",{class:"row no-print",style:"margin-top:1.2rem"},
+      el("p",{class:"gruss"},"Euer "+FIGUR)));
+    box.append(el("div",{class:"row no-print"},
       el("button",{class:"btn",type:"button",onclick:()=>{ WB.gesendet=false; saveState(); render(); }},"Brief wieder öffnen"),
       resetBtn()));
     return box;
   }
-  box.append(el("p",{class:"lead"},"Euer Brief an die "+R().bibliothek+". Ihr könnt ihn noch ändern."));
+  box.append(el("h2",{class:"wb-titel"},"Euer Brief an die "+R().bibliothek));
+  box.append(el("div",{class:"auftrag"},
+    el("div",{class:"frage"}, figBadge(), "Lest euren Brief gemeinsam. Ihr könnt ihn noch ändern. Dann bringe ich ihn zur Bibliothek.")));
   const ta = el("textarea",{class:"brieffeld","aria-label":"Brief der Klasse an die Bibliothek",spellcheck:"true"});
   ta.value = briefText();
   const grow = ()=>{ ta.style.height="auto"; ta.style.height=(ta.scrollHeight+4)+"px"; };
-  ta.addEventListener("input",()=>{ WB.brief = ta.value; saveState(); grow(); const p=document.getElementById("mailtext"); if(p) p.textContent=ta.value; });
+  ta.addEventListener("input",()=>{ WB.brief = ta.value; saveState(); grow(); });
   setTimeout(grow,0);
-  box.append(ta);
-  box.append(el("div",{class:"row no-print",style:"margin-top:.8rem"},
-    el("button",{class:"btn primary",type:"button",onclick:()=>{ zeigeMail=!zeigeMail; render(); }}, zeigeMail?"Vorschau schließen":"Mail-Vorschau ansehen"),
+  box.append(el("article",{class:"letter antwort"},
+    el("div",{class:"kopf"}, el("h2",{},"Post für die "+R().bibliothek), el("div",{class:"marke"}, el("img",{src:FIGUR_KOPF,alt:"Briefmarke mit Frido"}))),
+    ta));
+  box.append(el("div",{class:"row no-print"},
+    el("button",{class:"btn primary",type:"button",onclick:()=>{ WB.gesendet=true; saveState(); render(); }},"Brief abschicken"),
     WB.brief!=null ? el("button",{class:"btn",type:"button",onclick:()=>{ WB.brief=null; saveState(); render(); }},"Vermutungen und Fragen neu einsetzen") : null));
-  if(zeigeMail){
-    const msg = el("span",{class:"muted"});
-    box.append(el("section",{class:"mail no-print","aria-label":"Mail-Vorschau"},
-      el("dl",{},
-        el("dt",{},"An"), el("dd",{}, R().bibliothek+" ", el("span",{class:"muted"},"(Adresse aus BipaMap.NRW)")),
-        el("dt",{},"Betreff"), el("dd",{}, betreff())),
-      el("pre",{id:"mailtext"}, briefText()),
-      el("div",{class:"row"},
-        el("button",{class:"btn primary",type:"button",onclick:()=>{ WB.gesendet=true; zeigeMail=false; saveState(); render(); }},"Abschicken"),
-        el("button",{class:"btn",type:"button",onclick:async()=>{ try{ await navigator.clipboard.writeText(betreff()+"\n\n"+briefText()); msg.textContent="Text kopiert."; }catch(e){ msg.textContent="Kopieren nicht möglich. Bitte den Text im Feld markieren und kopieren."; } }},"Text kopieren"),
-        msg),
-      el("p",{class:"muted",style:"margin:0;padding:0 1.1rem 1rem;font-size:.95rem"},"Im Prototyp wird keine Mail verschickt. In der Anwendung geht der Brief an die Adresse, die die Bibliothek in BipaMap.NRW hinterlegt hat.")));
-  }
   return box;
 }
 function resetBtn(){
@@ -541,7 +567,7 @@ function renderTablet(app){
   const wrap = el("div",{class:"tablet col"});
   const gross = document.body.classList.contains("gross");
   wrap.append(el("div",{class:"tbar"},
-    el("div",{}, T.stufe ? el("span",{class:"stars","aria-label":"Lesestufe: "+STUFEN[T.stufe].name}, STUFEN[T.stufe].sym) : null,
+    el("div",{}, T.stufe ? el("span",{class:"stars","aria-label":"Lesestufe: "+STUFEN[T.stufe].name}, sterne(T.stufe)) : null,
       T.phase==="interview" && T.iv.runde===2 && ["art","thema","format"].includes(T.iv.schritt) ? el("span",{class:"runde"},"Rollen getauscht") : null),
     zeigeGross() ? el("button",{class:"btn small",type:"button","aria-pressed":gross?"true":"false",onclick:()=>{ document.body.classList.toggle("gross"); render(); }},"A+ Große Schrift") : null));
   if(T.phase==="start") tabletStart(wrap);
@@ -556,7 +582,7 @@ function tabletStart(wrap){
     el("ol",{class:"tsteps",style:"margin:0"}, IV.start.schritte.map(s=>el("li",{}, s)))));
   wrap.append(el("p",{class:"big-text",style:"margin:1.6rem 0 1rem;font-weight:700"}, IV.start.frage));
   wrap.append(el("div",{class:"pick"}, stufenListe().map(n=>el("button",{class:"choice stufe",type:"button","aria-label":STUFEN[n].name,onclick:()=>{ T.stufe=n; T.phase="sachtext"; T.ab=0; render(); }},
-    el("span",{class:"stars","aria-hidden":"true"}, STUFEN[n].sym)))));
+    el("span",{class:"stars","aria-hidden":"true"}, sterne(n))))));
 }
 function wortbildRegex(){
   const wb = Array.isArray(G().wortbilder) ? G().wortbilder.filter(e=>isObj(e) && typeof e.wort==="string" && e.wort) : [];
@@ -617,10 +643,17 @@ function navIv(...rechts){ return el("div",{class:"nav"}, el("button",{class:"bt
 function themaListe(art){ return IV.thema.listen[art || T.iv.art] || []; }
 function auswahlKarten(erg){
   const a = IV.art.optionen[erg.art], f = IV.format.optionen[erg.format];
-  const karten = [el("div",{}, el("span",{class:"pic","aria-hidden":"true"}, a.symbol), a.label)];
-  erg.themen.forEach(i=>{ const th = themaListe(erg.art)[i]; karten.push(el("div",{}, el("span",{class:"pic","aria-hidden":"true"}, th.symbol), th.weitere ? th.label+" (Stichwort)" : th.label)); });
-  karten.push(el("div",{}, el("img",{class:"pic",src:f.bild,alt:""}), f.kurz));
+  const karten = [el("div",{}, sym(a,"pic"), a.label)];
+  erg.themen.forEach(i=>{ const th = themaListe(erg.art)[i]; karten.push(el("div",{}, sym(th,"pic"), th.weitere ? th.label+" (Stichwort)" : th.label)); });
+  karten.push(el("div",{}, sym(f,"pic"), f.kurz));
   return karten;
+}
+function auswahlZeilen(erg){
+  const a = IV.art.optionen[erg.art], f = IV.format.optionen[erg.format], K = IV.karte;
+  const chip = (o,label)=>el("div",{}, sym(o,"pic"), label);
+  const themen = erg.themen.map(i=>{ const th = themaListe(erg.art)[i]; return chip(th, th.weitere ? th.label+" (Stichwort)" : th.label); });
+  const zeile = (frage, chips)=>el("div",{class:"zeile"}, el("div",{class:"zfrage"}, frage), el("div",{class:"auswahl"}, chips));
+  return el("div",{class:"zeilen"}, zeile(K.art,[chip(a,a.label)]), zeile(K.thema, themen), zeile(K.format,[chip(f,f.kurz)]));
 }
 function auswahlText(erg){
   const a = IV.art.optionen[erg.art], f = IV.format.optionen[erg.format];
@@ -641,14 +674,14 @@ function tabletInterview(wrap){
       const intro = fill(r.intro,{bibliothek:bib});
       card.append(el("p",{class:"big-text",style:"margin-bottom:1.4rem"}, intro));
       card.append(el("ul",{class:"rollen"},
-        el("li",{}, el("span",{class:"sym","aria-hidden":"true"},"🎤"), r.fragt),
-        el("li",{}, el("span",{class:"sym","aria-hidden":"true"},"💬"), r.antwortet),
-        el("li",{}, el("span",{class:"sym","aria-hidden":"true"},"🔁"), r.tausch)));
+        el("li",{}, el("span",{class:"sym"}, osym("1F3A4")), r.fragt),
+        el("li",{}, el("span",{class:"sym"}, osym("1F4AC")), r.antwortet),
+        el("li",{}, el("span",{class:"sym"}, osym("1F501")), r.tausch)));
       lesen.push(intro, r.fragt, r.antwortet, r.tausch);
     }
     const codes = Object.keys(IV_TR);
     if(codes.length){
-      card.append(el("p",{class:"big-text",style:"margin-top:1.4rem;font-size:1.4rem;font-weight:700"}, "💬 "+IV.rollen.sprache));
+      card.append(el("p",{class:"big-text",style:"margin-top:1.4rem;font-size:1.4rem;font-weight:700"}, osym("1F4AC"), " "+IV.rollen.sprache));
       card.append(el("div",{class:"row"}, [null, ...codes].map(c=>el("button",{class:"btn",type:"button","aria-pressed":T.iv.sprache===c?"true":"false",onclick:()=>{ T.iv.sprache=c; render(); }}, c ? spracheNativ(c) : "nur Deutsch"))));
     }
     wrap.append(card);
@@ -658,7 +691,7 @@ function tabletInterview(wrap){
     wrap.append(el("h1",{}, frage)); lesen.push(frage);
     const tb = trText(tr=>S(tr.art.frage)); if(tb) wrap.append(tb);
     wrap.append(el("div",{class:"pick"}, Object.entries(IV.art.optionen).map(([k,o])=>el("button",{class:"choice",type:"button","aria-pressed":T.iv.art===k?"true":"false",onclick:()=>{ if(T.iv.art!==k){ T.iv.art=k; T.iv.themen=[]; } geheZu("thema"); }},
-      el("span",{class:"pic","aria-hidden":"true"}, o.symbol), el("span",{}, o.label), el("span",{class:"sub"}, S(o))))));
+      sym(o,"pic"), el("span",{}, o.label), el("span",{class:"sub"}, S(o))))));
     Object.values(IV.art.optionen).forEach(o=>lesen.push(o.label+": "+S(o)));
     wrap.append(navIv());
   }else if(s==="thema"){
@@ -671,21 +704,21 @@ function tabletInterview(wrap){
       return el("button",{class:"choice",type:"button","aria-pressed":an?"true":"false",disabled:(!an && T.iv.themen.length>=max),onclick:()=>{
         if(an) T.iv.themen = T.iv.themen.filter(x=>x!==i); else T.iv.themen.push(i);
         render(); }},
-        el("span",{class:"pic","aria-hidden":"true"}, th.symbol), el("span",{}, th.label));
+        sym(th,"pic"), el("span",{}, th.label));
     })));
     wrap.append(el("p",{class:"zahl"}, T.iv.themen.length+" von "+max+" gewählt"));
-    if(T.iv.themen.some(i=>liste[i].weitere)){ const w = S(IV.thema.weitere); wrap.append(el("p",{class:"hinweis",style:"margin-top:1rem"}, el("span",{"aria-hidden":"true"},"✏️"), w)); lesen.push(w); }
+    if(T.iv.themen.some(i=>liste[i].weitere)){ const w = S(IV.thema.weitere); wrap.append(el("p",{class:"hinweis",style:"margin-top:1rem"}, osym("270F"), w)); lesen.push(w); }
     wrap.append(navIv(el("button",{class:"btn primary big",type:"button",disabled:!T.iv.themen.length,onclick:()=>geheZu("format")}, IV.knopf.weiter)));
   }else if(s==="format"){
     const frage = S(IV.format.frage);
     wrap.append(el("h1",{}, frage)); lesen.push(frage);
     const tb = trText(tr=>S(tr.format.frage)); if(tb) wrap.append(tb);
     wrap.append(el("div",{class:"pick"}, Object.entries(IV.format.optionen).map(([k,o])=>el("button",{class:"choice",type:"button","aria-pressed":T.iv.format===k?"true":"false",onclick:()=>{ T.iv.format=k; rundeFertig(); }},
-      el("img",{class:"pic",src:o.bild,alt:""}), el("span",{}, o.label)))));
+      sym(o,"pic"), el("span",{}, o.label)))));
     wrap.append(navIv());
   }else if(s==="tausch"){
     const t = S(IV.tauschen);
-    wrap.append(el("p",{class:"aufgabe",style:"margin-top:0"}, el("span",{"aria-hidden":"true"},"🔁"), t)); lesen.push(t);
+    wrap.append(el("p",{class:"aufgabe",style:"margin-top:0"}, osym("1F501"), t)); lesen.push(t);
     wrap.append(navIv(el("button",{class:"btn primary big",type:"button",onclick:()=>{
       T.hist.push(JSON.stringify(T.iv));
       T.iv = {schritt:Object.keys(IV_TR).length ? "rollen" : "art", runde:2, art:null, themen:[], format:null, sprache:null};
@@ -702,10 +735,10 @@ function tabletInterview(wrap){
     wrap.append(el("h1",{}, titel));
     [1,2].forEach(n=>{ const erg = T.erg[n]; if(!erg) return;
       const kopf = fill(u.runde,{n});
-      wrap.append(el("div",{class:"card-k",style:"margin-bottom:1rem"}, el("p",{class:"big-text",style:"font-size:1.4rem;font-weight:700;margin-bottom:.8rem"}, kopf), el("div",{class:"auswahl"}, auswahlKarten(erg))));
+      wrap.append(el("div",{class:"card-k",style:"margin-bottom:1rem"}, el("p",{class:"big-text",style:"font-size:1.4rem;font-weight:700;margin-bottom:.8rem"}, mitSym(kopf)), auswahlZeilen(erg)));
       lesen.push(kopf.replace("💬","")+": "+auswahlText(erg)); });
     const schritte = u["stufe"+T.stufe].map(x=>fill(x,{sterne}));
-    wrap.append(el("ol",{class:"tsteps"}, schritte.map(x=>el("li",{}, x))));
+    wrap.append(el("ol",{class:"tsteps"}, schritte.map(x=>el("li",{}, mitSym(x)))));
     lesen.push(...u["stufe"+T.stufe].map(x=>fill(x,{sterne:STUFEN[T.stufe].name})));
     wrap.append(navIv(el("button",{class:"btn primary big",type:"button",onclick:()=>geheZu("ende")}, IV.knopf.weiter)));
   }else if(s==="ende"){
@@ -722,10 +755,21 @@ function tabletInterview(wrap){
 }
 
 // ===== Lesefutter-Karten (Titel fest, nicht vom Modell) =====
-function sternSvg(){
+const OSYM = {"💬":"1F4AC","🎤":"1F3A4","🔁":"1F501","✏️":"270F","🔊":"1F50A"};
+function osym(code){ return el("img",{class:"osym",src:"assets/symbole/farbe/"+code+".svg",alt:"","aria-hidden":"true"}); }
+function sterne(n){ const sp = el("span",{class:"sternreihe","aria-hidden":"true"}); for(let i=0;i<n;i++) sp.append(sternSvg(true)); return sp; }
+function mitSym(text){
+  const out=[]; const re=/(⭐+|💬|🎤|🔁|✏️|🔊)/u; String(text).split(re).forEach(t=>{
+    if(!t) return;
+    if(/^⭐+$/u.test(t)) out.push(sterne([...t].length));
+    else if(OSYM[t]) out.push(osym(OSYM[t]));
+    else out.push(t);
+  }); return out;
+}
+function sternSvg(voll){
   const s = document.createElementNS("http://www.w3.org/2000/svg","svg");
   s.setAttribute("viewBox","0 0 24 24"); s.setAttribute("aria-hidden","true");
-  s.innerHTML = '<path d="M12 2.2l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.3l-6 3.3 1.3-6.7-5-4.7 6.8-.8z" fill="none" stroke="#1F2A1F" stroke-width="1.3" stroke-linejoin="round"/>';
+  s.innerHTML = '<path d="M12 2.2l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.3l-6 3.3 1.3-6.7-5-4.7 6.8-.8z" fill="'+(voll?"#F2B705":"none")+'" stroke="#1F2A1F" stroke-width="1.3" stroke-linejoin="round"/>';
   return s;
 }
 function pfeilSvg(){
@@ -733,6 +777,10 @@ function pfeilSvg(){
   s.setAttribute("viewBox","0 0 20 24"); s.setAttribute("aria-hidden","true"); s.setAttribute("class","pfeil");
   s.innerHTML = '<path d="M10 1 V20 M3 13 L10 21 L17 13" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>';
   return s;
+}
+function sym(o, cls, sw){
+  if(o && o.code) return el("span",{class:cls+" hatbild","aria-hidden":"true"}, el("img",{src:"assets/symbole/"+(sw?"sw":"farbe")+"/"+o.code+".svg",alt:""}));
+  return el("span",{class:cls,"aria-hidden":"true"}, o ? o.symbol : "");
 }
 function karte(){
   const K = IV.karte, kopf = fill(K.titel,{klasse:R().klasse});
@@ -742,14 +790,15 @@ function karte(){
   c.append(el("div",{class:"name"}, K.name+":", el("span",{})));
   c.append(el("h3",{},K.art));
   c.append(el("div",{class:"wahl"}, Object.entries(IV.art.optionen).map(([k,o])=>el("div",{class:"spalte"},
-    el("div",{class:"opt"}, el("span",{class:"sq"}), el("span",{class:"sym"},o.symbol), o.label),
+    el("div",{class:"opt"}, el("span",{class:"sq"}), sym(o,"sym",true), o.label),
     el("div",{class:"weiter-k"}, pfeilSvg(), el("span",{}, K.thema+" ", el("span",{class:"klein"},K.thema_hinweis))),
     el("div",{class:"g9"}, (IV.thema.listen[k]||[]).map(th=> th.weitere
-      ? el("div",{class:"w"}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), th.label+":", el("span",{class:"l"}))
-      : el("div",{}, el("span",{class:"sq"}), el("span",{class:"sym"},th.symbol), el("span",{class:"t"},th.label))))))));
+      ? el("div",{class:"w"}, el("span",{class:"sq"}), sym(th,"sym",true), th.label+":", el("span",{class:"l"}))
+      : el("div",{}, el("span",{class:"sq"}), sym(th,"sym",true), el("span",{class:"t"},th.label))))))));
   c.append(el("div",{class:"zeile3"}, el("h3",{},K.format),
-    el("div",{class:"opts"}, Object.values(IV.format.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), el("img",{src:o.bild,alt:""}), o.kurz)))));
+    el("div",{class:"opts"}, Object.values(IV.format.optionen).map(o=>el("div",{class:"opt"}, el("span",{class:"sq"}), sym(o,"sym",true), o.kurz)))));
   c.append(el("div",{class:"fund"}, el("span",{},K.fund), el("span",{class:"l"}), el("span",{class:"l voll"})));
+  c.append(el("p",{class:"credit"},"Symbole: OpenMoji (openmoji.org), CC BY-SA 4.0"));
   return c;
 }
 function renderSuchkarte(app){
@@ -819,7 +868,7 @@ function validate(d, lg, liste, lgId){
   // Regel 5
   if(typeof bt==="string" && bt){
     const anrede = "Hallo "+String(r.klasse||"")+"!";
-    ok = bt.trim().startsWith(anrede) && bt.trim().endsWith("euer Frido");
+    ok = bt.trim().startsWith(anrede) && bt.trim().toLowerCase().endsWith("euer frido");
     add(ok?"ok":"warn","Brief beginnt mit „"+anrede+"“ und endet mit „euer Frido“");
   }
   // Regel 6

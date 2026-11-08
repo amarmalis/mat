@@ -172,7 +172,7 @@ Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen d
 | 2 | `meta.lerngruppe` stimmt mit der geladenen Lerngruppe überein | Warnung |
 | 3 | Rahmendaten vollständig; jedes Bild hat Datei und Beschreibung | Fehler |
 | 4 | Brief vorhanden, höchstens 400 Zeichen | Fehler |
-| 5 | Brief beginnt mit „Hallo <klasse>!“ und endet mit „euer Frido“ | Warnung |
+| 5 | Brief beginnt mit „Hallo <klasse>!“ und endet mit „euer Frido“ (Groß- und Kleinschreibung egal; die Website zeigt die Grußzeile immer mit großem Anfangsbuchstaben: „Euer Frido“) | Warnung |
 | 6 | Blick in die Bibliothek: genau 1 Bild | Fehler |
 | 7 | Sachtext mit 1 oder 2 Abschnitten und mindestens einer Quelle | Fehler |
 | 8 | Jedes Variantenfeld enthält genau die Varianten aus Ableitungsregel 1 | Fehler |
