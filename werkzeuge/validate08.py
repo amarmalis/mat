@@ -1,6 +1,6 @@
 """Prüfung für das Material-Schema 0.8 (Python-Fassung).
 
-Spiegelt die Prüfregeln 1-17 aus „Datenmodell_Programm_Lerngruppe_Material“
+Spiegelt die Prüfregeln 1-19 aus „Datenmodell_Programm_Lerngruppe_Material“
 (docs/Datenmodell_Programm_Lerngruppe_Material.md). Die JavaScript-Fassung
 in index.html (Funktion validate) liefert dieselben Ergebnisse.
 Für Material im Schema 0.7 gilt werkzeuge/validate07.py, für 0.5 werkzeuge/validate04.py.
@@ -243,6 +243,24 @@ def validate(d, lg, liste, lg_id):
     if lg is not None and is_int(lg.get("tablets")):
         nv = len(expected_variants(lg))
         add("ok" if lg["tablets"] >= nv else "warn", "Tablets (" + str(lg["tablets"]) + ") reichen für alle Varianten (" + str(nv) + ")")
+    # Regel 18: Abstand der Lesestufen (werkzeuge/stufen.py, heuristische Zielwerte)
+    try:
+        import os, sys
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import stufen
+        _, befunde, _ = stufen.pruefen(d)
+        if befunde:
+            add("warn", "Lesestufen unterscheiden sich zu wenig – " + " ".join(t for _, t in befunde) + " Überarbeitungsauftrag: python3 werkzeuge/stufen.py " + "<Material>")
+        else:
+            add("ok", "Lesestufen unterscheiden sich messbar")
+        # Regel 19: Leitlinie Lesemotivation (L1–L4)
+        lb, ls, _ = stufen.leitlinie(d)
+        if lb or ls:
+            add("warn", "Leitlinie Lesemotivation nicht ganz erfüllt – " + " ".join([t for _, t in lb] + ls))
+        else:
+            add("ok", "Leitlinie Lesemotivation eingehalten")
+    except Exception as e:  # Werkzeug fehlt oder Material unvollständig
+        add("warn", "Abstand der Lesestufen nicht geprüft (" + str(e) + ")")
     return res
 
 

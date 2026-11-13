@@ -93,7 +93,7 @@ Aufbau wie bisher: `meta`, `rahmen` (setzt das System), `generiert` (erzeugt das
 | `uebersetzungen` | Sachtext in den Familiensprachen | je Sprachcode so viele Texte wie Abschnitte (Ableitungsregel 3); fehlt, wenn `sprachen` leer ist |
 | `wortbilder` | Piktogramme zu Schlüsselwörtern | Pflicht nach Ableitungsregel 2 |
 | `antwortbrief` | Rahmen des Antwortbriefs der Klasse | siehe unten |
-| `luecken` | fehlende Angaben im Programmprofil | Liste kurzer Sätze, leer = `[]` |
+| `luecken` | fehlende Angaben im Programmprofil | Liste kurzer Sätze an die Lehrkraft, ohne Fachbegriffe und Feldnamen (ab v0.9), leer = `[]` |
 
 ### Sachtext
 
@@ -125,13 +125,25 @@ Aufbau wie bisher: `meta`, `rahmen` (setzt das System), `generiert` (erzeugt das
 
 In der Stunde zeigt die Website den zusammengesetzten Brief in einem bearbeitbaren Feld. Fehlt eine der beiden Listen, lässt sie die zugehörige Überleitung weg.
 
+### Lesetipps vor Ort für ⭐⭐⭐ (ergänzt 10.11.2026, Website v4_21)
+
+Programmprofil: neues Feld `lesetipps_vor_ort` (`true`/`false`/`null`). `true` heißt: Die Bibliothek gibt beim Besuch Lesetipps zu Büchern, Reihen oder Autorinnen, die Kinder ihr nennen. Material: `rahmen.lesetipps` (`true`/fehlt), übernommen aus dem Profil.
+
+Nur bei `true` und nur in Lesestufe ⭐⭐⭐ stellt das Tablet nach Frage 3 eine Zusatzfrage („Was liest du gern? Ein Buch, eine Reihe oder eine Autorin?“, Antwort mündlich). Beim Übertragen kommt ein vierter Schritt dazu; die Lesefutter-Karte hat die Zeile „☆☆☆ Das lese ich gern: ____“. Beim Besuch fragen die Kinder mit der Karte nach Lesetipps. Die Wünsche gehen nicht über den Antwortbrief, die Bibliothek bereitet nichts vor. Texte stehen fest in `assets/interview/de.json` (`lesetipp`), nicht vom Modell erzeugt; Prompt v0.8 bleibt unverändert. Differenzierung für starke Leser über eine Aufgabe, nicht über den Text. Grundsatz wie bei der Ausleihe: Die Website verspricht nur, was die Bibliothek zugesagt hat.
+
+Im Prototyp ist `true` für das Referenzprogramm eine Annahme; die Stadtbibliothek Straubing hat das nicht bestätigt.
+
+### Bildnachweis zum Foto (ergänzt 09.11.2026, Website v4_21)
+
+Ein Eintrag in `rahmen.bilder` (und `foto` im Programmprofil) darf zusätzlich `nachweis` enthalten: `{"text", "titel", "urheber", "quelle", "lizenz", "lizenz_url", "hinweis"}`. Die Website zeigt `text` klein unter dem Foto und den vollständigen Nachweis in der Lehrkraftansicht unter „Bildnachweise und Lizenzen“. Das Feld ist optional, wird nicht vom Modell erzeugt und vom Validator nicht geprüft; es stammt aus dem Programmprofil (Angabe der Bibliothek). Im Prototyp ist es von Hand nachgetragen, weil das Foto ein Platzhalter unter CC BY 2.0 ist.
+
 ### Bild-Einträge und Wortbilder
 
 Unverändert gegenüber 0.5: Bild-Eintrag `{"picto", "wort", "suchwort"}`; `picto` aus der Liste oder `null` mit `suchwort`; `wort` genau ein Wort, höchstens 15 Zeichen. `wortbilder`: 1–20 Einträge; jedes `wort` kommt in mindestens einem `stufe1`-Text des Sachtexts vor.
 
 ### Meta
 
-`schema_version` = `"0.8"`, `lerngruppe`, `erzeugt_von`, `prompt_version` (`"system_2 v0.8"`), `erzeugt_am`, `hinweis`.
+`schema_version` = `"0.8"`, `lerngruppe`, `erzeugt_von`, `prompt_version` (`"system_2 v0.8"` bzw. `"system_2 v0.9"`), `erzeugt_am`, `hinweis`. v0.9 ändert das Schema nicht; es ergänzt nur die optionalen Rahmenfelder `lesetipps` und `bilder[].nachweis`.
 
 ### Entfallen gegenüber früheren Fassungen
 
@@ -142,7 +154,7 @@ Unverändert gegenüber 0.5: Bild-Eintrag `{"picto", "wort", "suchwort"}`; `pict
 ```json
 {
   "meta": {"schema_version": "0.8", "lerngruppe": "4713", "erzeugt_von": "<Modell>", "prompt_version": "system_2 v0.8", "erzeugt_am": "2026-10-31", "hinweis": null},
-  "rahmen": {"_herkunft": "P", "klasse": "3b", "bibliothek": "Stadtbibliothek Straubing", "programmtitel": "Bibliotheksdetektive", "bilder": [{"datei": "bilder/bilderbuchecke.svg", "beschreibung": "Bilderbuchecke in der Kinderbibliothek"}]},
+  "rahmen": {"_herkunft": "P", "klasse": "3b", "bibliothek": "Stadtbibliothek Straubing", "programmtitel": "Bibliotheksdetektive", "bilder": [{"datei": "bilder/bibliothek_kinderbereich.jpg", "beschreibung": "Kinderbereich einer Bibliothek mit Regenbogenteppich, Sitzhockern und Bilderbuchregalen", "nachweis": {"text": "Foto: Libraries Team, CC BY 2.0, Ausschnitt", "…": "…"}}]},
   "generiert": {
     "_herkunft": "G",
     "brief": {"text": "Hallo 3b!\n<…>\neuer Frido", "quellen": ["lerngruppe.klasse", "programmprofil.bibliothek", "programmprofil.titel"]},
@@ -185,6 +197,8 @@ Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen d
 | 15 | `luecken` vorhanden | Fehler |
 | 16 | Keine Felder aus früheren Schemata (`geschichte`, `plan`, `teamnamen`, `absenden_text`) | Fehler |
 | 17 | Tablets mindestens so viele wie Varianten | Warnung (organisatorisch) |
+| 18 | Lesestufen unterscheiden sich messbar (heuristische Zielwerte: ⭐ höchstens 8 Wörter je Satz, keine Nebensätze; ⭐⭐ mind. 1 Wort je Satz mehr als ⭐, höchstens jeder dritte Satz mit Nebensatz; ⭐⭐⭐ mind. 2 Wörter je Satz mehr als ⭐⭐, mind. jeder dritte Satz mit Nebensatz; LIX steigt um mind. 2 bzw. 3). Bei Verfehlung erzeugt `werkzeuge/stufen.py` einen Überarbeitungsauftrag an das Modell. Nur in der Entwicklung sichtbar, nicht für die Lehrkraft. | Warnung |
+| 19 | Leitlinie Lesemotivation im Sachtext: L1 je Fassung ein Satz zum Lesen oder zu Büchern, mit denen die Kinder etwas tun; L2 Abschnitt 1 endet mit einer Frage; L3 keine kontrollierende Sprache (auch Brief und Antwortbrief-Rahmen); L4 keine Schul- oder Prüfungswörter (auch Brief). Prüfung mit Wortlisten; Verstöße im Sachtext gehen in den Überarbeitungsauftrag. Nur in der Entwicklung sichtbar. | Warnung |
 
 **Ohne geladene Lerngruppe** (JSON nur eingefügt): Regel 8 prüft, dass alle Variantenfelder dieselben Varianten enthalten; die Regeln 2, 11 (Pflicht), 12 (Abgleich mit der Lerngruppe) und 17 entfallen.
 
@@ -200,4 +214,6 @@ Drei Zustände wie bisher: erfüllt, Warnung, Fehler. Dieselben Regeln prüfen d
 
 Stand 31.10.2026: Prompt v0.8 und Schema 0.8 sind spezifiziert. `index.html` und `werkzeuge/validate08.py` werden auf Schema 0.8 umgestellt; `materialien/4713.json` wird durch das Ergebnis von Lauf 9 ersetzt. Das Material aus Lauf 8 (Schema 0.7) liegt in `materialien/archiv/`.
 
-Korrekturen der Lehrkraft speichert die Lehrkraftansicht nur im Browser. Damit die Tablets sie zeigen, lädt die Lehrkraft die geprüfte Fassung herunter (`meta.hinweis` vermerkt Datum und geänderte Felder) und ersetzt damit `materialien/<ID>.json`. In der Anwendung übernähme das die Plattform: Sie speichert die freigegebene Fassung zentral und liefert sie an alle Geräte aus.
+Stand 13.11.2026: Prompt v0.9 (`prompts/system_2_v0.9.md`, Änderungen und Begründung in `prompts/system_2_v0.9_aenderungen.md`) ist fertig und noch nicht getestet; Einsatz in Lauf 10. Die Piktogramm-Liste ist um 12 Wörter erweitert (59 Einträge). Die Lehrkraftansicht zeigt nur noch, was für die Stunde nötig ist (Ablauf, Vor dem Besuch klären, Durchsicht und Korrektur, Bildnachweise); Prüfung, Lesestufen, Lerngruppe, Herkunft, Piktogramme, Quellen der Texte, geprüfte Fassung, Inhalte laden und QR-Adresse liegen im eingeklappten Bereich „Für die Entwicklung“.
+
+Korrekturen der Lehrkraft speichert die Lehrkraftansicht nur im Browser; das Whiteboard zeigt sie, die Tablets nicht. Damit die Tablets sie zeigen, lädt die Entwicklerin die geprüfte Fassung herunter (Bereich „Für die Entwicklung“) (`meta.hinweis` vermerkt Datum und geänderte Felder) und ersetzt damit `materialien/<ID>.json`. In der Anwendung übernähme das die Plattform: Sie speichert die freigegebene Fassung zentral und liefert sie an alle Geräte aus.

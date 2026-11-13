@@ -14,10 +14,20 @@
     "programmtitel": "Bibliotheksdetektive",
     "bilder": [
       {
-        "datei": "bilder/bilderbuchecke.svg",
-        "beschreibung": "Bilderbuchecke in der Kinderbibliothek"
+        "datei": "bilder/bibliothek_kinderbereich.jpg",
+        "beschreibung": "Kinderbereich einer Bibliothek mit Regenbogenteppich, Sitzhockern und Bilderbuchregalen",
+        "nachweis": {
+          "text": "Foto: Libraries Team, CC BY 2.0, Ausschnitt",
+          "titel": "Colourful children's library in Chelmsford",
+          "urheber": "Libraries Team",
+          "quelle": "https://www.flickr.com/photos/135302410@N02/40360811374/",
+          "lizenz": "CC BY 2.0",
+          "lizenz_url": "https://creativecommons.org/licenses/by/2.0/",
+          "hinweis": "Platzhalter für den Prototyp, nicht die Stadtbibliothek Straubing"
+        }
       }
-    ]
+    ],
+    "lesetipps": true
   },
   "generiert": {
     "_herkunft": "G",
@@ -151,7 +161,7 @@
     "antwortbrief": {
       "anrede": "Liebe Stadtbibliothek Straubing,",
       "einleitung": "wir sind die Klasse 3b und besuchen euch bald. Wir freuen uns schon auf die Bibliotheksdetektive und sind gespannt, was wir bei euch erleben.",
-      "vor_vermutungen": "Das vermuten wir über unseren Besuch:",
+      "vor_vermutungen": "Wir haben schon überlegt, was uns erwarten könnte:",
       "vor_fragen": "Diese Fragen haben wir an euch:",
       "schluss": "Wir sind gespannt auf die Bibliotheksdetektive und hoffen, dass wir die gestohlene Bücherkiste und Mr. X aufspüren. Danke für eure Antworten!",
       "gruss": "Bis bald, eure 3b"
