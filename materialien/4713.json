@@ -2,9 +2,9 @@
   "meta": {
     "schema_version": "0.8",
     "lerngruppe": "4713",
-    "erzeugt_von": "Claude Sonnet 5.5 (claude.ai, Denkaufwand „hoch“)",
-    "prompt_version": "system_2 v0.8",
-    "erzeugt_am": "2026-10-31",
+    "erzeugt_von": "Claude Sonnet 5.5",
+    "prompt_version": "system_2 v0.9",
+    "erzeugt_am": "2026-11-13",
     "hinweis": null
   },
   "rahmen": {
@@ -32,7 +32,7 @@
   "generiert": {
     "_herkunft": "G",
     "brief": {
-      "text": "Hallo 3b!\nIch bin Frido, ein Biber. Bald besucht ihr die Stadtbibliothek Straubing und das Programm „Bibliotheksdetektive“. Ich bin schon ganz neugierig, was euch dort erwartet! Am Ende der Stunde schreibt ihr der Bibliothek einen Brief, und ich bringe ihn hin.\neuer Frido",
+      "text": "Hallo 3b!\nIch bin Frido, ein Biber. Bald besucht ihr die Stadtbibliothek Straubing und das Programm „Bibliotheksdetektive“. Was euch dort wohl erwartet? Am Ende dieser Stunde schreibt ihr der Bibliothek einen Brief, und ich bringe ihn hin.\neuer Frido",
       "quellen": [
         "lerngruppe.klasse",
         "programmprofil.bibliothek",
@@ -54,59 +54,55 @@
         "programmprofil.buch_oder_thema",
         "programmprofil.taetigkeiten",
         "programmprofil.taetigkeiten_weiteres",
-        "programmprofil.orte",
-        "programmprofil.bibliothek"
+        "programmprofil.orte"
       ],
       "abschnitte": [
         {
           "text": {
-            "stufe1": "Beim Besuch seid ihr Detektive. Eine Bücherkiste wurde gestohlen. Ihr sucht die Kiste und den Dieb Mr. X. Dafür löst ihr Rätsel und Puzzles. Ihr nehmt auch Kontakt mit Mr. X auf.",
-            "stufe2": "Beim Besuch werdet ihr zu Detektiven. Eine Bücherkiste wurde gestohlen, und ihr sucht die Kiste und den Dieb Mr. X. Dafür löst ihr Rätsel und Puzzles. Außerdem nehmt ihr Kontakt mit Mr. X auf.",
-            "stufe3": "Bei eurem Besuch werdet ihr zu Detektiven, denn eine Bücherkiste ist gestohlen worden. Ihr spürt die Kiste und den Dieb Mr. X auf. Dabei löst ihr Text-Rätsel und Puzzles und nehmt sogar Kontakt mit Mr. X auf. Schafft ihr es, den Dieb zu finden?",
+            "stufe1": "Ihr werdet Detektive. Eine Bücherkiste ist gestohlen. Ihr sucht sie und den Dieb Mr. X. Ihr löst Rätsel und Puzzles. Ihr entdeckt die Bücher in den Regalen. Wo ist die Kiste?",
+            "stufe2": "Beim Besuch werdet ihr zu Detektiven. Eine Bücherkiste ist gestohlen. Ihr spürt sie und den Dieb Mr. X auf. Dafür löst ihr Text-Rätsel und Puzzles. Dabei findet ihr euch in der Bibliothek zurecht und entdeckt Bücher in den Regalen. Wo ist wohl die Bücherkiste?",
+            "stufe3": "Bei eurem Besuch werdet ihr zu Detektiven, die eine gestohlene Bücherkiste und den Dieb Mr. X aufspüren. Dafür löst ihr Text-Rätsel und Puzzles, und ihr findet euch in der Bibliothek zurecht. Dabei entdeckt ihr, wo die Bücher in den Regalen stehen. Wisst ihr schon, wo die Bücherkiste jetzt ist?",
             "bild": [
               {
-                "picto": null,
-                "wort": "Detektiv",
-                "suchwort": "Detektiv"
+                "picto": 9191,
+                "wort": "Detektiv"
               },
               {
                 "picto": 6947,
                 "wort": "suchen"
               },
               {
-                "picto": 24829,
-                "wort": "Rätsel"
+                "picto": 37058,
+                "wort": "Kiste"
               },
               {
-                "picto": 3065,
-                "wort": "Bibliothek"
+                "picto": 4674,
+                "wort": "Dieb"
               }
             ]
           }
         },
         {
           "text": {
-            "stufe1": "Ihr erkundet die Kinderbibliothek, die Bilderbuchecke, die Sachbuchregale und die Ausleihtheke. Am Ende bekommt ihr einen Detektiv-Ausweis.",
-            "stufe2": "Beim Besuch erkundet ihr die Stadtbibliothek Straubing. Ihr seht die Kinderbibliothek, die Bilderbuchecke, die Sachbuchregale und die Ausleihtheke. Am Ende des Besuchs bekommt ihr einen Detektiv-Ausweis.",
-            "stufe3": "Euer Besuch führt euch in die Stadtbibliothek Straubing. Dort erkundet ihr die Kinderbibliothek, die Bilderbuchecke, die Sachbuchregale und die Ausleihtheke. Zum Schluss wartet ein Detektiv-Ausweis auf euch.",
+            "stufe1": "Ihr erkundet die Kinderbibliothek. Ihr kommt zur Bilderbuchecke und zu den Sachbuchregalen. Ihr seht auch die Ausleihtheke. Am Ende bekommt ihr einen Ausweis als Detektiv.",
+            "stufe2": "Ihr erkundet die Kinderbibliothek. Dabei kommt ihr zur Bilderbuchecke und zu den Sachbuchregalen. Auch die Ausleihtheke seht ihr euch an. Am Ende des Besuchs bekommt ihr einen Ausweis als Detektiv.",
+            "stufe3": "Während ihr die Kinderbibliothek erkundet, kommt ihr zur Bilderbuchecke und zu den Sachbuchregalen. Auch die Ausleihtheke gehört zu den Orten, die ihr euch anseht. Am Ende des Besuchs bekommt ihr einen Detektiv-Ausweis.",
             "bild": [
+              {
+                "picto": 2485,
+                "wort": "Kind"
+              },
+              {
+                "picto": 16907,
+                "wort": "erkunden"
+              },
               {
                 "picto": 3065,
                 "wort": "Bibliothek"
               },
               {
-                "picto": null,
-                "wort": "erkunden",
-                "suchwort": "erkunden"
-              },
-              {
-                "picto": 2386,
-                "wort": "Regal"
-              },
-              {
-                "picto": null,
-                "wort": "Ausweis",
-                "suchwort": "Ausweis"
+                "picto": 4751,
+                "wort": "Ausweis"
               }
             ]
           }
@@ -117,58 +113,64 @@
       "uk": {
         "stufe": "stufe1",
         "abschnitte": [
-          "Під час візиту ви — детективи. Вкрадено скриню з книжками. Ви шукаєте скриню та злодія Mr. X. Для цього ви розв’язуєте загадки та пазли. Ви також зв’язуєтеся з Mr. X.",
-          "Ви досліджуєте дитячу бібліотеку, куточок з книжками-картинками, полиці з пізнавальними книжками та стійку видачі книжок. Наприкінці ви отримаєте посвідчення детектива."
+          "Ви станете детективами. Скриня з книжками вкрадена. Ви шукаєте її та злодія Mr. X. Ви розгадуєте загадки та складаєте пазли. Ви відкриваєте для себе книжки на полицях. Де ця скриня?",
+          "Ви досліджуєте дитячу бібліотеку. Ви підходите до куточка з книжками-картинками та до полиць з пізнавальними книжками. Ви також бачите стійку видачі книжок. Наприкінці ви отримуєте посвідчення детектива."
         ]
       }
     },
     "wortbilder": [
       {
-        "picto": null,
-        "wort": "Detektive",
-        "suchwort": "Detektiv"
+        "picto": 9191,
+        "wort": "Detektiv"
       },
       {
-        "picto": null,
-        "wort": "Bücherkiste",
-        "suchwort": "Kiste"
+        "picto": 2450,
+        "wort": "Bücher"
       },
       {
-        "picto": null,
-        "wort": "Dieb",
-        "suchwort": "Dieb"
+        "picto": 37058,
+        "wort": "Kiste"
+      },
+      {
+        "picto": 4674,
+        "wort": "Dieb"
+      },
+      {
+        "picto": 6947,
+        "wort": "sucht"
       },
       {
         "picto": 24829,
         "wort": "Rätsel"
       },
       {
-        "picto": null,
-        "wort": "Puzzles",
-        "suchwort": "Puzzle"
+        "picto": 2540,
+        "wort": "Puzzles"
       },
       {
-        "picto": null,
-        "wort": "Bilderbuchecke",
-        "suchwort": "Bilderbuch"
+        "picto": 2386,
+        "wort": "Regalen"
       },
       {
-        "picto": null,
-        "wort": "Ausleihtheke",
-        "suchwort": "Theke"
+        "picto": 16907,
+        "wort": "erkundet"
+      },
+      {
+        "picto": 4751,
+        "wort": "Ausweis"
       }
     ],
     "antwortbrief": {
       "anrede": "Liebe Stadtbibliothek Straubing,",
-      "einleitung": "wir sind die Klasse 3b und besuchen euch bald. Wir freuen uns schon auf die Bibliotheksdetektive und sind gespannt, was wir bei euch erleben.",
-      "vor_vermutungen": "Wir haben schon überlegt, was uns erwarten könnte:",
-      "vor_fragen": "Diese Fragen haben wir an euch:",
-      "schluss": "Wir sind gespannt auf die Bibliotheksdetektive und hoffen, dass wir die gestohlene Bücherkiste und Mr. X aufspüren. Danke für eure Antworten!",
+      "einleitung": "wir sind die 3b und kommen bald zu euch in die Bibliothek. Wir freuen uns schon auf die Bibliotheksdetektive!",
+      "vor_vermutungen": "Wir haben schon überlegt, was uns bei den Bibliotheksdetektiven erwarten könnte:",
+      "vor_fragen": "Wir haben auch noch ein paar Fragen an euch:",
+      "schluss": "Wir sind schon gespannt, ob wir die gestohlene Bücherkiste finden. Wir freuen uns auf euch!",
       "gruss": "Bis bald, eure 3b"
     },
     "luecken": [
-      "Ausleihe: Das Programmprofil enthält keine Angabe, ob und wie die Kinder Bücher ausleihen können.",
-      "Mitbringen: Das Programmprofil enthält keine Angabe, was die Kinder zum Besuch mitbringen sollen."
+      "Ob die Kinder beim Besuch Bücher ausleihen können, ist noch offen.",
+      "Ob die Kinder zum Besuch etwas mitbringen sollen, ist noch offen."
     ]
   }
 }

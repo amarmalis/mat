@@ -2,7 +2,7 @@
 
 Stand 11.11.2026, noch nicht getestet. Der vollständige Prompt steht in `prompts/system_2_v0.9.md`; v0.8 bleibt eingefroren (`prompts/system_2.md`). Diese Datei dokumentiert die Änderungen und ihre Begründung.
 
-Änderungen im Überblick: (A) messbare Lesestufen, (B) Leitlinie Lesemotivation L1–L4 samt leitlinienkonformem Beispiel, (C) Prüf- und Nachschärf-Schleife (Werkzeug, nicht Prompt), (E) neue Rahmenfelder `lesetipps` und `bilder[].nachweis`, (F) neues Beispiel für `vor_vermutungen`, Selbstprüfung um Fragen 10 und 11 ergänzt, (G) Lücken als verständliche Sätze an die Lehrkraft.
+Änderungen im Überblick: (A) messbare Lesestufen, (B) Leitlinie Lesemotivation L1–L4 samt leitlinienkonformem Beispiel, (C) Prüf- und Nachschärf-Schleife (Werkzeug, nicht Prompt; nach Lauf 10 nur Ausblick), (E) neue Rahmenfelder `lesetipps` und `bilder[].nachweis`, (F) neues Beispiel für `vor_vermutungen`, Selbstprüfung um Fragen 10 und 11 ergänzt, (G) Lücken als verständliche Sätze an die Lehrkraft.
 
 ## A – Lesestufen messbar machen
 
@@ -53,6 +53,8 @@ Regel 19 des Validators (`werkzeuge/stufen.py`, Funktion `leitlinie`; gleich in 
 4. `werkzeuge/stufen.py --einsetzen` setzt sie ein, prüft Zeichengrenzen und misst neu. Höchstens zwei Runden; danach gilt die beste Fassung.
 
 Im Prototyp führt diese Schritte die Entwicklerin aus (Lehrkraftansicht, Bereich „Für die Entwicklung“, oder Kommandozeile). In einer API-Fassung liefen sie automatisch. Die Lehrkraft sieht davon nichts; sie erhält fertig differenziertes Material („niederschwellig, sofort einsetzbar“, RQ1).
+
+**Entscheidung nach Lauf 10 (13.11.2026, A. Marx):** In den Testläufen wird nicht nachgefordert; ausgewertet wird nur die Rohfassung. Grund: Ein Ergebnis, das erst nach Nachforderung stimmt, ist für den Modellvergleich weniger aussagekräftig. Lauf 10b (Sonnet) erfüllte die Regeln 18 und 19 ohne Nachforderung; bei Lauf 10a (Qwen) hätte die auf Regel 18/19 beschränkte Schleife die fehlende ⭐-Fassung nicht behoben. Die Schleife bleibt als Ausblick für eine API-Fassung beschrieben; `werkzeuge/stufen.py` dient im Prototyp als Prüf- und Messwerkzeug.
 
 ## E – Neue Rahmenfelder
 

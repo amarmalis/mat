@@ -29,5 +29,6 @@ Hinweise:
 - Das Programmprofil muss von der Bibliothek geprüft sein (keine `belege`, keine `null` in Pflichtfeldern).
 - Neu ab v0.9 im Programmprofil: `foto.nachweis` (Bildnachweis, wird unverändert in `rahmen.bilder` übernommen) und `lesetipps_vor_ort` (true/false; bei true und gewählter ⭐⭐⭐-Stufe erscheint die Zusatzfrage „Das lese ich gern“).
 - Danach prüfen: Ausgabe als JSON speichern und `python3 werkzeuge/validate08.py <Datei>` ausführen, oder in der Lehrkraftansicht unter „Für die Entwicklung“ → „Inhalte laden“ einfügen.
-- Meldet die Prüfung Regel 18 (Lesestufen) oder 19 (Leitlinie): `python3 werkzeuge/stufen.py <Datei>` erzeugt einen Überarbeitungsauftrag. Ihn als nächste Nachricht in denselben Chat geben, die Antwort speichern und mit `python3 werkzeuge/stufen.py <Datei> --einsetzen <Antwort.json>` einsetzen. Höchstens zwei Runden; Ausgangs- und Endfassung im Testprotokoll festhalten. Die Lerngruppe wird über `meta.lerngruppe` nachgeladen; dafür muss `lerngruppen/<ID>.json` schon im Repo liegen.
+- Kennwerte der Lesestufen: `python3 werkzeuge/stufen.py <Datei>`. In den Testläufen wird nicht nachgefordert (Entscheidung 13.11.2026). Nur als Ausblick: Meldet die Prüfung Regel 18 oder 19, erzeugt `stufen.py` einen Überarbeitungsauftrag (Einsetzen der Antwort mit `--einsetzen`).
+- Die Lerngruppe wird über `meta.lerngruppe` nachgeladen; dafür muss `lerngruppen/<ID>.json` schon im Repo liegen.
 - Ist die Prüfung ohne Fehler und die redaktionelle Durchsicht abgeschlossen: als `materialien/<ID>.json` ins Repo laden.
