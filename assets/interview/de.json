@@ -79,9 +79,9 @@
     },
     "max": 3,
     "weitere": {
-      "stufe1": "Was? Male oder schreibe es auf die Karte.",
-      "stufe2": "Was denn? Schreibe es auf die Karte.",
-      "stufe3": "Was denn? Schreibe es auf die Karte."
+      "stufe1": "Was? Erzähle es.",
+      "stufe2": "Was denn genau? Erzähle es.",
+      "stufe3": "Worüber möchtest du sonst noch lesen? Erzähle davon."
     },
     "listen": {
       "sachbuch": [
@@ -116,7 +116,7 @@
           "code": "1F9CD"
         },
         {
-          "label": "Leben früher (Römer, Ägypter …)",
+          "label": "Leben früher",
           "symbol": "🏺",
           "code": "1F3DB"
         },
@@ -199,7 +199,7 @@
         "label": "Mit viel Text",
         "kurz": "viel Text",
         "bild": "assets/pictos/text.png",
-        "code": "1F4C4"
+        "code": "blatt-text"
       }
     }
   },
@@ -229,7 +229,7 @@
       "stufe2": "Das habt ihr ausgewählt",
       "stufe3": "Das habt ihr ausgewählt"
     },
-    "runde": "Das hat Kind {n} gewählt",
+    "runde": "Kind {n}",
     "stufe1": [
       "Malt einen Stern aus.",
       "Schreibt euren Namen darauf.",
@@ -247,9 +247,9 @@
     ]
   },
   "abschluss": {
-    "stufe1": "Super! Jetzt hat jeder eine Lesefutter-Karte. Gebt sie eurer Lehrkraft. Beim Besuch bekommt ihr sie wieder.",
-    "stufe2": "Super! Jedes Kind hat jetzt seine Lesefutter-Karte. Gebt sie eurer Lehrkraft. In der Bibliothek bekommt ihr sie zurück.",
-    "stufe3": "Super! Jedes Kind hat jetzt seine Lesefutter-Karte. Gebt sie eurer Lehrkraft. Beim Besuch in der Bibliothek erhaltet ihr sie wieder."
+    "stufe1": "Super! Jetzt hat jeder seine Lesefutter-Karte. Damit findet ihr in der Bibliothek euer Buch. Viel Spaß beim Suchen!",
+    "stufe2": "Super gemacht! Jedes Kind hat jetzt seine Lesefutter-Karte. Mit ihr findet ihr in der Bibliothek ein Buch, das zu euch passt. Viel Spaß beim Suchen!",
+    "stufe3": "Klasse! Jedes Kind hat jetzt seine eigene Lesefutter-Karte. Mit ihr geht ihr in der Bibliothek selbst auf Buchsuche. Viel Spaß beim Stöbern!"
   },
   "knopf": {
     "weiter": "Weiter",
@@ -266,5 +266,11 @@
     "thema_hinweis": "Bis zu drei Kreuze.",
     "format": "3. Wie soll es aussehen?",
     "fund": "Dieses Buch habe ich mir ausgesucht:"
+  },
+  "lesetipp": {
+    "frage": "Was liest du gern? Ein Buch, eine Reihe oder eine Autorin?",
+    "hinweis": "Erzähle es. Am Ende schreibst du es auf deine Karte. In der Bibliothek kannst du damit nach Lesetipps fragen.",
+    "schritt": "Schreibt in die Zeile „Das lese ich gern“, welches Buch, welche Reihe oder Autorin ihr mögt.",
+    "karte": "Das lese ich gern:"
   }
 }
